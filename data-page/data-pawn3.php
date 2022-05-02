@@ -301,7 +301,7 @@
                       <button type="button" class="btn bg-gradient-dark">บันทึก</button>
                       <a href="../data-page/data-pawn3.php" class="btn btn-color1 bg-gradient-dark theme-btn mx-auto ">ดำเนินการต่อ</a> 
                         </div>  
-                                       
+                </form>                     
               </div>
             </div>
           </div>

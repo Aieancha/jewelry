@@ -20,6 +20,8 @@
       } elseif (isset($_GET['page']) && $_GET['page'] == 'pledge') {
         if (isset($_GET['function']) && $_GET['function'] == 'insert') {
           include('customer/pledge/insert.php');
+        }elseif (isset($_GET['function']) && $_GET['function'] == 'customr') {
+          include('customer/pledge/customr.php');
         } else {
           include('customer/pledge/index.php');
         }
