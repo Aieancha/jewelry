@@ -1,10 +1,10 @@
 <?php 
 
-    require_once 'connection.php';
+    require_once '../connection/connection.php';
 
     session_start();
 
-    if (isset($_POST['btn_login'])) {
+    if (isset($_POST['btn-login'])) {
         $m_email = $_POST['txt_email']; // textbox name 
         $m_password = $_POST['txt_password']; // password
         $m_level = $_POST['txt_role']; // select option role
@@ -17,43 +17,43 @@
             $errorMsg[] = "กรุณาเลือกสถานะ";
         } else if ($m_email AND $m_password AND $m_level) {
             try {
-                $select_stmt = $db->prepare("SELECT m_email, m_password, m_level FROM tbl_member WHERE m_email = :uemail AND password = :upassword AND role = :urole");
-                $select_stmt->bindParam(":uemail", $email);
-                $select_stmt->bindParam(":upassword", $password);
-                $select_stmt->bindParam(":urole", $role);
+                $select_stmt = $db->prepare("SELECT m_email, m_password, m_level FROM tbl_member WHERE m_email = :uemail AND m_password = :upassword AND m_level = :urole");
+                $select_stmt->bindParam(":uemail", $m_email);
+                $select_stmt->bindParam(":upassword", $m_password);
+                $select_stmt->bindParam(":urole", $m_level);
                 $select_stmt->execute(); 
 
                 while($row = $select_stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $dbemail = $row['email'];
-                    $dbpassword = $row['password'];
-                    $dbrole = $row['role'];
+                    $dbemail = $row['m_email'];
+                    $dbpassword = $row['m_password'];
+                    $dbrole = $row['m_level'];
                 }
-                if ($email != null AND $password != null AND $role != null) {
+                if ($m_email != null AND $m_password != null AND $m_level != null) {
                     if ($select_stmt->rowCount() > 0) {
-                        if ($email == $dbemail AND $password == $dbpassword AND $role == $dbrole) {
+                        if ($m_email == $dbemail AND $m_password == $dbpassword AND $m_level == $dbrole) {
                             switch($dbrole) {
                                 case 'admin':
-                                    $_SESSION['admin_login'] = $email;
-                                    $_SESSION['success'] = "Admin... Successfully Login...";
+                                    $_SESSION['admin_login'] = $m_email;
+                                    $_SESSION['success'] = "ผู้จัดการเข้าสู่ระบบสำเร็จ";
                                     header("location: admin/admin_home.php");
                                 break;
                                 case 'employee':
-                                    $_SESSION['employee_login'] = $email;
-                                    $_SESSION['success'] = "Employee... Successfully Login...";
+                                    $_SESSION['employee_login'] = $m_email;
+                                    $_SESSION['success'] = "พนักงานเข้าสู่ระบบสำเร็จ";
                                     header("location: employee/employee_home.php");
                                 break;
                                 case 'user':
-                                    $_SESSION['user_login'] = $email;
-                                    $_SESSION['success'] = "User... Successfully Login...";
+                                    $_SESSION['user_login'] = $m_email;
+                                    $_SESSION['success'] = "ผู้ใช้งานเข้าสู่ระบบสำเร็จ";
                                     header("location: user/user_home.php");
                                 break;
                                 default:
-                                    $_SESSION['error'] = "Wrong email or password or role";
+                                    $_SESSION['error'] = "อีเมล รหัสผ่าน หรือ สถานะ ผิด ";
                                     header("location: index.php");
                             }
                         }
                     } else {
-                        $_SESSION['error'] = "Wrong email or password or role";
+                        $_SESSION['error'] = "อีเมล รหัสผ่าน หรือ สถานะ ผิด";
                         header("location: index.php");
                     }
                 }
