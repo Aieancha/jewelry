@@ -7,6 +7,7 @@
         <div class="card-header pb-0 text-left bg-transparent">
             <h3 class="font-weight-bolder text-dark text-gradient ">เพิ่มข้อมูลผู้ดูแลระบบ</h3>
         </div>
+        <a href="?page=<?=$_GET['page']?>" class="btn btn-primary">ย้อนกลับ</a>
         <hr class="mb-4">
     <div class="card-body">
         <?php
@@ -19,7 +20,13 @@
                       VALUES ('$m_name', '$m_email', '$m_pass')";
 
             if (mysqli_query($connection, $sql)) {
-              echo "เพิ่มข้อมูลสำเร็จ";
+              //echo "เพิ่มข้อมูลสำเร็จ";
+              $alert = '<script type= "text/javascript">';
+              $alert .= 'alert("เพิ่มข้อมูลสำเร็จ");';
+              $alert .= 'window.location.href = "?page=profile";';
+              $alert .= '</script>';
+              echo $alert;
+              exit();
             } else {
               echo "Error: " . $sql . "<br>" . mysqli_error($connection);
             }
@@ -28,6 +35,7 @@
           }
             //print_r($_POST);
         ?>
+        <script type="text/javascript"></script>
         <form action="" method="post">
             <label class="form-label">ชื่อผู้ใช้*</label>
                 <div class="mb-3">

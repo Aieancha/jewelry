@@ -6,7 +6,7 @@ $query = mysqli_query($connection, $sql);
     <div class="row">
         <div class="card">
             <div class="card-body p-3">
-                <a href="" class="btn btn-primary">เพิ่มข้อมูลผู้ดูแลระบบ</a>
+                <a href="?page=<?=$_GET['page']?>&function=insert" class="btn btn-primary">เพิ่มข้อมูลผู้ดูแลระบบ</a>
                 <table class="table">
                     <thead>
                         <tr>
