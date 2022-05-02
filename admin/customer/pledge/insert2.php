@@ -47,9 +47,15 @@
                     <div class="ms-auto text-end ">
                       <button type="button" class="btn bg-gradient-dark">บันทึก</button> 
                       <a href="../data-page/data-pawn3.php" class="btn btn-color1 bg-gradient-dark theme-btn mx-auto ">ดำเนินการต่อ</a> 
-                       </div> 
-                       
-                                 
+                      </div>   
+                      <div class="mb-4 col-3 ">
+                    <h6>ราคาประเมินจากสินค้าจริง*</h6>
+                    <input type="name" class="form-control " placeholder="กรอกราคาประเมินจากสินค้าจริง" aria-label="Email" aria-describedby="email-addon">
+                  </div>
+                  <div class="mb-3 col-3 ">
+                    <h6>ราคาที่ตกลงจำนำ</h6>
+                      <input type="name" class="form-control " placeholder="กรอกราคาที่ตกลงจำนำ " aria-label="Email" aria-describedby="email-addon">
+                    </div>          
               </div>
             
     
