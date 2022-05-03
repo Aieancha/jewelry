@@ -85,6 +85,46 @@
                 <option value="line">Line</option>
               </select>
             </div>
+            <!-- end title -->
+            <hr class="mb-4">
+             
+              <div class="card-body">
+                <form role="form text-left">
+                  <h5 class="pb-5">กรอกข้อมูลผู้สนใจจำนำเครื่องประดับ</h5>
+                  <div class="mb-4 col-lg-5 ">
+                    <h6>ช่องทางการติดต่อ*</h6>
+                    <div class="dropdown">
+                      <button class="form-control">เลือกช่องทางการติดต่อ</button>
+                      <div class="dropdown-content bg-white">
+                      <a>Facebook</a>
+                      <a>Line</a>
+                      
+                      </div>
+                    </div>
+                 </div>
+                  <div class="mb-4 col-3 ">
+                    <h6>ชื่อผู้ใช้*</h6>
+                    <input type="name" class="form-control " placeholder="กรอกชื่อผู้ใช้ที่ติดต่อ" require>
+                  </div>
+                  <div class="mb-4 col-3 ">
+                  <h6>ภาพถ่ายสินค้าจริง*</h6>
+                      <form  action="/action_page.php">
+                          <input type="file" id="myFile" name="filename">
+                      </form>
+                  </div>
+                  <div class="mb-3 col-3 ">
+                    <h6>ราคาประเมินจากภาพ</h6>
+                      <input type="name" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" require>
+                    </div>
+                    <div class="ms-auto text-end ">
+                      <button type="button" class="btn bg-gradient-dark">บันทึก</button> 
+                      <a href="../data-page/data-pawn3.php" class="btn btn-color1 bg-gradient-dark theme-btn mx-auto ">ดำเนินการต่อ</a> 
+                       </div> 
+                       
+                                 
+              </div>
+            
+    
 
           </div>
           <div class="mb-4 col-3 ">

@@ -20,11 +20,16 @@ $query = mysqli_query($connection, $sql);
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">ชื่อผู้ใช้ติดต่อ</th>
+                            <th scope="col">รหัส</th>
+                            <th scope="col">ชื่อผู้ใช้งานระบบ</th>
                             <th scope="col">ช่องทางการติดต่อ</th>
                             <th scope="col">ประเภทสินทรัพย์จำนำ</th>
-                            <th scope="col">วันที่ติดต่อ</th>
+                            <th scope="col">ลำดับ</th>
+                            <th scope="col">รูปภาพเครื่องประดับ</th>
                             <th scope="col">สถานะ</th>
+                            <th scope="col">วันที่ติดต่อ</th>
+                            <th scope="col">ดำเนินการต่อ</th>
+                            <th scope="col">รายละเอียดเพิ่มเติม</th>
                         </tr>
                     </thead>
                     <tbody>
