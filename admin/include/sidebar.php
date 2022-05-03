@@ -93,7 +93,7 @@
             <span class="nav-link-text ms-1">ข้อมูลผู้ดูเเลระบบ</span>
           </a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
         <a class="nav-link <?php echo isset($_GET['page']) && ($_GET['page']) == 'sign-in' ? 'active': '' ?> " href="?page=sign-in">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -134,8 +134,15 @@
             </div>
             <span class="nav-link-text ms-1">Sign Up</span>
           </a>
-        </li>
+        </li> -->
+        
       </ul>
+    </div>
+    <div class="sidenav-footer mx-3 ">
+      <div class="card card-background shadow-none card-background-mask-secondary" id="sidenavCard">
+
+      </div>
+      <a class="btn bg-gradient-primary mt-3 w-100" href="?page=logout">ออกจากระบบ</a>
     </div>
     
   </aside>

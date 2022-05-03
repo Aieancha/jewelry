@@ -7,7 +7,7 @@
       <!-- title -->
       <div class="row justify-content-between">
         <div class="col-auto">
-          <h3 class="font-weight-bolder text-dark text-gradient ">ขั้นตอนการบันทึกข้อมูลการจำนำเครื่องประดับ</h3>
+          <h3 class="font-weight-bolder text-dark text-gradient ">ขั้นตอนการแก้ไขข้อมูลการจำนำเครื่องประดับ</h3>
         </div>
         <div class="col-auto">
           <a href="?page=<?= $_GET['page'] ?>" class="btn btn-primary">ย้อนกลับ</a>
@@ -26,7 +26,6 @@
             $social_name = $_POST['social_name'];
             $social_contact = $_POST['social_contact'];
             $price_img = $_POST['price_img'];
-            $s_type = $_POST['s_type'];
 
             /* if(isset($_FILES['s_img']['name'] ) && !empty($_FILES['s_img']['name'] )) {
               $extension = array("jpeg","jpg", "png");
@@ -58,8 +57,8 @@
             echo $filename;
             exit(); */
 
-            $sql = "INSERT INTO tbl_social (social_name, social_contact, price_img, s_type)
-                      VALUES ('$social_name', '$social_contact', '$price_img', '$s_type')";
+            $sql = "INSERT INTO tbl_social (social_name, social_contact, price_img)
+                      VALUES ('$social_name', '$social_contact', '$price_img')";
 
             if (mysqli_query($connection, $sql)) {
               echo "เพิ่มข้อมูลสำเร็จ";
@@ -90,10 +89,6 @@
           <div class="mb-4 col-3 ">
             <h6>ชื่อผู้ใช้*</h6>
             <input type="text" class="form-control " name="social_name" placeholder="กรอกชื่อผู้ใช้ที่ติดต่อ" require autocomplete="off">
-          </div>
-          <div class="mb-4 col-3 ">
-            <h6>ประเภทสินทรัพย์จำนำ*</h6>
-            <input type="text" class="form-control " name="s_type" placeholder="สินทรัพย์ที่ใช้จำนำ" require autocomplete="off">
           </div>
           <div class="mb-4 col-3 ">
             <h6>ภาพถ่ายสินค้าจริง*</h6>

@@ -1,12 +1,14 @@
 <!--   Core JS Files   -->
-<script src="assets/assets/js/core/popper.min.js"></script>
+  <script src="assets/assets/js/core/popper.min.js"></script>
   <script src="assets/assets/js/core/bootstrap.min.js"></script>
   <script src="assets/assets/js/plugins/perfect-scrollbar.min.js"></script>
   <script src="assets/assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script src="assets/assets/js/plugins/chartjs.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
+  <!-- Awesome js  -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
   <script>
-    /* var ctx = document.getElementById("chart-bars").getContext("2d"); */
+    var ctx = document.getElementById("chart-bars").getContext("2d");
 
     new Chart(ctx, {
       type: "bar",

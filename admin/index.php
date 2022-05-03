@@ -4,46 +4,53 @@
 <html lang="en">
 <?php include('include/head.php'); ?>
 <?php include('include/script.php') ?>
-<?php include('include/sidebar.php') ?>
 
-<body class="g-sidenav-show  bg-gray-100">
+<?php if (isset($_SESSION['admin_login']) && !empty($_SESSION['admin_login'])) : ?>
+  <?php include('include/sidebar.php') ?>
 
-  <?php include('include/navbar.php'); ?>
-  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+  <body class="g-sidenav-show  bg-gray-100">
 
-    <div class="container-fluid py-4">
-      <?php
-      if (!isset($_GET['page']) && empty($_GET['page'])) {
-        include('dashboard/index.php');
-      } elseif (isset($_GET['page']) && $_GET['page'] == 'interest') {
-        include('customer/interest/index.php');
-      } elseif (isset($_GET['page']) && $_GET['page'] == 'pledge') {
-        if (isset($_GET['function']) && $_GET['function'] == 'insert') {
-          include('customer/pledge/insert.php');
-        }elseif (isset($_GET['function']) && $_GET['function'] == 'customr') {
-          include('customer/pledge/customr.php');
-        } else {
-          include('customer/pledge/index.php');
+
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+      <?php include('include/navbar.php'); ?>
+      <div class="container-fluid py-4">
+        <?php
+        if (!isset($_GET['page']) && empty($_GET['page'])) {
+            include('dashboard/index.php');
+        } elseif (isset($_GET['page']) && $_GET['page'] == 'interest') {
+            include('customer/interest/index.php');
+        } elseif (isset($_GET['page']) && $_GET['page'] == 'pledge') {
+          if (isset($_GET['function']) && $_GET['function'] == 'insert') {
+            include('customer/pledge/insert.php');
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'customr') {
+              include('customer/pledge/customr.php');
+          } else {
+              include('customer/pledge/index.php');
+          }
+        } elseif (isset($_GET['page']) && $_GET['page'] == 'profile') {
+          if (isset($_GET['function']) && $_GET['function'] == 'insert') {
+              include('profile/insert.php');
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'update') {
+              include('profile/edit.php');
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'delete') {
+              include('profile/delete.php');
+          } else {
+              include('profile/profile.php');
+          }
+        }elseif (isset($_GET['page']) && $_GET['page'] == 'logout'){
+          include('logout/logout.php');
         }
-      } elseif (isset($_GET['page']) && $_GET['page'] == 'profile') {
-        if (isset($_GET['function']) && $_GET['function'] == 'insert') {
-          include('profile/insert.php');
-        } else {
-          include('profile/profile.php');
-        }
-      } elseif (isset($_GET['page']) && $_GET['page'] == 'sign-in') {
-        include('member/index.php');
-      } elseif (isset($_GET['page']) && $_GET['page'] == 'sign-out') {
-        include('member/sign-up/signup.php');
-      }
 
 
 
-      ?>
+        ?>
 
-    </div>
-  </main>
-  <?php include('include/script.php') ?>
-</body>
+      </div>
+    </main>
+    <?php include('include/script.php') ?>
+  </body>
+<?php else : ?>
+  <?php include('login/signin.php')  ?>
+<?php endif; ?>
 
 </html>
