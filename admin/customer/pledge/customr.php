@@ -29,27 +29,73 @@
                     $address = $_POST['c_address'];
                     $phone = $_POST['phone'];
                     $email = $_POST['c_email'];
-                    $img = $_POST['c_img'];
-                
-                        $sql = "INSERT INTO tbl_customer (firstname, lastname, c_age, c_address, phone, c_email)
-                                    VALUES ('$firstname', '$lastname', '$age','$address', '$phone', '$email')";
+                    $principle = $_POST['principle'];
+                    $price_item = $_POST['price_item'];
+                    $total = ($principle*$price_item)*0.02;
 
-                        if (mysqli_query($connection, $sql)) {
-                            //echo "เพิ่มข้อมูลสำเร็จ";
+                    if (isset($_FILES['c_img']['name']) && !empty($_FILES['c_img']['name'])) {
+                        $extension = array("jpeg", "jpg", "png");
+                        $target = 'upload/customer/';
+                        $filename = $_FILES['c_img']['name'];
+                        $filetmp = $_FILES['c_img']['tmp_name'];
+                        $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                        if (in_array($ext, $extension)) {
+                            if (!file_exists($target . $filename)) {
+                                if (move_uploaded_file($filetmp, $target . $filename)) {
+                                    $filename = $filename;
+                                } else {
+                                    $alert = '<script type="text/javascript">';
+                                    $alert .= 'alert("เพิ่มไฟล์เข้าโฟลเดอร์ไม่สำเร็จ");';
+                                    $alert .= 'window.location.href = "?page=admin&function=customr";';
+                                    $alert .= '</script>';
+                                    echo $alert;
+                                    exit();
+                                }
+                            } else {
+                                $newfilename = time() . $filename;
+                                if (move_uploaded_file($filetmp, $target . $newfilename)) {
+                                    $filename = $newfilename;
+                                } else {
+                                    $alert = '<script type="text/javascript">';
+                                    $alert .= 'alert("เพิ่มไฟล์เข้าโฟลเดอร์ไม่สำเร็จ");';
+                                    $alert .= 'window.location.href = "?page=admin&function=customr";';
+                                    $alert .= '</script>';
+                                    echo $alert;
+                                    exit();
+                                }
+                            }
+                        } else {
+                            echo 'ประเภทไฟล์ไม่ถูกต้อง';
                             $alert = '<script type="text/javascript">';
-                            $alert .= 'alert("เพิ่มข้อมูลสำเร็จ");';
-                            $alert .= 'window.location.href = "?page=pledge";';
+                            $alert .= 'alert("ประเภทไฟล์ไม่ถูกต้อง");';
+                            $alert .= 'window.location.href = "?page=admin&function=customr";';
                             $alert .= '</script>';
                             echo $alert;
                             exit();
-                        } else {
-                            echo "Error: " . $sql . "<br>" . mysqli_error($connection);
                         }
-
-                       mysqli_close($connection); 
+                    } else {
+                        $filename = '';
                     }
-                    
-                
+
+                    $sql = "INSERT INTO tbl_customer (firstname, lastname, c_age, c_address, phone, c_email, c_img)
+                                    VALUES ('$firstname', '$lastname', '$age','$address', '$phone', '$email', '$filename')";
+
+                    if (mysqli_query($connection, $sql)) {
+                        //echo "เพิ่มข้อมูลสำเร็จ";
+                        $alert = '<script type="text/javascript">';
+                        $alert .= 'alert("เพิ่มข้อมูลสำเร็จ");';
+                        $alert .= 'window.location.href = "?page=pledge";';
+                        $alert .= '</script>';
+                        echo $alert;
+                        exit();
+                    } else {
+                        echo "Error: " . $sql . "<br>" . mysqli_error($connection);
+                    }
+
+                    mysqli_close($connection);
+                }
+
+
 
                 //print_r($_POST);
                 ?>
@@ -59,37 +105,46 @@
                     <h5 class="pb-5">กรอกข้อมูลผู้สนใจจำนำเครื่องประดับ</h5>
                     <div class=" mb-4 col-3 ">
                         <h6>ชื่อ</h6>
-                        <input type="text" class="form-control " name="firstname" placeholder="Pam Wanwasa" require autocomplete="off">
+                        <input type="text" class="form-control " name="firstname" placeholder="Pam Wanwasa" autocomplete="off" require>
                     </div>
                     <div class=" mb-4 col-3 ">
                         <h6>นามสกุล</h6>
-                        <input type="text" class="form-control " name="lastname" placeholder="Pam Wanwasa" require autocomplete="off">
+                        <input type="text" class="form-control " name="lastname" placeholder="Pam Wanwasa" autocomplete="off" require>
                     </div>
                     <div class=" mb-4 col-3 ">
                         <h6>อายุ</h6>
-                        <input type="text" class="form-control " name="c_age" placeholder="Pam Wanwasa" require autocomplete="off">
+                        <input type="text" class="form-control " name="c_age" placeholder="Pam Wanwasa" autocomplete="off" require>
                     </div>
                     <div class=" mb-4 col-3 ">
                         <h6>ที่อยู่</h6>
-                        <input type="text" class="form-control " name="c_address" placeholder="Pam Wanwasa" require autocomplete="off">
+                        <input type="text" class="form-control " name="c_address" placeholder="Pam Wanwasa" autocomplete="off" require>
                     </div>
                     <div class=" mb-4 col-3 ">
                         <h6>เบอร์โทร</h6>
-                        <input type="tel" class="form-control " name="phone" pattern="^[0-9\s]+$" minlength="10" placeholder="Pam Wanwasa" require autocomplete="off">
+                        <input type="tel" class="form-control " name="phone" pattern="^[0-9\s]+$" minlength="10" placeholder="Pam Wanwasa" autocomplete="off" require>
                     </div>
                     <div class=" mb-4 col-3 ">
                         <h6>อีเมล</h6>
-                        <input type="email" class="form-control " name="c_email" placeholder="Pam Wanwasa" require autocomplete="off">
+                        <input type="email" class="form-control " name="c_email" placeholder="Pam Wanwasa" autocomplete="off" require>
                     </div>
                     <div class="mb-4 col-3 ">
                         <h6>ราคาประเมินจากสินค้าจริง*</h6>
-                        <input type="number" min="0" class="form-control " name="" placeholder="กรอกราคาประเมินจากสินค้าจริง" require autocomplete="off">
+                        <input type="number" min="0" class="form-control " name="price_item" placeholder="กรอกราคาประเมินจากสินค้าจริง" autocomplete="off" require>
                     </div>
                     <div class="mb-3 col-3 ">
                         <h6>ราคาที่ตกลงจำนำ</h6>
-                        <input type="number" min="0" class="mb-3 form-control " name="" placeholder="กรอกราคาที่ตกลงจำนำ " require autocomplete="off">
+                        <input type="number" min="0" class="mb-3 form-control " name="principle" placeholder="กรอกราคาที่ตกลงจำนำ " autocomplete="off" require>
+                    </div>
+                    <div class="mb-3 col-3 ">
+                        <h6>จำนวนดอกเบี้ยที่ต้องจ่าย</h6>
+                        <output type="output" class="mb-3 form-control " value="<?=$total; ?>" name="total"   autocomplete="off" require>
+                    </div>
+                    <div class="mb-4 col-3 ">
+                        <h6>ภาพยืนยันตัวตน*</h6>
+                        <input type="file" id="myFile" name="c_img" multiple required>
                     </div>
                     <div class="ms-auto text-end ">
+                    <a href="?page=<?=$_GET['page']?>&function=cal" class="btn btn-color1 bg-gradient-dark theme-btn mx-auto ">คำนวณดอกเบี้ย</a>
                         <button type="submit" class="btn bg-gradient-dark">บันทึก</button>
                         <a href="#" class="btn btn-color1 bg-gradient-dark theme-btn mx-auto ">ดำเนินการต่อ</a>
                     </div>

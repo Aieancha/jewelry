@@ -1,6 +1,6 @@
 <?php 
-if (isset($_GET['m_id']) && !empty($_GET['m_id'])) {
-    $id = $_GET['m_id'];
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    $id = $_GET['id'];
     $sql = "DELETE FROM tbl_member WHERE m_id = '$id'";
 
     if (mysqli_query($connection, $sql)) {

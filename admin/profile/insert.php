@@ -24,7 +24,13 @@
             $query_check = mysqli_query($connection, $sql_check);
             $row_check = mysqli_num_rows($query_check);
             if ($row_check > 0) {
-              echo 'ชื่อผู้ใช้ซ้ำ กรุณากรอกใหม่อีกครั้ง';
+              //echo 'ชื่อผู้ใช้ซ้ำ กรุณากรอกใหม่อีกครั้ง';
+              $alert = '<script type="text/javascript">';
+            $alert .= 'alert("ชื่อผู้ใช้ซ้ำ กรุณากรอกใหม่อีกครั้ง");';
+            $alert .= 'window.location.href = "?page='.$_GET['page'].'&function=insert";';
+            $alert .= '</script>';
+            echo $alert;
+            exit();
             } else {
               $sql = "INSERT INTO tbl_member (m_name, m_email, m_pass, m_firstname, m_lastname, status)
                       VALUES ('$name', '$email', '$pass', '$firstname', '$lastname', '$status')";
@@ -51,7 +57,7 @@
         <form action="" method="post">
           <label class="form-label">ชื่อผู้ใช้*</label>
           <div class="mb-3">
-            <input type="text" class="form-control" name="m_name" placeholder="" require autocomplete="off">
+            <input type="text" class="form-control" name="m_name" placeholder="" autocomplete="off" require>
           </div>
           <label class="form-label">รหัสผ่าน*</label>
           <div class="mb-3">
@@ -60,19 +66,19 @@
           <hr class="mb-4 mt-4">
           <label class="form-label">ชื่อ*</label>
           <div class="mb-3">
-            <input type="text" class="form-control" name="m_firstname" placeholder="" value="<?= (isset($_POST['m_firstname']) && !empty($_POST['m_firstname']) ? $_POST['m_firstname'] : '') ?>" require autocomplete="off">
+            <input type="text" class="form-control" name="m_firstname" placeholder="" value="<?= (isset($_POST['m_firstname']) && !empty($_POST['m_firstname']) ? $_POST['m_firstname'] : '') ?>" autocomplete="off" require>
           </div>
           <label class="form-label">นามสกุล*</label>
           <div class="mb-3">
-            <input type="text" class="form-control" name="m_lastname" placeholder="" require autocomplete="off">
+            <input type="text" class="form-control" name="m_lastname" placeholder="" autocomplete="off" require>
           </div>
           <label class="form-label">อีเมล*</label>
           <div class="mb-3">
-            <input type="email" class="form-control" name="m_email" placeholder="examp@gmail.com" require autocomplete="off">
+            <input type="email" class="form-control" name="m_email" placeholder="examp@gmail.com" autocomplete="off" require>
           </div>
           <label class="form-label">สถานะ*</label>
           <div class="mb-3">
-            <select name="status" class="form-control">
+            <select name="status" class="form-control" require>
               <option value="" selected="selected">- เลือกสถานะ -</option>
               <option value="1">ผู้จัดการ</option>
               <option value="2">พนักงาน</option>
