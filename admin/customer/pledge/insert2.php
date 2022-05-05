@@ -14,13 +14,13 @@
                 </div>
             </div>
             <!-- end title -->
-            <hr class="mb-4">
+            <hr class="add mb-4">
              
               <div class="card-body">
                 <form role="form text-left">
                   <h5 class="pb-5">กรอกข้อมูลผู้สนใจจำนำเครื่องประดับ</h5>
                   <div class="mb-4 col-lg-5 ">
-                    <h6>ช่องทางการติดต่อ*</h6>
+                    <h6 >ช่องทางการติดต่อ</h6>
                     <div class="dropdown">
                       <button class="form-control">เลือกช่องทางการติดต่อ</button>
                       <div class="dropdown-content bg-white">
@@ -65,3 +65,11 @@
 </body>
 
 </html>
+<style>
+    .add {
+    width: 70%;
+    display: block;
+    margin: auto;
+  }
+
+</style>

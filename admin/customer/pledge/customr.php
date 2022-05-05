@@ -104,31 +104,31 @@
                 <form action="" method="post" enctype="multipart/form-data">
                     <h5 class="pb-5">กรอกข้อมูลผู้สนใจจำนำเครื่องประดับ</h5>
                     <div class=" mb-4 col-3 ">
-                        <h6>ชื่อ</h6>
+                        <h6>ชื่อ</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
                         <input type="text" class="form-control " name="firstname" placeholder="Pam Wanwasa" autocomplete="off" require>
                     </div>
                     <div class=" mb-4 col-3 ">
-                        <h6>นามสกุล</h6>
+                        <h6>นามสกุล</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
                         <input type="text" class="form-control " name="lastname" placeholder="Pam Wanwasa" autocomplete="off" require>
                     </div>
                     <div class=" mb-4 col-3 ">
-                        <h6>อายุ</h6>
+                        <h6>อายุ</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
                         <input type="text" class="form-control " name="c_age" placeholder="Pam Wanwasa" autocomplete="off" require>
                     </div>
                     <div class=" mb-4 col-3 ">
-                        <h6>ที่อยู่</h6>
+                        <h6>ที่อยู่</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
                         <input type="text" class="form-control " name="c_address" placeholder="Pam Wanwasa" autocomplete="off" require>
                     </div>
                     <div class=" mb-4 col-3 ">
-                        <h6>เบอร์โทร</h6>
+                        <h6>เบอร์โทร</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
                         <input type="tel" class="form-control " name="phone" pattern="^[0-9\s]+$" minlength="10" placeholder="Pam Wanwasa" autocomplete="off" require>
                     </div>
                     <div class=" mb-4 col-3 ">
-                        <h6>อีเมล</h6>
+                        <h6>อีเมล</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
                         <input type="email" class="form-control " name="c_email" placeholder="Pam Wanwasa" autocomplete="off" require>
                     </div>
                     <div class="mb-4 col-3 ">
-                        <h6>ราคาประเมินจากสินค้าจริง*</h6>
+                        <h6>ราคาประเมินจากสินค้าจริง</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
                         <input type="number" min="0" class="form-control " name="price_item" placeholder="กรอกราคาประเมินจากสินค้าจริง" autocomplete="off" require>
                     </div>
                     <div class="mb-3 col-3 ">
@@ -138,13 +138,13 @@
                     <div class="mb-3 col-3 ">
                         <h6>จำนวนดอกเบี้ยที่ต้องจ่าย</h6>
                         <output type="output" class="mb-3 form-control " value="<?=$total; ?>" name="total"   autocomplete="off" require>
+                        
                     </div>
                     <div class="mb-4 col-3 ">
                         <h6>ภาพยืนยันตัวตน*</h6>
                         <input type="file" id="myFile" name="c_img" multiple required>
                     </div>
                     <div class="ms-auto text-end ">
-                    <a href="?page=<?=$_GET['page']?>&function=cal" class="btn btn-color1 bg-gradient-dark theme-btn mx-auto ">คำนวณดอกเบี้ย</a>
                         <button type="submit" class="btn bg-gradient-dark">บันทึก</button>
                         <a href="#" class="btn btn-color1 bg-gradient-dark theme-btn mx-auto ">ดำเนินการต่อ</a>
                     </div>
