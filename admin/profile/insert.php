@@ -15,13 +15,12 @@ if($status!='admin'){
 <html lang="en">
 
 <body class="g-sidenav-show bg-gray-100">
-  <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
-    <div class="container-fluid">
-      <div class="card-header pb-0 text-left bg-transparent">
-        <h3 class="font-weight-bolder text-dark text-gradient ">เพิ่มข้อมูลผู้ดูแลระบบ</h3>
+  <div class="body main-content position-relative bg-white max-height-vh-100 h-100">
+    <div class="container-fluid" >
+      <div class="card-header pb-0 text-left bg-transparent" >
+        <h3 class="font-weight-bolder text-dark text-dark text-center m-3">เพิ่มข้อมูลผู้ใช้งานระบบ</h3>
       </div>
-      <a href="?page=<?= $_GET['page'] ?>" class="btn btn-primary">ย้อนกลับ</a>
-      <hr class="mb-4">
+  
       <div class="card-body">
         <?php
         if (isset($_POST) && !empty($_POST)) {
@@ -66,45 +65,71 @@ if($status!='admin'){
         }
         //print_r($_POST);
         ?>
-        <script type="text/javascript"></script>
-        <form action="" method="post">
-          <label class="form-label">ชื่อผู้ใช้*</label>
+        <div class ="box ">
+        <script type="text/javascript" ></script>
+        <form  action="" method="post" class="regis">
+        <label class="form-label ">ชื่อ</label><labal class="form-label text-danger">*</labal>
           <div class="mb-3">
-            <input type="text" class="form-control" name="m_name" placeholder="" autocomplete="off" require>
+            <input type="text" class="form-control" name="m_firstname" placeholder="กรอกชื่อจริงผู้ใช้" value="<?= (isset($_POST['m_firstname']) && !empty($_POST['m_firstname']) ? $_POST['m_firstname'] : '') ?>" autocomplete="off" require>
           </div>
-          <label class="form-label">รหัสผ่าน*</label>
+          <label class="form-label ">นามสกุล</label><labal class="form-label text-danger">*</labal>
           <div class="mb-3">
-            <input type="password" class="form-control" name="m_pass" placeholder="กรอกรหัสผ่าน" require>
+            <input type="text" class="form-control" name="m_lastname" placeholder="กรอกนามสกุลผู้ใช้" autocomplete="off" require>
           </div>
-          <hr class="mb-4 mt-4">
-          <label class="form-label">ชื่อ*</label>
+          <label class="form-label ">ชื่อผู้ใช้</label><labal class="form-label text-danger">*</labal>
           <div class="mb-3">
-            <input type="text" class="form-control" name="m_firstname" placeholder="" value="<?= (isset($_POST['m_firstname']) && !empty($_POST['m_firstname']) ? $_POST['m_firstname'] : '') ?>" autocomplete="off" require>
-          </div>
-          <label class="form-label">นามสกุล*</label>
-          <div class="mb-3">
-            <input type="text" class="form-control" name="m_lastname" placeholder="" autocomplete="off" require>
-          </div>
-          <label class="form-label">อีเมล*</label>
+            <input type="text" class="form-control" name="m_name" placeholder="กรอกชื่อผู้ใช้" autocomplete="off" require>
+            <label class="form-label ">อีเมล</label><labal class="form-label text-danger">*</labal>
           <div class="mb-3">
             <input type="email" class="form-control" name="m_email" placeholder="examp@gmail.com" autocomplete="off" require>
           </div>
-          <label class="form-label">สถานะ*</label>
+          </div>
+          <label class="form-label ">รหัสผ่าน</label><labal class="form-label text-danger">*</labal>
           <div class="mb-3">
-            <select name="status" class="form-control" require>
+            <input type="password" class="form-control" name="m_pass" placeholder="กรอกรหัสผ่าน" require>
+          </div>
+          
+          
+          
+          <label class="form-label ">สถานะ</label><labal class="form-label text-danger">*</labal>
+          <div class="mb-4 ">
+            <select name="status" class="form-control w-40" require>
               <option value="" selected="selected">- เลือกสถานะ -</option>
               <option value="admin">ผู้จัดการ</option>
               <option value="staff">พนักงาน</option>
             </select>
           </div>
-          <div class="text-center">
-            <button type="submit" name="save" class="btn bg-gradient-dark w-20 mt-4 mb-0">บันทึกข้อมูล</button>
-          </div>
+            
+         
         </form>
+        <div class="text-center mb-5">
+            <a href="?page=<?= $_GET['page'] ?>" class="btn btn-dark w-30  mb-0 mt-3 " >ย้อนกลับ</a>
+            <button type="submit" name="save" class="btn bg-gradient-primary w-30 mt-3  mb-0">บันทึกข้อมูล</button>
+      </div>   
       </div>
-
+      </div>
     </div>
   </div>
 </body>
 
 </html>
+<style>
+  .regis {
+    width: 70%;
+    display: block;
+    margin: auto;
+  }
+  .body {
+    width: 50%;
+    display: block;
+    margin: auto;
+    border-radius:20px;
+  }
+  .box{
+    width: 100%;
+    display: block;
+    margin: auto;
+    border-radius:20px;
+    background-color: rgb(255, 255, 255);
+  }
+  </style>

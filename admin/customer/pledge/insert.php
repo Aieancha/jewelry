@@ -9,9 +9,7 @@
         <div class="col-auto">
           <h3 class="font-weight-bolder text-dark text-gradient ">ขั้นตอนการบันทึกข้อมูลการจำนำเครื่องประดับ</h3>
         </div>
-        <div class="col-auto">
-          <a href="?page=<?= $_GET['page'] ?>" class="btn btn-primary">ย้อนกลับ</a>
-        </div>
+        
       </div>
       <!-- end title -->
       <hr class="mb-4">
@@ -96,39 +94,40 @@
         <script type="text/javascript"></script>
         <form action="" method="post" enctype=multipart/form-data>
           <h5 class="pb-5">กรอกข้อมูลผู้สนใจจำนำเครื่องประดับ</h5>
-          <div class="mb-4 col-lg-5 ">
-            <h6>ช่องทางการติดกต่อ*</h6>
+          <div class="mb-4 col-lg-5 t ">
+            <h6 style="display: inline;">ช่องทางการติดต่อ</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
 
             <div class="col-sm-12">
-              <select name="social_contact" class="form-control" required>
+              <select name="social_contact" class="form-control w-45" required>
                 <option value="" selected="selected">- เลือกช่องทางการติดต่อ -</option>
                 <option value="facebook">Facebook</option>
                 <option value="line">Line</option>
               </select>
             </div>
             <!-- end title -->
-            <hr class="mb-4">
 
           </div>
           <div class="mb-4 col-3 ">
-            <h6>ชื่อผู้ใช้*</h6>
+            <h6 style="display: inline;">ชื่อผู้ใช้</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
             <input type="text" class="form-control " name="social_name" placeholder="กรอกชื่อผู้ใช้ที่ติดต่อ" autocomplete="off" required>
           </div>
           <div class="mb-4 col-3 ">
-            <h6>ประเภทสินทรัพย์จำนำ*</h6>
+            <h6 style="display: inline;">ประเภทสินทรัพย์จำนำ</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
             <input type="text" class="form-control " name="s_type" placeholder="สินทรัพย์ที่ใช้จำนำ"  autocomplete="off" required>
           </div>
           <div class="mb-4 col-3 ">
-            <h6>ภาพถ่ายสินค้าจริง*</h6>
+            <h6 style="display: inline;">ภาพถ่ายสินค้าจริง</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
             <input type="file" id="myFile" name="s_img" multiple required>
           </div>
           <div class="mb-3 col-3 ">
-            <h6>ราคาประเมินจากภาพ</h6>
+            <h6 >ราคาประเมินจากภาพ</h6>
             <input type="number" min="0" name="price_img" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off" required>
           </div>
-          <div class="ms-auto text-end ">
-            <button type="submit" class="btn bg-gradient-dark">บันทึก</button>
-            <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-color1 bg-gradient-dark theme-btn mx-auto ">ดำเนินการต่อ</a>
+          
+          <div class="ms-auto text-end">
+            <a href="?page=<?= $_GET['page'] ?>" class="btn btn-dark pull-left" style="text-align:left;">ย้อนกลับ</a>
+            <button type="submit" class="btn bg-gradient-dark pull-right">บันทึก</button>
+            <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-color1 bg-gradient-primary theme-btn mx-auto pull-right">ดำเนินการต่อ</a>
           </div>
         </form>
       </div>

@@ -4,20 +4,21 @@ $sql = "SELECT *
 $query = mysqli_query($connection, $sql);
 ?>
 
-<div class="container-fluid py-4">
-    <div class="row">
-        <div class="card">
-            <!-- title -->
-            <div class="row justify-content-between">
+<div class="container-fluid py-4 ">
+<div class="row justify-content-between">
                 <div class="col-auto">
                     <h3 class="font-weight-bolder text-dark text-gradient ">การจัดการข้อมูลการข้อมูลการจำนำ</h3>
                 </div>
-                <div class="col-auto">
-                <a href="?page=<?=$_GET['page']?>&function=insert" class="btn btn-primary">เพิ่มข้อมูล</a>
                 </div>
-            </div>
+                <div class="col-auto" style="float:right">
+                <a href="?page=<?=$_GET['page']?>&function=insert" class="btn btn-success">เพิ่มข้อมูลการจำนำ</a>
+                </div>
+    <div class="row">
+        <div class="card">
+            <!-- title -->
+            
             <!-- end title -->
-            <div class="card-body p-3">
+            <div class="card-body p-3" style="text-align: center">
                 <table class="table">
                     <thead>
                         <tr>
