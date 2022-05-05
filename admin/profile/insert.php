@@ -1,3 +1,16 @@
+<?php 
+session_start();
+$status = $_SESSION['status'];
+if($status!='admin'){
+  $alert = '<script type="text/javascript">';
+            $alert .= 'alert("คุณไม่มีสิทธิ์การเข้าถึงหน้านี้");';
+            $alert .= 'window.location.href = "?page='.$_GET['page'].'&function=profile";';
+            $alert .= '</script>';
+            echo $alert;
+            exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,8 +93,8 @@
           <div class="mb-3">
             <select name="status" class="form-control" require>
               <option value="" selected="selected">- เลือกสถานะ -</option>
-              <option value="1">ผู้จัดการ</option>
-              <option value="2">พนักงาน</option>
+              <option value="admin">ผู้จัดการ</option>
+              <option value="staff">พนักงาน</option>
             </select>
           </div>
           <div class="text-center">

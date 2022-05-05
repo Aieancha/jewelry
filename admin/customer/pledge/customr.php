@@ -23,6 +23,7 @@
           print_r($_FILES);
           echo '</pre>';
           exit(); */
+                    $code = $_POST['code_id'];
                     $firstname = $_POST['firstname'];
                     $lastname = $_POST['lastname'];
                     $age = $_POST['c_age'];
@@ -31,7 +32,6 @@
                     $email = $_POST['c_email'];
                     $principle = $_POST['principle'];
                     $price_item = $_POST['price_item'];
-                    $total = ($principle*$price_item)*0.02;
 
                     if (isset($_FILES['c_img']['name']) && !empty($_FILES['c_img']['name'])) {
                         $extension = array("jpeg", "jpg", "png");
@@ -77,8 +77,8 @@
                         $filename = '';
                     }
 
-                    $sql = "INSERT INTO tbl_customer (firstname, lastname, c_age, c_address, phone, c_email, c_img)
-                                    VALUES ('$firstname', '$lastname', '$age','$address', '$phone', '$email', '$filename')";
+                    $sql = "INSERT INTO tbl_customer (code_id, firstname, lastname, c_age, c_address, phone, c_email, c_img, principle,price_item)
+                                    VALUES ('$code', '$firstname', '$lastname', '$age','$address', '$phone', '$email', '$filename','$principle','$price_item')";
 
                     if (mysqli_query($connection, $sql)) {
                         //echo "เพิ่มข้อมูลสำเร็จ";
@@ -103,6 +103,10 @@
                 <script type="text/javascript"></script>
                 <form action="" method="post" enctype="multipart/form-data">
                     <h5 class="pb-5">กรอกข้อมูลผู้สนใจจำนำเครื่องประดับ</h5>
+                    <div class=" mb-4 col-3 ">
+                        <h6>เลขสำคัญที่ราชการออกให้</h6>
+                        <input type="text" class="form-control " name="code_id" placeholder="Pam Wanwasa" autocomplete="off" require>
+                    </div>
                     <div class=" mb-4 col-3 ">
                         <h6>ชื่อ</h6>
                         <input type="text" class="form-control " name="firstname" placeholder="Pam Wanwasa" autocomplete="off" require>
@@ -135,10 +139,10 @@
                         <h6>ราคาที่ตกลงจำนำ</h6>
                         <input type="number" min="0" class="mb-3 form-control " name="principle" placeholder="กรอกราคาที่ตกลงจำนำ " autocomplete="off" require>
                     </div>
-                    <div class="mb-3 col-3 ">
+                    <!-- <div class="mb-3 col-3 ">
                         <h6>จำนวนดอกเบี้ยที่ต้องจ่าย</h6>
                         <output type="output" class="mb-3 form-control " value="<?=$total; ?>" name="total"   autocomplete="off" require>
-                    </div>
+                    </div> -->
                     <div class="mb-4 col-3 ">
                         <h6>ภาพยืนยันตัวตน*</h6>
                         <input type="file" id="myFile" name="c_img" multiple required>

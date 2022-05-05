@@ -1,9 +1,9 @@
 <?php
-$sql = "SELECT tbl_social.social_name,tbl_social.social_contact,tbl_social.price_img,tbl_status.status_name
-        FROM tbl_social
-        INNER JOIN tbl_status
-        ON tbl_social.s_id = tbl_status.id
-        WHERE tbl_status.id=1";
+$sql = "SELECT tbl_customer.c_id,tbl_customer.firstname,tbl_customer.lastname,tbl_customer.c_age,tbl_customer.c_address,tbl_customer.phone,tbl_customer.c_email
+                ,tbl_social.social_contact,tbl_social.social_name,tbl_social.price_img
+        FROM tbl_customer
+        INNER JOIN tbl_social
+        ON tbl_customer.c_id = tbl_social.id";
 $query = mysqli_query($connection, $sql);
 ?>
 
@@ -29,23 +29,27 @@ $query = mysqli_query($connection, $sql);
                         <tr>
                             <th scope="col">ชื่อติดต่อ</th>
                             <th scope="col">ช่องทางติดต่อ</th>
-                            <th scope="col">ราคาการประเมิน</th>
-                            <th scope="col">สถานะ</th>
-                            <!-- <th scope="col">ที่อยู่</th>
+                            <th scope="col">ชื่อ-นามสกุล</th>
+                            <th scope="col">อายุ</th>
+                            <th scope="col">ที่อยู่</th>
                             <th scope="col">เบอร์โทร</th>
-                            <th scope="col">อีเมล</th>
-                            <th scope="col">ราคาจากภาพ</th> -->
+                            <th scope="col">อีเมล</th> -->
+                            <th scope="col">ราคาจากภาพ</th>
                         </tr>
                     </thead>
                     <tbody>
-                      <?php foreach ($query as $row) : ?>
+                    <?php while($row = $result->fetch_assoc()): ?>
                         <tr>
                         <td><?php echo $row['social_name']; ?></td>
                         <td><?php echo $row['social_contact']; ?></td>
+                        <td><?php echo $row['firstname']; ?></td>
+                        <td><?php echo $row['c_age']; ?></td>
+                        <td><?php echo $row['c_address']; ?></td>
+                        <td><?php echo $row['phone']; ?></td>
+                        <td><?php echo $row['c_email']; ?></td>
                         <td><?php echo $row['price_img']; ?></td>
-                        <td class="btn btn-primary"><?php echo $row['status_name']; ?></td>
                         </tr>
-                        <?php endforeach; ?>
+                        <?php endwhile ?>
                     </tbody>
                 </table>
 
