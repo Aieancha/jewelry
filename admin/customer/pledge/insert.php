@@ -92,7 +92,7 @@
         //print_r($_POST);
         ?>
         <script type="text/javascript"></script>
-        <form action="" method="post" enctype=multipart/form-data>
+        <form action="" method="post" enctype="multipart/form-data">
         <div class="row">
             <div class="col-xs-12 col-md-8 offset-md-2 pb-5">
             <div class="wrapper-progressBar ">
@@ -132,10 +132,6 @@
           <div class="mb-3 col-3 ">
             <h6 >ราคาประเมินจากภาพ</h6>
             <input type="number" min="0" name="price_img" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off" required>
-          </div>
-          <div class="" >
-             <h6 >อัพเดทสถานะผู้สนใจจำนำเป็น "รอประเมิน"</h6>
-             <a href="#" class="btn btn-white ">อัพเดทสถานะ</a>
           </div>
           </div>
     </div> 

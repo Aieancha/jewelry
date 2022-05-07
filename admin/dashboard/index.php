@@ -31,42 +31,9 @@
                             <th scope="col">รายละเอียดเพิ่มเติม</th>
 
 
-
-                            
-                            
-                            <!-- <th scope="col">ประเภทสินทรัพย์จำนำ</th> -->
-                            <!-- <th scope="col">ลำดับ</th>
-                            <th scope="col">รูปภาพเครื่องประดับ</th> -->
-                            <!--th scope="col">สถานะ</th--> 
-                            <!-- <th scope="col">วันที่ติดต่อ</th>
-                            <th scope="col">ดำเนินการต่อ</th>
-                            <th scope="col">รายละเอียดเพิ่มเติม</th> -->
                         </tr>
                     </thead>
-                    <tbody>
-                        
-                        <?php 
-                        $i = 0;
-                        foreach ($query as $data):?>
-                            <tr>
-                                <td><?= ++$i ?></td>
-                                <td><?= $data['social_contact'] ?></td>
-                                <td><?= $data['social_name'] ?></td>
-                                <td class="align-middle">
-                                     <img src="upload/social/<?= $data['s_img'] ?>" class="rounded" width="60" height="60">
-                                 </td>
-                                <td><?= $data['#'] ?></td>
-                                <td><?= $data['#'] ?></td>
-                                <!-- <td><?= $data['s_type'] ?></td> -->
-                                <td> <a href="?page=<?=$_GET['page']?>&function=update&id=<?=$data['m_id']?>" class="btn btn-sm btn-dark">ดูรายละเอียด</a>
-                                    </td>
-                                
-
-                               
-                                
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
+                    
                 </table>
 
             </div>
@@ -117,9 +84,6 @@ form.example button {
   border-bottom-left-radius: 0px;
 }
 
-form.example button:hover {
-  background: #00000;
-}
 
 form.example::after {
   content: "";
