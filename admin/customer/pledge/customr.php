@@ -141,6 +141,10 @@
                         <h6>ภาพยืนยันตัวตน*</h6>
                         <input type="file" id="myFile" name="c_img" multiple required>
                     </div>
+                    <div class="" >
+                        <h6 >อัพเดทสถานะผู้สนใจจำนำเป็น "รอสัญญา"</h6>
+                        <a href="#" class="btn btn-white ">อัพเดทสถานะ</a>
+                    </div>
             </div>
             <div class="justify-content-start flex-fill ">
                     <div class=" mb-4 col-6 ">

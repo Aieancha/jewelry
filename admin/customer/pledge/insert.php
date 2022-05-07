@@ -133,7 +133,10 @@
             <h6 >ราคาประเมินจากภาพ</h6>
             <input type="number" min="0" name="price_img" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off" required>
           </div>
-          
+          <div class="" >
+             <h6 >อัพเดทสถานะผู้สนใจจำนำเป็น "รอประเมิน"</h6>
+             <a href="#" class="btn btn-white ">อัพเดทสถานะ</a>
+          </div>
           </div>
     </div> 
           <div  class="d-flex flex-row">
