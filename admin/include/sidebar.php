@@ -3,7 +3,7 @@
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href=" # ">
         <img src="assets/image/admin-logo.png" class="navbar-brand-img h-100" alt="main_logo">
-        <span class="ms-1 font-weight-bold text-white">Jewelry Notification</span>
+        <span class="ms-1 font-weight-bold  text-white">Jewelry Pawn</span>
       </a>
     </div>
     <hr class="horizontal dark mt-0">
@@ -26,7 +26,7 @@
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">หน้าแรก</span>
+            <span class="nav-link-text ms-1" >หน้าหลัก</span>
           </a>
         </li>
         <li class="nav-item">
@@ -46,7 +46,7 @@
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">การจัดการข้อมูลการจำนำ</span>
+            <span class="nav-link-text ms-1">จัดการข้อมูลการจำนำ</span>
           </a>
         </li>
         <li class="nav-item">
@@ -66,7 +66,7 @@
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">การจัดการชำระดอกเบี้ย</span>
+            <span class="nav-link-text ms-1">จัดการชำระดอกเบี้ย</span>
           </a>
         </li>
         <li class="nav-item mt-3">
@@ -90,7 +90,7 @@
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">ข้อมูลผู้ดูเเลระบบ</span>
+            <span class="nav-link-text ms-1">จัดการผู้ดูเเละระบบ</span>
           </a>
         </li>
         <!-- <li class="nav-item">

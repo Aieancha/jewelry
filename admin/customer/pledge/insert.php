@@ -103,10 +103,10 @@
                 </ul>
             </div>
             </div>
-          <h5 class="pb-5">กรอกข้อมูลผู้สนใจจำนำเครื่องประดับ</h5>
+          <h4 class="pb-5">กรอกข้อมูลผู้สนใจจำนำเครื่องประดับ</h4>
         </div>
           <div class="mb-4 col-lg-5 t ">
-            <h6 style="display: inline;">ช่องทางการติดต่อ</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
+            <h5 style="display: inline;">ช่องทางการติดต่อ</h5><h5 class="form-label text-danger" style="display: inline;">*</h5>
             <div class="col-sm-12">
               <select name="social_contact" class="form-control w-45" required>
                 <option value="" selected="selected">- เลือกช่องทางการติดต่อ -</option>
@@ -118,25 +118,22 @@
 
           </div>
           <div class="mb-4 col-3 ">
-            <h6 style="display: inline;">ชื่อผู้ใช้</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
+            <h5 style="display: inline;">ชื่อผู้ใช้</h5><h5 class="form-label text-danger" style="display: inline;">*</h5>
             <input type="text" class="form-control " name="social_name" placeholder="กรอกชื่อผู้ใช้ที่ติดต่อ" autocomplete="off" required>
           </div>
           <div class="mb-4 col-3 ">
-            <h6 style="display: inline;">ประเภทสินทรัพย์จำนำ</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
+            <h5 style="display: inline;">ประเภทสินทรัพย์จำนำ</h5><h5 class="form-label text-danger" style="display: inline;">*</h5>
             <input type="text" class="form-control " name="s_type" placeholder="สินทรัพย์ที่ใช้จำนำ"  autocomplete="off" required>
           </div>
           <div class="mb-4 col-3 ">
-            <h6 style="display: inline;">ภาพถ่ายสินค้าจริง</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
+            <h5 style="display: inline;">ภาพถ่ายสินค้าจริง</h5><h5 class="form-label text-danger" style="display: inline;">*</h5>
             <input type="file" id="myFile" name="s_img" multiple required>
           </div>
           <div class="mb-3 col-3 ">
-            <h6 >ราคาประเมินจากภาพ</h6>
+            <h5 >ราคาประเมินจากภาพ</h5>
             <input type="number" min="0" name="price_img" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off" required>
           </div>
-          <div class="" >
-             <h6 >อัพเดทสถานะผู้สนใจจำนำเป็น "รอประเมิน"</h6>
-             <a href="#" class="btn btn-white ">อัพเดทสถานะ</a>
-          </div>
+        
           </div>
     </div> 
           <div  class="d-flex flex-row">
@@ -146,7 +143,6 @@
             <div class="flex-fill d-flex justify-content-end gap-1" >
               <button type="submit" class="btn bg-gradient-dark pull-right ">บันทึก</button>
               <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-color1 bg-gradient-primary theme-btn  pull-right">ดำเนินการต่อ</a>
-            
           </div>
         </form>
       </div>
@@ -172,9 +168,7 @@
     float: left;
     width: 30%;
     position: relative;
-    text-align: center;
-  
-    
+    text-align: center;  
 }
 
 .progressBar li:before {
@@ -205,12 +199,12 @@
 }
 
 .progressBar li.active {
-    color: rgb(111, 0, 96);
+    color: hsl(0, 100%, 16%);
 }
 
 .progressBar li.active:before {
-    border-color: rgb(111, 0, 96);
-    background-color: rgb(111, 0, 96);
+    border-color: hsl(0, 100%, 16%);
+    background-color: hsl(0, 100%, 16%);
     
 }
 

@@ -18,18 +18,28 @@
         if (!isset($_GET['page']) && empty($_GET['page'])) {
             include('dashboard/index.php');
         } elseif (isset($_GET['page']) && $_GET['page'] == 'interest') {
+          if (isset($_GET['function']) && $_GET['function'] == 'update') {
+            include('customer/interest/Update-In.php');
+           }else{
             include('customer/interest/index.php');
+           }  
         } elseif (isset($_GET['page']) && $_GET['page'] == 'pledge') {
+          
           if (isset($_GET['function']) && $_GET['function'] == 'insert') {
             include('customer/pledge/insert.php');
           } elseif (isset($_GET['function']) && $_GET['function'] == 'customr') {
               include('customer/pledge/customr.php');
           }elseif (isset($_GET['function']) && $_GET['function'] == 'cal') {
             include('customer/pledge/cal.php');
+          }elseif (isset($_GET['function']) && $_GET['function'] == 'contract') {
+            include('customer/pledge/contract.php');
+          }elseif (isset($_GET['function']) && $_GET['function'] == 'success') {
+            include('customer/pledge/success.php');
         } else {
               include('customer/pledge/index.php');
           }
         } elseif (isset($_GET['page']) && $_GET['page'] == 'profile') {
+          
           if (isset($_GET['function']) && $_GET['function'] == 'insert') {
               include('profile/insert.php');
           } elseif (isset($_GET['function']) && $_GET['function'] == 'update') {

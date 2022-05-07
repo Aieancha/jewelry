@@ -7,7 +7,7 @@
             <!-- title -->
             <div class="row justify-content-between">
                 <div class="col-auto">
-                    <h3 class="font-weight-bolder text-dark text-gradient ">ขั้นตอนการบันทึกข้อมูลการจำนำเครื่องประดับ</h3>
+                    <h3 class="font-weight-bolder text-dark text-gradient ">การจัดการการชำระดอกเบี้ย</h3>
                 </div>
                 
             </div>
@@ -101,59 +101,11 @@
                 <script type="text/javascript"></script>
                 <form action="" method="post" enctype="multipart/form-data">
                 <div class="row">
-                <div class="col-xs-12 col-md-8 offset-md-2 pb-5">
-                    <div class="wrapper-progressBar ">
-                        <ul class="progressBar">
-                        <li class="active">บันทึกข้อมูลผู้สนใจจำนำ</li>
-                        <li class="active">ประเมินราคาเครื่องประดับ</li>
-                        <li class="active">ร่างสัญญา</li>
-                        </ul>
-                    </div>
-                    
-                </div>
-                <h5 class="pb-5">กรอกข้อมูลผู้สนใจจำนำเครื่องประดับ</h5>
+                <div class="col-xs-12 col-md-8 offset-md-2 pb-0">
                 </div>
         <div class="d-flex flex-row" >
             <div class="justify-content-start flex-fill ">
-                    <div class=" mb-4 col-6 " >
-                        <h6 style="display: inline;">ช่องทางการติดต่อ :</h6>
-                        <td width="25%" style="display: inline;">Facebook</td>
-                    </div>
-                    <div class=" mb-4 col-10 ">
-                        <h6 style="display: inline;">ชื่อผู้ใช้ :</h6>
-                        <td width="25%" style="display: inline;">Pam Wanwasa</td>
-                    </div>
-                    <div class=" mb-4 col-10 ">
-                        <h6 style="display: inline;">ภาพถ่ายสินค้าจริง</h6>
-                        <img  src=""alt="jewelry" width="304" height="228"></div>
-                    <div class=" mb-4 col-10 ">
-                        <h6 style="display: inline;">ราคาประเมินข้างต้น :</h6>
-                        <td width="25%" style="display: inline;">10000 บาท</td>
-                    </div>
-                    <div class=" mb-4 col-10 ">
-                        <h6 style="display: inline;">ราคาประเมินจากสินค้าจริง:</h6>
-                        <td width="25%" style="display: inline;">15000 บาท</td>
-                    </div>
-                    <div class=" mb-4 col-10 ">
-                        <h6 style="display: inline;">ราคาที่ตกลงจำนำ:</h6>
-                        <td width="25%" style="display: inline;">13000 บาท</td>
-                    </div>
-                    <div class=" mb-4 ">
-                        <h6 style="display: inline;">จำนวนงวด     :</h6>
-                        <td width="25%" style="display: inline;">12 เดือน</td>
-                    </div>
-                    <div class=" mb-4 ">
-                        <h6 style="display: inline;">ดอกเบี้ย     :</h6>
-                        <td width="25%" style="display: inline;">1200 บาท</td>
-                    </div>
-                    <div class=" mb-4 ">
-                        <h6 style="display: inline;">เงินที่ต้องจ่ายต่องวด :</h6>
-                        <td width="25%" style="display: inline;">120 บาท</td>
-                    </div>
-                    
-            </div>
-            <div class="justify-content-start flex-fill ">
-            <div class=" mb-4 " >
+                    <div class=" mb-4 col-10 " >
                         <h6 style="display: inline;">เลขที่ราชการออกให้ :</h6>
                         <td width="25%" style="display: inline;">1349901025750</td>
                     </div>
@@ -161,32 +113,76 @@
                         <h6 style="display: inline;">ชื่อผู้จำนำ :</h6><td width="25%" style="display: inline;">วรรณวษา</td>
                         <h6 style="display: inline;">นามสกุล :</h6><td width="25%" style="display: inline;">ทรัพย์อินทร์</td>
                     </div>
-                    <div class=" mb-4 ">
-                        <h6 style="display: inline;">ที่อยู่ปัจจุบัน :</h6>
-                        <td width="25%" style="display: inline;">79/154 ต บางเลน อ บางใหญ่ จ นนทบุรี 11140</td>
-                    </div>
-                    <div class=" mb-4 ">
-                        <h6 style="display: inline;">รหัสสินค้า:</h6>
-                        <td width="25%" style="display: inline;">A12345</td>
-                    </div>
-                    <div class=" mb-6">
-                        <h6 style="display: inline;">รายละเอียดสินค้า:</h6>
+                    <div class=" mb-4 col-10 ">
+                        <h6 style="display: inline;">รายละเอียดสินค้า</h6>
                         <td width="25%" style="display: inline;">สร้อยคอทองคำ พร้อมจี้ 1 บาท</td>
                     </div>
-                    
+                    <div class=" mb-4 col-10 ">
+                        <h6 style="display: inline;">วันที่กำหนดชำระ :</h6>
+                        <td width="25%" style="display: inline;">01/01/2565</td>
+                    </div>
+            </div>
+            <div class="justify-content-start flex-fill ">
+            <div class=" mb-4 " >
+                        <h6 style="display: inline;">ช่องทางการติดต่อ :</h6><td width="25%" style="display: inline;">Facebook</td>
+                        <h6 style="display: inline;">ชื่อผู้ใช้ :</h6><td width="25%" style="display: inline;">Pam Wanwasa</td>
+                    </div>    
+                    <div class=" mb-4 ">
+                        <h6 style="display: inline;">เงินที่ต้องจ่ายต่องวด :</h6>
+                        <td width="25%" style="display: inline;">120 บาท</td>
+                    </div><div class=" mb-4 ">
+                        <h6 style="display: inline;">จำนวนงวดที่ชำระเเล้ว :</h6><td width="25%" style="display: inline;">3 เดือน</td>
+                        <h6 style="display: inline;">จำนวนงวดที่เหลือ :</h6><td width="25%" style="display: inline;">9 เดือน</td>
+                    </div>
                     </div>
                    
             </div>
-        </div>     
-                   
-                    <div  class="d-flex flex-row">
+        </div>
+        <div class="bg-white mb-6">
+            <h5 class="mb-4 m-5 " >หลักฐานการชำระค่างวด</h5>
+        <div class="d-flex flex-row" >
             <div class="justify-content-start flex-fill ">
-              <a href="?page=<?=$_GET['page']?>&function=customr" class="btn bg-gradient-dark">ย้อนกลับ</a>
-            </div>
-            <div class="flex-fill d-flex justify-content-end gap-1" >
-              <a href="?page=<?= $_GET['page'] ?>&function=success" class="btn btn-color1 bg-gradient-primary theme-btn  pull-right">ร่างสัญญา</a>
-            
+                    <div class=" mb-4 col-10 ">
+                    <h6 >แนบภาพหลักฐานการชำระค่างวด</h6>
+                    <input type="file" id="myFile" name="s_img" multiple required>
           </div>
+            </div>
+            <div class="justify-content-start flex-fill ">
+            <div class=" mb-4 " >
+                    <div class=" mb-4 ">
+                        <h6 style="display: inline;">วันที่ชำระค่างวด</h6>
+                        <td width="25%" style="display: inline;">120 บาท</td>
+                    </div>
+                        <a href="#" class="btn bg-gradient-dark text-end">บันทึก</a>
+            </div>       
+            </div>
+        </div>
+            </div>
+               
+            
+            
+        <div> 
+
+        </div>
+        <h5 class="mb-4 m-5 " >ประวัติการโอน</h5>
+            
+        <div class="card-body overflow-auto p-3 bg-white" style="text-align: center">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ลำดับ</th>
+                            <th scope="col">รอบการชำระ</th>
+                            <th scope="col">รหัสผู้จำนำ</th>
+                            <th scope="col">ชื่อผู้จำนำ</th>
+                            <th scope="col">รหัสสินค้าที่จำนำ</th>
+                            <th scope="col">จำนวนเงินที่ชำระ</th>
+                            <th scope="col">สถานะ</th>
+                            <th scope="col">รายละเอียดการโอน</th>
+                        </tr>
+                    </thead>
+                </table>
+        </div>  
+        <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-color1 bg-gradient-primary theme-btn  pull-right">ย้อนกลับ</a>
                 </form>
                 </div>
             </div>
@@ -243,12 +239,12 @@
 }
 
 .progressBar li.active {
-    color: hsl(0, 100%, 16%);
+    color: rgb(111, 0, 96);
 }
 
 .progressBar li.active:before {
-    border-color: hsl(0, 100%, 16%);
-    background-color: hsl(0, 100%, 16%);
+    border-color: rgb(111, 0, 96);
+    background-color: rgb(111, 0, 96);
     
 }
 

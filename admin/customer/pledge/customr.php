@@ -110,65 +110,67 @@
                         </ul>
                     </div>
                 </div>
-                <h5 class="pb-5">กรอกข้อมูลผู้สนใจจำนำเครื่องประดับ</h5>
+                <h4 class="pb-5">กรอกข้อมูลผู้สนใจจำนำเครื่องประดับ</h4>
                 </div>
         <div class="d-flex flex-row" >
             <div class="justify-content-start flex-fill ">
                     <div class=" mb-4 col-6 " >
-                        <h6 style="display: inline;">ช่องทางการติดต่อ :</h6>
+                        <h5 style="display: inline;">ช่องทางการติดต่อ :</h5>
                         <td width="25%" style="display: inline;">Facebook</td>
                     </div>
                     <div class=" mb-4 col-6 ">
-                        <h6 style="display: inline;">ชื่อผู้ใช้ :</h6>
+                        <h5 style="display: inline;">ชื่อผู้ใช้ :</h5>
                         <td width="25%" style="display: inline;">Pam Wanwasa</td>
                     </div>
                     <div class=" mb-4 col-6 ">
-                        <h6 style="display: inline;">ภาพถ่ายสินค้าจริง</h6>
+                        <h5 style="display: inline;">ภาพถ่ายสินค้าจริง</h5>
                         <img  src=""alt="jewelry" width="304" height="228"></div>
                     <div class=" mb-4 col-6 ">
-                    <h6 style="display: inline;">ราคาประเมินข้างต้น :</h6>
+                    <h5 style="display: inline;">ราคาประเมินข้างต้น :</h5>
                     <td width="25%" style="display: inline;">10000 บาท</td>
                 </div>
                     <div class="mb-4 col-6 ">
-                        <h6>ราคาประเมินจากสินค้าจริง</h6>
+                        <h5>ราคาประเมินจากสินค้าจริง</h5>
                         <input type="number" min="0" name="price_img" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off" required>
                     </div>
                     <div class="mb-3 col-6 ">
-                        <h6>ราคาที่ตกลงจำนำ</h6>
+                        <h5>ราคาที่ตกลงจำนำ</h5>
                         <input type="number" min="0" name="price_img" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off" required>
                     </div>
-                    <div class="mb-4 col-3 ">
-                        <h6>ภาพยืนยันตัวตน*</h6>
-                        <input type="file" id="myFile" name="c_img" multiple required>
+                    <div class="mb-3 col-6 text-center">
+                        <a href="#" class="btn bg-gradient-white">คำนวณดอกเบี้ย</a>
                     </div>
-                    <div class="" >
-                        <h6 >อัพเดทสถานะผู้สนใจจำนำเป็น "รอสัญญา"</h6>
-                        <a href="#" class="btn btn-white ">อัพเดทสถานะ</a>
-                    </div>
+                    
+                    
+               
             </div>
             <div class="justify-content-start flex-fill ">
+                    <div class="mb-4 col-6 ">
+                        <h5>ภาพยืนยันตัวตน*</h5>
+                        <input type="file" id="myFile" name="c_img" multiple required>
+                    </div>
                     <div class=" mb-4 col-6 ">
-                        <h6 style="display: inline;">เลขสำคัญที่ราชการออกให้</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
+                        <h5 style="display: inline;">เลขสำคัญที่ราชการออกให้</h5><h5 class="form-label text-danger" style="display: inline;">*</h5>
                         <input type="text" class="form-control " name="firstname" placeholder="กรอกเลขสำคัญที่ราชการออกให้ลูกค้า" autocomplete="off" require>
                     </div>
                     <div class=" mb-4 col-6 ">
-                        <h6 style="display: inline;">ชื่อ</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
+                        <h5 style="display: inline;">ชื่อ</h5><h5 class="form-label text-danger" style="display: inline;">*</h5>
                         <input type="text" class="form-control " name="firstname" placeholder="กรอกชื่อจริงลูกค้า" autocomplete="off" require>
                     </div>
                     <div class=" mb-4 col-6 ">
-                        <h6 style="display: inline;">นามสกุล</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
+                        <h5 style="display: inline;">นามสกุล</h5><h5 class="form-label text-danger" style="display: inline;">*</h5>
                         <input type="text" class="form-control " name="lastname" placeholder="กรอกนามสกุลลูกค้า" autocomplete="off" require>
                     </div>
                     <div class=" mb-4 col-6 ">
-                        <h6 style="display: inline;">ที่อยู่</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
+                        <h5 style="display: inline;">ที่อยู่</h5><h5 class="form-label text-danger" style="display: inline;">*</h5>
                         <input type="text" class="form-control " name="c_address" placeholder="กรอกที่อยู่ปัจจุบันลูกค้า" autocomplete="off" require>
                     </div>
                     <div class=" mb-4 col-6 ">
-                        <h6 style="display: inline;">เบอร์โทร</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
+                        <h5 style="display: inline;">เบอร์โทร</h5><h5 class="form-label text-danger" style="display: inline;">*</h5>
                         <input type="number" class="form-control " name="phone" pattern="^[0-9\s]+$" minlength="10" placeholder="กรอกเบอร์โทรศัพท์ลูกค้า" autocomplete="off" require>
                     </div>
                     <div class=" mb-4 col-6 ">
-                        <h6 style="display: inline;">อีเมล</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
+                        <h5 style="display: inline;">อีเมล</h5><h5 class="form-label text-danger" style="display: inline;">*</h5>
                         <input type="email" class="form-control " name="c_email" placeholder="example@gmail.com" autocomplete="off" require>
                     </div>
             </div>
@@ -180,7 +182,7 @@
             </div>
             <div class="flex-fill d-flex justify-content-end gap-1" >
               <button type="submit" class="btn bg-gradient-dark pull-right ">บันทึก</button>
-              <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-color1 bg-gradient-primary theme-btn  pull-right">ดำเนินการต่อ</a>
+              <a href="?page=<?= $_GET['page'] ?>&function=contract" class="btn btn-color1 bg-gradient-primary theme-btn  pull-right">ดำเนินการต่อ</a>
             
           </div>
                 </form>
@@ -239,13 +241,13 @@
 }
 
 .progressBar li.active {
-    color: rgb(111, 0, 96);
+    color: hsl(0, 100%, 16%);
 }
 
 .progressBar li.active:before {
-    border-color: rgb(111, 0, 96);
-    background-color: rgb(111, 0, 96);
-    
+    border-color: hsl(0, 100%, 16%);
+    background-color: hsl(0, 100%, 16%);
+      
 }
 
 .progressBar .active:after {

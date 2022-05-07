@@ -28,12 +28,9 @@
                             <th scope="col">ช่องทางการติดต่อ</th>
                             <th scope="col">รหัสสินค้าที่จำนำ</th>
                             <th scope="col">สถานะ</th>
+                            <th scope="col">เปลี่ยนสถานะ</th>
                             <th scope="col">รายละเอียดเพิ่มเติม</th>
 
-
-
-                            
-                            
                             <!-- <th scope="col">ประเภทสินทรัพย์จำนำ</th> -->
                             <!-- <th scope="col">ลำดับ</th>
                             <th scope="col">รูปภาพเครื่องประดับ</th> -->
@@ -43,8 +40,7 @@
                             <th scope="col">รายละเอียดเพิ่มเติม</th> -->
                         </tr>
                     </thead>
-                    <tbody>
-                        
+                    
                         <?php 
                         $i = 0;
                         foreach ($query as $data):?>
@@ -58,12 +54,12 @@
                                 <td><?= $data['#'] ?></td>
                                 <td><?= $data['#'] ?></td>
                                 <!-- <td><?= $data['s_type'] ?></td> -->
-                                <td> <a href="?page=<?=$_GET['page']?>&function=update&id=<?=$data['m_id']?>" class="btn btn-sm btn-dark">ดูรายละเอียด</a>
-                                    </td>
-                                
-
-                               
-                                
+                                <td> 
+                                    <a href="#" class="btn btn-sm btn-dark">เปลี่ยนสถานะ</a>
+                                </td>
+                                <td> 
+                                    <a href="?page=<?=$_GET['page']?>&function=update&id=<?=$data['m_id']?>" class="btn btn-sm btn-dark">ดูรายละเอียด</a>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

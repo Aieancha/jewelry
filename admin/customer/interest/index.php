@@ -63,7 +63,7 @@ $query = mysqli_query($connection, $sql);
                                 <td><?= $data['#'] ?></td>
                                 <td><?= $data['#'] ?></td>
                                 <!-- <td><?= $data['s_type'] ?></td> -->
-                                <td> <a href="?page=<?=$_GET['page']?>&function=update&id=<?=$data['m_id']?>" class="btn btn-sm btn-dark">เปลี่ยนสถานะ</a>
+                                <td> <a href="?page=<?= $_GET['page'] ?>&function=update" class="btn btn-sm btn-dark">เปลี่ยนสถานะ</a>
                                     </td>
                                 
 
