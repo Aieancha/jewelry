@@ -26,7 +26,9 @@
               include('customer/pledge/customr.php');
           }elseif (isset($_GET['function']) && $_GET['function'] == 'cal') {
             include('customer/pledge/cal.php');
-        } else {
+        }elseif (isset($_GET['function']) && $_GET['function'] == 'check') {
+          include('customer/pledge/check_bill.php');
+      } else {
               include('customer/pledge/index.php');
           }
         } elseif (isset($_GET['page']) && $_GET['page'] == 'profile') {

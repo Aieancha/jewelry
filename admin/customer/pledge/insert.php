@@ -127,7 +127,7 @@
           <div class="ms-auto text-end">
             <a href="?page=<?= $_GET['page'] ?>" class="btn btn-dark pull-left" style="text-align:left;">ย้อนกลับ</a>
             <button type="submit" class="btn bg-gradient-dark pull-right">บันทึก</button>
-            <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-color1 bg-gradient-primary theme-btn mx-auto pull-right">ดำเนินการต่อ</a>
+            <a href="?page=<?= $_GET['page'] ?>&function=customr" type="submit" class="btn btn-color1 bg-gradient-primary theme-btn mx-auto pull-right">ดำเนินการต่อ</a>
           </div>
         </form>
       </div>

@@ -84,7 +84,7 @@
                         //echo "เพิ่มข้อมูลสำเร็จ";
                         $alert = '<script type="text/javascript">';
                         $alert .= 'alert("เพิ่มข้อมูลสำเร็จ");';
-                        $alert .= 'window.location.href = "?page=pledge";';
+                        $alert .= 'window.location.href = "?function=check";';
                         $alert .= '</script>';
                         echo $alert;
                         exit();
@@ -105,34 +105,40 @@
                     <h5 class="pb-5">กรอกข้อมูลผู้สนใจจำนำเครื่องประดับ</h5>
                     <div class=" mb-4 col-3 ">
                         <h6>เลขสำคัญที่ราชการออกให้</h6>
-                        <input type="text" class="form-control " name="code_id" placeholder="Pam Wanwasa" autocomplete="off" require>
+                        <input type="text" class="form-control " name="code_id" placeholder="" autocomplete="off" require>
                     </div>
                     <div class=" mb-4 col-3 ">
                         <h6>ชื่อ</h6>
-                        <input type="text" class="form-control " name="firstname" placeholder="Pam Wanwasa" autocomplete="off" require>
+                        <input type="text" class="form-control " name="firstname" placeholder="กรอกชื่อ" autocomplete="off" require>
                     </div>
                     <div class=" mb-4 col-3 ">
-                        <h6>นามสกุล</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
-                        <input type="text" class="form-control " name="lastname" placeholder="Pam Wanwasa" autocomplete="off" require>
+                        <h6>นามสกุล</h6>
+                        <h6 class="form-label text-danger" style="display: inline;">*</h6>
+                        <input type="text" class="form-control " name="lastname" placeholder="กรอกนามสกุล" autocomplete="off" require>
                     </div>
                     <div class=" mb-4 col-3 ">
-                        <h6>อายุ</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
-                        <input type="text" class="form-control " name="c_age" placeholder="Pam Wanwasa" autocomplete="off" require>
+                        <h6>อายุ</h6>
+                        <h6 class="form-label text-danger" style="display: inline;">*</h6>
+                        <input type="text" class="form-control " name="c_age" placeholder="กรอกอายุ" autocomplete="off" require>
                     </div>
                     <div class=" mb-4 col-3 ">
-                        <h6>ที่อยู่</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
-                        <input type="text" class="form-control " name="c_address" placeholder="Pam Wanwasa" autocomplete="off" require>
+                        <h6>ที่อยู่</h6>
+                        <h6 class="form-label text-danger" style="display: inline;">*</h6>
+                        <input type="text" class="form-control " name="c_address" placeholder="เพิ่มที่อยู่" autocomplete="off" require>
                     </div>
                     <div class=" mb-4 col-3 ">
-                        <h6>เบอร์โทร</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
-                        <input type="tel" class="form-control " name="phone" pattern="^[0-9\s]+$" minlength="10" placeholder="Pam Wanwasa" autocomplete="off" require>
+                        <h6>เบอร์โทร</h6>
+                        <h6 class="form-label text-danger" style="display: inline;">*</h6>
+                        <input type="tel" class="form-control " name="phone" pattern="^[0-9\s]+$" minlength="10" placeholder="090xxxxxxx" autocomplete="off" require>
                     </div>
                     <div class=" mb-4 col-3 ">
-                        <h6>อีเมล</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
-                        <input type="email" class="form-control " name="c_email" placeholder="Pam Wanwasa" autocomplete="off" require>
+                        <h6>อีเมล</h6>
+                        <h6 class="form-label text-danger" style="display: inline;">*</h6>
+                        <input type="email" class="form-control " name="c_email" placeholder="example@gmail.com" autocomplete="off" require>
                     </div>
                     <div class="mb-4 col-3 ">
-                        <h6>ราคาประเมินจากสินค้าจริง</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
+                        <h6>ราคาประเมินจากสินค้าจริง</h6>
+                        <h6 class="form-label text-danger" style="display: inline;">*</h6>
                         <input type="number" min="0" class="form-control " name="price_item" placeholder="กรอกราคาประเมินจากสินค้าจริง" autocomplete="off" require>
                     </div>
                     <div class="mb-3 col-3 ">
@@ -141,7 +147,7 @@
                     </div>
                     <!-- <div class="mb-3 col-3 ">
                         <h6>จำนวนดอกเบี้ยที่ต้องจ่าย</h6>
-                        <output type="output" class="mb-3 form-control " value="<?=$total; ?>" name="total"   autocomplete="off" require>
+                        <output type="output" class="mb-3 form-control " value="<?= $total; ?>" name="total"   autocomplete="off" require>
                     </div> -->
                     <div class="mb-4 col-3 ">
                         <h6>ภาพยืนยันตัวตน*</h6>
@@ -149,7 +155,7 @@
                     </div>
                     <div class="ms-auto text-end ">
                         <button type="submit" class="btn bg-gradient-dark">บันทึก</button>
-                        <a href="#" class="btn btn-color1 bg-gradient-dark theme-btn mx-auto ">ดำเนินการต่อ</a>
+                        <a href="?page=<?= $_GET['page'] ?>&function=check" type="submit" class="btn btn-color1 bg-gradient-dark theme-btn mx-auto ">ดำเนินการต่อ</a>
                     </div>
                 </form>
             </div>

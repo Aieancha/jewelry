@@ -1,6 +1,9 @@
 <?php
-$sql = "SELECT *
-        FROM tbl_social";
+$sql = "SELECT tbl_social.social_name,tbl_social.social_contact,tbl_social.price_img,tbl_status.status_name,tbl_social.s_img
+        FROM tbl_social
+        INNER JOIN tbl_status
+        ON tbl_social.s_role = tbl_status.id
+        WHERE tbl_social.s_role=0";
 $query = mysqli_query($connection, $sql);
 ?>
 
@@ -47,8 +50,9 @@ $query = mysqli_query($connection, $sql);
                                  </td>
                                 <td><?= $data['social_name'] ?></td>
                                 <td><?= $data['social_contact'] ?></td>
-                                <!-- <td><?= $data['s_type'] ?></td> -->
-                                <td>#</td>
+                                <td>
+                                <a href="#" class="btn btn-color1 bg-gradient-primary theme-btn mx-auto pull-right">
+                                <?php echo $data['status_name']; ?></a></td>
 
                                
                                 
