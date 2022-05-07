@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<body class="g-sidenav-show bg-gray-100">
-  <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
+<div class="body">
+<body class=" g-sidenav-show bg-gray-100">
+  
+  <div class=" main-content position-relative bg-gray-100 max-height-vh-100 h-100">
     <div class="container-fluid">
       <div class="card-header pb-0 text-left bg-transparent">
-        <h3 class="font-weight-bolder text-dark text-gradient ">แก้ไขข้อมูลผู้ดูแลระบบ</h3>
+        <h3 class="font-weight-bolder text-dark text-gradient m-3">แก้ไขข้อมูลผู้ดูแลระบบ</h3>
       </div>
-      <a href="?page=<?= $_GET['page'] ?>" class="btn btn-primary">ย้อนกลับ</a>
-      <hr class="mb-4">
       <div class="card-body">
         <?php
         if(isset($_GET['id']) && !empty($_GET['id'])){
@@ -45,8 +44,9 @@
         
         //print_r($_POST);
         ?>
+        <div class ="box">
         <script type="text/javascript"></script>
-        <form action="" method="post">
+        <form action="" method="post" class="regis">
           <label class="form-label">ชื่อผู้ใช้*</label>
           <div class="mb-3">
             <input type="text" class="form-control" name="m_name" value="<?=$result['m_name'] ?>" autocomplete="off" require disabled>
@@ -72,14 +72,38 @@
               <option value="2">พนักงาน</option>
             </select>
           </div>
-          <div class="text-center">
-            <button type="submit" name="save" class="btn bg-gradient-dark w-20 mt-4 mb-0">บันทึกข้อมูล</button>
-          </div>
+          <div class="text-center mb-5">
+          <a href="?page=<?= $_GET['page'] ?>" class="btn btn-primary mb-0 mt-3">ย้อนกลับ</a>
+            <button type="submit" name="save" class="btn bg-gradient-dark mb-0 mt-3">บันทึกข้อมูล</button>
+          
         </form>
+      </div>
+        </div>
       </div>
 
     </div>
   </div>
 </body>
+</body>
 
 </html>
+<style>
+  .regis {
+    width: 70%;
+    display: block;
+    margin: auto;
+  }
+  .body {
+    width: 50%;
+    display: block;
+    margin: auto;
+    border-radius:20px;
+  }
+  .box{
+    width: 100%;
+    display: block;
+    margin: auto;
+    border-radius:20px;
+    background-color: rgb(255, 255, 255);
+  }
+  </style>

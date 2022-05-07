@@ -1,15 +1,4 @@
-<?php 
-session_start();
-$status = $_SESSION['status'];
-if($status!='admin'){
-  $alert = '<script type="text/javascript">';
-            $alert .= 'alert("คุณไม่มีสิทธิ์การเข้าถึงหน้านี้");';
-            $alert .= 'window.location.href = "?page='.$_GET['page'].'&function=profile";';
-            $alert .= '</script>';
-            echo $alert;
-            exit();
-}
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -99,13 +88,13 @@ if($status!='admin'){
               <option value="staff">พนักงาน</option>
             </select>
           </div>
-            
+          <div class="text-center mb-5">
+            <a href="?page=<?= $_GET['page'] ?>" class="btn btn-dark   mb-0 mt-3 " >ย้อนกลับ</a>
+            <button type="submit" name="save" class="btn bg-gradient-primary mb-0 mt-3">บันทึกข้อมูล</button>
+      </div>   
          
         </form>
-        <div class="text-center mb-5">
-            <a href="?page=<?= $_GET['page'] ?>" class="btn btn-dark w-30  mb-0 mt-3 " >ย้อนกลับ</a>
-            <button type="submit" name="save" class="btn bg-gradient-primary w-30 mt-3  mb-0">บันทึกข้อมูล</button>
-      </div>   
+         
       </div>
       </div>
     </div>
