@@ -38,26 +38,10 @@ $query = mysqli_query($connection, $sql);
 
                         </tr>
                     </thead>
-<<<<<<< HEAD
                     <tbody>
                         
-                        <?php 
-                        $i = 0;
-                        foreach ($query as $data):?>
-                            <tr>
-                                <td><?= ++$i ?></td>
-                                <td><?= $data['#'] ?></td>
-                                <td><?= $data['#'] ?></td>
-                                <td><?= $data['#'] ?></td>
-                                <td><?= $data['#'] ?></td>
-                                <td><?= $data['#'] ?></td>
-                                <td><?= $data['#'] ?></td>
-                                <!-- <td><?= $data['s_type'] ?></td> -->
-                                <td> <a href="?page=<?= $_GET['page'] ?>&function=update" class="btn btn-sm btn-dark">เปลี่ยนสถานะ</a>
-                                    </td>
+                       
                                 
-=======
->>>>>>> 4f457879dc256e2c9a0892852eb5ab71b57930bd
 
                 </table>
 

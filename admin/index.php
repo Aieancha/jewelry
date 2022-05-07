@@ -31,17 +31,13 @@
               include('customer/pledge/customr.php');
           }elseif (isset($_GET['function']) && $_GET['function'] == 'cal') {
             include('customer/pledge/cal.php');
-<<<<<<< HEAD
           }elseif (isset($_GET['function']) && $_GET['function'] == 'contract') {
             include('customer/pledge/contract.php');
           }elseif (isset($_GET['function']) && $_GET['function'] == 'success') {
             include('customer/pledge/success.php');
-        } else {
-=======
         }elseif (isset($_GET['function']) && $_GET['function'] == 'updated') {
           include('customer/pledge/edit.php');
       } else {
->>>>>>> 4f457879dc256e2c9a0892852eb5ab71b57930bd
               include('customer/pledge/index.php');
           }
         } elseif (isset($_GET['page']) && $_GET['page'] == 'profile') {
