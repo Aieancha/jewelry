@@ -93,10 +93,20 @@
         ?>
         <script type="text/javascript"></script>
         <form action="" method="post" enctype=multipart/form-data>
+        <div class="row">
+            <div class="col-xs-12 col-md-8 offset-md-2 pb-5">
+            <div class="wrapper-progressBar ">
+                <ul class="progressBar">
+                <li class="active">บันทึกข้อมูลผู้สนใจจำนำ</li>
+                <li >ประเมินราคาเครื่องประดับ</li>
+                <li>ร่างสัญญา</li>
+                </ul>
+            </div>
+            </div>
           <h5 class="pb-5">กรอกข้อมูลผู้สนใจจำนำเครื่องประดับ</h5>
+        </div>
           <div class="mb-4 col-lg-5 t ">
             <h6 style="display: inline;">ช่องทางการติดต่อ</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
-
             <div class="col-sm-12">
               <select name="social_contact" class="form-control w-45" required>
                 <option value="" selected="selected">- เลือกช่องทางการติดต่อ -</option>
@@ -123,15 +133,24 @@
             <h6 >ราคาประเมินจากภาพ</h6>
             <input type="number" min="0" name="price_img" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off" required>
           </div>
-          
-          <div class="ms-auto text-end">
-            <a href="?page=<?= $_GET['page'] ?>" class="btn btn-dark pull-left" style="text-align:left;">ย้อนกลับ</a>
-            <button type="submit" class="btn bg-gradient-dark pull-right">บันทึก</button>
-            <a href="?page=<?= $_GET['page'] ?>&function=customr" type="submit" class="btn btn-color1 bg-gradient-primary theme-btn mx-auto pull-right">ดำเนินการต่อ</a>
+          <div class="" >
+             <h6 >อัพเดทสถานะผู้สนใจจำนำเป็น "รอประเมิน"</h6>
+             <a href="#" class="btn btn-white ">อัพเดทสถานะ</a>
+          </div>
+          </div>
+    </div> 
+          <div  class="d-flex flex-row">
+            <div class="justify-content-start flex-fill ">
+              <a href="?page=<?= $_GET['page'] ?>" class="btn btn-dark " >ย้อนกลับ</a>
+            </div>
+            <div class="flex-fill d-flex justify-content-end gap-1" >
+              <button type="submit" class="btn bg-gradient-dark pull-right ">บันทึก</button>
+              <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-color1 bg-gradient-primary theme-btn  pull-right">ดำเนินการต่อ</a>
+            
           </div>
         </form>
       </div>
-
+      </div>
 
 
     </div>
@@ -139,3 +158,63 @@
 </body>
 
 </html>
+<style>
+  .wrapper-progressBar {
+    width: 100%
+}
+
+.progressBar {
+  font-size : 1em;
+}
+
+.progressBar li {
+    list-style-type: none;
+    float: left;
+    width: 30%;
+    position: relative;
+    text-align: center;
+  
+    
+}
+
+.progressBar li:before {
+    content: " ";
+    line-height: 30px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border: 1px solid ;
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px;
+    background-color: white
+}
+.progressBar li:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: #ddd;
+    top: 15px;
+    left: -50%;
+    z-index: -1;
+}
+
+.progressBar li:first-child:after {
+    content: none;
+}
+
+.progressBar li.active {
+    color: rgb(111, 0, 96);
+}
+
+.progressBar li.active:before {
+    border-color: rgb(111, 0, 96);
+    background-color: rgb(111, 0, 96);
+    
+}
+
+.progressBar .active:after {
+    background-color: dodgerblue;
+}
+</style>

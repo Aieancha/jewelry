@@ -9,9 +9,7 @@
                 <div class="col-auto">
                     <h3 class="font-weight-bolder text-dark text-gradient ">ขั้นตอนการบันทึกข้อมูลการจำนำเครื่องประดับ</h3>
                 </div>
-                <div class="col-auto">
-                    <a href="?page=<?= $_GET['page'] ?>" class="btn btn-primary">ย้อนกลับ</a>
-                </div>
+                
             </div>
             <!-- end title -->
             <hr class="mb-4">
@@ -102,48 +100,42 @@
 
                 <script type="text/javascript"></script>
                 <form action="" method="post" enctype="multipart/form-data">
-                    <h5 class="pb-5">กรอกข้อมูลผู้สนใจจำนำเครื่องประดับ</h5>
-                    <div class=" mb-4 col-3 ">
-                        <h6>เลขสำคัญที่ราชการออกให้</h6>
-                        <input type="text" class="form-control " name="code_id" placeholder="" autocomplete="off" require>
+                <div class="row">
+                <div class="col-xs-12 col-md-8 offset-md-2 pb-5">
+                    <div class="wrapper-progressBar ">
+                        <ul class="progressBar">
+                        <li class="active">บันทึกข้อมูลผู้สนใจจำนำ</li>
+                        <li class="active">ประเมินราคาเครื่องประดับ</li>
+                        <li>ร่างสัญญา</li>
+                        </ul>
                     </div>
-                    <div class=" mb-4 col-3 ">
-                        <h6>ชื่อ</h6>
-                        <input type="text" class="form-control " name="firstname" placeholder="กรอกชื่อ" autocomplete="off" require>
+                </div>
+                <h5 class="pb-5">กรอกข้อมูลผู้สนใจจำนำเครื่องประดับ</h5>
+                </div>
+        <div class="d-flex flex-row" >
+            <div class="justify-content-start flex-fill ">
+                    <div class=" mb-4 col-6 " >
+                        <h6 style="display: inline;">ช่องทางการติดต่อ :</h6>
+                        <td width="25%" style="display: inline;">Facebook</td>
                     </div>
-                    <div class=" mb-4 col-3 ">
-                        <h6>นามสกุล</h6>
-                        <h6 class="form-label text-danger" style="display: inline;">*</h6>
-                        <input type="text" class="form-control " name="lastname" placeholder="กรอกนามสกุล" autocomplete="off" require>
+                    <div class=" mb-4 col-6 ">
+                        <h6 style="display: inline;">ชื่อผู้ใช้ :</h6>
+                        <td width="25%" style="display: inline;">Pam Wanwasa</td>
                     </div>
-                    <div class=" mb-4 col-3 ">
-                        <h6>อายุ</h6>
-                        <h6 class="form-label text-danger" style="display: inline;">*</h6>
-                        <input type="text" class="form-control " name="c_age" placeholder="กรอกอายุ" autocomplete="off" require>
-                    </div>
-                    <div class=" mb-4 col-3 ">
-                        <h6>ที่อยู่</h6>
-                        <h6 class="form-label text-danger" style="display: inline;">*</h6>
-                        <input type="text" class="form-control " name="c_address" placeholder="เพิ่มที่อยู่" autocomplete="off" require>
-                    </div>
-                    <div class=" mb-4 col-3 ">
-                        <h6>เบอร์โทร</h6>
-                        <h6 class="form-label text-danger" style="display: inline;">*</h6>
-                        <input type="tel" class="form-control " name="phone" pattern="^[0-9\s]+$" minlength="10" placeholder="090xxxxxxx" autocomplete="off" require>
-                    </div>
-                    <div class=" mb-4 col-3 ">
-                        <h6>อีเมล</h6>
-                        <h6 class="form-label text-danger" style="display: inline;">*</h6>
-                        <input type="email" class="form-control " name="c_email" placeholder="example@gmail.com" autocomplete="off" require>
-                    </div>
-                    <div class="mb-4 col-3 ">
+                    <div class=" mb-4 col-6 ">
+                        <h6 style="display: inline;">ภาพถ่ายสินค้าจริง</h6>
+                        <img  src=""alt="jewelry" width="304" height="228"></div>
+                    <div class=" mb-4 col-6 ">
+                    <h6 style="display: inline;">ราคาประเมินข้างต้น :</h6>
+                    <td width="25%" style="display: inline;">10000 บาท</td>
+                </div>
+                    <div class="mb-4 col-6 ">
                         <h6>ราคาประเมินจากสินค้าจริง</h6>
-                        <h6 class="form-label text-danger" style="display: inline;">*</h6>
-                        <input type="number" min="0" class="form-control " name="price_item" placeholder="กรอกราคาประเมินจากสินค้าจริง" autocomplete="off" require>
+                        <input type="number" min="0" name="price_img" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off" required>
                     </div>
-                    <div class="mb-3 col-3 ">
+                    <div class="mb-3 col-6 ">
                         <h6>ราคาที่ตกลงจำนำ</h6>
-                        <input type="number" min="0" class="mb-3 form-control " name="principle" placeholder="กรอกราคาที่ตกลงจำนำ " autocomplete="off" require>
+                        <input type="number" min="0" name="price_img" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off" required>
                     </div>
                     <!-- <div class="mb-3 col-3 ">
                         <h6>จำนวนดอกเบี้ยที่ต้องจ่าย</h6>
@@ -153,17 +145,114 @@
                         <h6>ภาพยืนยันตัวตน*</h6>
                         <input type="file" id="myFile" name="c_img" multiple required>
                     </div>
-                    <div class="ms-auto text-end ">
-                        <button type="submit" class="btn bg-gradient-dark">บันทึก</button>
-                        <a href="?page=<?= $_GET['page'] ?>&function=check" type="submit" class="btn btn-color1 bg-gradient-dark theme-btn mx-auto ">ดำเนินการต่อ</a>
+                    <div class="" >
+                        <h6 >อัพเดทสถานะผู้สนใจจำนำเป็น "รอสัญญา"</h6>
+                        <a href="#" class="btn btn-white ">อัพเดทสถานะ</a>
                     </div>
-                </form>
             </div>
-
-
+            <div class="justify-content-start flex-fill ">
+                    <div class=" mb-4 col-6 ">
+                        <h6 style="display: inline;">เลขสำคัญที่ราชการออกให้</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
+                        <input type="text" class="form-control " name="firstname" placeholder="กรอกเลขสำคัญที่ราชการออกให้ลูกค้า" autocomplete="off" require>
+                    </div>
+                    <div class=" mb-4 col-6 ">
+                        <h6 style="display: inline;">ชื่อ</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
+                        <input type="text" class="form-control " name="firstname" placeholder="กรอกชื่อจริงลูกค้า" autocomplete="off" require>
+                    </div>
+                    <div class=" mb-4 col-6 ">
+                        <h6 style="display: inline;">นามสกุล</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
+                        <input type="text" class="form-control " name="lastname" placeholder="กรอกนามสกุลลูกค้า" autocomplete="off" require>
+                    </div>
+                    <div class=" mb-4 col-6 ">
+                        <h6 style="display: inline;">ที่อยู่</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
+                        <input type="text" class="form-control " name="c_address" placeholder="กรอกที่อยู่ปัจจุบันลูกค้า" autocomplete="off" require>
+                    </div>
+                    <div class=" mb-4 col-6 ">
+                        <h6 style="display: inline;">เบอร์โทร</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
+                        <input type="number" class="form-control " name="phone" pattern="^[0-9\s]+$" minlength="10" placeholder="กรอกเบอร์โทรศัพท์ลูกค้า" autocomplete="off" require>
+                    </div>
+                    <div class=" mb-4 col-6 ">
+                        <h6 style="display: inline;">อีเมล</h6><h6 class="form-label text-danger" style="display: inline;">*</h6>
+                        <input type="email" class="form-control " name="c_email" placeholder="example@gmail.com" autocomplete="off" require>
+                    </div>
+            </div>
+        </div>     
+                   
+                    <div  class="d-flex flex-row">
+            <div class="justify-content-start flex-fill ">
+              <a href="?page=<?=$_GET['page']?>&function=insert" class="btn bg-gradient-dark">ย้อนกลับ</a>
+            </div>
+            <div class="flex-fill d-flex justify-content-end gap-1" >
+              <button type="submit" class="btn bg-gradient-dark pull-right ">บันทึก</button>
+              <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-color1 bg-gradient-primary theme-btn  pull-right">ดำเนินการต่อ</a>
+            
+          </div>
+                </form>
+                </div>
+            </div>
 
         </div>
     </div>
 </body>
 
 </html>
+<style>
+  .wrapper-progressBar {
+    width: 100%
+}
+
+.progressBar {
+  font-size : 1em;
+}
+
+.progressBar li {
+    list-style-type: none;
+    float: left;
+    width: 30%;
+    position: relative;
+    text-align: center;
+  
+    
+}
+
+.progressBar li:before {
+    content: " ";
+    line-height: 30px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border: 1px solid ;
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px;
+    background-color: white
+}
+.progressBar li:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: #ddd;
+    top: 15px;
+    left: -50%;
+    z-index: -1;
+}
+
+.progressBar li:first-child:after {
+    content: none;
+}
+
+.progressBar li.active {
+    color: rgb(111, 0, 96);
+}
+
+.progressBar li.active:before {
+    border-color: rgb(111, 0, 96);
+    background-color: rgb(111, 0, 96);
+    
+}
+
+.progressBar .active:after {
+    background-color: dodgerblue;
+}
+</style>
