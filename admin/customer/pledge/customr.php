@@ -9,7 +9,7 @@
                 <div class="col-auto">
                     <h3 class="font-weight-bolder text-dark text-gradient ">ขั้นตอนการบันทึกข้อมูลการจำนำเครื่องประดับ</h3>
                 </div>
-                
+
             </div>
             <!-- end title -->
             <hr class="mb-4">
@@ -82,7 +82,7 @@
                         //echo "เพิ่มข้อมูลสำเร็จ";
                         $alert = '<script type="text/javascript">';
                         $alert .= 'alert("เพิ่มข้อมูลสำเร็จ");';
-                        $alert .= 'window.location.href = "?page=pledge";';
+                        $alert .= 'window.location.href = "?function=check";';
                         $alert .= '</script>';
                         echo $alert;
                         exit();
@@ -100,6 +100,7 @@
 
                 <script type="text/javascript"></script>
                 <form action="" method="post" enctype="multipart/form-data">
+<<<<<<< HEAD
                 <div class="row">
                 <div class="col-xs-12 col-md-8 offset-md-2 pb-5">
                     <div class="wrapper-progressBar ">
@@ -185,16 +186,113 @@
               <a href="?page=<?= $_GET['page'] ?>&function=contract" class="btn btn-color1 bg-gradient-primary theme-btn  pull-right">ดำเนินการต่อ</a>
             
           </div>
-                </form>
-                </div>
-            </div>
+=======
+                    <div class="row">
+                        <div class="col-xs-12 col-md-8 offset-md-2 pb-5">
+                            <div class="wrapper-progressBar ">
+                                <ul class="progressBar">
+                                    <li class="active">บันทึกข้อมูลผู้สนใจจำนำ</li>
+                                    <li class="active">ประเมินราคาเครื่องประดับ</li>
+                                    <li>ร่างสัญญา</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <h5 class="pb-5">กรอกข้อมูลผู้สนใจจำนำเครื่องประดับ</h5>
+                    </div>
+                    <div class="d-flex flex-row">
+                        <div class="justify-content-start flex-fill ">
+                            <div class=" mb-4 col-6 ">
+                                <h6 style="display: inline;">ช่องทางการติดต่อ :</h6>
+                                <td width="25%" style="display: inline;">Facebook</td>
+                            </div>
+                            <div class=" mb-4 col-6 ">
+                                <h6 style="display: inline;">ชื่อผู้ใช้ :</h6>
+                                <td width="25%" style="display: inline;">Pam Wanwasa</td>
+                            </div>
+                            <div class=" mb-4 col-6 ">
+                                <h6 style="display: inline;">ภาพถ่ายสินค้าจริง</h6>
+                                <img src="" alt="jewelry" width="304" height="228">
+                            </div>
+                            <div class=" mb-4 col-6 ">
+                                <h6 style="display: inline;">ราคาประเมินข้างต้น :</h6>
+                                <td width="25%" style="display: inline;">10000 บาท</td>
+                            </div>
+                            <div class="mb-4 col-6 ">
+                                <h6>ราคาประเมินจากสินค้าจริง</h6>
+                                <input type="number" min="0" name="price_img" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off" required>
+                            </div>
+                            <div class="mb-3 col-6 ">
+                                <h6>ราคาที่ตกลงจำนำ</h6>
+                                <input type="number" min="0" name="price_img" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off" required>
+                            </div>
+                            <!-- <div class="mb-3 col-3 ">
+                        <h6>จำนวนดอกเบี้ยที่ต้องจ่าย</h6>
+                        <output type="output" class="mb-3 form-control " value="<?= $total; ?>" name="total"   autocomplete="off" require>
+                    </div> -->
+                            <div class="mb-4 col-3 ">
+                                <h6>ภาพยืนยันตัวตน*</h6>
+                                <input type="file" id="myFile" name="c_img" multiple required>
+                            </div>
+                            <div class="">
+                                <h6>อัพเดทสถานะผู้สนใจจำนำเป็น "รอสัญญา"</h6>
+                                <a href="#" class="btn btn-white ">อัพเดทสถานะ</a>
+                            </div>
+                        </div>
+                        <div class="justify-content-start flex-fill ">
+                            <div class=" mb-4 col-6 ">
+                                <h6 style="display: inline;">เลขสำคัญที่ราชการออกให้</h6>
+                                <h6 class="form-label text-danger" style="display: inline;">*</h6>
+                                <input type="text" class="form-control " name="firstname" placeholder="กรอกเลขสำคัญที่ราชการออกให้ลูกค้า" autocomplete="off" require>
+                            </div>
+                            <div class=" mb-4 col-6 ">
+                                <h6 style="display: inline;">ชื่อ</h6>
+                                <h6 class="form-label text-danger" style="display: inline;">*</h6>
+                                <input type="text" class="form-control " name="firstname" placeholder="กรอกชื่อจริงลูกค้า" autocomplete="off" require>
+                            </div>
+                            <div class=" mb-4 col-6 ">
+                                <h6 style="display: inline;">นามสกุล</h6>
+                                <h6 class="form-label text-danger" style="display: inline;">*</h6>
+                                <input type="text" class="form-control " name="lastname" placeholder="กรอกนามสกุลลูกค้า" autocomplete="off" require>
+                            </div>
+                            <div class=" mb-4 col-6 ">
+                                <h6 style="display: inline;">ที่อยู่</h6>
+                                <h6 class="form-label text-danger" style="display: inline;">*</h6>
+                                <input type="text" class="form-control " name="c_address" placeholder="กรอกที่อยู่ปัจจุบันลูกค้า" autocomplete="off" require>
+                            </div>
+                            <div class=" mb-4 col-6 ">
+                                <h6 style="display: inline;">เบอร์โทร</h6>
+                                <h6 class="form-label text-danger" style="display: inline;">*</h6>
+                                <input type="number" class="form-control " name="phone" pattern="^[0-9\s]+$" minlength="10" placeholder="กรอกเบอร์โทรศัพท์ลูกค้า" autocomplete="off" require>
+                            </div>
+                            <div class=" mb-4 col-6 ">
+                                <h6 style="display: inline;">อีเมล</h6>
+                                <h6 class="form-label text-danger" style="display: inline;">*</h6>
+                                <input type="email" class="form-control " name="c_email" placeholder="example@gmail.com" autocomplete="off" require>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="d-flex flex-row">
+                        <div class="justify-content-start flex-fill ">
+                            <a href="?page=<?= $_GET['page'] ?>&function=insert" class="btn bg-gradient-dark">ย้อนกลับ</a>
+                        </div>
+                        <div class="flex-fill d-flex justify-content-end gap-1">
+                            <button type="submit" class="btn bg-gradient-dark pull-right ">บันทึก</button>
+                            <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-color1 bg-gradient-primary theme-btn  pull-right">ดำเนินการต่อ</a>
+
+                        </div>
+>>>>>>> 4f457879dc256e2c9a0892852eb5ab71b57930bd
+                </form>
+            </div>
         </div>
+
+    </div>
     </div>
 </body>
 
 </html>
 <style>
+<<<<<<< HEAD
   .wrapper-progressBar {
     width: 100%
 }
@@ -253,4 +351,65 @@
 .progressBar .active:after {
     background-color: dodgerblue;
 }
+=======
+    .wrapper-progressBar {
+        width: 100%
+    }
+
+    .progressBar {
+        font-size: 1em;
+    }
+
+    .progressBar li {
+        list-style-type: none;
+        float: left;
+        width: 30%;
+        position: relative;
+        text-align: center;
+
+
+    }
+
+    .progressBar li:before {
+        content: " ";
+        line-height: 30px;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        border: 1px solid;
+        display: block;
+        text-align: center;
+        margin: 0 auto 10px;
+        background-color: white
+    }
+
+    .progressBar li:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 4px;
+        background-color: #ddd;
+        top: 15px;
+        left: -50%;
+        z-index: -1;
+    }
+
+    .progressBar li:first-child:after {
+        content: none;
+    }
+
+    .progressBar li.active {
+        color: rgb(111, 0, 96);
+    }
+
+    .progressBar li.active:before {
+        border-color: rgb(111, 0, 96);
+        background-color: rgb(111, 0, 96);
+
+    }
+
+    .progressBar .active:after {
+        background-color: dodgerblue;
+    }
+>>>>>>> 4f457879dc256e2c9a0892852eb5ab71b57930bd
 </style>

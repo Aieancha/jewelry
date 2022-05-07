@@ -20,36 +20,33 @@ $query = mysqli_query($connection, $sql);
                 </div>
             </div>
             <!-- end title -->
-            <hr class="mb-4">
+            <?php
+    isset( $_POST['a'] ) ? $a = $_POST['a'] : $a = "";
+    isset( $_POST['b'] ) ? $b = $_POST['b'] : $b = "";
+
+    if( !empty( $a ) && !empty( $b ) ) {
+        echo "<hr/>";
+        $total = $a*0.02 *$b;
+        echo "จำนวนดอกเบี้ย = ".number_format( $total, 2 );
+    }
+?>
 
             <div class="card-body">
-            <div class="card-body p-3">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">ชื่อติดต่อ</th>
-                            <th scope="col">ช่องทางติดต่อ</th>
-                            <th scope="col">ราคาการประเมิน</th>
-                            <th scope="col">สถานะ</th>
-                            <!-- <th scope="col">ที่อยู่</th>
-                            <th scope="col">เบอร์โทร</th>
-                            <th scope="col">อีเมล</th>
-                            <th scope="col">ราคาจากภาพ</th> -->
-                        </tr>
-                    </thead>
-                    <tbody>
-                      <?php foreach ($query as $row) : ?>
-                        <tr>
-                        <td><?php echo $row['social_name']; ?></td>
-                        <td><?php echo $row['social_contact']; ?></td>
-                        <td><?php echo $row['price_img']; ?></td>
-                        <td class="btn btn-primary"><?php echo $row['status_name']; ?></td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-
-            </div>
+            <form action="" method="post" enctype="multipart/form-data">
+                    <h5 class="pb-5">การคำนวณดอกเบี้ย</h5>
+                    <div class=" mb-4 col-3 ">
+                        <h6>จำนวณเงินต้น</h6>
+                        <input type="text" class="form-control " name="a" placeholder="" autocomplete="off" require>
+                    </div>
+                    <div class=" mb-4 col-3 ">
+                        <h6>จำนวณงวด</h6>
+                        <input type="text" class="form-control " name="b" placeholder="" autocomplete="off" require>
+                    </div>
+                    <div class="ms-auto text-end ">
+                        <button type="submit" class="btn bg-gradient-dark">คำนวณ</button>
+                        <a href="?page=<?= $_GET['page'] ?>&function=check" type="submit" class="btn btn-color1 bg-gradient-dark theme-btn mx-auto ">ดำเนินการต่อ</a>
+                    </div>
+                </form>
 
             </div>
                 

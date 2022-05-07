@@ -1,6 +1,8 @@
 <?php
-$sql = "SELECT *
-        FROM tbl_social";
+$sql = "SELECT tbl_social.social_name,tbl_social.social_contact,tbl_social.s_id,tbl_social.price_img,tbl_social.s_date,tbl_status.status_name,tbl_social.s_img
+        FROM tbl_social
+        INNER JOIN tbl_status
+        ON tbl_social.s_role = tbl_status.id";
 $query = mysqli_query($connection, $sql);
 ?>
 
@@ -32,21 +34,15 @@ $query = mysqli_query($connection, $sql);
                             <th scope="col">ช่องทางการติดต่อ</th>
                             <th scope="col">ชื่อผู้ใช้งานระบบ</th>
                             <th scope="col">รูปภาพเครื่องประดับ</th>
+<<<<<<< HEAD
+=======
+                            <th scope="col">วันที่ติดต่อ</th>
+>>>>>>> 4f457879dc256e2c9a0892852eb5ab71b57930bd
                             <th scope="col">สถานะ</th>
                             <th scope="col">ดำเนินการต่อ</th>
                             <th scope="col">ดูรายละเอียด</th>
 
 
-
-                            
-                            
-                            <!-- <th scope="col">ประเภทสินทรัพย์จำนำ</th> -->
-                            <!-- <th scope="col">ลำดับ</th>
-                            <th scope="col">รูปภาพเครื่องประดับ</th> -->
-                            <!--th scope="col">สถานะ</th--> 
-                            <!-- <th scope="col">วันที่ติดต่อ</th>
-                            <th scope="col">ดำเนินการต่อ</th>
-                            <th scope="col">รายละเอียดเพิ่มเติม</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -61,11 +57,18 @@ $query = mysqli_query($connection, $sql);
                                 <td class="align-middle">
                                      <img src="upload/social/<?= $data['s_img'] ?>" class="rounded" width="60" height="60">
                                  </td>
+<<<<<<< HEAD
                                 <td><?= $data['#'] ?></td>
                                 <td> <a href="?page=<?=$_GET['page']?>&function=update&id=<?=$data['m_id']?>" class="btn btn-sm btn-dark">ดำเนินการต่อ</a>
                                 </td>
                                 <td> <a href="?page=<?=$_GET['page']?>&function=update&id=<?=$data['m_id']?>" class="btn btn-sm btn-dark">ดูรายละเอียด</a>
                                 </td>
+=======
+                                <td><?= $data['s_date'] ?></td>
+                                <td><?php echo $data['status_name']; ?></td>
+                                <td> <a href="?page=<?=$_GET['page']?>&function=updated&id=<?=$data['s_id']?>" class="btn btn-sm btn-dark">ดำเนินการต่อ</a>
+                                    </td>
+>>>>>>> 4f457879dc256e2c9a0892852eb5ab71b57930bd
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

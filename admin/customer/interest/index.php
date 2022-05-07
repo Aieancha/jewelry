@@ -36,19 +36,9 @@ $query = mysqli_query($connection, $sql);
                             <th scope="col">สถานะ</th>
                             <th scope="col">อัพเดทสถานะ</th>
 
-
-
-                            
-                            
-                            <!-- <th scope="col">ประเภทสินทรัพย์จำนำ</th> -->
-                            <!-- <th scope="col">ลำดับ</th>
-                            <th scope="col">รูปภาพเครื่องประดับ</th> -->
-                            <!--th scope="col">สถานะ</th--> 
-                            <!-- <th scope="col">วันที่ติดต่อ</th>
-                            <th scope="col">ดำเนินการต่อ</th>
-                            <th scope="col">รายละเอียดเพิ่มเติม</th> -->
                         </tr>
                     </thead>
+<<<<<<< HEAD
                     <tbody>
                         
                         <?php 
@@ -66,12 +56,9 @@ $query = mysqli_query($connection, $sql);
                                 <td> <a href="?page=<?= $_GET['page'] ?>&function=update" class="btn btn-sm btn-dark">เปลี่ยนสถานะ</a>
                                     </td>
                                 
+=======
+>>>>>>> 4f457879dc256e2c9a0892852eb5ab71b57930bd
 
-                               
-                                
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
                 </table>
 
             </div>
@@ -127,9 +114,7 @@ form.example button {
   border-bottom-left-radius: 0px;
 }
 
-form.example button:hover {
-  background: #00000;
-}
+
 
 form.example::after {
   content: "";

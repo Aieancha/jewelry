@@ -5,11 +5,11 @@
 
 <body class="g-sidenav-show bg-gray-100">
   <div class="body main-content position-relative bg-white max-height-vh-100 h-100">
-    <div class="container-fluid" >
-      <div class="card-header pb-0 text-left bg-transparent" >
+    <div class="container-fluid">
+      <div class="card-header pb-0 text-left bg-transparent">
         <h3 class="font-weight-bolder text-dark text-dark text-center m-3">เพิ่มข้อมูลผู้ใช้งานระบบ</h3>
       </div>
-  
+
       <div class="card-body">
         <?php
         if (isset($_POST) && !empty($_POST)) {
@@ -27,11 +27,11 @@
             if ($row_check > 0) {
               //echo 'ชื่อผู้ใช้ซ้ำ กรุณากรอกใหม่อีกครั้ง';
               $alert = '<script type="text/javascript">';
-            $alert .= 'alert("ชื่อผู้ใช้ซ้ำ กรุณากรอกใหม่อีกครั้ง");';
-            $alert .= 'window.location.href = "?page='.$_GET['page'].'&function=insert";';
-            $alert .= '</script>';
-            echo $alert;
-            exit();
+              $alert .= 'alert("ชื่อผู้ใช้ซ้ำ กรุณากรอกใหม่อีกครั้ง");';
+              $alert .= 'window.location.href = "?page=' . $_GET['page'] . '&function=insert";';
+              $alert .= '</script>';
+              echo $alert;
+              exit();
             } else {
               $sql = "INSERT INTO tbl_member (m_name, m_email, m_pass, m_firstname, m_lastname, status)
                       VALUES ('$name', '$email', '$pass', '$firstname', '$lastname', '$status')";
@@ -102,23 +102,26 @@
 </body>
 
 </html>
+
 <style>
   .regis {
     width: 70%;
     display: block;
     margin: auto;
   }
+
   .body {
     width: 50%;
     display: block;
     margin: auto;
-    border-radius:20px;
+    border-radius: 20px;
   }
-  .box{
+
+  .box {
     width: 100%;
     display: block;
     margin: auto;
-    border-radius:20px;
+    border-radius: 20px;
     background-color: rgb(255, 255, 255);
   }
-  </style>
+</style>

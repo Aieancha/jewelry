@@ -31,6 +31,7 @@
                             <th scope="col">เปลี่ยนสถานะ</th>
                             <th scope="col">รายละเอียดเพิ่มเติม</th>
 
+<<<<<<< HEAD
                             <!-- <th scope="col">ประเภทสินทรัพย์จำนำ</th> -->
                             <!-- <th scope="col">ลำดับ</th>
                             <th scope="col">รูปภาพเครื่องประดับ</th> -->
@@ -63,6 +64,12 @@
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
+=======
+
+                        </tr>
+                    </thead>
+                    
+>>>>>>> 4f457879dc256e2c9a0892852eb5ab71b57930bd
                 </table>
 
             </div>
@@ -113,9 +120,6 @@ form.example button {
   border-bottom-left-radius: 0px;
 }
 
-form.example button:hover {
-  background: #00000;
-}
 
 form.example::after {
   content: "";
