@@ -37,9 +37,13 @@
             include('customer/pledge/success.php');
           } elseif (isset($_GET['function']) && $_GET['function'] == 'updated') {
             include('customer/pledge/edit.php');
-          }elseif (isset($_GET['function']) && $_GET['function'] == 'check') {
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'check') {
             include('customer/pledge/check_bill.php');
-          } else {
+          }elseif (isset($_GET['function']) && $_GET['function'] == 'calculate') {
+            include('customer/pledge/calculate.php');
+          }elseif (isset($_GET['function']) && $_GET['function'] == 'details') {
+            include('customer/pledge/details.php');
+        } else {
             include('customer/pledge/index.php');
           }
         } elseif (isset($_GET['page']) && $_GET['page'] == 'profile') {
