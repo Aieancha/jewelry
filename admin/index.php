@@ -35,6 +35,10 @@
             include('customer/pledge/contract.php');
           }elseif (isset($_GET['function']) && $_GET['function'] == 'success') {
             include('customer/pledge/success.php');
+          }elseif (isset($_GET['function']) && $_GET['function'] == 'calculate') {
+            include('customer/pledge/calculate.php');
+          }elseif (isset($_GET['function']) && $_GET['function'] == 'details') {
+            include('customer/pledge/details.php');
         }elseif (isset($_GET['function']) && $_GET['function'] == 'updated') {
           include('customer/pledge/edit.php');
       } else {

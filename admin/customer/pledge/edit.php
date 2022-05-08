@@ -149,6 +149,9 @@
                 <h6>ราคาที่ตกลงจำนำ</h6>
                 <input type="number" min="0" name="principle" value="<?= $result['principle'] ?>" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
               </div>
+              <div class="mb-3 col-6 text-end">
+                <a href="?page=<?= $_GET['page'] ?>&function=calculate" class="btn btn-color1 bg-white theme-btn  pull-right">คำนวณ</a>
+              </div>
               <div class="mb-4 col-3 ">
                 <h6>ภาพยืนยันตัวตน*</h6>
                 <input type="file" id="myFile" name="c_img" multiple required>

@@ -138,6 +138,9 @@
                                 <h6>ราคาที่ตกลงจำนำ</h6>
                                 <input type="number" min="0" name="price_img" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off" required>
                             </div>
+                            <div class="mb-3 col-6 text-end">
+                                <a href="?page=<?= $_GET['page'] ?>&function=calculate" class="btn btn-color1 bg-white theme-btn  pull-right">คำนวณ</a>
+                            </div>
                             <!-- <div class="mb-3 col-3 ">
                         <h6>จำนวนดอกเบี้ยที่ต้องจ่าย</h6>
                         <output type="output" class="mb-3 form-control " value="<?= $total; ?>" name="total"   autocomplete="off" require>
@@ -192,8 +195,8 @@
                         <div class="flex-fill d-flex justify-content-end gap-1">
                             <button type="submit" class="btn bg-gradient-dark pull-right ">บันทึก</button>
                             <a href="?page=<?= $_GET['page'] ?>&function=contract" class="btn btn-color1 bg-gradient-primary theme-btn  pull-right">ดำเนินการต่อ</a>
-
                         </div>
+                    </div>
                 </form>
             </div>
         </div>
