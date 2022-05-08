@@ -16,42 +16,44 @@
       <div class="container-fluid py-4">
         <?php
         if (!isset($_GET['page']) && empty($_GET['page'])) {
-            include('dashboard/index.php');
+          include('dashboard/index.php');
         } elseif (isset($_GET['page']) && $_GET['page'] == 'interest') {
           if (isset($_GET['function']) && $_GET['function'] == 'update') {
             include('customer/interest/Update-In.php');
-           }else{
+          } else {
             include('customer/interest/index.php');
-           }  
+          }
         } elseif (isset($_GET['page']) && $_GET['page'] == 'pledge') {
-          
+
           if (isset($_GET['function']) && $_GET['function'] == 'insert') {
             include('customer/pledge/insert.php');
           } elseif (isset($_GET['function']) && $_GET['function'] == 'customr') {
-              include('customer/pledge/customr.php');
-          }elseif (isset($_GET['function']) && $_GET['function'] == 'cal') {
+            include('customer/pledge/customr.php');
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'cal') {
             include('customer/pledge/cal.php');
-          }elseif (isset($_GET['function']) && $_GET['function'] == 'contract') {
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'contract') {
             include('customer/pledge/contract.php');
-          }elseif (isset($_GET['function']) && $_GET['function'] == 'success') {
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'success') {
             include('customer/pledge/success.php');
-        }elseif (isset($_GET['function']) && $_GET['function'] == 'updated') {
-          include('customer/pledge/edit.php');
-      } else {
-              include('customer/pledge/index.php');
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'updated') {
+            include('customer/pledge/edit.php');
+          }elseif (isset($_GET['function']) && $_GET['function'] == 'check') {
+            include('customer/pledge/check_bill.php');
+          } else {
+            include('customer/pledge/index.php');
           }
         } elseif (isset($_GET['page']) && $_GET['page'] == 'profile') {
-          
+
           if (isset($_GET['function']) && $_GET['function'] == 'insert') {
-              include('profile/insert.php');
+            include('profile/insert.php');
           } elseif (isset($_GET['function']) && $_GET['function'] == 'update') {
-              include('profile/edit.php');
+            include('profile/edit.php');
           } elseif (isset($_GET['function']) && $_GET['function'] == 'delete') {
-              include('profile/delete.php');
+            include('profile/delete.php');
           } else {
-              include('profile/profile.php');
+            include('profile/profile.php');
           }
-        }elseif (isset($_GET['page']) && $_GET['page'] == 'logout'){
+        } elseif (isset($_GET['page']) && $_GET['page'] == 'logout') {
           include('logout/logout.php');
         }
 

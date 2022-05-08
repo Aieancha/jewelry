@@ -1,64 +1,98 @@
 <?php
-$sql = "SELECT tbl_customer.c_id,tbl_customer.firstname,tbl_customer.lastname,tbl_customer.c_age,tbl_customer.c_address,tbl_customer.phone,tbl_customer.c_email
-                ,tbl_social.social_contact,tbl_social.social_name,tbl_social.price_img
-        FROM tbl_customer
-        INNER JOIN tbl_social
-        ON tbl_customer.c_id = tbl_social.s_id";
-$query = mysqli_query($connection, $sql);
+if (isset($_POST['submit'])) {
+    $uploadDirectory = "upload/customer/";
+    $valueExtensions = array('jpg','jpeg','png');
+
+    $message = $errorType = $errorSize = $errorImage = "";
+    $ref_img = rand();
+    $sqlValues = "";
+
+    foreach ($_FILES['c_img']['tmp_name'] as $imageKey => $imageValue) {
+        $image = $_FILES['c_img']['name'][$imageKey];
+        $imageSize = $_FILES['c_img']['size'][$imageKey];
+        $imageTmp = $_FILES['c_img']['tmp_name'][$imageKey];
+        $imageType = pathinfo($uploadDirectory.$image,PATHINFO_EXTENSION);
+
+        //print_r($image); ตรวจสอบ
+
+        if ($image != ''){
+            $imageNewName = uniqid().".".$imageType;
+        }
+        else{
+            $imageNewName = "";
+            $errorImage .="<span>oooo</span>";
+        }
+        if ($imageSize > 1024000) {
+            $errorSize .= "ooooo";
+        }
+        elseif (!empty($image) && !in_array($imageType,$valueExtensions)) {
+            $errorType .="333";
+        }
+        elseif (empty($message)) {
+            $sqlValues = "('".$imageNewName."','".$ref_img."'),";
+            $store = move_uploaded_file($imageTmp, $uploadDirectory.$imageNewName);
+        }
+    }
+    if(empty($_POST['s_name'])) {
+        $message .= "222";
+    }
+    elseif (!empty($errorType) || !empty($errorSize) || !empty($errorImage)) {
+        $message .= $errorType . $errorSize . $errorImage;
+    }
+    else {
+        $sqlIns = "INSERT INTO tbl_social (s_name, ref_img) VALUES ('".$_POST['s_name']."','".$ref_img."');";
+        $sqlIns .= "INSERT INTO tbl_customer (c_img, ref_img) VALUES $sqlValues";
+        $sqlIns = rtrim($sqlIns,",");
+        $result = mysqli_multi_query($connection, $sqlIns);
+
+        if($result) {
+            echo "เพิ่มข้อมูลสำเร็จ";
+        }
+        else{
+            echo "Error: " . $sqlIns . "<br>" . mysqli_error($connection);
+        }
+    }
+    mysqli_close($connection);
+    //print_r($sqlIns);
+}
 ?>
 
 <body class="g-sidenav-show bg-gray-100">
     <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
         <div class="container-fluid">
-            <!-- title -->
-            <div class="row justify-content-between">
-                <div class="col-auto">
-                    <h3 class="font-weight-bolder text-dark text-gradient ">ข้อมูลการจำนำเครื่องประดับ</h3>
-                </div>
-                <div class="col-auto">
-                    <a href="?page=<?= $_GET['page'] ?>" class="btn btn-primary">ย้อนกลับ</a>
-                </div>
-            </div>
-            <!-- end title -->
+
             <hr class="mb-4">
 
-            <div class="card-body">
-            <div class="card-body p-3">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">ชื่อติดต่อ</th>
-                            <th scope="col">ช่องทางติดต่อ</th>
-                            <th scope="col">ชื่อ-นามสกุล</th>
-                            <th scope="col">อายุ</th>
-                            <th scope="col">ที่อยู่</th>
-                            <th scope="col">เบอร์โทร</th>
-                            <th scope="col">อีเมล</th>
-                            <th scope="col">ราคาจากภาพ</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                      <?php foreach ($query as $row) : ?>
-                        <tr>
-                        <td><?php echo $row['social_name']; ?></td>
-                        <td><?php echo $row['social_contact']; ?></td>
-                        <td><?php echo $row['firstname'] .' '. $row['lastname'];?></td>
-                        <td><?php echo $row['c_age']; ?></td>
-                        <td><?php echo $row['c_address']; ?></td>
-                        <td><?php echo $row['phone']; ?></td>
-                        <td><?php echo $row['c_email']; ?></td>
-                        <td><?php echo $row['price_img']; ?></td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+            <form action="" method="POST" enctype="multipart/form-data">
+                <legend>ภาพถ่ายสินค้าจริง</legend>
 
-            </div>
+                <div class="form-group">
+                    <label for="">ภาพถ่ายสินค้าจริง</label>
+                    <input type="file" class="form-control" name="c_img[]" id="" multiple>
+                </div>
+                <div class="form-group">
+                    <label for="">ภาพถ่ายสินค้าจริง</label>
+                    <input type="text" class="form-control" name="s_name" id="" multiple>
+                </div>
 
-            </div>
-                
+
+
+                <button type="submit" name="submit" value="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+<?php
+if(isset($message)) {
+    echo $message;
+}
+elseif(isset($_GET['message'])){
+    echo "555";
+}
+?>
 
         </div>
+
+
+    </div>
     </div>
 </body>
 

@@ -9,7 +9,7 @@
         <div class="col-auto">
           <h3 class="font-weight-bolder text-dark text-gradient ">ขั้นตอนการบันทึกข้อมูลการจำนำเครื่องประดับ</h3>
         </div>
-        
+
       </div>
       <!-- end title -->
       <hr class="mb-4">
@@ -93,20 +93,21 @@
         ?>
         <script type="text/javascript"></script>
         <form action="" method="post" enctype="multipart/form-data">
-        <div class="row">
+          <div class="row">
             <div class="col-xs-12 col-md-8 offset-md-2 pb-5">
-            <div class="wrapper-progressBar ">
+              <div class="wrapper-progressBar ">
                 <ul class="progressBar">
-                <li class="active">บันทึกข้อมูลผู้สนใจจำนำ</li>
-                <li >ประเมินราคาเครื่องประดับ</li>
-                <li>ร่างสัญญา</li>
+                  <li class="active">บันทึกข้อมูลผู้สนใจจำนำ</li>
+                  <li>ประเมินราคาเครื่องประดับ</li>
+                  <li>ร่างสัญญา</li>
                 </ul>
+              </div>
             </div>
-            </div>
-          <h4 class="pb-5">กรอกข้อมูลผู้สนใจจำนำเครื่องประดับ</h4>
-        </div>
+            <h4 class="pb-5">กรอกข้อมูลผู้สนใจจำนำเครื่องประดับ</h4>
+          </div>
           <div class="mb-4 col-lg-5 t ">
-            <h5 style="display: inline;">ช่องทางการติดต่อ</h5><h5 class="form-label text-danger" style="display: inline;">*</h5>
+            <h5 style="display: inline;">ช่องทางการติดต่อ</h5>
+            <h5 class="form-label text-danger" style="display: inline;">*</h5>
             <div class="col-sm-12">
               <select name="social_contact" class="form-control w-45" required>
                 <option value="" selected="selected">- เลือกช่องทางการติดต่อ -</option>
@@ -118,38 +119,41 @@
 
           </div>
           <div class="mb-4 col-3 ">
-            <h5 style="display: inline;">ชื่อผู้ใช้</h5><h5 class="form-label text-danger" style="display: inline;">*</h5>
+            <h5 style="display: inline;">ชื่อผู้ใช้</h5>
+            <h5 class="form-label text-danger" style="display: inline;">*</h5>
             <input type="text" class="form-control " name="social_name" placeholder="กรอกชื่อผู้ใช้ที่ติดต่อ" autocomplete="off" required>
           </div>
           <div class="mb-4 col-3 ">
-            <h5 style="display: inline;">ประเภทสินทรัพย์จำนำ</h5><h5 class="form-label text-danger" style="display: inline;">*</h5>
-            <input type="text" class="form-control " name="s_type" placeholder="สินทรัพย์ที่ใช้จำนำ"  autocomplete="off" required>
+            <h5 style="display: inline;">ประเภทสินทรัพย์จำนำ</h5>
+            <h5 class="form-label text-danger" style="display: inline;">*</h5>
+            <input type="text" class="form-control " name="s_type" placeholder="สินทรัพย์ที่ใช้จำนำ" autocomplete="off" required>
           </div>
           <div class="mb-4 col-3 ">
-            <h5 style="display: inline;">ภาพถ่ายสินค้าจริง</h5><h5 class="form-label text-danger" style="display: inline;">*</h5>
+            <h5 style="display: inline;">ภาพถ่ายสินค้าจริง</h5>
+            <h5 class="form-label text-danger" style="display: inline;">*</h5>
             <input type="file" id="myFile" name="s_img" multiple required>
           </div>
           <div class="mb-3 col-3 ">
-            <h5 >ราคาประเมินจากภาพ</h5>
+            <h5>ราคาประเมินจากภาพ</h5>
             <input type="number" min="0" name="price_img" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
           </div>
-        
-          </div>
-    </div> 
-          <div  class="d-flex flex-row">
-            <div class="justify-content-start flex-fill ">
-              <a href="?page=<?= $_GET['page'] ?>" class="btn btn-dark " >ย้อนกลับ</a>
-            </div>
-            <div class="flex-fill d-flex justify-content-end gap-1" >
-              <button type="submit" class="btn bg-gradient-dark pull-right ">บันทึก</button>
-              <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-color1 bg-gradient-primary theme-btn  pull-right">ดำเนินการต่อ</a>
-          </div>
-        </form>
-      </div>
-      </div>
 
-
+      </div>
     </div>
+    <div class="d-flex flex-row">
+      <div class="justify-content-start flex-fill ">
+        <a href="?page=<?= $_GET['page'] ?>" class="btn btn-dark ">ย้อนกลับ</a>
+      </div>
+      <div class="flex-fill d-flex justify-content-end gap-1">
+        <button type="submit" class="btn bg-gradient-dark pull-right ">บันทึก</button>
+        <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-color1 bg-gradient-primary theme-btn  pull-right">ดำเนินการต่อ</a>
+      </div>
+      </form>
+    </div>
+  </div>
+
+
+  </div>
   </div>
 </body>
 
@@ -157,33 +161,34 @@
 <style>
   .wrapper-progressBar {
     width: 100%
-}
+  }
 
-.progressBar {
-  font-size : 1em;
-}
+  .progressBar {
+    font-size: 1em;
+  }
 
-.progressBar li {
+  .progressBar li {
     list-style-type: none;
     float: left;
     width: 30%;
     position: relative;
-    text-align: center;  
-}
+    text-align: center;
+  }
 
-.progressBar li:before {
+  .progressBar li:before {
     content: " ";
     line-height: 30px;
     border-radius: 50%;
     width: 30px;
     height: 30px;
-    border: 1px solid ;
+    border: 1px solid;
     display: block;
     text-align: center;
     margin: 0 auto 10px;
     background-color: white
-}
-.progressBar li:after {
+  }
+
+  .progressBar li:after {
     content: "";
     position: absolute;
     width: 100%;
@@ -192,23 +197,23 @@
     top: 15px;
     left: -50%;
     z-index: -1;
-}
+  }
 
-.progressBar li:first-child:after {
+  .progressBar li:first-child:after {
     content: none;
-}
+  }
 
-.progressBar li.active {
+  .progressBar li.active {
     color: hsl(0, 100%, 16%);
-}
+  }
 
-.progressBar li.active:before {
+  .progressBar li.active:before {
     border-color: hsl(0, 100%, 16%);
     background-color: hsl(0, 100%, 16%);
-    
-}
 
-.progressBar .active:after {
+  }
+
+  .progressBar .active:after {
     background-color: dodgerblue;
-}
+  }
 </style>

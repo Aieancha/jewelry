@@ -54,7 +54,7 @@ $query = mysqli_query($connection, $sql);
                                     <img src="upload/social/<?= $data['s_img'] ?>" class="rounded" width="60" height="60">
                                 </td> -->
                                 <td><?php echo $data['status_name']; ?></td>
-                                <td> <a href="" class="btn btn-sm btn-dark">ดูรายละเอียด</a></td>
+                                <td> <a href="?page=<?= $_GET['page'] ?>&function=check" class="btn btn-sm btn-dark">ดูรายละเอียด</a></td>
                                 <td> <a href="?page=<?= $_GET['page'] ?>&function=updated&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-dark">ดำเนินการต่อ</a>
                                 </td>
 
