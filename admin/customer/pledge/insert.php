@@ -131,12 +131,9 @@
           </div>
           <div class="mb-3 col-3 ">
             <h5 >ราคาประเมินจากภาพ</h5>
-            <input type="number" min="0" name="price_img" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off" required>
+            <input type="number" min="0" name="price_img" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
           </div>
-<<<<<<< HEAD
         
-=======
->>>>>>> 4f457879dc256e2c9a0892852eb5ab71b57930bd
           </div>
     </div> 
           <div  class="d-flex flex-row">

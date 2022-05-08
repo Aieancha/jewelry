@@ -191,7 +191,7 @@
                         </div>
                         <div class="flex-fill d-flex justify-content-end gap-1">
                             <button type="submit" class="btn bg-gradient-dark pull-right ">บันทึก</button>
-                            <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-color1 bg-gradient-primary theme-btn  pull-right">ดำเนินการต่อ</a>
+                            <a href="?page=<?= $_GET['page'] ?>&function=contract" class="btn btn-color1 bg-gradient-primary theme-btn  pull-right">ดำเนินการต่อ</a>
 
                         </div>
                 </form>

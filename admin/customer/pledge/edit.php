@@ -139,15 +139,15 @@
               </div>
               <div class=" mb-4 col-6 ">
                 <h6 style="display: inline;">ราคาประเมินข้างต้น :</h6>
-                <input type="number" min="0" name="price_img" class="form-control " value="<?= $result['price_img'] ?>" placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off" required>
+                <input type="number" min="0" name="price_img" class="form-control " value="<?= $result['price_img'] ?>" placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
               </div>
               <div class="mb-4 col-6 ">
                 <h6>ราคาประเมินจากสินค้าจริง</h6>
-                <input type="number" min="0" name="price_item" value="<?= $result['price_item'] ?>" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off" required>
+                <input type="number" min="0" name="price_item" value="<?= $result['price_item'] ?>" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
               </div>
               <div class="mb-3 col-6 ">
                 <h6>ราคาที่ตกลงจำนำ</h6>
-                <input type="number" min="0" name="principle" value="<?= $result['principle'] ?>" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off" required>
+                <input type="number" min="0" name="principle" value="<?= $result['principle'] ?>" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
               </div>
               <div class="mb-4 col-3 ">
                 <h6>ภาพยืนยันตัวตน*</h6>
