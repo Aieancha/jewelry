@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,11 +39,11 @@
           $principle = $_POST['principle'];
           $price_item = $_POST['price_item'];
 
-          if (isset($_FILES['s_img']['name']) && !empty($_FILES['s_img']['name'])) {
+          if (isset($_FILES['c_img']['name']) && !empty($_FILES['c_img']['name'])) {
             $extension = array("jpeg", "jpg", "png");
-            $target = 'upload/social/';
-            $filename = $_FILES['s_img']['name'];
-            $filetmp = $_FILES['s_img']['tmp_name'];
+            $target = 'upload/customer/';
+            $filename = $_FILES['c_img']['name'];
+            $filetmp = $_FILES['c_img']['tmp_name'];
             $ext = pathinfo($filename, PATHINFO_EXTENSION);
             if (in_array($ext, $extension)) {
               if (!file_exists($target . $filename)) {
@@ -85,7 +86,7 @@
           //exit();
           $sql = "UPDATE tbl_social 
           SET social_name='$social_name', social_contact='$social_contact', price_img='$price_img', s_name='$s_name', s_lastname='$s_lastname', s_role='$s_role'
-          , code_id='$code', c_age='$age', c_address='$address', phone='$phone', principle='$principle', price_item='$price_item', c_email='$email'
+          , code_id='$code', c_age='$age', c_address='$address', phone='$phone', principle='$principle', price_item='$price_item', c_email='$email', c_img='$filename'
           WHERE s_id ='$id'";
 
 
@@ -150,7 +151,7 @@
                 <input type="number" min="0" name="principle" value="<?= $result['principle'] ?>" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
               </div>
               <div class="mb-3 col-6 text-end">
-                <a href="?page=<?= $_GET['page'] ?>&function=calculate" class="btn btn-color1 bg-white theme-btn  pull-right">คำนวณ</a>
+                <a href="?page=<?= $_GET['page'] ?>&function=calculate&id=<?= $result['s_id'] ?>" class="btn btn-color1 bg-white theme-btn  pull-right">คำนวณ</a>
               </div>
               <div class="mb-4 col-3 ">
                 <h6>ภาพยืนยันตัวตน*</h6>
@@ -204,11 +205,11 @@
 
           <div class="d-flex flex-row">
             <div class="justify-content-start flex-fill ">
-              <a href="?page=<?= $_GET['page'] ?>&function=insert" class="btn bg-gradient-dark">ย้อนกลับ</a>
+              <a href="?page=<?= $_GET['page'] ?>" class="btn bg-gradient-dark">ย้อนกลับ</a>
             </div>
             <div class="flex-fill d-flex justify-content-end gap-1">
               <button type="submit" class="btn bg-gradient-dark pull-right ">บันทึก</button>
-              <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-color1 bg-gradient-primary theme-btn  pull-right">ดำเนินการต่อ</a>
+              <a href="?page=<?= $_GET['page'] ?>&function=contract&id=<?= $result['s_id'] ?>" class="btn btn-color1 bg-gradient-primary theme-btn  pull-right">ดำเนินการต่อ</a>
 
             </div>
         </form>

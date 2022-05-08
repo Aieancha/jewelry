@@ -50,14 +50,15 @@ $query = mysqli_query($connection, $sql);
                                 <td><?= ++$i ?></td>
                                 <td><?= $data['social_contact'] ?></td>
                                 <td><?= $data['social_name'] ?></td>
-                               <!--  <td class="align-middle">
+                                <!--  <td class="align-middle">
                                     <img src="upload/social/<?= $data['s_img'] ?>" class="rounded" width="60" height="60">
                                 </td> -->
-                                <td><?php echo $data['status_name']; ?></td>
-                                <td> <a href="?page=<?= $_GET['page'] ?>&function=check" class="btn btn-sm btn-dark">ดูรายละเอียด</a></td>
+                                <td class="text-danger"><?php echo $data['status_name']; ?></td>
+
                                 <td> <a href="?page=<?= $_GET['page'] ?>&function=details&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-dark">ดูรายละเอียด</a></td>
                                 <td> <a href="?page=<?= $_GET['page'] ?>&function=updated&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-dark">ดำเนินการต่อ</a>
                                 </td>
+                                <!-- <td> <a href="?page=<?= $_GET['page'] ?>&function=check" class="btn btn-sm btn-dark">ทดลองรุูป</a></td> -->
 
                             </tr>
                         <?php endforeach; ?>
