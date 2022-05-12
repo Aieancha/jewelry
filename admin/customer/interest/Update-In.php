@@ -249,29 +249,10 @@
             </div> 
     </div>               
         <div> 
-        </div>
-<div class="card ">
-    <div class="card-body"> 
-    <h4 >ประวัติการโอน</h4>
-        <div class="card-body overflow-auto p-3 bg-white" style="text-align: center">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">วันที่ชำระ</th>
-                            <th scope="col">รหัสผู้จำนำ</th>
-                            <th scope="col">รหัสสินค้า</th>
-                            <th scope="col">จำนวนเงินที่ชำระ</th>
-                            <th scope="col">สถานะ</th>
-                            <th scope="col">รายละเอียดการโอน</th>
-                        </tr>
-                    </thead>
-                    
-        </table>
-    </div>
-</div>           
+        </div>      
         </div>
         <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-sm btn-dark text-white">ย้อนกลับ</a>
-        <a href="?page=<?= $_GET['page'] ?>&function=detailsIn" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a>  
+        <a href="?page=<?= $_GET['page'] ?>&function=showDetails" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a>  
                 </form>
             </div>
         </div>

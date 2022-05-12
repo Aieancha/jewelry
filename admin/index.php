@@ -22,6 +22,10 @@
             include('customer/interest/Update-In.php');
           }elseif (isset($_GET['function']) && $_GET['function'] == 'insert') {
             include('customer/interest/insert.php');
+          }elseif (isset($_GET['function']) && $_GET['function'] == 'showDetails') {
+            include('customer/interest/show-details.php');
+          }elseif (isset($_GET['function']) && $_GET['function'] == 'detailsIn') {
+            include('customer/interest/Details-In.php');
           }
            else {
             include('customer/interest/index.php');
