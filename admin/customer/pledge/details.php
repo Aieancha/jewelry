@@ -5,16 +5,15 @@
     <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
         <div class="container-fluid">
             <!-- title -->
-            <div class="row justify-content-between">
-                <div class="col-auto">
-                    <h3 class="font-weight-bolder text-dark text-gradient ">รายละเอียดข้อมูลลูกค้า</h3>
-                </div>
-
+            <div class="row justify-content-between">   
             </div>
             <!-- end title -->
-            <hr class="mb-4">
-
+            <div class="card mb-3">
             <div class="card-body">
+                <div class="col-5">
+                <div class="col-auto mb-3">
+                    <h3 class="font-weight-bolder text-dark text-gradient ">รายละเอียดข้อมูลลูกค้า</h3>
+                </div>
                 <?php
                 if (isset($_GET['id']) && !empty($_GET['id'])) {
                     $id = $_GET['id'];
@@ -33,28 +32,28 @@
             </div>
             <div class="d-flex flex-row">
                 <div class="justify-content-start flex-fill ">
-                    <div class=" mb-4 ">
+                    <div class=" mb-3 ">
                         <h4 style="display: inline;">ข้อมูลลูกค้า</h4>
                     </div>
-                    <div class=" mb-4 ">
+                    <div class=" mb-3 ">
                         <h6 style="display: inline;">เลขที่ราชการออกให้ :</h6>
                         <td width="25%" style="display: inline;"><?= $result['code_id'] ?></td>
                     </div>
-                    <div class=" mb-4 ">
+                    <div class=" mb-3 ">
                         <h6 style="display: inline;">ชื่อผู้จำนำ :</h6>
                         <td width="25%" style="display: inline;"><?= $result['s_name'] ?></td>
                         <h6 style="display: inline;">นามสกุล :</h6>
                         <td width="25%" style="display: inline;"><?= $result['s_lastname'] ?></td>
                     </div>
-                    <div class=" mb-4 ">
+                    <div class=" mb-3 ">
                         <h6 style="display: inline;">ที่อยู่ปัจจุบัน :</h6>
                         <td width="25%" style="display: inline;"><?= $result['c_address'] ?></td>
                     </div>
-                    <div class=" mb-4 col-6 ">
+                    <div class=" mb-3 col-6 ">
                         <h6 style="display: inline;">ช่องทางการติดต่อ :</h6>
                         <td width="25%" style="display: inline;"><?= $result['social_contact'] ?></td>
                     </div>
-                    <div class=" mb-4 col-10 ">
+                    <div class=" mb-3 col-10 ">
                         <h6 style="display: inline;">ชื่อผู้ใช้ :</h6>
                         <td width="25%" style="display: inline;"><?= $result['social_name'] ?></td>
                     </div>
@@ -62,20 +61,20 @@
                         <h6 style="display: inline;">หลักฐานการยืนยันตัวตน</h6>
                         <img src="upload/customer/<?= $result['c_img'] ?>" alt="IDcard" width="304" height="228">
                     </div>
-                    <div class=" mb-4 ">
+                    <div class=" mb-3 ">
                         <h4 style="display: inline;">ข้อมูลเครื่องประดับ</h4>
                     </div>
-                    <div class=" mb-4 ">
+                    <div class=" mb-3 ">
                         <h6 style="display: inline;">รหัสสินค้า:</h6>
                         <td width="25%" style="display: inline;"></td>
                     </div>
-                    <div class=" mb-4">
+                    <div class=" mb-3">
                         <h6 style="display: inline;">รายละเอียดสินค้า:</h6>
                         <td width="25%" style="display: inline;"><?= $result['s_type'] ?></td>
                     </div>
                     <div class=" mb-4 col-10 ">
-                        <h6 style="display: inline;">ภาพถ่ายสินค้าจริง</h6>
-                        <img src="upload/social/<?= $result['s_img'] ?>" alt="jewelry" width="304" height="228">
+                        <h6>ภาพถ่ายสินค้าจริง</h6>
+                        <img src="upload/social/<?= $result['s_img'] ?>" alt="jewelry" width="500" height="500">
                     </div>
                 </div>
                 <div class="justify-content-start flex-fill ">
@@ -86,39 +85,40 @@
                         <h6 style="display: inline;">ราคาประเมินข้างต้น :</h6>
                         <td width="25%" style="display: inline;"><?= $result['price_img'] ?> บาท</td>
                     </div>
-                    <div class=" mb-4 col-10 ">
+                    <div class=" mb-3 col-10 ">
                         <h6 style="display: inline;">ราคาประเมินจากสินค้าจริง:</h6>
                         <td width="25%" style="display: inline;"><?= $result['price_item'] ?> บาท</td>
                     </div>
-                    <div class=" mb-4 col-10 ">
+                    <div class=" mb-3 col-10 ">
                         <h6 style="display: inline;">ราคาที่ตกลงจำนำ:</h6>
                         <td width="25%" style="display: inline;"><?= $result['principle'] ?> บาท</td>
                     </div>
-                    <div class=" mb-4 ">
+                    <div class=" mb-3 ">
                         <h6 style="display: inline;">จำนวนงวด :</h6>
                         <td width="25%" style="display: inline;"> เดือน</td>
                     </div>
-                    <div class=" mb-4 ">
+                    <div class=" mb-3 ">
                         <h6 style="display: inline;">ดอกเบี้ย :</h6>
                         <td width="25%" style="display: inline;"> บาท</td>
                     </div>
-                    <div class=" mb-4 ">
+                    <div class=" mb-3 ">
                         <h6 style="display: inline;">เงินที่ต้องจ่ายต่องวด :</h6>
                         <td width="25%" style="display: inline;"> บาท</td>
                     </div>
 
                 </div>
-
+            </div>
             </div>
         </div>
 
         <div class="d-flex flex-row">
             <div class="justify-content-start flex-fill ">
+            <a href="?page=<?= $_GET['page'] ?>&function=index" class="btn bg-gradient-dark">ย้อนกลับ</a>
             </div>
             <div class="flex-fill d-flex justify-content-end gap-1">
-                <a href="?page=<?= $_GET['page'] ?>&function=index" class="btn bg-gradient-dark">ย้อนกลับ</a>
             </div>
             </form>
+        </div>
         </div>
     </div>
 

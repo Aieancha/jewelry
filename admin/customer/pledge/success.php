@@ -6,15 +6,16 @@
         <div class="container-fluid">
             <!-- title -->
             <div class="row justify-content-between">
+                
+                     
+            </div>
+            <!-- end title -->
+            <div class="card mb-3">
+            <div class="card-body">
+                <div class="col-auto mb-5">
                 <div class="col-auto">
                     <h3 class="font-weight-bolder text-dark text-gradient ">ขั้นตอนการบันทึกข้อมูลการจำนำเครื่องประดับ</h3>
                 </div>
-                
-            </div>
-            <!-- end title -->
-            <hr class="mb-4">
-
-            <div class="card-body">
                 <?php
                 if (isset($_POST) && !empty($_POST)) {
                     /* echo '<pre>';
@@ -98,14 +99,15 @@
                 //print_r($_POST);
                 ?>
                 <h5 class="pb-5">กรอกข้อมูลผู้สนใจจำนำเครื่องประดับ</h5>
-        </div>     
+                </div>
+            </div>
+            </div>     
                    
                     <div  class="d-flex flex-row">
             <div class="justify-content-start flex-fill ">
-              <a href="?page=<?=$_GET['page']?>&function=contract" class="btn bg-gradient-dark">ย้อนกลับ</a>
             </div>
             <div class="flex-fill d-flex justify-content-end gap-1" >
-              <a href="#" class="btn btn-color1 bg-gradient-primary theme-btn  pull-right">พิมพ์เอกสาร</a>
+              <a href="#" class="btn btn-color1 btn-green3 theme-btn  pull-right">พิมพ์เอกสาร</a>
             
           </div>
                 </form>

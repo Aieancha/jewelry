@@ -18,31 +18,38 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         <div class="container-fluid">
             <!-- title -->
             <div class="row justify-content-between">
+                
+
+            </div>
+            <!-- end title -->
+            
+            <div class="card-body">
+            <div class="card mb-3">
+            <div class="card-body">
+                <div class="col-auto mb-3">
                 <div class="col-auto">
                     <h3 class="font-weight-bolder text-dark text-gradient ">ขั้นตอนการบันทึกข้อมูลการจำนำเครื่องประดับ</h3>
                 </div>
 
-            </div>
-            <!-- end title -->
-            <hr class="mb-4">
-
-            <div class="card-body">
-
-
 
                 <script type="text/javascript"></script>
                 <form action="" method="post" enctype="multipart/form-data">
-                    <div class="row">
-                        <div class="col-xs-12 col-md-8 offset-md-2 pb-5">
-                            <div class="wrapper-progressBar ">
-                                <ul class="progressBar">
-                                    <li class="active">บันทึกข้อมูลผู้สนใจจำนำ</li>
-                                    <li class="active">ประเมินราคาเครื่องประดับ</li>
-                                    <li class="active">ร่างสัญญา</li>
-                                </ul>
-                            </div>
+                        <ul class="step-wizard-list">
+            <li class="step-wizard-item">
+                <span class="progress-count">1</span>
+                <span class="progress-label">รอประเมิน</span>
+            </li>
+            <li class="step-wizard-item">
+                <span class="progress-count">2</span>
+                <span class="progress-label">รอร่างสัญญา</span>
+            </li>
+            <li class="step-wizard-item">
+                <span class="progress-count">3</span>
+                <span class="progress-label">ทำรายการเสร็จ</span>
+            </li>
+            
+        </ul>
 
-                        </div>
                         <h5 class="pb-5">กรอกข้อมูลผู้สนใจจำนำเครื่องประดับ</h5>
                     </div>
 
@@ -109,20 +116,18 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                 <h6 style="display: inline;">รายละเอียดสินค้า:</h6>
                                 <td width="25%" style="display: inline;"><?= $result['s_type'] ?></td>
                             </div>
-
                         </div>
-
-                    </div>
-            </div>
-
-            <div class="d-flex flex-row">
+                        </div>
+                        <div class="d-flex flex-row">
                 <div class="justify-content-start flex-fill ">
-                    <a href="?page=<?= $_GET['page'] ?>&function=updated" class="btn bg-gradient-dark">ย้อนกลับ</a>
-                </div>
+               </div>
                 <div class="flex-fill d-flex justify-content-end gap-1">
-                    <a href="?page=<?= $_GET['page'] ?>&function=success" class="btn btn-color1 bg-gradient-primary theme-btn  pull-right">ร่างสัญญา</a>
-
+                    <a href="?page=<?= $_GET['page'] ?>&function=success" class="btn btn-color1 btn-green3 text-white theme-btn  pull-right">ร่างสัญญา</a>
                 </div>
+                    </div>
+           
+
+            
                 </form>
             </div>
         </div>

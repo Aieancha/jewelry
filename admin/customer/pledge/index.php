@@ -1,3 +1,4 @@
+
 <?php
 $sql = "SELECT tbl_social.social_name,tbl_social.social_contact,tbl_social.s_id,tbl_social.price_img,tbl_social.s_date,tbl_status.status_name,tbl_social.s_img
         FROM tbl_social
@@ -6,30 +7,33 @@ $sql = "SELECT tbl_social.social_name,tbl_social.social_contact,tbl_social.s_id,
 $query = mysqli_query($connection, $sql);
 ?>
 
-<div class="container-fluid py-4 ">
-    <div class="row justify-content-between">
-        <div class="col-auto">
+<div class="container-fluid py-4">
+    <div class="col-auto">
             <h3 class="font-weight-bolder text-dark text-gradient ">การจัดการข้อมูลการข้อมูลการจำนำ</h3>
+            <hr class="mb-4 mt-4">
         </div>
-    </div>
-    <div class="d-flex justify-content-end">
-        <div class="d-flex justify-content-end mb-2">
-            <form class="example" action="/action_page.php" style="margin: 7px;;max-width:200px">
-                <input type="text" placeholder="เลขที่ราชการออกให้.." name="search2">
-                <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
+    <div class="row justify-content-between">
+     <div class="d-flex justify-content-end">
+        <div class="d-flex justify-content-end mb-2 ">
+            <form class="example " action="/action_page.php" style="margin: 7px;;max-width:200px">
+                <input type="text" placeholder="ชื่อผู้ใช้งาน.." name="search2 ">
+                <button type="submit"><i class="fa fa-search btn-dark"></i></button>
+            
         </div>
-        <a href="?#=<?= $_GET['#'] ?>&function=insert" class="btn bg-gradient-primary">สถานะ</a>
+        <a href="?#=<?= $_GET['#'] ?>&function=insert" class="btn btn-sm btn-dark text-white">สถานะ</a>
+    </div>   
     </div>
+    
     <div class="row">
         <div class="card">
             <!-- title -->
 
             <!-- end title -->
-            <div class="card-body overflow-auto p-3" style="text-align: center">
+            <div class="card-body overflow-auto p-1 " style="text-align: center">
                 <table class="table">
                     <thead>
-                        <tr>
+            <div class="card-body overflow-auto p-1  " style="text-align: center">
+                        <tr class="">
                             <th scope="col">ลำดับ</th>
                             <th scope="col">ช่องทางการติดต่อ</th>
                             <th scope="col">ชื่อผู้ใช้งานระบบ</th>
@@ -55,8 +59,8 @@ $query = mysqli_query($connection, $sql);
                                 </td> -->
                                 <td class="text-danger"><?php echo $data['status_name']; ?></td>
 
-                                <td> <a href="?page=<?= $_GET['page'] ?>&function=details&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-dark">ดูรายละเอียด</a></td>
-                                <td> <a href="?page=<?= $_GET['page'] ?>&function=updated&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-dark">ดำเนินการต่อ</a>
+                                <td> <a href="?page=<?= $_GET['page'] ?>&function=details&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-gray-600">ดูรายละเอียด</a></td>
+                                <td> <a href="?page=<?= $_GET['page'] ?>&function=updated&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-blue2 text-white">ดำเนินการต่อ</a>
                                 </td>
                                 <!-- <td> <a href="?page=<?= $_GET['page'] ?>&function=check" class="btn btn-sm btn-dark">ทดลองรุูป</a></td> -->
 
@@ -66,10 +70,10 @@ $query = mysqli_query($connection, $sql);
                 </table>
             </div>
         </div>
+        <div class="p-3 d-flex justify-content-end">
+        <a href="?page=<?= $_GET['page'] ?>&function=insert" class="btn  btn-green3 text-white">เพิ่มข้อมูลการจำนำ</a>
     </div>
-    <div class="p-3 d-flex justify-content-end">
-        <a href="?page=<?= $_GET['page'] ?>&function=insert" class="btn bg-gradient-primary">เพิ่มข้อมูลการจำนำ</a>
-    </div>
+    </div></form>
 </div>
 <?php
 mysqli_close($connection);
@@ -79,6 +83,7 @@ mysqli_close($connection);
     body {
         font-family: Arial;
         border-radius: 25px;
+        background-color: #343a40;
     }
 
     * {
@@ -86,25 +91,22 @@ mysqli_close($connection);
         border-radius: 10px;
         border-top-right-radius: 0px;
         border-bottom-right-radius: 0px;
-
-
     }
 
     form.example input[type=text] {
-        padding: 5px;
-        font-size: 15px;
-        border: 1px solid grey;
-        float: left;
-        width: 80%;
-        background: #ffff;
-
+        padding: 4px;
+    font-size: 13px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #ffff;
     }
 
     form.example button {
         float: left;
         width: 20%;
-        padding: 5px;
-        background: #C71585;
+        padding: 2px;
+        background:#344767;
         color: white;
         font-size: 15px;
         border: 1px solid grey;
@@ -114,12 +116,11 @@ mysqli_close($connection);
         border-top-left-radius: 0px;
         border-bottom-left-radius: 0px;
     }
-
-
-
     form.example::after {
         content: "";
         clear: both;
         display: table;
     }
+    
+        
 </style>

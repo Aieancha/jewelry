@@ -46,18 +46,18 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         //print_r($_POST);
         ?>
 
-        <div class="box">
+        <div class="box ">
           <script type="text/javascript"></script>
           <form action="" method="post" class="regis">
-            <div class="mb-6">
+            <div class="mb-6 text-center">
               <h5 class="" style="display: inline;">ราคาที่ตกลงจำนำ</h5>
               <h5 style="display: inline;"><?= $result['principle'] ?></h5>
             </div>
 
-            <div class="mb-6">
+            <div class="mb-6 text-center">
               <h5 class="" style="display: inline;">จำนวนงวดที่จำนำ</h5>
-              <h5 class="form-label text-danger" style="display: inline;">*</h5>
-              <input type="number" class="form-control " name="r_mount" min="2" max="24" placeholder="สูงสุด 24 งวด" autocomplete="off" require>
+              <h5 class="form-label1 text-danger" style="display: inline;">*</h5>
+              <input style="display: inline;" type="number" class="form-control2 " name="r_mount" min="2" max="24" placeholder="สูงสุด 24 งวด" autocomplete="off" require>
             </div>
 
             <h5 class="" style="display: inline;">รูปแบบการชำระดอกเบี้ย</h5>
@@ -75,7 +75,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                 <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn bg-gradient-dark">ย้อนกลับ</a>
               </div>
               <div class="flex-fill d-flex justify-content-end gap-1">
-              <button type="submit" class="btn bg-gradient-dark pull-right ">บันทึก</button>
+              <button type="submit" class="btn btn-blue text-white pull-right ">บันทึก</button>
               </div>
             </div>
 
@@ -108,4 +108,34 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     border-radius: 20px;
     background-color: rgb(255, 255, 255);
   }
+  .form-control1 {
+    display: block;
+    width: 50%;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.4rem;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #d2d6da;
+    appearance: none;
+    border-radius: 0.5rem;
+    transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.form-control2 {
+    display: block;
+    width: 40%;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.4rem;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #d2d6da;
+    appearance: none;
+    border-radius: 0.5rem;
+    transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
 </style>
