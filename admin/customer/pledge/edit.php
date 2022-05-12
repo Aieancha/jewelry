@@ -39,6 +39,7 @@
           $price_item = $_POST['price_item'];
           $mount = $_POST['r_mount'];
           $rate_name = $_POST['rate_name'];
+          $c_date = $_POST['c_date'];
 
           if (isset($_FILES['c_img']['name']) && !empty($_FILES['c_img']['name'])) {
             $extension = array("jpeg", "jpg", "png");
@@ -87,7 +88,7 @@
           //exit();
           $sql = "UPDATE tbl_social 
           SET social_name='$social_name', social_contact='$social_contact', price_img='$price_img', s_name='$s_name', s_lastname='$s_lastname', s_role='$s_role'
-          , code_id='$code', c_age='$age', c_address='$address', phone='$phone', principle='$principle', price_item='$price_item', c_email='$email', c_img='$filename'
+          , code_id='$code', c_age='$age', c_address='$address', phone='$phone', principle='$principle', price_item='$price_item', c_email='$email', c_img='$filename', c_date='$c_date'
           , r_mount='$mount', rate_name='$rate_name'
           WHERE s_id ='$id'";
 
@@ -220,6 +221,11 @@
                 <h6 style="display: inline;">อีเมล</h6>
                 <h6 class="form-label text-danger" style="display: inline;">*</h6>
                 <input type="email" class="form-control " name="c_email" value="<?= $result['c_email'] ?>" placeholder="example@gmail.com" autocomplete="off" require>
+              </div>
+              <div class=" mb-4 col-6 ">
+                <h6 style="display: inline;">วันที่ชำระงวดแรก</h6>
+                <h6 class="form-label text-danger" style="display: inline;">*</h6>
+                <input type="date" class="form-control " name="c_date" value="<?= $result['c_date'] ?>" placeholder="example@gmail.com" autocomplete="off" require>
               </div>
             </div>
           </div>

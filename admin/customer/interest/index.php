@@ -7,6 +7,23 @@ WHERE tbl_status.id='1'";
 $query = mysqli_query($connection, $sql);
 ?>
 
+<?php
+mysqli_select_db($connection, "");
+$sqldb="SELECT count(s_id) as day3 FROM tbl_social WHERE DATEDIFF(c_date,Now()) = 3";
+$rs=mysqli_query($connection, $sqldb);
+$day3 = mysqli_fetch_assoc($rs);
+//echo $day3['day3'];
+if($day3['day3']>0){
+  $noti_day3 = '<span class="noti-alert">'.$day3['day3'].'</span>';
+}else{
+  $noti_day3="";
+}
+
+/* $dt=new DateTime($sqldb);
+$alertDate = $dt->format('d/m/Y');
+echo '99999(',$alertDate,')'; */
+?>
+
 <div class="container-fluid py-4 ">
   <div class="row justify-content-between">
     <div class="col-auto">
@@ -49,7 +66,7 @@ $query = mysqli_query($connection, $sql);
             foreach ($query as $data) : ?>
               <tr>
                 <td><?= ++$i ?></td>
-                <td><?= $data['s_date'] ?></td>
+                <td><?php echo $noti_day3; ?></td>
                 <td><?= $data['s_name'] ?></td>
                 <td><?= $data['principle']*0.02*$data['r_mount'] ?></td>
                 <td class="text-danger"><?php echo $data['status_name']; ?></td>
