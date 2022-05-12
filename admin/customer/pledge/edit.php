@@ -6,15 +6,15 @@
     <div class="container-fluid">
       <!-- title -->
       <div class="row justify-content-between">
-        <div class="col-auto">
-          <h3 class="font-weight-bolder text-dark text-gradient ">ขั้นตอนการบันทึกข้อมูลการจำนำเครื่องประดับ</h3>
-        </div>
-
+        
       </div>
       <!-- end title -->
-      <hr class="mb-4">
-
-      <div class="card-body">
+      <div class="card mb-3">
+            <div class="card-body">
+                <div class="col-auto mb-3">
+                <div class="col-auto">
+                    <h3 class="font-weight-bolder text-dark text-gradient ">ขั้นตอนการบันทึกข้อมูลการจำนำเครื่องประดับ</h3>
+                </div>
         <?php
         if (isset($_GET['id']) && !empty($_GET['id'])) {
           $id = $_GET['id'];
@@ -110,17 +110,23 @@
         ?>
         <script type="text/javascript"></script>
         <form action="" method="post" enctype="multipart/form-data">
-          <div class="row">
-            <div class="col-xs-12 col-md-8 offset-md-2 pb-5">
-              <div class="wrapper-progressBar ">
-                <ul class="progressBar">
-                  <li class="active">บันทึกข้อมูลผู้สนใจจำนำ</li>
-                  <li class="active">ประเมินราคาเครื่องประดับ</li>
-                  <li>ร่างสัญญา</li>
-                </ul>
-              </div>
-            </div>
-            <h5 class="pb-5">กรอกข้อมูลผู้สนใจจำนำเครื่องประดับ</h5>
+            <ul class="step-wizard-list">
+            <li class="step-wizard-item">
+                <span class="progress-count">1</span>
+                <span class="progress-label">รอประเมิน</span>
+            </li>
+            <li class="step-wizard-item current-item">
+                <span class="progress-count">2</span>
+                <span class="progress-label">รอร่างสัญญา</span>
+            </li>
+            <li class="step-wizard-item">
+                <span class="progress-count">3</span>
+                <span class="progress-label">ทำรายการเสร็จ</span>
+            </li>
+            
+        </ul>
+          
+            <h5 class="pb-4">กรอกข้อมูลผู้สนใจจำนำเครื่องประดับ</h5>
           </div>
           <div class="d-flex flex-row">
             <div class="justify-content-start flex-fill ">
@@ -143,15 +149,15 @@
               </div>
               <div class=" mb-4 col-6 ">
                 <h6 style="display: inline;">ราคาประเมินข้างต้น :</h6>
-                <input type="number" min="0" name="price_img" class="form-control " value="<?= $result['price_img'] ?>" placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
+                <input type="number" min="0" name="price_img" class="form-control1 " value="<?= $result['price_img'] ?>" placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
               </div>
               <div class="mb-4 col-6 ">
                 <h6>ราคาประเมินจากสินค้าจริง</h6>
-                <input type="number" min="0" name="price_item" value="<?= $result['price_item'] ?>" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
+                <input type="number" min="0" name="price_item" value="<?= $result['price_item'] ?>" class="form-control1 " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
               </div>
               <div class="mb-4 col-6 ">
                 <h6>ราคาที่ตกลงจำนำ</h6>
-                <input type="number" min="0" name="principle" value="<?= $result['principle'] ?>" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
+                <input type="number" min="0" name="principle" value="<?= $result['principle'] ?>" class="form-control1 " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
               </div>
               <div class="mb-4 col-6" >
               <h5 class="" style="display: inline;">จำนวนงวดที่จำนำ</h5>
@@ -198,17 +204,17 @@
               <div class=" mb-4 col-6 ">
                 <h6 style="display: inline;">อายุ</h6>
                 <h6 class="form-label text-danger" style="display: inline;">*</h6>
-                <input type="text" class="form-control " name="c_age" value="<?= $result['c_age'] ?>" placeholder="กรอกนามสกุลลูกค้า" autocomplete="off" require>
+                <input type="text" class="form-control1 " name="c_age" value="<?= $result['c_age'] ?>" placeholder="กรอกอายุ (ปี)" autocomplete="off" require>
               </div>
-              <div class=" mb-4 col-6 ">
+              <div class=" mb-4 col-10 ">
                 <h6 style="display: inline;">ที่อยู่</h6>
                 <h6 class="form-label text-danger" style="display: inline;">*</h6>
-                <input type="text" class="form-control " name="c_address" value="<?= $result['c_address'] ?>" placeholder="กรอกที่อยู่ปัจจุบันลูกค้า" autocomplete="off" require>
+                <input type="text" class="form-control3 " name="c_address" value="<?= $result['c_address'] ?>" placeholder="กรอกที่อยู่ปัจจุบันลูกค้า" autocomplete="off" require>
               </div>
               <div class=" mb-4 col-6 ">
                 <h6 style="display: inline;">เบอร์โทร</h6>
                 <h6 class="form-label text-danger" style="display: inline;">*</h6>
-                <input type="number" class="form-control " name="phone" value="<?= $result['phone'] ?>" pattern="^[0-9\s]+$" minlength="10" placeholder="กรอกเบอร์โทรศัพท์ลูกค้า" autocomplete="off" require>
+                <input type="number" class="form-control2 " name="phone" value="<?= $result['phone'] ?>" pattern="^[0-9\s]+$" minlength="10" placeholder="กรอกเบอร์โทรศัพท์" autocomplete="off" require>
               </div>
               <div class=" mb-4 col-6 ">
                 <h6 style="display: inline;">อีเมล</h6>
@@ -220,11 +226,11 @@
 
           <div class="d-flex flex-row">
             <div class="justify-content-start flex-fill ">
-              <a href="?page=<?= $_GET['page'] ?>" class="btn bg-gradient-dark">ย้อนกลับ</a>
+              
             </div>
             <div class="flex-fill d-flex justify-content-end gap-1">
-              <button type="submit" class="btn bg-gradient-dark pull-right ">บันทึก</button>
-              <a href="?page=<?= $_GET['page'] ?>&function=contract&id=<?= $result['s_id'] ?>" class="btn btn-color1 bg-gradient-primary theme-btn  pull-right">ดำเนินการต่อ</a>
+              <button type="submit" class="btn btn-blue2 text-white pull-right ">บันทึก</button>
+              <a href="?page=<?= $_GET['page'] ?>&function=contract&id=<?= $result['s_id'] ?>" class="btn btn-color1 btn-green3 text-white theme-btn  pull-right">ดำเนินการต่อ</a>
 
             </div>
         </form>
@@ -294,7 +300,67 @@
 
   }
 
-  .progressBar .active:after {
-    background-color: dodgerblue;
-  }
+    .progressBar .active:after {
+        background-color: dodgerblue;
+    }
+     .form-control1 {
+    display: block;
+    width: 50%;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.4rem;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #d2d6da;
+    appearance: none;
+    border-radius: 0.5rem;
+    transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.form-control2 {
+    display: block;
+    width: 75%;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.4rem;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #d2d6da;
+    appearance: none;
+    border-radius: 0.5rem;
+    transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.form-control3 {
+    display: block;
+    width: 100%;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.4rem;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #d2d6da;
+    appearance: none;
+    border-radius: 0.5rem;
+    transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.form-control1 {
+    display: block;
+    width: 50%;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.4rem;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #d2d6da;
+    appearance: none;
+    border-radius: 0.5rem;
+    transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
 </style>
