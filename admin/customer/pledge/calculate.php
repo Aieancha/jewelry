@@ -22,16 +22,12 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         if (isset($_POST) && !empty($_POST)) {
          
           $mount = $_POST['r_mount'];
-          $interest = $_POST['interest'];
           $name = $_POST['rate_name'];
-          $principle = $_POST['principle'];
-          if( !empty( $principle ) && !empty( $mount ) ) {
-            echo "<hr/>";
-            $interest = $principle*0.02 *$mount;
-        }
 
-          $sql = "INSERT INTO tbl_rate (r_mount, interest, rate_name)
-                      VALUES ('$mount', '$interest', '$name')";
+          echo $interest;
+
+          $sql = "INSERT INTO tbl_rate (r_mount, rate_name)
+                      VALUES ('$mount', '$name')";
 
           if (mysqli_query($connection, $sql)) {
 

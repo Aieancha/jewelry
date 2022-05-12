@@ -21,8 +21,10 @@
                     $sql = "SELECT * FROM tbl_social WHERE s_id = '$id'";
                     $query = mysqli_query($connection, $sql);
                     $result = mysqli_fetch_assoc($query);
+                    
                 }
                 //print_r($_POST);
+                
                 ?>
 
 
@@ -96,15 +98,15 @@
                     </div>
                     <div class=" mb-4 ">
                         <h6 style="display: inline;">จำนวนงวด :</h6>
-                        <td width="25%" style="display: inline;"> เดือน</td>
+                        <td width="25%" style="display: inline;"><?= $result['r_mount'] ?> เดือน</td>
                     </div>
                     <div class=" mb-4 ">
                         <h6 style="display: inline;">ดอกเบี้ย :</h6>
-                        <td width="25%" style="display: inline;"> บาท</td>
+                        <td width="25%" style="display: inline;"><?= $result['principle']*0.02*$result['r_mount'] ?> บาท</td>
                     </div>
                     <div class=" mb-4 ">
                         <h6 style="display: inline;">เงินที่ต้องจ่ายต่องวด :</h6>
-                        <td width="25%" style="display: inline;"> บาท</td>
+                        <td width="25%" style="display: inline;"><?= ($result['principle']*0.02) ?> บาท</td>
                     </div>
 
                 </div>

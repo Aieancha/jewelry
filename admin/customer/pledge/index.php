@@ -4,6 +4,7 @@ $sql = "SELECT tbl_social.social_name,tbl_social.social_contact,tbl_social.s_id,
         INNER JOIN tbl_status
         ON tbl_social.s_role = tbl_status.id";
 $query = mysqli_query($connection, $sql);
+
 ?>
 
 <div class="container-fluid py-4 ">

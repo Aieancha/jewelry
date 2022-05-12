@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,6 +37,8 @@
           $email = $_POST['c_email'];
           $principle = $_POST['principle'];
           $price_item = $_POST['price_item'];
+          $mount = $_POST['r_mount'];
+          $rate_name = $_POST['rate_name'];
 
           if (isset($_FILES['c_img']['name']) && !empty($_FILES['c_img']['name'])) {
             $extension = array("jpeg", "jpg", "png");
@@ -87,6 +88,7 @@
           $sql = "UPDATE tbl_social 
           SET social_name='$social_name', social_contact='$social_contact', price_img='$price_img', s_name='$s_name', s_lastname='$s_lastname', s_role='$s_role'
           , code_id='$code', c_age='$age', c_address='$address', phone='$phone', principle='$principle', price_item='$price_item', c_email='$email', c_img='$filename'
+          , r_mount='$mount', rate_name='$rate_name'
           WHERE s_id ='$id'";
 
 
@@ -124,11 +126,12 @@
             <div class="justify-content-start flex-fill ">
               <div class=" mb-4 col-6 ">
                 <h6 style="display: inline;">ช่องทางการติดต่อ :</h6>
-                <select name="social_contact"  class="form-control w-45" required >
+                <select name="social_contact" class="form-control w-45" required>
                   <option value="" selected="selected">- เลือกช่องทางการติดต่อ -</option>
                   <option value="facebook">Facebook</option>
                   <option value="line">Line</option>
                 </select>
+
               </div>
               <div class=" mb-4 col-6 ">
                 <h6 style="display: inline;">ชื่อผู้ใช้ :</h6>
@@ -146,20 +149,32 @@
                 <h6>ราคาประเมินจากสินค้าจริง</h6>
                 <input type="number" min="0" name="price_item" value="<?= $result['price_item'] ?>" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
               </div>
-              <div class="mb-3 col-6 ">
+              <div class="mb-4 col-6 ">
                 <h6>ราคาที่ตกลงจำนำ</h6>
                 <input type="number" min="0" name="principle" value="<?= $result['principle'] ?>" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
               </div>
-              <div class="mb-3 col-6 text-end">
-                <a href="?page=<?= $_GET['page'] ?>&function=calculate&id=<?= $result['s_id'] ?>" class="btn btn-color1 bg-white theme-btn  pull-right">คำนวณ</a>
+              <div class="mb-4 col-6" >
+              <h5 class="" style="display: inline;">จำนวนงวดที่จำนำ</h5>
+              <h5 class="form-label text-danger" style="display: inline;">*</h5>
+              <input type="number" class="form-control " name="r_mount" value="<?= $result['r_mount'] ?> min="2" max="24" placeholder="สูงสุด 24 งวด" autocomplete="off" require>
+            </div>
+              <h5 class="" style="display: inline;">รูปแบบการชำระดอกเบี้ย</h5>
+              <h5 class="form-label text-danger" style="display: inline;">*</h5>
+              <div class="mb-4 col-12 ">
+                <select name="rate_name" class="form-control w-60" require>
+                  <option value="" selected="selected">เลือกรูปแบบการชำระ</option>
+                  <option value="คิดดอกเบี้ยแบบจ่ายก่อน">คิดดอกเบี้ยแบบจ่ายก่อน</option>
+                  <option value="คิดดอกเบี้ยแบบจ่ายทีหลัง">คิดดอกเบี้ยแบบจ่ายทีหลัง</option>
+                  <option value="คิดดอกเบี้ยแบบโรงรับจำนำ">คิดดอกเบี้ยแบบโรงรับจำนำ</option>
+                </select>
               </div>
               <div class="mb-4 col-3 ">
                 <h6>ภาพยืนยันตัวตน*</h6>
                 <input type="file" id="myFile" name="c_img" multiple required>
               </div>
               <div type="hidden">
-                <select type="hidden" name="s_role" require>
-                  <option value="1" selected></option>
+                <select name="s_role" require hidden>
+                  <option value="1" selected hidden></option>
                 </select>
               </div>
 
@@ -198,7 +213,7 @@
               <div class=" mb-4 col-6 ">
                 <h6 style="display: inline;">อีเมล</h6>
                 <h6 class="form-label text-danger" style="display: inline;">*</h6>
-                <input type="email" class="form-control " name="c_email" value="<?=$result['c_email'] ?>" placeholder="example@gmail.com" autocomplete="off" require>
+                <input type="email" class="form-control " name="c_email" value="<?= $result['c_email'] ?>" placeholder="example@gmail.com" autocomplete="off" require>
               </div>
             </div>
           </div>
@@ -223,63 +238,63 @@
 
 </html>
 <style>
-    .wrapper-progressBar {
-        width: 100%
-    }
+  .wrapper-progressBar {
+    width: 100%
+  }
 
-    .progressBar {
-        font-size: 1em;
-    }
+  .progressBar {
+    font-size: 1em;
+  }
 
-    .progressBar li {
-        list-style-type: none;
-        float: left;
-        width: 30%;
-        position: relative;
-        text-align: center;
+  .progressBar li {
+    list-style-type: none;
+    float: left;
+    width: 30%;
+    position: relative;
+    text-align: center;
 
 
-    }
+  }
 
-    .progressBar li:before {
-        content: " ";
-        line-height: 30px;
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-        border: 1px solid;
-        display: block;
-        text-align: center;
-        margin: 0 auto 10px;
-        background-color: white
-    }
+  .progressBar li:before {
+    content: " ";
+    line-height: 30px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border: 1px solid;
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px;
+    background-color: white
+  }
 
-    .progressBar li:after {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 4px;
-        background-color: #ddd;
-        top: 15px;
-        left: -50%;
-        z-index: -1;
-    }
+  .progressBar li:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: #ddd;
+    top: 15px;
+    left: -50%;
+    z-index: -1;
+  }
 
-    .progressBar li:first-child:after {
-        content: none;
-    }
+  .progressBar li:first-child:after {
+    content: none;
+  }
 
-    .progressBar li.active {
-        color: rgb(111, 0, 96);
-    }
+  .progressBar li.active {
+    color: rgb(111, 0, 96);
+  }
 
-    .progressBar li.active:before {
-        border-color: rgb(111, 0, 96);
-        background-color: rgb(111, 0, 96);
+  .progressBar li.active:before {
+    border-color: rgb(111, 0, 96);
+    background-color: rgb(111, 0, 96);
 
-    }
+  }
 
-    .progressBar .active:after {
-        background-color: dodgerblue;
-    }
+  .progressBar .active:after {
+    background-color: dodgerblue;
+  }
 </style>

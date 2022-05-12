@@ -16,17 +16,19 @@
 
       <div class="card-body">
         <?php
-        if (isset($_POST) && !empty($_POST)) {
+         
+        if (isset($_POST['submit']) && !empty($_POST)) {
           /* echo '<pre>';
           print_r($_FILES);
           echo '</pre>';
           exit(); */
-          $social_name = $_POST['social_name'];
+          /* $social_name = $_POST['social_name'];
           $social_contact = $_POST['social_contact'];
           $price_img = $_POST['price_img'];
-          $s_type = $_POST['s_type'];
+          $s_type = $_POST['s_type']; */
 
-          if (isset($_FILES['s_img']['name']) && !empty($_FILES['s_img']['name'])) {
+          /* *********************************************** */
+          /* if (isset($_FILES['s_img']['name']) && !empty($_FILES['s_img']['name'])) {
             $extension = array("jpeg", "jpg", "png");
             $target = 'upload/social/';
             $filename = $_FILES['s_img']['name'];
@@ -68,26 +70,42 @@
             }
           } else {
             $filename = '';
-          }
+          } */
+          /* *********************************************** */
           //echo $filename;
           //exit();
-
-          $sql = "INSERT INTO tbl_social (social_name, social_contact, price_img, s_type, s_img)
-                      VALUES ('$social_name', '$social_contact', '$price_img', '$s_type', '$filename')";
-
-          if (mysqli_query($connection, $sql)) {
-            //echo "เพิ่มข้อมูลสำเร็จ";
-            $alert = '<script type="text/javascript">';
-            $alert .= 'alert("เพิ่มข้อมูลสำเร็จ");';
-            $alert .= 'window.location.href = "?page=pledge";';
-            $alert .= '</script>';
-            echo $alert;
-            exit();
-          } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($connection);
-          }
-
-          mysqli_close($connection);
+          
+            $extension = array("jpeg", "jpg", "png");
+            $location = "upload/social/";
+            $social_name = $_POST['social_name'];
+            $social_contact = $_POST['social_contact'];
+            $price_img = $_POST['price_img'];
+            $s_type = $_POST['s_type'];
+            $file1 = $_FILES['img1']['name'];
+            $file_tmp1 = $_FILES['img1']['tmp_name'];
+            $file2 = $_FILES['img2']['name'];
+            $file_tmp2 = $_FILES['img2']['tmp_name'];
+            $file3 = $_FILES['img3']['name'];
+            $file_tmp3 = $_FILES['img3']['tmp_name'];
+            $data = [];
+            $data = [$file1, $file2, $file3];
+            $images = implode(' ', $data);
+            $query = "INSERT INTO tbl_social (social_name, social_contact, price_img, s_type, s_img) VALUES ('$social_name', '$social_contact', '$price_img', '$s_type', '$images')";
+            $fire = mysqli_query($connection, $query);
+            if ($fire) {
+              move_uploaded_file($file_tmp1, $location . $file1);
+              move_uploaded_file($file_tmp2, $location . $file2);
+              move_uploaded_file($file_tmp3, $location . $file3);
+              $alert = '<script type="text/javascript">';
+              $alert .= 'alert("เพิ่มข้อมูลสำเร็จ");';
+              $alert .= 'window.location.href = "?page=pledge";';
+              $alert .= '</script>';
+              echo $alert;
+              exit();
+            } else {
+              echo "Error: " . $sql . "<br>" . mysqli_error($connection);
+            }
+            mysqli_close($connection);
         }
         //print_r($_POST);
         ?>
@@ -130,8 +148,12 @@
           </div>
           <div class="mb-4 col-3 ">
             <h5 style="display: inline;">ภาพถ่ายสินค้าจริง</h5>
-            <h5 class="form-label text-danger" style="display: inline;">*</h5>
-            <input type="file" id="myFile" name="s_img" multiple required>
+            <h5  class="form-label text-danger" style="display: inline;">*</h5>
+            <input type="file"  id="myFile" name="img1" multiple required>
+            &nbsp;
+            <input type="file" id="myFile" name="img2" multiple>
+            &nbsp;
+            <input type="file" id="myFile" name="img3" multiple>
           </div>
           <div class="mb-3 col-3 ">
             <h5>ราคาประเมินจากภาพ</h5>
@@ -145,7 +167,7 @@
         <a href="?page=<?= $_GET['page'] ?>" class="btn btn-dark ">ย้อนกลับ</a>
       </div>
       <div class="flex-fill d-flex justify-content-end gap-1">
-        <button type="submit" class="btn bg-gradient-dark pull-right ">บันทึก</button>
+        <button type="submit" name="submit" class="btn bg-gradient-dark pull-right ">บันทึก</button>
         <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-color1 bg-gradient-primary theme-btn  pull-right">ดำเนินการต่อ</a>
       </div>
       </form>

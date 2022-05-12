@@ -20,7 +20,10 @@
         } elseif (isset($_GET['page']) && $_GET['page'] == 'interest') {
           if (isset($_GET['function']) && $_GET['function'] == 'update') {
             include('customer/interest/Update-In.php');
-          } else {
+          }elseif (isset($_GET['function']) && $_GET['function'] == 'insert') {
+            include('customer/interest/insert.php');
+          }
+           else {
             include('customer/interest/index.php');
           }
         } elseif (isset($_GET['page']) && $_GET['page'] == 'pledge') {

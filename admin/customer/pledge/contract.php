@@ -1,12 +1,17 @@
 <?php
+
+
+
+
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
     $sql = "SELECT * FROM tbl_social
-    INNER JOIN tbl_rate
-    ON tbl_social.s_id = tbl_rate.r_id WHERE s_id = '$id'";
+    WHERE s_id = '$id'";
     $query = mysqli_query($connection, $sql);
     $result = mysqli_fetch_assoc($query);
-  }
+}
+
+
 
 ?>
 
@@ -78,11 +83,11 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                             </div>
                             <div class=" mb-4 ">
                                 <h6 style="display: inline;">ดอกเบี้ย :</h6>
-                                <td width="25%" style="display: inline;">1200 บาท</td>
+                                <td width="25%" style="display: inline;"><?= $result['principle'] * 0.02 * $result['r_mount'] ?> บาท</td>
                             </div>
                             <div class=" mb-4 ">
                                 <h6 style="display: inline;">เงินที่ต้องจ่ายต่องวด :</h6>
-                                <td width="25%" style="display: inline;">120 บาท</td>
+                                <td width="25%" style="display: inline;"><?= ($result['principle'] * 0.02) ?> บาท</td>
                             </div>
 
                         </div>
@@ -109,6 +114,10 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                 <h6 style="display: inline;">รายละเอียดสินค้า:</h6>
                                 <td width="25%" style="display: inline;"><?= $result['s_type'] ?></td>
                             </div>
+                            <div class=" mb-6">
+                                <h6 style="display: inline;">รูปแบบการชำระ:</h6>
+                                <td width="25%" style="display: inline;"><?= $result['rate_name'] ?></td>
+                            </div>
 
                         </div>
 
@@ -116,9 +125,9 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
             </div>
 
             <div class="d-flex flex-row">
-                <div class="justify-content-start flex-fill ">
+                <!-- <div class="justify-content-start flex-fill ">
                     <a href="?page=<?= $_GET['page'] ?>&function=updated" class="btn bg-gradient-dark">ย้อนกลับ</a>
-                </div>
+                </div> -->
                 <div class="flex-fill d-flex justify-content-end gap-1">
                     <a href="?page=<?= $_GET['page'] ?>&function=success" class="btn btn-color1 bg-gradient-primary theme-btn  pull-right">ร่างสัญญา</a>
 
