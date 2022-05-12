@@ -14,7 +14,7 @@
             <!-- end title -->
             <hr class="mb-4">
 
-            <div class="card-body">
+           
                 <?php
                 if (isset($_GET['id']) && !empty($_GET['id'])) {
                     $id = $_GET['id'];
@@ -67,192 +67,86 @@
 
                 //print_r($_POST);
                 ?>
-
-                <script type="text/javascript"></script>
-                <form action="" method="post" enctype="multipart/form-data">
-                    <div class="row">
-                        <div class="col-xs-12 col-md-8 offset-md-2 pb-0">
-                        </div>
-                        <div class="d-flex flex-row">
-                            <div class="justify-content-start flex-fill ">
-                                <div class=" mb-4 col-10 ">
-                                    <h6 style="display: inline;">เลขที่ราชการออกให้ :</h6>
-                                    <td width="25%" style="display: inline;"><?= $result['code_id'] ?></td>
-                                </div>
-                                <div class=" mb-4 ">
-                                    <h6 style="display: inline;">ชื่อผู้จำนำ :</h6>
-                                    <td width="25%" style="display: inline;"><?= $result['s_name'] ?></td>
-                                    <h6 style="display: inline;">นามสกุล :</h6>
-                                    <td width="25%" style="display: inline;"><?= $result['s_lastname'] ?></td>
-                                </div>
-                                <div class=" mb-4 col-10 ">
-                                    <h6 style="display: inline;">รายละเอียดสินค้า</h6>
-                                    <td width="25%" style="display: inline;"><?= $result['s_type'] ?></td>
-                                </div>
-                                <!-- <div class=" mb-4 col-10 ">
-                                    <h6 style="display: inline;">วันที่กำหนดชำระ :</h6>
-                                    <td width="25%" style="display: inline;">01/01/2565</td>
-                                </div> -->
-                            </div>
-                            <div class="justify-content-start flex-fill ">
-                                <div class=" mb-4 ">
-                                    <h6 style="display: inline;">ช่องทางการติดต่อ :</h6>
-                                    <td width="25%" style="display: inline;"><?= $result['social_contact'] ?></td>
-                                    <h6 style="display: inline;">ชื่อผู้ใช้ :</h6>
-                                    <td width="25%" style="display: inline;"><?= $result['social_name'] ?></td>
-                                </div>
-                                <div class=" mb-4 ">
-                                    <h6 style="display: inline;">เงินที่ต้องจ่ายต่องวด :</h6>
-                                    <td width="25%" style="display: inline;"><?= ($result['principle'] * 0.02) ?> บาท</td>
-                                </div>
-                                <div class=" mb-4 ">
-                                    <h6 style="display: inline;">จำนวนงวดที่ต้องชำระ :</h6>
-                                    <td width="25%" style="display: inline;"><?= $result['r_mount'] ?> เดือน</td>
-                                    <!-- <h6 style="display: inline;">จำนวนงวดที่เหลือ :</h6>
-                                    <td width="25%" style="display: inline;"><?= $result['r_mount'] ?> เดือน</td> -->
-                                </div>
-                            </div>
-
-                        </div>
-                <div class="row">
-                <div class="col-xs-12 col-md-8 offset-md-2 pb-0">
-                </div>
+            
     <div class="card mb-4">
     <div class="card-body">
     <h4 class="mb-4" >ข้อมูลการจำนำ</h4>
-        <div class="d-flex flex-row" >
+        <div class="d-flex flex-row mb-6" >
             <div class="justify-content-start flex-fill ">
                     <div class=" mb-3 col-10 " >
                         <h6 style="display: inline;">เลขที่ราชการออกให้ผู้จำนำ :</h6>
-                        <td width="25%" style="display: inline;">1349901025750</td>
+                        <td width="25%" style="display: inline;"><?= $result['code_id'] ?></td>
                     </div>
                     <div class=" mb-3 ">
-                        <h6 style="display: inline;">ชื่อผู้จำนำ :</h6><td width="25%" style="display: inline;">วรรณวษา</td>
-                        <h6 style="display: inline;">นามสกุล :</h6><td width="25%" style="display: inline;">ทรัพย์อินทร์</td>
+                        <h6 style="display: inline;">ชื่อผู้จำนำ :</h6>
+                        <td width="25%" style="display: inline;"><?= $result['s_name'] ?></td>
+                        <h6 style="display: inline;">นามสกุล :</h6>
+                        <td width="25%" style="display: inline;"><?= $result['s_lastname'] ?></td>
+
                     </div>
                     <div class=" mb-3 col-10 ">
                         <h6 style="display: inline;">รายละเอียดสินค้า :</h6>
-                        <td width="25%" style="display: inline;">สร้อยคอทองคำ พร้อมจี้ 1 บาท</td>
+                        <td width="25%" style="display: inline;"><?= $result['s_type'] ?></td>
                     </div>
-                    <div class="  col-10 ">
+                    <div class="   ">
                         <h6 style="display: inline;">วันที่กำหนดชำระ :</h6>
-                        <td width="25%" style="display: inline;">01/01/2565</td>
+                        <td width="25%" style="display: inline;"><?= $result['r_mount'] ?> เดือน</td>
                     </div>
             </div>
             <div class="justify-content-start flex-fill ">
             <div class=" mb-3 " >
-                        <h6 style="display: inline;">ช่องทางการติดต่อ :</h6><td width="25%" style="display: inline;">Facebook</td>
-                        <h6 style="display: inline;">ชื่อผู้ใช้ :</h6><td width="25%" style="display: inline;">Pam Wanwasa</td>
+                        <h6 style="display: inline;">ช่องทางการติดต่อ :</h6>
+                        <td width="25%" style="display: inline;"><?= $result['social_contact'] ?></td>
+                        <h6 style="display: inline;">ชื่อผู้ใช้ :</h6>
+                        <td width="25%" style="display: inline;"><?= $result['social_name'] ?></td>
                     </div>    
                     <div class=" mb-3 ">
                         <h6 style="display: inline;">เงินที่ต้องจ่ายต่องวด :</h6>
-                        <td width="25%" style="display: inline;">120 บาท</td>
+                        <td width="25%" style="display: inline;"><?= ($result['principle'] * 0.02) ?> บาท</td>
                     </div><div class=" mb-3 ">
                         <h6 style="display: inline;">จำนวนงวดที่ชำระเเล้ว :</h6><td width="25%" style="display: inline;">3 เดือน</td>
                         <h6 style="display: inline;">จำนวนงวดที่เหลือ :</h6><td width="25%" style="display: inline;">9 เดือน</td>
                     </div>
-                    <div class="bg-white mb-6">
-                        <h5 class="mb-4 m-5 ">หลักฐานการชำระค่างวด</h5>
-                        <div class="d-flex flex-row">
-                            <div class="justify-content-start flex-fill ">
-                            <div class=" mb-4 ">
-                                        <h6 style="display: inline;">จำนวนเงิน</h6>
-                                        <input type="number" min="0" id="myFile" name="in_date" required> บาท
-                                    </div>
-                                <div class=" mb-4 col-10 ">
-                                    <h6>แนบภาพหลักฐานการชำระค่างวด</h6>
-                                    <input type="file" id="myFile" name="in_img" multiple required>
-                                </div>
-                            </div>
-                            <div class="justify-content-start flex-fill ">
-                                <div class=" mb-4 ">
-                                    <div class=" mb-4 ">
-                                        <h6 style="display: inline;">วัน-เวลาโอน</h6>
-                                        <input type="datetime-local" id="myFile" name="in_date" required>
-                                    </div>
-                                    <!-- <div class=" mb-4 ">
-                                        <h6 style="display: inline;">วันที่กำหนดชำระ</h6>
-                                        <input type="date" id="myFile" name="created_date" required>
-                                    </div> -->
-                                    <button type="submit" href="#" class="btn bg-gradient-dark text-end">บันทึก</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <div>
-
-                    </div>
-                    <h5 class="mb-4 m-5 ">ประวัติการโอน</h5>
-
-                    <div class="card-body overflow-auto p-3 bg-white" style="text-align: center">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">ลำดับ</th>
-                                    <th scope="col">รอบการชำระ</th>
-                                    <th scope="col">ชื่อผู้จำนำ</th>
-                                    <th scope="col">จำนวนเงินที่ชำระ</th>
-                                    <th scope="col">สถานะ</th>
-                                    <th scope="col">รายละเอียดการโอน</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-
-
-                                <?php
-                                $sql = "SELECT * FROM tbl_interest INNER JOIN tbl_social
-                                ON tbl_interest.in_id = tbl_social.s_id WHERE in_id ='$id'";
-                                $query = mysqli_query($connection, $sql);
-                                $i = 0;
-                                foreach ($query as $data) : ?>
-                                    <tr>
-                                        <td><?= ++$i ?></td>
-                                        <td><?= $data['in_date'] ?></td>
-                                        <td>#</td>
-                                        <td><?= $data['s_name'] ?></td>
-                                        <td>#</td>
-                                        <td> <a href="?page=<?= $_GET['page'] ?>&function=updated&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-dark">ดูรายละเอียด</a>
-                                        </td>
-
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                    <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-color1 bg-gradient-primary theme-btn  pull-right">ย้อนกลับ</a>
-                  
             </div>
         </div>
+   
         <h4 style="margin-left: 30px;" >หลักฐานการชำระค่างวด</h4>
         <div class="bg-gray1 mb-3 ">
         <div class="d-flex flex-row m-3" >
             <div class="justify-content-start flex-fill col-5" style="margin-left:3rem">
-                    <div class="">
+                    <div class="col-12 mt-3">
                     <h6 >แนบภาพหลักฐานการชำระค่างวด</h6>
-                    <input type="file" id="myFile" name="s_img" multiple required>
-          </div>
+                    <input class="form-control " type="file" id="myFile" name="in_img" multiple required>
+
+                </div>
             </div>
-            <div class="justify-content-start flex-fill col-6" >
-                    <div class=" mb-3 col-5">
+            <div class="justify-content-start flex-fill col-6" style="margin-left:3rem">
+                    <div class=" mb-3 mt-3 col-8">
                         <h6 style="display: inline;">วันที่ชำระค่างวด</h6>
-                        <input  class="form-control " placeholder="วัน/เดือน/ปี" autocomplete="off">
+                        <input class="form-control "type="datetime-local" id="myFile" name="in_date" required>
                     </div>
-            </div>
-            <div class="col-3 mt-4">
+                    <div class=" mb-3 col-8">
+                        <h6 style="display: inline;">จำนวนเงิน</h6>
+                        <input class="form-control " type="number" min="0" id="myFile" name="in_date" required> บาท
+                    </div>
+                </div>               
+
+            <div class="col-3 mt-6">
             <a href="#" class="col-6 btn btn-green3 text-white">บันทึก</a>
             </div>
         </div>
             </div>
+        <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-sm btn-dark text-white">ย้อนกลับ</a>
+        <a href="?page=<?= $_GET['page'] ?>&function=showDetails" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a>  
+
             </div> 
     </div>               
         <div> 
-        </div>      
+            
+        </div>   
+
         </div>
-        <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-sm btn-dark text-white">ย้อนกลับ</a>
-        <a href="?page=<?= $_GET['page'] ?>&function=showDetails" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a>  
+        
                 </form>
             </div>
         </div>

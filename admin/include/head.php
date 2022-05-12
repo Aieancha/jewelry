@@ -201,4 +201,46 @@ body {
         clear: both;
         display: table;
     }
+    body {
+        font-family: Arial;
+        border-radius: 25px;
+        background-color: #343a40;
+    }
+
+    * {
+        box-sizing: border-box;
+        border-radius: 10px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+
+    form.example input[type=text] {
+        padding: 4px;
+    font-size: 13px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #ffff;
+    }
+
+    form.example button {
+        float: left;
+        width: 20%;
+        padding: 2px;
+        background:#344767;
+        color: white;
+        font-size: 15px;
+        border: 1px solid grey;
+        border-left: none;
+        cursor: pointer;
+        border-radius: 10px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+    }
+    form.example::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+    
 </style>

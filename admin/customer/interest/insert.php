@@ -41,7 +41,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         <!-- ด้านล่าง -->
         <div class="d-flex flex-row">
             <div class="flex-fill d-flex justify-content-end gap-1">
-                <a href="?page=<?= $_GET['page'] ?>&function=index" class="btn bg-gradient-dark">ย้อนกลับ</a>
+                <a href="?page=<?= $_GET['page'] ?>&function=index" class="btn btn-green2">ย้อนกลับ</a>
             </div>
         </div>
     </div>

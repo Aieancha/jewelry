@@ -14,13 +14,16 @@ $query = mysqli_query($connection, $sql);
     </div>
   </div>
 
-  <div class="d-flex justify-content-end">
-    <form class="example" action="/action_page.php" style="margin: 7px;;max-width:200px">
-      <input type="text" placeholder="เลขที่ราชการออกให้.." name="search2">
-      <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
-    <!--a href="?page=<?= $_GET['page'] ?>&function=insert" class="btn bg-gradient-primary">เพิ่มข้อมูลการจำนำ</a-->
-  </div>
+  <div class="row justify-content-between">
+     <div class="d-flex justify-content-end">
+        <div class="d-flex justify-content-end mb-2 ">
+            <form class="example " action="/action_page.php" style="margin: 7px;;max-width:200px">
+                <input type="text" placeholder="ชื่อผู้ใช้งาน.." name="search2 ">
+                <button type="submit"><i class="fa fa-search btn-dark"></i></button>
+            
+        </div>
+        <a href="?#=<?= $_GET['#'] ?>&function=insert" class="btn btn-sm btn-dark text-white">สถานะ</a>
+    </div>   
   <div class="row">
     <div class="card">
       <!-- title -->
@@ -53,7 +56,7 @@ $query = mysqli_query($connection, $sql);
                 <td><?= $data['s_name'] ?></td>
                 <td><?= $data['principle']*0.02*$data['r_mount'] ?></td>
                 <td class="text-danger"><?php echo $data['status_name']; ?></td>
-                <td> <a href="?page=<?= $_GET['page'] ?>&function=update&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-dark">ดูรายละเอียด</a></td>
+                <td> <a href="?page=<?= $_GET['page'] ?>&function=update&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-green3 text-white">ดูรายละเอียด</a></td>
                 </td>
                 <!-- <td> <a href="?page=<?= $_GET['page'] ?>&function=check" class="btn btn-sm btn-dark">ทดลองรุูป</a></td> -->
 
@@ -76,51 +79,4 @@ mysqli_close($connection);
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <style>
-    body {
-      font-family: Arial;
-      border-radius: 25px;
-    }
-
-    * {
-      box-sizing: border-box;
-      border-radius: 10px;
-      border-top-right-radius: 0px;
-      border-bottom-right-radius: 0px;
-
-
-    }
-
-    form.example input[type=text] {
-      padding: 5px;
-      font-size: 17px;
-      border: 1px solid grey;
-      float: left;
-      width: 80%;
-      background: #ffff;
-
-    }
-
-    form.example button {
-      float: left;
-      width: 20%;
-      padding: 5px;
-      background: #C71585;
-      color: white;
-      font-size: 17px;
-      border: 1px solid grey;
-      border-left: none;
-      cursor: pointer;
-      border-radius: 10px;
-      border-top-left-radius: 0px;
-      border-bottom-left-radius: 0px;
-    }
-
-
-
-    form.example::after {
-      content: "";
-      clear: both;
-      display: table;
-    }
-  </style>
+ 
