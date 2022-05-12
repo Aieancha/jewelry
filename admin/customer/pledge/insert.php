@@ -6,30 +6,27 @@
     <div class="container-fluid">
       <!-- title -->
       <div class="row justify-content-between">
-        
+        <div class="col-auto">
+          <h3 class="font-weight-bolder text-dark text-gradient ">ขั้นตอนการบันทึกข้อมูลการจำนำเครื่องประดับ</h3>
+        </div>
 
       </div>
       <!-- end title -->
-      <div class="card mb-3">
-            <div class="card-body">
-                <div class="col-auto mb-3">
-                <div class="col-auto">
-          <h3 class="font-weight-bolder text-dark text-gradient ">ขั้นตอนการบันทึกข้อมูลการจำนำเครื่องประดับ</h3>
-        </div>
+      <hr class="mb-4">
+
+      <div class="card-body">
         <?php
-         
-        if (isset($_POST['submit']) && !empty($_POST)) {
+        if (isset($_POST) && !empty($_POST)) {
           /* echo '<pre>';
           print_r($_FILES);
           echo '</pre>';
           exit(); */
-          /* $social_name = $_POST['social_name'];
+          $social_name = $_POST['social_name'];
           $social_contact = $_POST['social_contact'];
           $price_img = $_POST['price_img'];
-          $s_type = $_POST['s_type']; */
+          $s_type = $_POST['s_type'];
 
-          /* *********************************************** */
-          /* if (isset($_FILES['s_img']['name']) && !empty($_FILES['s_img']['name'])) {
+          if (isset($_FILES['s_img']['name']) && !empty($_FILES['s_img']['name'])) {
             $extension = array("jpeg", "jpg", "png");
             $target = 'upload/social/';
             $filename = $_FILES['s_img']['name'];
@@ -71,74 +68,52 @@
             }
           } else {
             $filename = '';
-          } */
-          /* *********************************************** */
+          }
           //echo $filename;
           //exit();
-          
-            $extension = array("jpeg", "jpg", "png");
-            $location = "upload/social/";
-            $social_name = $_POST['social_name'];
-            $social_contact = $_POST['social_contact'];
-            $price_img = $_POST['price_img'];
-            $s_type = $_POST['s_type'];
-            $file1 = $_FILES['img1']['name'];
-            $file_tmp1 = $_FILES['img1']['tmp_name'];
-            $file2 = $_FILES['img2']['name'];
-            $file_tmp2 = $_FILES['img2']['tmp_name'];
-            $file3 = $_FILES['img3']['name'];
-            $file_tmp3 = $_FILES['img3']['tmp_name'];
-            $data = [];
-            $data = [$file1, $file2, $file3];
-            $images = implode(' ', $data);
-            $query = "INSERT INTO tbl_social (social_name, social_contact, price_img, s_type, s_img) VALUES ('$social_name', '$social_contact', '$price_img', '$s_type', '$images')";
-            $fire = mysqli_query($connection, $query);
-            if ($fire) {
-              move_uploaded_file($file_tmp1, $location . $file1);
-              move_uploaded_file($file_tmp2, $location . $file2);
-              move_uploaded_file($file_tmp3, $location . $file3);
-              $alert = '<script type="text/javascript">';
-              $alert .= 'alert("เพิ่มข้อมูลสำเร็จ");';
-              $alert .= 'window.location.href = "?page=pledge";';
-              $alert .= '</script>';
-              echo $alert;
-              exit();
-            } else {
-              echo "Error: " . $sql . "<br>" . mysqli_error($connection);
-            }
-            mysqli_close($connection);
+
+          $sql = "INSERT INTO tbl_social (social_name, social_contact, price_img, s_type, s_img)
+                      VALUES ('$social_name', '$social_contact', '$price_img', '$s_type', '$filename')";
+
+          if (mysqli_query($connection, $sql)) {
+            //echo "เพิ่มข้อมูลสำเร็จ";
+            $alert = '<script type="text/javascript">';
+            $alert .= 'alert("เพิ่มข้อมูลสำเร็จ");';
+            $alert .= 'window.location.href = "?page=pledge";';
+            $alert .= '</script>';
+            echo $alert;
+            exit();
+          } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($connection);
+          }
+
+          mysqli_close($connection);
         }
         //print_r($_POST);
         ?>
         <script type="text/javascript"></script>
         <form action="" method="post" enctype="multipart/form-data">
-          <ul class="step-wizard-list">
-            <li class="step-wizard-item current-item">
-                <span class="progress-count">1</span>
-                <span class="progress-label">รอประเมิน</span>
-            </li>
-            <li class="step-wizard-item">
-                <span class="progress-count">2</span>
-                <span class="progress-label">รอร่างสัญญา</span>
-            </li>
-            <li class="step-wizard-item">
-                <span class="progress-count">3</span>
-                <span class="progress-label">ทำรายการเสร็จ</span>
-            </li>
-            
-        </ul>
-            
-            <h4 class="pb-3">กรอกข้อมูลผู้สนใจจำนำเครื่องประดับ</h4>
+          <div class="row">
+            <div class="col-xs-12 col-md-8 offset-md-2 pb-5">
+              <div class="wrapper-progressBar ">
+                <ul class="progressBar">
+                  <li class="active">บันทึกข้อมูลผู้สนใจจำนำ</li>
+                  <li>ประเมินราคาเครื่องประดับ</li>
+                  <li>ร่างสัญญา</li>
+                </ul>
+              </div>
+            </div>
+            <h4 class="pb-5">กรอกข้อมูลผู้สนใจจำนำเครื่องประดับ</h4>
           </div>
-          <div class="mb-3 col-lg-5 t ">
-            <h5 style="display: inline;">ช่องทางการติดต่อ</h5><h5 class="form-label text-danger" style="display: inline;">*</h5>
+          <div class="mb-4 col-lg-5 t ">
+            <h5 style="display: inline;">ช่องทางการติดต่อ</h5>
+            <h5 class="form-label text-danger" style="display: inline;">*</h5>
             <div class="col-sm-12">
-              <select name="social_contact" class="form-control w-40" required>
-                <option value="" selected="selected">เลือกช่องทางการติดต่อ</option>
+              <select name="social_contact" class="form-control w-45" required>
+                <option value="" selected="selected">- เลือกช่องทางการติดต่อ -</option>
                 <option value="facebook">Facebook</option>
                 <option value="line">Line</option>
               </select>
-              
             </div>
             <!-- end title -->
 
@@ -148,40 +123,35 @@
             <h5 class="form-label text-danger" style="display: inline;">*</h5>
             <input type="text" class="form-control " name="social_name" placeholder="กรอกชื่อผู้ใช้ที่ติดต่อ" autocomplete="off" required>
           </div>
-          <div class="mb-3 col-3 ">
+          <div class="mb-4 col-3 ">
             <h5 style="display: inline;">ประเภทสินทรัพย์จำนำ</h5>
             <h5 class="form-label text-danger" style="display: inline;">*</h5>
             <input type="text" class="form-control " name="s_type" placeholder="สินทรัพย์ที่ใช้จำนำ" autocomplete="off" required>
           </div>
-          <div class="mb-3 col-3 ">
+          <div class="mb-4 col-3 ">
             <h5 style="display: inline;">ภาพถ่ายสินค้าจริง</h5>
-            <h5  class="form-label text-danger" style="display: inline;">*</h5>
-            <input type="file"  id="myFile" name="img1" multiple required>
-            &nbsp;
-            <input type="file" id="myFile" name="img2" multiple>
-            &nbsp;
-            <input type="file" id="myFile" name="img3" multiple>
+            <h5 class="form-label text-danger" style="display: inline;">*</h5>
+            <input type="file" id="myFile" name="s_img" multiple required>
           </div>
           <div class="mb-3 col-3 ">
             <h5>ราคาประเมินจากภาพ</h5>
-            <input type="number" min="0" name="price_img" class="form-control1 " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
+            <input type="number" min="0" name="price_img" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
           </div>
 
-      
-      <div class="d-flex flex-row ">
-      <div class="justify-content-start flex-fill ">
-      <div class="flex-fill d-flex justify-content-end gap-1">
-        <button type="submit" class="btn btn-blue2 pull-right text-white ">บันทึก</button>
-        <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-color1 btn-green3 text-white theme-btn  pull-right">ดำเนินการต่อ</a>
-      </div> 
       </div>
+    </div>
+    <div class="d-flex flex-row">
+      <div class="justify-content-start flex-fill ">
+        <a href="?page=<?= $_GET['page'] ?>" class="btn btn-dark ">ย้อนกลับ</a>
+      </div>
+      <div class="flex-fill d-flex justify-content-end gap-1">
+        <button type="submit" class="btn bg-gradient-dark pull-right ">บันทึก</button>
+        <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-color1 bg-gradient-primary theme-btn  pull-right">ดำเนินการต่อ</a>
       </div>
       </form>
     </div>
-    </div>
-   
   </div>
-      </div>
+
 
   </div>
   </div>
