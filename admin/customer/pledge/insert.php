@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+$code = "A";
+$yearMonth = substr(date("Y")+543, -2).date("m");
 
+//query MAX ID 
+$sqli = "SELECT MAX(s_id) AS s_id FROM tbl_social";
+$qry = mysqli_query($connection,$sqli) or die("Error Query [".$sqli."]");
+$rs = mysqli_fetch_assoc($qry);
+$maxId = substr($rs['s_id'], -5);  //ข้อมูลนี้จะติดรหัสตัวอักษรด้วย ตัดเอาเฉพาะตัวเลขท้ายนะครับ
+//$maxId = 237;   //<--- บรรทัดนี้เป็นเลขทดสอบ ตอนใช้จริงให้ ลบ! ออกด้วยนะครับ
+$maxId = ($maxId + 1); 
+
+$maxId = substr("00000".$maxId, -5);
+$nextId = $code.$yearMonth.$maxId;
+//echo $nextId;
+?>
 <body class="g-sidenav-show bg-gray-100">
   <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
     <div class="container-fluid">
@@ -25,6 +40,7 @@
           $social_contact = $_POST['social_contact'];
           $price_img = $_POST['price_img'];
           $s_type = $_POST['s_type'];
+          $nextId = $_POST['ref_img'];
 
           if (isset($_FILES['s_img']['name']) && !empty($_FILES['s_img']['name'])) {
             $extension = array("jpeg", "jpg", "png");
@@ -72,8 +88,8 @@
           //echo $filename;
           //exit();
 
-          $sql = "INSERT INTO tbl_social (social_name, social_contact, price_img, s_type, s_img)
-                      VALUES ('$social_name', '$social_contact', '$price_img', '$s_type', '$filename')";
+          $sql = "INSERT INTO tbl_social (social_name, social_contact, price_img, s_type, s_img, ref_img)
+                      VALUES ('$social_name', '$social_contact', '$price_img', '$s_type', '$filename', '$nextId')";
 
           if (mysqli_query($connection, $sql)) {
             //echo "เพิ่มข้อมูลสำเร็จ";
@@ -136,7 +152,9 @@
           <div class="mb-3 col-3 ">
             <h5>ราคาประเมินจากภาพ</h5>
             <input type="number" min="0" name="price_img" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
+            <input class="form-control " type="hidden" name="ref_img" value="<?php echo $nextId ?>" required>
           </div>
+      
 
       </div>
     </div>

@@ -23,130 +23,135 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         <div class="container-fluid">
             <!-- title -->
             <div class="row justify-content-between">
-                
+
 
             </div>
             <!-- end title -->
-            
+
             <div class="card-body">
-            <div class="card mb-3">
-            <div class="card-body">
-                <div class="col-auto mb-3">
-                <div class="col-auto">
-                    <h3 class="font-weight-bolder text-dark text-gradient ">ขั้นตอนการบันทึกข้อมูลการจำนำเครื่องประดับ</h3>
-                </div>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="col-auto mb-3">
+                            <div class="col-auto">
+                                <h3 class="font-weight-bolder text-dark text-gradient ">ขั้นตอนการบันทึกข้อมูลการจำนำเครื่องประดับ</h3>
+                            </div>
 
 
-                <script type="text/javascript"></script>
-                <form action="" method="post" enctype="multipart/form-data">
-                        <ul class="step-wizard-list">
-            <li class="step-wizard-item">
-                <span class="progress-count">1</span>
-                <span class="progress-label">รอประเมิน</span>
-            </li>
-            <li class="step-wizard-item">
-                <span class="progress-count">2</span>
-                <span class="progress-label">รอร่างสัญญา</span>
-            </li>
-            <li class="step-wizard-item">
-                <span class="progress-count">3</span>
-                <span class="progress-label">ทำรายการเสร็จ</span>
-            </li>
-            
-        </ul>
+                            <script type="text/javascript"></script>
+                            <form action="" method="post" enctype="multipart/form-data">
+                                <ul class="step-wizard-list">
+                                    <li class="step-wizard-item">
+                                        <span class="progress-count">1</span>
+                                        <span class="progress-label">รอประเมิน</span>
+                                    </li>
+                                    <li class="step-wizard-item">
+                                        <span class="progress-count">2</span>
+                                        <span class="progress-label">รอร่างสัญญา</span>
+                                    </li>
+                                    <li class="step-wizard-item">
+                                        <span class="progress-count">3</span>
+                                        <span class="progress-label">ทำรายการเสร็จ</span>
+                                    </li>
 
-                        <h5 class="pb-5">กรอกข้อมูลผู้สนใจจำนำเครื่องประดับ</h5>
+                                </ul>
+
+                                <h5 class="pb-5">กรอกข้อมูลผู้สนใจจำนำเครื่องประดับ</h5>
+                        </div>
+
+                        <div class="d-flex flex-row">
+                            <div class="justify-content-start flex-fill ">
+                                <div class=" mb-4 col-6 ">
+                                    <h6 style="display: inline;">ช่องทางการติดต่อ :</h6>
+                                    <td width="25%" style="display: inline;"><?= $result['social_contact'] ?></td>
+                                </div>
+                                <div class=" mb-4 col-10 ">
+                                    <h6 style="display: inline;">ชื่อผู้ใช้ :</h6>
+                                    <td width="25%" style="display: inline;"><?= $result['social_name'] ?></td>
+                                </div>
+                                <div class=" mb-4 col-10 ">
+                                    <h6 style="display: inline;">ภาพถ่ายสินค้าจริง</h6>
+                                    <img src="upload/social/<?= $result['s_img'] ?>" alt="jewelry" width="304" height="228">
+                                </div>
+                                <div class=" mb-4 col-10 ">
+                                    <h6 style="display: inline;">ราคาประเมินข้างต้น :</h6>
+                                    <td width="25%" style="display: inline;"><?= $result['price_img'] ?> บาท</td>
+                                </div>
+                                <div class=" mb-4 col-10 ">
+                                    <h6 style="display: inline;">ราคาประเมินจากสินค้าจริง:</h6>
+                                    <td width="25%" style="display: inline;"><?= $result['price_item'] ?> บาท</td>
+                                </div>
+                                <div class=" mb-4 col-10 ">
+                                    <h6 style="display: inline;">ราคาที่ตกลงจำนำ:</h6>
+                                    <td width="25%" style="display: inline;"><?= $result['principle'] ?> บาท</td>
+                                </div>
+                                <div class=" mb-4 ">
+                                    <h6 style="display: inline;">จำนวนงวด :</h6>
+                                    <td width="25%" style="display: inline;"><?= $result['r_mount'] ?> เดือน</td>
+                                </div>
+                                <div class=" mb-4 ">
+                                    <h6 style="display: inline;">ดอกเบี้ย :</h6>
+                                    <td width="25%" style="display: inline;"><?= $result['principle'] * 0.02 * $result['r_mount'] ?> บาท</td>
+                                </div>
+                                <div class=" mb-4 ">
+                                    <h6 style="display: inline;">เงินที่ต้องจ่ายต่องวด :</h6>
+                                    <td width="25%" style="display: inline;"><?= ($result['principle'] * 0.02) ?> บาท</td>
+                                </div>
+
+                            </div>
+                            <div class="justify-content-start flex-fill ">
+                                <div class=" mb-4 ">
+                                    <h6 style="display: inline;">เลขที่ราชการออกให้ :</h6>
+                                    <td width="25%" style="display: inline;"><?= $result['code_id'] ?></td>
+                                </div>
+                                <div class=" mb-4 ">
+                                    <h6 style="display: inline;">ชื่อผู้จำนำ :</h6>
+                                    <td width="25%" style="display: inline;"><?= $result['s_name'] ?></td>
+                                    <h6 style="display: inline;">นามสกุล :</h6>
+                                    <td width="25%" style="display: inline;"><?= $result['s_lastname'] ?></td>
+                                </div>
+                                <div class=" mb-4 ">
+                                    <h6 style="display: inline;">ที่อยู่ปัจจุบัน :</h6>
+                                    <td width="25%" style="display: inline;"><?= $result['c_address'] ?></td>
+                                </div>
+                                <div class=" mb-4 ">
+                                    <h6 style="display: inline;">รหัสสินค้า:</h6>
+                                    <td width="25%" style="display: inline;"><?= $result['ref_img'] ?></td>
+                                </div>
+                                <div class=" mb-6">
+                                    <h6 style="display: inline;">รายละเอียดสินค้า:</h6>
+                                    <td width="25%" style="display: inline;"><?= $result['s_type'] ?></td>
+                                </div>
+                                <div class=" mb-6">
+                                    <h6 style="display: inline;">รูปแบบการชำระ:</h6>
+                                    <td width="25%" style="display: inline;"><?= $result['rate_name'] ?></td>
+                                </div>
+                                <div type="hidden">
+                                    <select name="s_role" require hidden>
+                                        <option value="2" selected hidden></option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                        </div>
                     </div>
 
                     <div class="d-flex flex-row">
-                        <div class="justify-content-start flex-fill ">
-                            <div class=" mb-4 col-6 ">
-                                <h6 style="display: inline;">ช่องทางการติดต่อ :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['social_contact'] ?></td>
-                            </div>
-                            <div class=" mb-4 col-10 ">
-                                <h6 style="display: inline;">ชื่อผู้ใช้ :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['social_name'] ?></td>
-                            </div>
-                            <div class=" mb-4 col-10 ">
-                                <h6 style="display: inline;">ภาพถ่ายสินค้าจริง</h6>
-                                <img src="upload/social/<?= $result['s_img'] ?>" alt="jewelry" width="304" height="228">
-                            </div>
-                            <div class=" mb-4 col-10 ">
-                                <h6 style="display: inline;">ราคาประเมินข้างต้น :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['price_img'] ?> บาท</td>
-                            </div>
-                            <div class=" mb-4 col-10 ">
-                                <h6 style="display: inline;">ราคาประเมินจากสินค้าจริง:</h6>
-                                <td width="25%" style="display: inline;"><?= $result['price_item'] ?> บาท</td>
-                            </div>
-                            <div class=" mb-4 col-10 ">
-                                <h6 style="display: inline;">ราคาที่ตกลงจำนำ:</h6>
-                                <td width="25%" style="display: inline;"><?= $result['principle'] ?> บาท</td>
-                            </div>
-                            <div class=" mb-4 ">
-                                <h6 style="display: inline;">จำนวนงวด :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['r_mount'] ?> เดือน</td>
-                            </div>
-                            <div class=" mb-4 ">
-                                <h6 style="display: inline;">ดอกเบี้ย :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['principle'] * 0.02 * $result['r_mount'] ?> บาท</td>
-                            </div>
-                            <div class=" mb-4 ">
-                                <h6 style="display: inline;">เงินที่ต้องจ่ายต่องวด :</h6>
-                                <td width="25%" style="display: inline;"><?= ($result['principle'] * 0.02) ?> บาท</td>
-                            </div>
-
-                        </div>
-                        <div class="justify-content-start flex-fill ">
-                            <div class=" mb-4 ">
-                                <h6 style="display: inline;">เลขที่ราชการออกให้ :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['code_id'] ?></td>
-                            </div>
-                            <div class=" mb-4 ">
-                                <h6 style="display: inline;">ชื่อผู้จำนำ :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['s_name'] ?></td>
-                                <h6 style="display: inline;">นามสกุล :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['s_lastname'] ?></td>
-                            </div>
-                            <div class=" mb-4 ">
-                                <h6 style="display: inline;">ที่อยู่ปัจจุบัน :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['c_address'] ?></td>
-                            </div>
-                            <div class=" mb-4 ">
-                                <h6 style="display: inline;">รหัสสินค้า:</h6>
-                                <td width="25%" style="display: inline;"><?= $result['ref_img'] ?></td>
-                            </div>
-                            <div class=" mb-6">
-                                <h6 style="display: inline;">รายละเอียดสินค้า:</h6>
-                                <td width="25%" style="display: inline;"><?= $result['s_type'] ?></td>
-                            </div>
-                            <div class=" mb-6">
-                                <h6 style="display: inline;">รูปแบบการชำระ:</h6>
-                                <td width="25%" style="display: inline;"><?= $result['rate_name'] ?></td>
-                            </div>
-
-                        </div>
-
-                    </div>
-            </div>
-
-            <div class="d-flex flex-row">
-                <!-- <div class="justify-content-start flex-fill ">
+                        <!-- <div class="justify-content-start flex-fill ">
                     <a href="?page=<?= $_GET['page'] ?>&function=updated" class="btn bg-gradient-dark">ย้อนกลับ</a>
                 </div> -->
-                <div class="flex-fill d-flex justify-content-end gap-1">
-                    <a href="?page=<?= $_GET['page'] ?>&function=success" class="btn btn-color1 btn-green3 text-white theme-btn  pull-right">ร่างสัญญา</a>
-                </div>
+                        <div class="flex-fill d-flex justify-content-end gap-1">
+                            <a href="?page=<?= $_GET['page'] ?>&function=success" class="btn btn-color1 btn-green3 text-white theme-btn  pull-right">ร่างสัญญา</a>
+                        </div>
                     </div>
-           
 
-            
-                </form>
+
+
+                    </form>
+                </div>
             </div>
-        </div>
 
-    </div>
+        </div>
     </div>
 </body>
 
