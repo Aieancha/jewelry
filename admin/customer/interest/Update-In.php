@@ -127,32 +127,54 @@
                     </div> -->
                         </div>
                     </div>
-                    <form action="" method="POST" enctype="multipart/form-data">
-                        <h4 style="margin-left: 30px;">หลักฐานการชำระค่างวด</h4>
-                        <div class="bg-gray1 mb-3 ">
-                            <div class="d-flex flex-row m-3">
-                                <div class="justify-content-start flex-fill col-5" style="margin-left:3rem">
-                                    <div class="col-12 mt-3">
-                                        <h6>แนบภาพหลักฐานการชำระค่างวด</h6>
-                                        <input class="form-control " type="file" id="myFile" name="in_img" multiple required>
+            </div>
+        </div>
+   
+        <h4 style="margin-left: 30px;" >เพิ่มหลักฐานการชำระค่างวด</h4>
+        <div class="bg-gray1 mb-3 ">
+        <div class="d-flex flex-row m-3" >
+            <div class="justify-content-start flex-fill col-5" style="margin-left:3rem">
+                    <div class="col-12 mt-3">
+                    <h6 >แนบภาพหลักฐานการชำระค่างวด</h6>
+                    <input class="form-control " type="file" id="myFile" name="in_img" multiple required>
 
-                                    </div>
-                                </div>
-                                <div class="justify-content-start flex-fill col-6" style="margin-left:3rem">
-                                    <div class=" mb-3 mt-3 col-8">
-                                        <h6 style="display: inline;">วันที่ชำระค่างวด</h6>
-                                        <input class="form-control " type="datetime-local" id="myFile" name="in_date" required>
-                                    </div>
-                                    <div class=" mb-3 col-8">
-                                        <h6 style="display: inline;">จำนวนเงิน</h6>
-                                        <input class="form-control " type="number" min="0" id="myFile" name="in_befor" required>บาท
-                                    </div>
-                                </div>
-                    </form>
-                    <div class="col-3 mt-6">
-                        <button type="submit" class="col-6 btn btn-green3 text-white">บันทึก</button>
-                    </div>
                 </div>
+            </div>
+            <div class="justify-content-start flex-fill col-6" style="margin-left:3rem">
+                    <div class=" mb-3 mt-3 col-8">
+                        <h6 style="display: inline;">วันที่ชำระค่างวด</h6>
+                        <input class="form-control "type="datetime-local" id="myFile" name="in_date" required>
+                    </div>
+                    <div class=" mb-3 col-8">
+                        <h6 style="display: inline;">จำนวนเงิน</h6>
+                        <input class="form-control " type="number" min="0" id="myFile" name="in_date" required> บาท
+                    </div>
+                </div>               
+
+            <div class="col-3 mt-6">
+            <a href="#" class="col-6 btn btn-green3 text-white">บันทึก</a>
+            </div>
+        </div>
+            </div>
+            <div class="d-flex flex-row">
+            <div class="justify-content-start flex-fill ">
+        <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-sm btn-dark text-white">ย้อนกลับ</a>
+            </div>
+        <div class="flex-fill d-flex justify-content-end gap-1">
+        <a href="?page=<?= $_GET['page'] ?>&function=showDetails" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a>  
+            </div>
+            </div> 
+            
+                        
+
+    </div>               
+        <div> 
+            
+        </div>   
+
+        </div>
+        
+                </form>
             </div>
             <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-sm btn-dark text-white">ย้อนกลับ</a>
             <a href="?page=<?= $_GET['page'] ?>&function=showDetails&id=<?= $result['s_id'] ?>" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a>

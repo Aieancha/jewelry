@@ -24,9 +24,9 @@ if($day3['day3']>0){
   <div class="row justify-content-between">
     <div class="col-auto">
       <h3 class="font-weight-bolder text-dark text-gradient ">การจัดการการชำระดอกเบี้ย</h3>
+      
     </div>
   </div>
-
   <div class="row justify-content-between">
      <div class="d-flex justify-content-end">
         <div class="d-flex justify-content-end mb-2 ">
@@ -40,6 +40,7 @@ if($day3['day3']>0){
   <div class="row">
     <div class="card">
       <!-- title -->
+      <h5 class="font-weight-bolder text-dark text-gradient m-3">ตารางแสดงข้อมูลลูกค้าที่ใกล้ครบกำหนดชำระค่างวด</h5>
 
       <!-- end title -->
       <div class="card-body overflow-auto p-3" style="text-align: center">
@@ -69,7 +70,7 @@ if($day3['day3']>0){
                 <td><?= $data['s_name'] ?></td>
                 <td><?= $data['principle']*0.02*$data['r_mount'] ?></td>
                 <td class="text-danger"><?php echo $data['status_name']; ?></td>
-                <td> <a href="?page=<?= $_GET['page'] ?>&function=update&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-green3 text-white">ดูรายละเอียด</a></td>
+                <td> <a href="?page=<?= $_GET['page'] ?>&function=update&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-green3 text-white">อัพเดทสถานะ</a></td>
                 </td>
                 <!-- <td> <a href="?page=<?= $_GET['page'] ?>&function=check" class="btn btn-sm btn-dark">ทดลองรุูป</a></td> -->
 
