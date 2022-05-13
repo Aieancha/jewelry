@@ -61,11 +61,13 @@
             include('profile/edit.php');
           } elseif (isset($_GET['function']) && $_GET['function'] == 'delete') {
             include('profile/delete.php');
-          } else {
+          }  else {
             include('profile/profile.php');
           }
         } elseif (isset($_GET['page']) && $_GET['page'] == 'logout') {
           include('logout/logout.php');
+        }elseif (isset($_GET['page']) && $_GET['page'] == 'allow') {
+          include('profile/allow.php');
         }
 
 

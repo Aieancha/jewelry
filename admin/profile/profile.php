@@ -5,7 +5,7 @@ $query = mysqli_query($connection, $sql);
 <div class="container-fluid py-4">
     <h3>รายชื่อผู้ใช้งานระบบ</h3>
     <div class="d-flex justify-content-end"> 
-    <a href="?page=<?=$_GET['page']?>&function=insert" class="btn-add btn btn-success text-white " > เพิ่มข้อมูลผู้ดูแลระบบ</a>   
+    <a href="?page=<?=$_GET['page']?>&function=allow" class="btn-add btn btn-success text-white " > เพิ่มข้อมูลผู้ดูแลระบบ</a>   
 </div>         
 <div class="">    
     <div class="row">

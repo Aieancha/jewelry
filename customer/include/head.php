@@ -32,4 +32,13 @@
     color: #fff;
     border-color: #9b0e21;
 }
+.center{
+    margin: auto;
+    width : 50%;
+    height : 50%;
+
+}
+.bg-dark{
+    background: #0000;
+}
 </style>
