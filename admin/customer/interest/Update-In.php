@@ -66,7 +66,6 @@
 
                 //print_r($_POST);
                 ?>
-<<<<<<< HEAD
             
     <div class="card mb-4">
     <div class="card-body">
@@ -110,7 +109,7 @@
             </div>
         </div>
    
-        <h4 style="margin-left: 30px;" >หลักฐานการชำระค่างวด</h4>
+        <h4 style="margin-left: 30px;" >เพิ่มหลักฐานการชำระค่างวด</h4>
         <div class="bg-gray1 mb-3 ">
         <div class="d-flex flex-row m-3" >
             <div class="justify-content-start flex-fill col-5" style="margin-left:3rem">
@@ -136,10 +135,17 @@
             </div>
         </div>
             </div>
+            <div class="d-flex flex-row">
+            <div class="justify-content-start flex-fill ">
         <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-sm btn-dark text-white">ย้อนกลับ</a>
+            </div>
+        <div class="flex-fill d-flex justify-content-end gap-1">
         <a href="?page=<?= $_GET['page'] ?>&function=showDetails" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a>  
-
+            </div>
             </div> 
+            
+                        
+
     </div>               
         <div> 
             
@@ -147,78 +153,6 @@
 
         </div>
         
-=======
-
-                <script type="text/javascript"></script>
-                <form action="" method="post" enctype="multipart/form-data">
-                    <div class="row">
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <h4 class="mb-4">ข้อมูลการจำนำ</h4>
-                                <div class="d-flex flex-row">
-                                    <div class="justify-content-start flex-fill ">
-                                        <div class=" mb-3 col-10 ">
-                                            <h6 style="display: inline;">เลขที่ราชการออกให้ผู้จำนำ :</h6>
-                                            <td width="25%" style="display: inline;"><?= $result['code_id'] ?></td>
-                                        </div>
-                                        <div class=" mb-3 ">
-                                            <h6 style="display: inline;">ชื่อผู้จำนำ :</h6>
-                                            <td width="25%" style="display: inline;"><?= $result['s_name'] ?></td>
-                                            <h6 style="display: inline;">นามสกุล :</h6>
-                                            <td width="25%" style="display: inline;"><?= $result['s_lastname'] ?></td>
-                                        </div>
-                                        <div class=" mb-3 col-10 ">
-                                            <h6 style="display: inline;">รายละเอียดสินค้า :</h6>
-                                            <td width="25%" style="display: inline;"><?= $result['s_type'] ?></td>
-                                        </div>
-                                    </div>
-                                    <div class="justify-content-start flex-fill ">
-                                        <div class=" mb-3 ">
-                                            <h6 style="display: inline;">ช่องทางการติดต่อ :</h6>
-                                            <td width="25%" style="display: inline;"><?= $result['social_contact'] ?></td>
-                                            <h6 style="display: inline;">ชื่อผู้ใช้ :</h6>
-                                            <td width="25%" style="display: inline;"><?= $result['social_name'] ?></td>
-                                        </div>
-                                        <div class=" mb-3 ">
-                                            <h6 style="display: inline;">เงินที่ต้องจ่ายต่องวด :</h6>
-                                            <td width="25%" style="display: inline;"><?= ($result['principle'] * 0.02) ?> บาท</td>
-                                        </div>
-                                        <div class="  col-10 ">
-                                            <h6 style="display: inline;">วันที่กำหนดชำระ :</h6>
-                                            <td width="25%" style="display: inline;"><?= $result['c_date'] ?></td>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="bg-white mb-6">
-                                    <h5 class="mb-4 m-5 ">หลักฐานการชำระค่างวด</h5>
-                                    <div class="d-flex flex-row">
-                                        <div class="justify-content-start flex-fill ">
-                                            <div class=" mb-4 ">
-                                                <h6 style="display: inline;">จำนวนเงิน</h6>
-                                                <input type="number" min="0" id="myFile" name="in_date" required> บาท
-                                            </div>
-                                            <div class=" mb-4 col-10 ">
-                                                <h6>แนบภาพหลักฐานการชำระค่างวด</h6>
-                                                <input type="file" id="myFile" name="in_img" multiple required>
-                                            </div>
-                                        </div>
-                                        <div class="justify-content-start flex-fill ">
-                                            <div class=" mb-4 ">
-                                                <div class=" mb-4 ">
-                                                    <h6 style="display: inline;">วัน-เวลาโอน</h6>
-                                                    <input type="datetime-local" id="myFile" name="in_date" required>
-                                                </div>
-                                                <button type="submit" href="#" class="btn bg-gradient-dark text-end">บันทึก</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-sm btn-dark text-white">ย้อนกลับ</a>
-                            <a href="?page=<?= $_GET['page'] ?>&function=showDetails" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a>
-                        </div>
-                    </div>
->>>>>>> afc389bddc99c6beb767a0e719f8589138db34ec
                 </form>
             </div>
         </div>
