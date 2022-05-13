@@ -3,25 +3,21 @@ $sql = "SELECT *
 FROM tbl_social
 INNER JOIN tbl_status
 ON tbl_social.s_role = tbl_status.id
-WHERE tbl_status.id='1'";
+/* WHERE tbl_status.id=2 AND */
+WHERE DATEDIFF(c_date, Now())= 3";
 $query = mysqli_query($connection, $sql);
 ?>
 
 <?php
-mysqli_select_db($connection, "");
-$sqldb="SELECT count(s_id) as day3 FROM tbl_social WHERE DATEDIFF(c_date,Now()) = 3";
-$rs=mysqli_query($connection, $sqldb);
-$day3 = mysqli_fetch_assoc($rs);
-//echo $day3['day3'];
+mysqli_select_db($connection,"");
+$sqldb = "SELECT count(s_id) as day3 FROM tbl_social WHERE DATEDIFF(c_date, Now())= 3";
+$rs = mysqli_query($connection, $sqldb);
+$day3=mysqli_fetch_assoc($rs);
 if($day3['day3']>0){
   $noti_day3 = '<span class="noti-alert">'.$day3['day3'].'</span>';
 }else{
   $noti_day3="";
 }
-
-/* $dt=new DateTime($sqldb);
-$alertDate = $dt->format('d/m/Y');
-echo '99999(',$alertDate,')'; */
 ?>
 
 <div class="container-fluid py-4 ">
@@ -70,7 +66,7 @@ echo '99999(',$alertDate,')'; */
             foreach ($query as $data) : ?>
               <tr>
                 <td><?= ++$i ?></td>
-                <td><?php echo $noti_day3; ?></td>
+                <td><?php echo $data['c_date']; ?></td>
                 <td><?= $data['s_name'] ?></td>
                 <td><?= $data['principle']*0.02*$data['r_mount'] ?></td>
                 <td class="text-danger"><?php echo $data['status_name']; ?></td>

@@ -13,98 +13,119 @@
             <!-- end title -->
             <hr class="mb-4">
 
-           
-                <?php
-                if (isset($_GET['id']) && !empty($_GET['id'])) {
-                    $id = $_GET['id'];
-                    $sql = "SELECT * FROM tbl_social WHERE s_id = '$id'";
-                    $query = mysqli_query($connection, $sql);
-                    $result = mysqli_fetch_assoc($query);
-                }
-                if (isset($_POST) && !empty($_POST)) {
-                    $in_date = $_POST['in_date'];
 
-                    if (isset($_FILES['in_img']['name']) && !empty($_FILES['in_img']['name'])) {
-                        $extension = array("jpeg", "jpg", "png");
-                        $target = 'upload/interest/';
-                        $filename = $_FILES['in_img']['name'];
-                        $filetmp = $_FILES['in_img']['tmp_name'];
-                        $ext = pathinfo($filename, PATHINFO_EXTENSION);
-                        if (in_array($ext, $extension)) {
-                            if (!file_exists($target . $filename)) {
-                                if (move_uploaded_file($filetmp, $target . $filename)) {
-                                    $filename = $filename;
-                                } else {
-                                    echo 'เพิ่มข้อมูลลงโฟล์เดอร์ไม่สำเร็จ';
-                                }
+            <?php
+            if (isset($_GET['id']) && !empty($_GET['id'])) {
+                $id = $_GET['id'];
+                $sql = "SELECT * FROM tbl_social WHERE s_id = '$id'";
+                $query = mysqli_query($connection, $sql);
+                $result = mysqli_fetch_assoc($query);
+                $c_date=$result['c_date'];
+
+                $date = date("Y-m-d");
+                $sql = "UPDATE tbl_social SET c_date='$c_date' where s_id ='$id'";
+                $date =$c_date+ 1;
+                
+                for($i=1; $i < $date; $i++){
+                    $myDate =   "+$i $date" ;
+                }
+                echo "$myDate";
+            }
+            if (isset($_POST) && !empty($_POST)) {
+                $in_date = $_POST['in_date'];
+                $in_befor = $_POST['in_befor'];
+
+                if (isset($_FILES['in_img']['name']) && !empty($_FILES['in_img']['name'])) {
+                    $extension = array("jpeg", "jpg", "png");
+                    $target = 'upload/interest/';
+                    $filename = $_FILES['in_img']['name'];
+                    $filetmp = $_FILES['in_img']['tmp_name'];
+                    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                    if (in_array($ext, $extension)) {
+                        if (!file_exists($target . $filename)) {
+                            if (move_uploaded_file($filetmp, $target . $filename)) {
+                                $filename = $filename;
                             } else {
-                                $newfilename = time() . $filename;
-                                if (move_uploaded_file($filetmp, $target . $newfilename)) {
-                                    $filename = $newfilename;
-                                } else {
-                                    echo 'เพิ่มข้อมูลลงโฟล์เดอร์ไม่สำเร็จ';
-                                }
+                                echo 'เพิ่มข้อมูลลงโฟล์เดอร์ไม่สำเร็จ';
                             }
                         } else {
-                            echo 'ประเภทไฟล์ไม่ถูกต้อง';
+                            $newfilename = time() . $filename;
+                            if (move_uploaded_file($filetmp, $target . $newfilename)) {
+                                $filename = $newfilename;
+                            } else {
+                                echo 'เพิ่มข้อมูลลงโฟล์เดอร์ไม่สำเร็จ';
+                            }
                         }
                     } else {
-                        $filename = '';
+                        echo 'ประเภทไฟล์ไม่ถูกต้อง';
                     }
-                    $sql = "INSERT INTO tbl_interest (in_date, in_img) VALUES ('$in_date', '$filename')";
+                } else {
+                    $filename = '';
+                }
+                $sql = "INSERT INTO tbl_interest (in_date, in_img, in_befor) VALUES ('$in_date', '$filename', '$in_befor')";
 
-                    if (mysqli_query($connection, $sql)) {
-                        echo "เพิ่มข้อมูลสำเร็จ";
-                    } else {
-                        echo "Error: " . $sql . "<br>" . mysqli_error($connection);
-                    }
-
-                    mysqli_close($connection);
+                if (mysqli_query($connection, $sql)) {
+                    echo "เพิ่มข้อมูลสำเร็จ";
+                } else {
+                    echo "Error: " . $sql . "<br>" . mysqli_error($connection);
                 }
 
+                mysqli_close($connection);
+            }
 
+            //print_r($_POST);
+            ?>
 
-                //print_r($_POST);
-                ?>
-            
-    <div class="card mb-4">
-    <div class="card-body">
-    <h4 class="mb-4" >ข้อมูลการจำนำ</h4>
-        <div class="d-flex flex-row mb-6" >
-            <div class="justify-content-start flex-fill ">
-                    <div class=" mb-3 col-10 " >
-                        <h6 style="display: inline;">เลขที่ราชการออกให้ผู้จำนำ :</h6>
-                        <td width="25%" style="display: inline;"><?= $result['code_id'] ?></td>
-                    </div>
-                    <div class=" mb-3 ">
-                        <h6 style="display: inline;">ชื่อผู้จำนำ :</h6>
-                        <td width="25%" style="display: inline;"><?= $result['s_name'] ?></td>
-                        <h6 style="display: inline;">นามสกุล :</h6>
-                        <td width="25%" style="display: inline;"><?= $result['s_lastname'] ?></td>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h4 class="mb-4">ข้อมูลการจำนำ</h4>
+                    <div class="d-flex flex-row mb-6">
+                        <div class="justify-content-start flex-fill ">
+                            <div type="hidden">
+                                <select name="ref_id" require hidden>
+                                    <option value="<?= $result['ref_id'] ?>" selected hidden></option>
+                                </select>
+                            </div>
+                            <div class=" mb-3 col-10 ">
+                                <h6 style="display: inline;">เลขที่ราชการออกให้ผู้จำนำ :</h6>
+                                <td width="25%" style="display: inline;"><?= $result['code_id'] ?></td>
+                            </div>
+                            <div class=" mb-3 ">
+                                <h6 style="display: inline;">ชื่อผู้จำนำ :</h6>
+                                <td width="25%" style="display: inline;"><?= $result['s_name'] ?></td>
+                                <h6 style="display: inline;">นามสกุล :</h6>
+                                <td width="25%" style="display: inline;"><?= $result['s_lastname'] ?></td>
 
-                    </div>
-                    <div class=" mb-3 col-10 ">
-                        <h6 style="display: inline;">รายละเอียดสินค้า :</h6>
-                        <td width="25%" style="display: inline;"><?= $result['s_type'] ?></td>
-                    </div>
-                    <div class="   ">
-                        <h6 style="display: inline;">วันที่กำหนดชำระ :</h6>
-                        <td width="25%" style="display: inline;"><?= $result['r_mount'] ?> เดือน</td>
-                    </div>
-            </div>
-            <div class="justify-content-start flex-fill ">
-            <div class=" mb-3 " >
-                        <h6 style="display: inline;">ช่องทางการติดต่อ :</h6>
-                        <td width="25%" style="display: inline;"><?= $result['social_contact'] ?></td>
-                        <h6 style="display: inline;">ชื่อผู้ใช้ :</h6>
-                        <td width="25%" style="display: inline;"><?= $result['social_name'] ?></td>
-                    </div>    
-                    <div class=" mb-3 ">
-                        <h6 style="display: inline;">เงินที่ต้องจ่ายต่องวด :</h6>
-                        <td width="25%" style="display: inline;"><?= ($result['principle'] * 0.02) ?> บาท</td>
-                    </div><div class=" mb-3 ">
+                            </div>
+                            <div class=" mb-3 col-10 ">
+                                <h6 style="display: inline;">รายละเอียดสินค้า :</h6>
+                                <td width="25%" style="display: inline;"><?= $result['s_type'] ?></td>
+                            </div>
+                        </div>
+                        <div class="justify-content-start flex-fill ">
+                            <div class=" mb-3 ">
+                                <h6 style="display: inline;">ช่องทางการติดต่อ :</h6>
+                                <td width="25%" style="display: inline;"><?= $result['social_contact'] ?></td>
+                                <h6 style="display: inline;">ชื่อผู้ใช้ :</h6>
+                                <td width="25%" style="display: inline;"><?= $result['social_name'] ?></td>
+                            </div>
+                            <div class=" mb-3 ">
+                                <h6 style="display: inline;">เงินที่ต้องจ่ายต่องวด :</h6>
+                                <td width="25%" style="display: inline;"><?= ($result['principle'] * 0.02) ?> บาท</td>
+                            </div>
+                            <div class=" mb-3  ">
+                                <h6 style="display: inline;">จำนวนงวดที่ต้องชำระ :</h6>
+                                <td width="25%" style="display: inline;"><?= $result['r_mount'] ?> เดือน</td>
+                            </div>
+                            <div class="   ">
+                                <h6 style="display: inline;">วันที่กำหนดชำระ :</h6>
+                                <td width="25%" style="display: inline;"><?= $result['c_date'] ?> </td>
+                            </div>
+                            <!-- <div class=" mb-3 ">
                         <h6 style="display: inline;">จำนวนงวดที่ชำระเเล้ว :</h6><td width="25%" style="display: inline;">3 เดือน</td>
                         <h6 style="display: inline;">จำนวนงวดที่เหลือ :</h6><td width="25%" style="display: inline;">9 เดือน</td>
+                    </div> -->
+                        </div>
                     </div>
             </div>
         </div>
@@ -155,7 +176,21 @@
         
                 </form>
             </div>
+            <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-sm btn-dark text-white">ย้อนกลับ</a>
+            <a href="?page=<?= $_GET['page'] ?>&function=showDetails&id=<?= $result['s_id'] ?>" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a>
+            <a href="?page=<?= $_GET['page'] ?>&function=qty&id=<?= $result['s_id'] ?>" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a>
+
         </div>
+    </div>
+    <div>
+
+    </div>
+
+    </div>
+
+    </form>
+    </div>
+    </div>
     </div>
 </body>
 

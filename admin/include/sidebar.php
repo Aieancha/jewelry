@@ -1,3 +1,25 @@
+<?php
+$sql = "SELECT *
+FROM tbl_social
+INNER JOIN tbl_status
+ON tbl_social.s_role = tbl_status.id
+/* WHERE tbl_status.id=2 AND */
+WHERE DATEDIFF(c_date, Now())= 3";
+$query = mysqli_query($connection, $sql);
+?>
+
+<?php
+mysqli_select_db($connection,"");
+$sqldb = "SELECT count(s_id) as day3 FROM tbl_social WHERE DATEDIFF(c_date, Now())= 3";
+$rs = mysqli_query($connection, $sqldb);
+$day3=mysqli_fetch_assoc($rs);
+if($day3['day3']>0){
+  $noti_day3 = '<span class="noti-alert">'.$day3['day3'].'</span>';
+}else{
+  $noti_day3="";
+}
+?>
+
 <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl  fixed-start  bg-dark" style="overflow: hidden" id="sidenav-main">
     <div class="sidenav-header text-center mb-6">
       <a class="navbar-brand m-0" href=" # ">
@@ -72,7 +94,8 @@
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">จัดการชำระดอกเบี้ย</span>
+            <span class="nav-link-text ms-1">จัดการชำระดอกเบี้ย </span>
+            <span class="text-danger">&nbsp;<?php  echo  $noti_day3; ?></span>
           </a>
         </li>
         <li class="nav-item mt-3">

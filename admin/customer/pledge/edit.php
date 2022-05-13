@@ -179,9 +179,11 @@
                 <h6>ภาพยืนยันตัวตน*</h6>
                 <input type="file" id="myFile" name="c_img" multiple required>
               </div>
-              <div type="hidden">
-                <select name="s_role" require hidden>
-                  <option value="1" selected hidden></option>
+              <div type="">
+                <select name="s_role" require>
+                  <option value="" selected="selected">- เลือกสถานะ -</option>
+                  <option value="1">รอร่างสัญญา</option>
+                  <option value="2">ผู้จำนำ</option>
                 </select>
               </div>
 

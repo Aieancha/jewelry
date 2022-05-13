@@ -26,6 +26,8 @@
             include('customer/interest/show-details.php');
           }elseif (isset($_GET['function']) && $_GET['function'] == 'detailsIn') {
             include('customer/interest/Details-In.php');
+          }elseif (isset($_GET['function']) && $_GET['function'] == 'qty') {
+            include('customer/interest/qty.php');
           }
            else {
             include('customer/interest/index.php');
