@@ -1,5 +1,5 @@
-<div id="app-sidepanel" class="app-sidepanel"> 
-	        <div id="sidepanel-drop" class="sidepanel-drop"></div>
+<div id="app-sidepanel" class="app-sidepanel" > 
+	        <div id="sidepanel-drop" class="sidepanel-drop" ></div>
 	        <div class="sidepanel-inner d-flex flex-column">
 		        <a href="#" id="sidepanel-close" class="sidepanel-close d-xl-none">&times;</a>
 		        <div class="app-branding">

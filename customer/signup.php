@@ -1,9 +1,48 @@
+<?php include('../connection/connection.php') ?>
+
 <!DOCTYPE html>
 <html lang="en"> 
 <?php include('include/head.php') ?> 
 <?php include('include/style.php') ?>       
 
-<body class="app app-signup p-0">    	
+<body class="app app-signup p-0"> 
+<?php
+                if (isset($_POST) && !empty($_POST)) {
+                    /* echo '<pre>';
+          print_r($_FILES);
+          echo '</pre>';
+          exit(); */
+                    $id = $_POST['c_id'];
+                    $firstname = $_POST['firstname'];
+                    $lastname = $_POST['lastname'];
+                    $address = $_POST['c_address'];
+                    $phone = $_POST['phone'];
+                    $email = $_POST['c_email'];
+					$age = $_POST['c_age'];
+					
+                    $sql = "INSERT INTO tbl_customer (c_id, firstname, lastname, c_address, phone, c_email,c_age ,c_img)
+                                    VALUES ('$id', '$firstname', '$lastname','$address', '$phone', '$email','$age','$img')";
+
+                    if (mysqli_query($connection, $sql)) {
+                        //echo "เพิ่มข้อมูลสำเร็จ";
+                        $alert = '<script type="text/javascript">';
+                        $alert .= 'alert("เพิ่มข้อมูลสำเร็จ");';
+                        $alert .= 'window.location.href = "?function=check";';
+                        $alert .= '</script>';
+                        echo $alert;
+                        exit();
+                    } else {
+                        echo "Error: " . $sql . "<br>" . mysqli_error($connection);
+                    }
+
+                    mysqli_close($connection);
+                }
+
+
+
+                //print_r($_POST);
+                ?>
+<form  action="" method="post" >
     <div class="row g-0 app-auth-wrapper">
 	    <div class="col-12 col-md-7 col-lg-6 auth-main-col text-center p-5">
 		    <div class="d-flex flex-column align-content-end">
@@ -15,60 +54,69 @@
 					<div class="auth-form-container text-start mx-auto">
 						<form class="auth-form auth-signup-form">         
 							<div class="email mb-3">
+							<label >อีเมล *</label>
 								<label class="sr-only" for="signup-email">อีเมล</label>
-								<input id="signup-name" name="signup-name" type="text" class="form-control signup-name" placeholder="อีเมล *" required="required">
+								<input type="email"  name="c_email" class="form-control signup-name" placeholder="อีเมล *" required="required">
 							</div>
 							<div class="email mb-3">
-								<label class="sr-only" for="signup-email">Your Email</label>
-								<input id="signup-email" name="signup-email" type="email" class="form-control signup-email" placeholder="สร้างรหัสผ่าน *" required="required">
+							<label >รหัสผ่าน *</label>
+								<label class="sr-only" for="signup-email">รหัสผ่าน</label>
+								<input id="signup-password" name="signup-password" type="password" class="form-control signup-password" placeholder="สร้างรหัสผ่าน *" required="required">
+							</div>
+							<div class="d-flex flex-row ">
+							<div class="justify-content-start flex-fill ">
+								<label >ไอดีไลน์</label>
+								</div>	
+								<div class="flex-fill d-flex justify-content-start gap-1">
+								<label >เฟสบุ้ค</label>
+							</div>
 							</div>
                             <div class="d-flex flex-row mb-3">
                                 <div class="justify-content-start flex-fill ">
-                        
 								<label class="sr-only " for="signup-password">ไลน์</label>
-								<input id="signup-password" name="signup-password" type="password" class="form-control signup-password" placeholder="ไอดีไลน์">
+								<input  class="form-control signup-password" name="age"  placeholder="ไอดีไลน์">
                             </div>
                                 <div class="flex-fill d-flex justify-content-end gap-1">
-                        
 								<label class="sr-only" for="signup-password">เฟสบุ้ค</label>
-								<input id="signup-password" name="signup-password" type="password" class="form-control signup-password" placeholder="ชื่อผู้ใช้เฟสบุ้ค" >
+								<input id="" name="signup-facebook" type="faceboo" class="form-control signup-password" placeholder="ชื่อผู้ใช้เฟสบุ้ค" >
 					
                             </div>
                             </div>
                             <div class="d-flex flex-row mb-3">
+								<label >ชื่อจริง *</label>
                                 <div class="justify-content-start flex-fill ">
-                        
 								<label class="sr-only " for="signup-password">ชื่อจริง</label>
-								<input id="signup-password" name="signup-password" type="password" class="form-control signup-password" placeholder="ชื่อจริง *">
+								<input type="text" class="form-control " name="firstname"  class="form-control signup-password" placeholder="ชื่อจริง *">
                             </div>
                                 <div class="flex-fill d-flex justify-content-end gap-1">
-                        
+								<label >นามสกุล *</label>
 								<label class="sr-only" for="signup-password">นามสกุล</label>
-								<input id="signup-password" name="signup-password" type="password" class="form-control signup-password" placeholder="นามสกุล *" >
+								<input type="text" class="form-control " name="lastname" class="form-control signup-password" placeholder="นามสกุล *" >
 					
                             </div>
                             </div>
 							<div class="password mb-3">
+								<label >เบอร์โทรศัพท์ *</label>
 								<label class="sr-only" for="signup-password">เบอร์โทร</label>
-								<input id="signup-password" name="signup-password" type="password" class="form-control signup-password" placeholder="เบอร์โทรศัพท์ *" required="required">
+								<input type="number" name="phone" pattern="^[0-9\s]+$" minlength="10" class="form-control signup-password" placeholder="เบอร์โทรศัพท์ *" required="required">
 							</div>
                             <div class="password mb-3">
+								<label >ที่อยู่</label>
 								<label class="sr-only" for="signup-password">ที่อยู่</label>
-								<input id="signup-password" name="signup-password" type="password" class="form-control signup-password" placeholder="ที่อยู่ปัจจุบัน" required="required">
+								<input type="text" class="form-control " name="c_address" class="form-control signup-password" placeholder="ที่อยู่ปัจจุบัน" required="required">
 							</div>
+
 							<!--div class="extra mb-3">
 								<div class="form-check">
 									<input class="form-check-input" type="checkbox" value="" id="RememberPassword">
 									
 								</div>
 							</div--><!--//extra-->
-							
-							<div class="text-center">
+				
 								<button type="submit" class="btn app-btn-primary w-100 theme-btn mx-auto">สมัครสมาชิก</button>
 							</div>
 						</form><!--//auth-form-->
 						
-						<div class="auth-option text-center pt-5">Already have an account? <a class="text-link" href="login.html" >Log in</a></div>
 					</div><!--//auth-form-container-->	
 					
 					
@@ -87,7 +135,9 @@
 	    </div><!--//auth-background-col-->
     
     </div><!--//row-->
-
+	<script>
+	
+	</script>
 
 </body>
 </html> 
