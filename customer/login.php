@@ -3,7 +3,63 @@
 <?php include('include/head.php') ?> 
 <?php include('include/style.php') ?>       
 
-<body class="app app-login p-0">    	
+<?php if(isset($_SESSION["type"]))
+{
+ header("location:index.php");
+}
+$message = '';
+if(isset($_POST["login"]))
+{
+ if(empty($_POST["c_email"]) || empty($_POST["c_pass"]))
+ {
+  $message = "<div class='alert alert-danger'>Both Fields are required</div>";
+ }
+ else
+ {
+  $query = "
+  SELECT * FROM tbl_customer 
+  WHERE c_email = :c_email
+  ";
+  $statement = $connect->prepare($query);
+  $statement->execute(
+   array(
+    'c_email' => $_POST["c_email"]
+   )
+  );
+  $count = $statement->rowCount();
+  if($count > 0)
+  {
+   $result = $statement->fetchAll();
+   foreach($result as $row)
+   {
+    if($row["c_status"] == '1')
+    {
+     if(password_verify($_POST["c_pass"], $row["c_pass"]))
+     {
+      $_SESSION["type"] = $row["user_type"];
+      header("location: index.php");
+     }
+     else
+     {
+      $message = '<div class="alert alert-danger">Wrong Password</div>';
+     }
+    }
+    else
+    {
+     $message = '<div class="alert alert-danger">Your Account has been disabled, please contact admin</div>';
+    }
+   }
+  }
+  else
+  {
+   $message = "<div class='alert alert-danger'>Wrong Email Address</div>";
+  }
+ }
+}
+?>
+
+<body class="app app-login p-0"> 
+
     <div class="row g-0 app-auth-wrapper">
 	    <div class="col-12 col-md-7 col-lg-6 auth-main-col text-center p-5">
 		    <div class="d-flex flex-column align-content-end">
@@ -15,11 +71,11 @@
 						<form class="auth-form login-form">         
 							<div class="email mb-3">
 								<label class="sr-only" for="signin-email">Email</label>
-								<input id="signin-email" name="signin-email" type="email" class="form-control signin-email" placeholder="อีเมล" required="required">
+								<input id="signin-email" name="c_email" type="email" class="form-control signin-email" placeholder="อีเมล" required="required">
 							</div><!--//form-group-->
 							<div class="password mb-3">
 								<label class="sr-only" for="signin-password">Password</label>
-								<input id="signin-password" name="signin-password" type="password" class="form-control signin-password" placeholder="รหัสผ่าน" required="required">
+								<input id="signin-password" name="c_pass" type="pass" class="form-control signin-password" placeholder="รหัสผ่าน" required="required">
 								<div class="extra mt-3 row justify-content-between">
 									<!--div class="col-6">
 										<div class="form-check">

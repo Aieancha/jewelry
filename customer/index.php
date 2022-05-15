@@ -2,11 +2,19 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
-<?php include('include/head.php'); ?>
-<?php include('include/script.php') ?>
+
+<head>
+  <title>How to Disable Enable User Login in PHP using Ajax</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ </head>
+ 
+<?php include('include/head.php') ?> 
+    <?php include('include/nav.php') ?> 
+    <?php include('include/sidebar.php') ?> 
 
 <?php if (isset($_SESSION['admin_login']) && !empty($_SESSION['admin_login'])) : ?>
-  <?php include('include/sidebar.php') ?>
 
   <body class="g-sidenav-show  bg-gray-100">
 
@@ -60,6 +68,7 @@
             include('customer/pledge/index.php');
           }
         } elseif (isset($_GET['page']) && $_GET['page'] == 'profile') {
+
           if (isset($_GET['function']) && $_GET['function'] == 'insert') {
             include('profile/insert.php');
           } elseif (isset($_GET['function']) && $_GET['function'] == 'update') {
@@ -76,14 +85,11 @@
         }
         
         elseif (isset($_GET['page']) && $_GET['page'] == 'allow') {
-          if (isset($_GET['function']) && $_GET['function'] == 'allowdetail') {
-            include('profile/allow_details.php');
-          }elseif (isset($_GET['function']) && $_GET['function'] == 'deleteCus') {
-            include('profile/delete_customer.php');
-          }else{
           include('profile/allow.php');
-        }  
-      }
+        }  if (isset($_GET['function']) && $_GET['function'] == 'allowdetail') {
+            include('customer/interest/allow_details.php');
+        }
+
 
 
         ?>

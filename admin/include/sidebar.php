@@ -7,7 +7,6 @@ ON tbl_social.s_role = tbl_status.id
 WHERE DATEDIFF(c_date, Now())= 3 or DATEDIFF(c_date, Now())= 2";
 $query = mysqli_query($connection, $sql);
 ?>
-
 <?php
 mysqli_select_db($connection,"");
 $sqldb = "SELECT count(s_id) as day3 FROM tbl_social WHERE DATEDIFF(c_date, Now())= 3 or DATEDIFF(c_date, Now())= 2";
@@ -94,7 +93,8 @@ if($day3['day3']>0){
                 </g>
               </svg>
             </div>
-            <span class="nav-link-text ms-1">จัดการชำระดอกเบี้ย </span>
+            <span class="dropdown-btn nav-link-text ms-1">จัดการชำระดอกเบี้ย </span>
+          
             <span class="text-danger">&nbsp;<?php  echo  $noti_day3; ?></span>
           </a>
         </li>
@@ -208,4 +208,22 @@ if($day3['day3']>0){
   .btn-Exit{
     background-color: #141727;
   }
+  
 </style>
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>

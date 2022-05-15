@@ -41,21 +41,38 @@ $query = mysqli_query($connection, $sql);
                                 <td><?= $data['c_email'] ?></td>
                                 <td><?= $data['firstname'] ?></td>
                                 <td><?= $data['lastname'] ?></td>
-                                <td><?= $data['phone'] ?></td>
+                                <td><?= $data['c_phone'] ?></td>
                            
-                                <td><a href="?page=<?=$_GET['page']?>&function=cudetail&id=<?=$data['c_id']?>" class="btn btn-sm btn-green3 text-white">ดูรายละเอียด</a></td>
+                                <td><a href="?page=<?=$_GET['page']?>&function=allowdetail&id=<?=$data['c_id']?>" class="btn btn-sm btn-green3 text-white">ดูรายละเอียด</a></td>
                                 <td>
-                                <?php if($data['status']==0){
-                                        echo '<p><a href="../customer/status.php?c_id='.$data['c_id'].'&status=0">enable</a></p>';
-                                   }else{
-                                        echo '<p><a href="../customer/status.php?c_id='.$data['c_id'].'&status=1">disable</a></p>';
-                                   }
-                                   ?>
+                                    <div>
+                                 <input <?php if($data['status']=='1'){echo "checked";}?> onclick="toggleStatus(<?php echo $data['c_id']?>)" type="checkbox" id="check" >
+                        </div>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody> 
                 </table>
+
+                <script>
+function toggleStatus(id){
+    var id = id;
+    $.ajex({
+        url:"status.php",
+        type:"post",
+        data:(c_id:id),
+        success :function(result){
+            if(result == '1'){
+                swal("ปิดการใช้งานสำเร็จ","success");
+            }
+            else{
+                swal("เปิดการใช้งานสำเร็จ","success");
+            }
+        }
+        
+    });
+}
+</script>
 
             </div>
         </div>
