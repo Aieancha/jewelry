@@ -123,11 +123,11 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
                                             echo "<td>" . number_format($resultPmt, 2, '.', '') . "</td>";
 
+
                                             echo "</tr>";
                                         }
                                     
                                         ?>
-                                        <td> </td>
                                     </tbody>
 
 
