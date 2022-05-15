@@ -27,9 +27,10 @@ if($day3['day3']>0){
     </div>
   </div>
   <div class="row justify-content-between">
-  <div class="d-flex justify-content-start">
-      <a href="?page=<?= $_GET['page'] ?>&function=list" class="btn btn-sm btn-white">รายการสรุปการชำระดอกเบี้ย</a>
-      <a href="?page=<?= $_GET['page'] ?>&function=wait" class="btn btn-sm btn-white">ตรวจสอบการชำระดอกเบี้ย</a>
+  <div class="d-flex justify-content-center mb-6">
+      <a  class="btn btn-sm1 bg-gray-600 text-white m-1">แจ้งเตือนการชำระดอกเบี้ย</a>
+      <a href="?page=<?= $_GET['page'] ?>&function=list" class="btn btn-sm1 bg-gray-500 m-1">รายการสรุปการชำระดอกเบี้ยโดยลูกค้า</a>
+      <a href="?page=<?= $_GET['page'] ?>&function=wait" class="btn btn-sm1 bg-gray-500  m-1">ตรวจสอบการชำระดอกเบี้ย</a>
 </div>
      <div class="d-flex justify-content-end">
         <div class="d-flex justify-content-end mb-2 ">
@@ -99,4 +100,5 @@ mysqli_close($connection);
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
  
