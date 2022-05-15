@@ -77,7 +77,7 @@
 
             <div class="card mb-4">
                 <div class="card-body">
-                    <h4 class="mb-4">ข้อมูลการจำนำ</h4>
+                    <h4 class="mb-4">รายละเอียดการชำระดอกเบี้ยที่ถูกเพิ่มโดยลูกค้า</h4>
                     <div class="d-flex flex-row mb-6">
                         <div class="justify-content-start flex-fill ">
                             <div type="hidden">
@@ -135,7 +135,7 @@
                         </div>
                     </div>
                     <form action="" method="POST" enctype="multipart/form-data">
-                        <h4 style="margin-left: 30px;">เพิ่มหลักฐานการชำระค่างวด</h4>
+                        <h5 style="margin-left: 30px;">หลักฐานการชำระค่างวดถูกเพิ่มโดย ชื่อผู้ใช้ customer@gmail.com</h5>
                         <div class="bg-gray1 mb-3 ">
                             <div class="d-flex flex-row m-3">
                                 <div class="justify-content-start flex-fill col-5" style="margin-left:3rem">
@@ -156,13 +156,13 @@
                                     </div>
                                 </div>
                                 <div class="col-3 mt-6">
-                                    <button type="submit" class="col-6 btn btn-green3 text-white">บันทึก</button>
+                                    <button type="submit" class="col-6 btn btn-green3 text-white">ยืนยัน</button>
                                 </div>
                     </form>
 
                 </div>
             </div>
-            <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-sm btn-dark text-white">ย้อนกลับ</a>
+            <a href="?page=<?= $_GET['page'] ?>&function=wait" class="btn btn-sm btn-dark text-white">ย้อนกลับ</a>
             <a href="?page=<?= $_GET['page'] ?>&function=showDetails&id=<?= $result['s_id'] ?>" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a>
             <!-- <a href="?page=<?= $_GET['page'] ?>&function=qty&id=<?= $result['s_id'] ?>" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a> -->
 

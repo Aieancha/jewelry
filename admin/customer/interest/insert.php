@@ -29,7 +29,7 @@ $query = mysqli_query($connection, $sql);
   <div class="row">
     <div class="card">
       <!-- title -->
-      <h5 class="font-weight-bolder text-dark text-gradient m-3">ตารางแสดงรายการยืนยันข้อมูลการชำระดอกเบี้ย</h5>
+      <h5 class="font-weight-bolder text-dark text-gradient m-3">ตารางแสดงข้อมูลการบันทึกใบเสร็จชำระดอกเบี้ยโดยลูกค้า</h5>
 
       <!-- end title -->
       <div class="card-body overflow-auto p-3" style="text-align: center">
@@ -39,8 +39,9 @@ $query = mysqli_query($connection, $sql);
               <th scope="col">ลำดับ</th>
               <th scope="col">รอบการชำระ</th>
               <th scope="col">ชื่อผู้จำนำ</th>
-              <th scope="col">จำนวนเงินที่ชำระ</th>
               <th scope="col">เบอร์โทรศัพท์</th>
+              <th scope="col">รหัสสินค้า</th>
+              <th scope="col">จำนวนเงินที่ชำระ</th>
               <th scope="col">สถานะ</th>
               <th scope="col">อัพเดทสถานะ</th>
 
@@ -56,10 +57,11 @@ $query = mysqli_query($connection, $sql);
                 <td><?= ++$i ?></td>
                 <td><?php echo $data['c_date']; ?></td>
                 <td><?= $data['s_name'] ?></td>
-                <td><?= $data['principle']*0.02*$data['r_mount'] ?></td>
                 <td><?= $data['phone'] ?></td>
+                <td></td>
+                <td><?= $data['principle']*0.02*$data['r_mount'] ?></td>
                 <td class="text-danger"><?php echo $data['status_name']; ?></td>
-                <td><a class="btn btn-sm btn-green3 text-white">ยืนยันข้อมูล</a></td>
+                <td><a href="?page=<?= $_GET['page'] ?>&function=updateCustomer&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-green3 text-white">ยืนยันข้อมูล</a></td>
               </tr>
             <?php endforeach; ?>
           </tbody>

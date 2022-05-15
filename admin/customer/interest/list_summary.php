@@ -27,7 +27,7 @@ $query = mysqli_query($connection, $sql);
         <div class="row">
             <div class="card">
                 <!-- title -->
-                <h5 class="font-weight-bolder text-dark text-gradient m-3">ตารางแสดงรายการสรุปการชำระดอกเบี้ย</h5>
+                <h5 class="font-weight-bolder text-dark text-gradient m-3">ตารางแสดงข้อมูลลูกค้าทั้งหมด</h5>
 
                 <!-- end title -->
                 <div class="card-body overflow-auto p-3" style="text-align: center">
@@ -36,11 +36,13 @@ $query = mysqli_query($connection, $sql);
                             <thead>
                                 <tr>
                                     <th scope="col">ลำดับ</th>
+                                    <th scope="col">วันที่เเจ้งเตือน</th>
                                     <th scope="col">รอบการชำระ</th>
                                     <th scope="col">ชื่อผู้จำนำ</th>
-                                    <th scope="col">จำนวนเงินที่ต้องชำระ</th>
+                                    <th scope="col">ชื่อผู้จำนำ</th>
+                                    <th scope="col">รหัสสินค้า</th>
                                     <th scope="col">สถานะ</th>
-                                    <th scope="col">อัพเดทสถานะ</th>
+                                    <th scope="col">ดูประวัติการโอน</th>
 
                                 </tr>
                             </thead>
@@ -69,11 +71,13 @@ $query = mysqli_query($connection, $sql);
                                 foreach ($query as $data) : ?>
                                     <tr>
                                         <td><?= ++$i ?></td>
+                                        <td></td>
                                         <td><?php echo $data['c_date']; ?></td>
                                         <td><?= $data['s_name'] ?></td>
                                         <td><?= $data['principle'] * 0.02  ?></td>
                                         <td class="text-danger"><?php echo $data['status_name']; ?></td>
-                                        <td> <a href="?page=<?= $_GET['page'] ?>&function=update&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-green3 text-white">อัพเดทสถานะ</a></td>
+                                        <td></td>
+                                        <td> <a href="?page=<?= $_GET['page'] ?>&function=showDetails&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-blue2 text-white">ดูประวัติ</a></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

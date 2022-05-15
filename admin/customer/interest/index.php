@@ -27,14 +27,11 @@ if($day3['day3']>0){
     </div>
   </div>
   <div class="row justify-content-between">
+  <div class="d-flex justify-content-start">
+      <a href="?page=<?= $_GET['page'] ?>&function=list" class="btn btn-sm btn-white">รายการสรุปการชำระดอกเบี้ย</a>
+      <a href="?page=<?= $_GET['page'] ?>&function=wait" class="btn btn-sm btn-white">ตรวจสอบการชำระดอกเบี้ย</a>
+</div>
      <div class="d-flex justify-content-end">
-     <div class="col">
-      <a href="?page=<?= $_GET['page'] ?>&function=list" class="btn btn-sm btn-green3 text-white">รายการสรุปการชำระดอกเบี้ย</a>
-    </div>
-    <div class="col">
-      <a href="?page=<?= $_GET['page'] ?>&function=wait" class="btn btn-sm btn-green3 text-white">ตรวจสอบข้อมูลการชำระดอกเบี้ย</a>
-    </div>
-     
         <div class="d-flex justify-content-end mb-2 ">
             <form class="example " action="/action_page.php" style="margin: 7px;;max-width:200px">
                 <input type="text" placeholder="ชื่อผู้ใช้งาน.." name="search2 ">

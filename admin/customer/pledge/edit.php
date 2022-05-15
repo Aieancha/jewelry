@@ -177,7 +177,7 @@
               </div>
               <div class="mb-4 col-3 ">
                 <h6>ภาพยืนยันตัวตน*</h6>
-                <input type="file" id="myFile" name="c_img" multiple required>
+                <input type="file" id="myFile" name="c_img" multiple >
               </div>
               <div type="">
                 <select name="s_role" require>
