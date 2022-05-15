@@ -20,7 +20,7 @@
         } elseif (isset($_GET['page']) && $_GET['page'] == 'interest') {
           if (isset($_GET['function']) && $_GET['function'] == 'update') {
             include('customer/interest/Update-In.php');
-          }elseif (isset($_GET['function']) && $_GET['function'] == 'insert') {
+          }elseif (isset($_GET['function']) && $_GET['function'] == 'wait') {
             include('customer/interest/insert.php');
           }elseif (isset($_GET['function']) && $_GET['function'] == 'showDetails') {
             include('customer/interest/show-details.php');
@@ -28,6 +28,8 @@
             include('customer/interest/Details-In.php');
           }elseif (isset($_GET['function']) && $_GET['function'] == 'qty') {
             include('customer/interest/qty.php');
+          }elseif (isset($_GET['function']) && $_GET['function'] == 'list') {
+            include('customer/interest/list_summary.php');
           }
            else {
             include('customer/interest/index.php');

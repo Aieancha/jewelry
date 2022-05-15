@@ -4,13 +4,13 @@ FROM tbl_social
 INNER JOIN tbl_status
 ON tbl_social.s_role = tbl_status.id
 /* WHERE tbl_status.id=2 AND */
-WHERE DATEDIFF(c_date, Now())= 3";
+WHERE DATEDIFF(c_date, Now())= 3 or DATEDIFF(c_date, Now())= 2";
 $query = mysqli_query($connection, $sql);
 ?>
 
 <?php
 mysqli_select_db($connection,"");
-$sqldb = "SELECT count(s_id) as day3 FROM tbl_social WHERE DATEDIFF(c_date, Now())= 3";
+$sqldb = "SELECT count(s_id) as day3 FROM tbl_social WHERE DATEDIFF(c_date, Now())= 3 or DATEDIFF(c_date, Now())= 2";
 $rs = mysqli_query($connection, $sqldb);
 $day3=mysqli_fetch_assoc($rs);
 if($day3['day3']>0){
@@ -24,15 +24,22 @@ if($day3['day3']>0){
   <div class="row justify-content-between">
     <div class="col-auto">
       <h3 class="font-weight-bolder text-dark text-gradient ">การจัดการการชำระดอกเบี้ย</h3>
-      
     </div>
   </div>
   <div class="row justify-content-between">
      <div class="d-flex justify-content-end">
+     <div class="col">
+      <a href="?page=<?= $_GET['page'] ?>&function=list" class="btn btn-sm btn-green3 text-white">รายการสรุปการชำระดอกเบี้ย</a>
+    </div>
+    <div class="col">
+      <a href="?page=<?= $_GET['page'] ?>&function=wait" class="btn btn-sm btn-green3 text-white">ตรวจสอบข้อมูลการชำระดอกเบี้ย</a>
+    </div>
+     
         <div class="d-flex justify-content-end mb-2 ">
             <form class="example " action="/action_page.php" style="margin: 7px;;max-width:200px">
                 <input type="text" placeholder="ชื่อผู้ใช้งาน.." name="search2 ">
                 <button type="submit"><i class="fa fa-search btn-dark"></i></button>
+            </form>
             
         </div>
         <a href="?#=<?= $_GET['#'] ?>&function=insert" class="btn btn-sm btn-dark text-white">สถานะ</a>
@@ -49,10 +56,9 @@ if($day3['day3']>0){
             <tr>
               <th scope="col">ลำดับ</th>
               <th scope="col">รอบการชำระ</th>
-              <!-- <th scope="col">รหัสผู้จำนำ</th> -->
               <th scope="col">ชื่อผู้จำนำ</th>
-              <!-- <th scope="col">รหัสสินค้าที่จำนำ</th> -->
               <th scope="col">จำนวนเงินที่ต้องชำระ</th>
+              <th scope="col">เบอร์โทรศัพท์</th>
               <th scope="col">สถานะ</th>
               <th scope="col">อัพเดทสถานะ</th>
 
@@ -68,7 +74,8 @@ if($day3['day3']>0){
                 <td><?= ++$i ?></td>
                 <td><?php echo $data['c_date']; ?></td>
                 <td><?= $data['s_name'] ?></td>
-                <td><?= $data['principle']*0.02*$data['r_mount'] ?></td>
+                <td><?= $data['principle']*0.02 ?></td>
+                <td><?= $data['phone'] ?></td>
                 <td class="text-danger"><?php echo $data['status_name']; ?></td>
                 <td> <a href="?page=<?= $_GET['page'] ?>&function=update&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-green3 text-white">อัพเดทสถานะ</a></td>
                 </td>
