@@ -52,6 +52,7 @@ if($day3['day3']>0){
           <thead>
             <tr>
               <th scope="col">ลำดับ</th>
+              <th scope="col">วันที่แจ้งเตือน</th>
               <th scope="col">รอบการชำระ</th>
               <th scope="col">ชื่อผู้จำนำ</th>
               <th scope="col">จำนวนเงินที่ต้องชำระ</th>
@@ -69,6 +70,7 @@ if($day3['day3']>0){
             foreach ($query as $data) : ?>
               <tr>
                 <td><?= ++$i ?></td>
+                <td><?php echo $data['start_date']; ?></td>
                 <td><?php echo $data['c_date']; ?></td>
                 <td><?= $data['s_name'] ?></td>
                 <td><?= $data['principle']*0.02 ?></td>

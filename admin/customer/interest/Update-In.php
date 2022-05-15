@@ -23,9 +23,10 @@
                 $strStartDate = $result['c_date'];
                 $strStartDate = date('Y-m-d');
                 $strNewDate = date("Y-m-d", strtotime("+30 day", strtotime($strStartDate)));
+                $strDate = date("Y-m-d", strtotime("+27 day", strtotime($strStartDate)));
                 //echo ' + 10 วัน = ' . $strNewDate;
-                $role = $result['s_role'];
-                $role = 3;
+                $role = $result['s_role']== 3? 4:3;
+                //$role = 3;
             }
             if (isset($_POST) && !empty($_POST)) {
                 $in_date = $_POST['in_date'];
@@ -60,7 +61,7 @@
                     $filename = '';
                 }
                 $sqli = "INSERT INTO tbl_interest (in_date, in_img, in_befor, in_role) VALUES ('$in_date', '$filename', '$in_befor', 1)";
-                $sql = "UPDATE tbl_social SET c_date ='$strNewDate',s_role ='$role' where s_id ='$id'";
+                $sql = "UPDATE tbl_social SET c_date ='$strNewDate',s_role ='$role', start_date = '$strDate' where s_id ='$id'";
 
                 $sqli=mysqli_query($connection,$sqli);
                 if (mysqli_query($connection, $sql)) {

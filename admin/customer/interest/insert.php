@@ -58,7 +58,7 @@ $query = mysqli_query($connection, $sql);
                 <td><?php echo $data['c_date']; ?></td>
                 <td><?= $data['s_name'] ?></td>
                 <td><?= $data['phone'] ?></td>
-                <td></td>
+                <td><?= $data['ref_img'] ?></td>
                 <td><?= $data['principle']*0.02*$data['r_mount'] ?></td>
                 <td class="text-danger"><?php echo $data['status_name']; ?></td>
                 <td><a href="?page=<?= $_GET['page'] ?>&function=updateCustomer&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-green3 text-white">ยืนยันข้อมูล</a></td>
