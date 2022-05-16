@@ -1,27 +1,25 @@
 <?php
 $sql = "SELECT *
 FROM tbl_social
-INNER JOIN tbl_status
-ON tbl_social.s_role = tbl_status.id
 INNER JOIN tbl_interest
 ON tbl_social.s_id = tbl_interest.in_id
-WHERE tbl_social.s_role";
+ORDER BY in_date";
 $query = mysqli_query($connection, $sql);
 $result = mysqli_fetch_assoc($query);
 ?>
 <?php
-mysqli_select_db($connection,"");
+mysqli_select_db($connection, "");
 $sqldb = "SELECT count(s_id) as day3 FROM tbl_social WHERE DATEDIFF(c_date, Now())= 3 or DATEDIFF(c_date, Now())= 2";
 $rs = mysqli_query($connection, $sqldb);
-$day3=mysqli_fetch_assoc($rs);
-if($day3['day3']>0){
-  $noti_day3 = '<span class="noti-alert">'.$day3['day3'].'</span>';
-}else{
-  $noti_day3="";
+$day3 = mysqli_fetch_assoc($rs);
+if ($day3['day3'] > 0) {
+    $noti_day3 = '<span class="noti-alert">' . $day3['day3'] . '</span>';
+} else {
+    $noti_day3 = "";
 }
 $mount = $result['c_date'];
 $mount = date('Y-m-d');
-$mountNew=date("Y-m-d", strtotime("-3 day", strtotime($mount)));
+$mountNew = date("Y-m-d", strtotime("-3 day", strtotime($mount)));
 ?>
 <div class="container-fluid py-4 ">
     <div class="row justify-content-between">
@@ -75,6 +73,11 @@ $mountNew=date("Y-m-d", strtotime("-3 day", strtotime($mount)));
                                 if (isset($_POST) && !empty($_POST)) {
                                     $role = $_POST['s_role'];
                                     $sql = "UPDATE tbl_social SET s_role='$role' WHERE s_id ='$id'";
+                                    $query = mysqli_query($connection, $sql);
+                                    $result = mysqli_fetch_assoc($query);
+                                    $date = $result['c_date'];
+                                    $start = $result['start_date'];
+                                    $status = ($result['start_date'] == $start) ? $date : $start;
 
                                     if (mysqli_query($connection, $sql)) {
                                         echo "เพิ่มข้อมูลสำเร็จ";
@@ -96,9 +99,14 @@ $mountNew=date("Y-m-d", strtotime("-3 day", strtotime($mount)));
                                         <td><?= ++$i ?></td>
                                         <td><?php echo $data['in_date']; ?></td>
                                         <td><?= $data['s_name'] ?></td>
-                                        <td><?= $data['principle'] * 0.02  ?></td>
+                                        <td><?= $data['in_befor']; ?></td>
                                         <td><?= $data['ref_img'] ?></td>
-                                        <td class="text-danger"><?php $status = $data['s_role']; if($status == 4 ){echo "ชำระแล้ว"; }else{ echo "ค้างชำระ";} ?></td>
+                                        <td><?php $status = $data['in_date'];
+                                            if ($status == $data['in_date']) {
+                                                echo "ชำระแล้ว";
+                                            } else {
+                                                echo "ค้างชำระ";
+                                            } ?></td>
                                         <td> <a href="?page=<?= $_GET['page'] ?>&function=showDetails&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-blue2 text-white">ดูประวัติ</a></td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -106,6 +114,7 @@ $mountNew=date("Y-m-d", strtotime("-3 day", strtotime($mount)));
                         </table>
                     </form>
                 </div>
+
             </div>
         </div>
     </div>
