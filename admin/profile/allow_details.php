@@ -68,11 +68,11 @@ $query = mysqli_query($connection, $sql);
                     </div>
                     <div class="d-flex flex-row">
                 <div class="justify-content-start flex-fill ">
-                    <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-sm btn-dark text-white">ย้อนกลับ</a>
+                    <a href="?page=<?= $_GET['page'] ?>" class="btn btn-sm btn-dark text-white">ย้อนกลับ</a>
                 </div>
                 <div class="flex-fill d-flex justify-content-end gap-1"> 
-                <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-sm btn-green3 text-white">อนุมัติ</a>
-                <a href="" onclick="return confirm('คุณต้องการลบผู้ขอเข้าใช้งานระบบ : <?= $data['c_name'] ?> หรือไม่')" class="btn btn-sm btn-danger">ลบคำขอ</a>
+                <a href="?page=<?= $_GET['page'] ?>" class="btn btn-sm btn-green3 text-white">อนุมัติ</a>
+                <a href="?page=<?=$_GET['page']?>&function=deleteCus&id=<?=$result['c_id']?>" onclick="return confirm('คุณต้องการลบผู้ขอเข้าใช้งานระบบ : <?= $result['c_id'] ?> หรือไม่')" class="btn btn-sm btn-danger">ลบคำขอ</a>
 
                 </div>
                 </div>
