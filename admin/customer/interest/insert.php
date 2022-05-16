@@ -15,8 +15,8 @@ $query = mysqli_query($connection, $sql);
     </div>
     <div class="d-flex justify-content-center mb-6">
       <a href="?page=<?= $_GET['page'] ?>&function=index"class="btn btn-sm1 bg-gray-500 m-1">แจ้งเตือนการชำระดอกเบี้ย</a>
-      <a href="?page=<?= $_GET['page'] ?>&function=list" class="btn btn-sm1 bg-gray-500 m-1">รายการสรุปการชำระดอกเบี้ยโดยลูกค้า</a>
-      <a class="btn btn-sm1 bg-gray-600 text-white m-1">ตรวจสอบการชำระดอกเบี้ย</a>
+      <a href="?page=<?= $_GET['page'] ?>&function=list" class="btn btn-sm1 bg-gray-500 m-1">ตรวจสอบการชำระดอกเบี้ยโดยลูกค้า</a>
+      <a class="btn btn-sm1 bg-gray-600 text-white m-1">รายการสรุปการชำระดอกเบี้ย</a>
 </div>
   </div>
   <div class="row justify-content-between">

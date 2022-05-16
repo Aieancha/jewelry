@@ -30,8 +30,8 @@ $mountNew=date("Y-m-d", strtotime("-3 day", strtotime($mount)));
         </div>
         <div class="d-flex justify-content-center mb-6">
       <a href="?page=<?= $_GET['page'] ?>&function=index"class="btn btn-sm1 bg-gray-500 m-1">แจ้งเตือนการชำระดอกเบี้ย</a>
-      <a  class="btn btn-sm1 bg-gray-600 text-white m-1">รายการสรุปการชำระดอกเบี้ยโดยลูกค้า</a>
-      <a href="?page=<?= $_GET['page'] ?>&function=wait" class="btn btn-sm1 bg-gray-500 m-1">ตรวจสอบการชำระดอกเบี้ย</a>
+      <a  class="btn btn-sm1 bg-gray-600 text-white m-1">ตรวจสอบการชำระดอกเบี้ย</a>
+      <a href="?page=<?= $_GET['page'] ?>&function=wait" class="btn btn-sm1 bg-gray-500 m-1">รายการสรุปการชำระดอกเบี้ยโดยลูกค้า</a>
 </div>
     </div>
     <div class="row justify-content-between">
@@ -64,7 +64,7 @@ $mountNew=date("Y-m-d", strtotime("-3 day", strtotime($mount)));
                                     <th scope="col">จำนวนเงินที่ต้องชำระ</th>
                                     <th scope="col">สถานะ</th>
                                     <th scope="col">ดูประวัติการโอน</th>
-
+                                    <th scope="col">แก้ไขสถานะ</th>
                                     
 
                                 </tr>
