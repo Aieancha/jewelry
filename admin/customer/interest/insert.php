@@ -42,7 +42,9 @@ $query = mysqli_query($connection, $sql);
       <thead>
             <tr>
               <th scope="col">ลำดับ</th>
-              <th scope="col">รอบการชำระ</th>
+              <th scope="col">วันที่แจ้งเตือน</th>
+              <th scope="col">วันที่กำหนดชำระ</th>
+              <th scope="col">เลขที่สัญญา</th>
               <th scope="col">ชื่อผู้จำนำ</th>
               <th scope="col">เบอร์โทรศัพท์</th>
               <th scope="col">รหัสสินค้า</th>

@@ -58,12 +58,14 @@ $mountNew=date("Y-m-d", strtotime("-3 day", strtotime($mount)));
                             <thead>
                                 <tr>
                                     <th scope="col">ลำดับ</th>
-                                    <th scope="col">รอบการชำระ</th>
+                                    <th scope="col">เลขที่สัญญา</th>
                                     <th scope="col">ชื่อผู้จำนำ</th>
+                                    <th scope="col">เบอร์โทรศัพท์</th>
                                     <th scope="col">จำนวนเงินที่ต้องชำระ</th>
-                                    <th scope="col">รหัสสินค้า</th>
                                     <th scope="col">สถานะ</th>
                                     <th scope="col">ดูประวัติการโอน</th>
+
+                                    
 
                                 </tr>
                             </thead>
