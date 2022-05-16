@@ -7,7 +7,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         // echo "เพิ่มข้อมูลสำเร็จ";
         $alert = '<script type="text/javascript">';
         $alert .= 'alert("ลบข้อมูลสำเร็จ");';
-        $alert .= 'window.location.href = "?page=allow_details";';
+        $alert .= 'window.location.href =  "?page=allow";';
         $alert .= '</script>';
         echo $alert;
         exit();

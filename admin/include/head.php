@@ -242,5 +242,10 @@ body {
         clear: both;
         display: table;
     }
-    
+
+  .btn-sm1, .btn-group-sm>.btn {
+    padding: 0.5rem 0.5rem;
+    font-size: 0.8rem;
+    border-radius: 0.5rem;
+}
 </style>

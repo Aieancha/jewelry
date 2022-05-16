@@ -80,6 +80,8 @@
             include('profile/allow_details.php');
           }elseif (isset($_GET['function']) && $_GET['function'] == 'deleteCus') {
             include('profile/delete_customer.php');
+          }elseif (isset($_GET['function']) && $_GET['function'] == 'updateStatusCus') {
+            include('profile/update_status.php');
           }else{
           include('profile/allow.php');
         }  
