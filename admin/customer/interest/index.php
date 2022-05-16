@@ -75,7 +75,12 @@ if($day3['day3']>0){
                 <td><?= $data['s_name'] ?></td>
                 <td><?= $data['principle']*0.02 ?></td>
                 <td><?= $data['phone'] ?></td>
-                <td class="text-danger"><?php echo $data['status_name']; ?></td>
+                <td class="text-danger"><?php $status = $data['start_date'];
+                                            if ($status == $data['start_date']) {
+                                                echo "ค้างชำระ";
+                                            } else {
+                                                echo "ชำระแล้ว";
+                                            } ?></td>
                 <td> <a href="?page=<?= $_GET['page'] ?>&function=update&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-green3 text-white">อัพเดทสถานะ</a></td>
                 </td>
                 <!-- <td> <a href="?page=<?= $_GET['page'] ?>&function=check" class="btn btn-sm btn-dark">ทดลองรุูป</a></td> -->
