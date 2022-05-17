@@ -1,23 +1,17 @@
 <meta charset="utf-8">
-<?php
-$sql = "SELECT *
-FROM tbl_social
-INNER JOIN tbl_status
-ON tbl_social.s_role = tbl_status.id";
-$query = mysqli_query($connection, $sql);
-$result = mysqli_fetch_assoc($query);
-$principle = $result['principle'];
-$mount = $result['r_mount'];
-?>
+
 
 <?php
 if (isset($_GET['id']) && !empty($_GET['id'])) {
-	$id = $_GET['id'];
-	$sql = "SELECT * FROM tbl_social WHERE s_id = '$id'";
-	$query = mysqli_query($connection, $sql);
-	$result = mysqli_fetch_assoc($query);
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM tbl_social INNER JOIN tbl_interest ON tbl_social.s_id = tbl_interest.ref_id WHERE s_id = '$id'";
+    $query = mysqli_query($connection, $sql);
+    $result = mysqli_fetch_assoc($query);
+    $principle = $result['principle'];
+    $mount = $result['r_mount'];
 }
 ?>
+
 
 <body class="g-sidenav-show bg-gray-100">
     <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
@@ -28,6 +22,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                     <h3 class="font-weight-bolder text-dark text-gradient ">การจัดการการชำระดอกเบี้ย</h3>
                 </div>
             </div>
+
             <!-- end title -->
             <hr class="mb-4">
 
@@ -36,7 +31,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
                 $principle = $result['principle'];
                 $mount = $result['r_mount'];
-                $Date= $result['c_date'];
+                $Date = $result['c_date'];
 
                 $int = (2 / 100); //2%
                 $pmt = ($principle * $int) * $mount;
@@ -46,42 +41,42 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                 <form action="" method="GET">
                     <div class="card ">
                         <div class="card-body">
-                            <h4 class="mb-6" >ตารางแสดงรายละเอียดการชำระค่างวด</h4>
+                            <h4 class="mb-6">ตารางแสดงรายละเอียดการชำระค่างวด</h4>
                             <div class="d-flex flex-row m-4">
-                            <div class="justify-content-start flex-fill ">
-                            <div class=" mb-3 ">
-                                <h6 style="display: inline;">ชื่อผู้จำนำ :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['s_name'] ?></td>
-                                <h6 style="display: inline;">นามสกุล :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['s_lastname'] ?></td>
+                                <div class="justify-content-start flex-fill ">
+                                    <div class=" mb-3 ">
+                                        <h6 style="display: inline;">ชื่อผู้จำนำ :</h6>
+                                        <td width="25%" style="display: inline;"><?= $result['s_name'] ?></td>
+                                        <h6 style="display: inline;">นามสกุล :</h6>
+                                        <td width="25%" style="display: inline;"><?= $result['s_lastname'] ?></td>
 
-                            </div>
-                            <div class=" mb-3 ">
-                                <h6 style="display: inline;">จำนวนเงินต้น :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['principle'] ?> บาท</td>
-                            </div>
-                        </div>
-                <div class="justify-content-start flex-fill "> 
+                                    </div>
+                                    <div class=" mb-3 ">
+                                        <h6 style="display: inline;">จำนวนเงินต้น :</h6>
+                                        <td width="25%" style="display: inline;"><?= $result['principle'] ?> บาท</td>
+                                    </div>
+                                </div>
+                                <div class="justify-content-start flex-fill ">
 
-                        <div class=" mb-3 ">
-                                <h6 style="display: inline;">ช่องทางการติดต่อ :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['social_contact'] ?></td>
-                                <h6 style="display: inline;">ชื่อผู้ใช้ :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['social_name'] ?></td>
-                            </div>
-                            <div class=" mb-3 ">
-                                <h6 style="display: inline;">จำนวนดอกเบี้ย :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['principle']*0.02*$result['r_mount'] ?> บาท</td>
-                            </div>
-                            <div type="">
-                                <label class="text-danger">เปลี่ยนสถานะลูกค้าผิดสัญญา</label>
-                <select name="s_role" require class="btn btn-sm ">
-                  <option value="" selected="selected">เลือกสถานะ</option>
-                  <option value="4">หลุดจำนำ</option>
-                  <option value="5">ไถ่ถอนเเล้ว</option>
-                </select>
-              </div>
-                        </div>
+                                    <div class=" mb-3 ">
+                                        <h6 style="display: inline;">ช่องทางการติดต่อ :</h6>
+                                        <td width="25%" style="display: inline;"><?= $result['social_contact'] ?></td>
+                                        <h6 style="display: inline;">ชื่อผู้ใช้ :</h6>
+                                        <td width="25%" style="display: inline;"><?= $result['social_name'] ?></td>
+                                    </div>
+                                    <div class=" mb-3 ">
+                                        <h6 style="display: inline;">จำนวนดอกเบี้ย :</h6>
+                                        <td width="25%" style="display: inline;"><?= $result['principle'] * 0.02 * $result['r_mount'] ?> บาท</td>
+                                    </div>
+                                    <div type="">
+                                        <label class="text-danger">เปลี่ยนสถานะลูกค้าผิดสัญญา</label>
+                                        <select name="s_role" require class="btn btn-sm ">
+                                            <option value="" selected="selected">เลือกสถานะ</option>
+                                            <option value="4">หลุดจำนำ</option>
+                                            <option value="5">ไถ่ถอนเเล้ว</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                             <div class="card-body overflow-auto p-3" style="text-align: center">
                                 <table class="table">
@@ -92,14 +87,14 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                             <th scope="col">จำนวนดอกเบี้ย</th>
                                             <th scope="col">ชำระดอกเบี้ยต่อเดือน</th>
                                             <th scope="col">ยอดดอกเบี้ยคงเหลือ</th>
-                                            <th scope="col">รายละเอียดการโอน</th>
+                                            <!-- <th scope="col">รายละเอียดการโอน</th> -->
                                             <!-- <th scope="col">หลักฐานการโอน</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         for ($i = 1; $i <= $mount; $i++) {
-                                            $myDate = date("Y-m-d", strtotime(date("Y-m-d", strtotime(date("$Date") )) . "+$i month"));
+                                            $myDate = date("Y-m-d", strtotime(date("Y-m-d", strtotime(date("$Date"))) . "+$i month"));
                                             //สำหรับเดือนสุดท้าย นำดอกเบี้ยมารวมใน ยอดชำระต่อเดือน	
                                             if ($mount == $i) {
                                                 $resultPmt = (($principle * 0.02) * $mount);
@@ -131,26 +126,26 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                             }
 
                                             echo "<td>" . number_format($resultPmt, 2, '.', '') . "</td>";
-                                            echo"<td><a href='?page=$_GET[page]&function=detailsIn' class='btn btn-sm btn-blue2 text-white'>รายละเอียดการโอน</a></td>";
+                                            /* echo"<td><a href='?page=$_GET[page]&function=detailsIn' class='btn btn-sm btn-blue2 text-white'>รายละเอียดการโอน</a></td>"; */
 
                                             echo "</tr>";
                                         }
-                                        
-                                    
+
+
                                         ?>
                                     </tbody>
 
 
                                 </table>
                             </div>
-                            </div>
                         </div>
                     </div>
-                    <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-sm btn-dark text-white">ย้อนกลับ</a>
-                    <a href="?page=<?= $_GET['page'] ?>&function=detailsIn&id=<?= $result['s_id'] ?>" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a>
-                </form>
             </div>
+            <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-sm btn-dark text-white">ย้อนกลับ</a>
+            <a href="?page=<?= $_GET['page'] ?>&function=sum_list&id=<?= $result['s_id'] ?>" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a>
+            </form>
         </div>
+    </div>
     </div>
 </body>
 <?php

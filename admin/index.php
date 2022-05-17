@@ -32,6 +32,8 @@
             include('customer/interest/qty.php');
           }elseif (isset($_GET['function']) && $_GET['function'] == 'list') {
             include('customer/interest/list_summary.php');
+          }elseif (isset($_GET['function']) && $_GET['function'] == 'sum_list') {
+            include('customer/interest/sum_list.php');
           }
            else {
             include('customer/interest/index.php');

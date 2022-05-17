@@ -2,7 +2,7 @@
 $sql = "SELECT *
 FROM tbl_social
 INNER JOIN tbl_interest
-ON tbl_social.s_id = tbl_interest.in_id
+ON tbl_social.s_id = tbl_interest.ref_id
 ORDER BY in_date";
 $query = mysqli_query($connection, $sql);
 ?>

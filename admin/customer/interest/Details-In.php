@@ -1,3 +1,13 @@
+<?php
+$sql = "SELECT *
+FROM tbl_interest
+INNER JOIN tbl_social
+ON tbl_social.s_id = tbl_interest.ref_id ";
+$query = mysqli_query($connection, $sql);
+$result = mysqli_fetch_assoc($query);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,9 +30,9 @@
                         <?php
                             if (isset($_GET['id']) && !empty($_GET['id'])) {
                                  $id = $_GET['id'];
-                                $sql = "SELECT * FROM tbl_social WHERE s_id = '$id'";
+                                $sql = "SELECT * FROM tbl_interest WHERE in_id = '$id'";
                                 $query = mysqli_query($connection, $sql);
-                                $result = mysqli_fetch_assoc($query);
+                                $rs = mysqli_fetch_assoc($query);
                             }
                                 //print_r($_POST);
                         ?>
@@ -41,35 +51,35 @@
             <div class="d-flex flex-row bg-gray1">
                 <div class="justify-content-start flex-fill m-3">
                     <div class=" mb-3 col-10 ">
-                        <h6 style="display: inline;">รหัสผู้จำนำ :</h6>
+                        <h6 style="display: inline;">เลขที่สัญญา :</h6>
                         <td width="25%" style="display: inline;"><? ?> </td>
                     </div>
                     <div class=" mb-3 col-10">
                         <h6 style="display: inline;">ชื่อผู้จำนำ :</h6>
-                        <td width="25%" style="display: inline;"><? ?> </td>
+                        <td width="25%" style="display: inline;"><?= $result['s_name'] ?> </td>
                     </div>
                     <div class=" mb-3 col-10 ">
                         <h6 style="display: inline;">วันที่ชำระค่างวด :</h6>
-                        <td width="25%" style="display: inline;"><? ?> </td>
+                        <td width="25%" style="display: inline;"><?= $rs['in_date'] ?> </td>
                     </div>
                     <div class=" mb-3 col-10 ">
                         <h6 style="display: inline;">หลักฐานการชำระค่างวด :</h6>
-                        <img src="" alt="jewelry" width="500" height="500">
+                        <img src="upload/interest/<?= $result['in_img'] ?>" alt="IDcard" width="304" height="228">
 
                     </div>
                 </div>
                 <div class="justify-content-end flex-fill m-3">
                     <div class=" mb-3 col-10 ">
                         <h6 style="display: inline;">รหัสสินค้าที่จำนำ :</h6>
-                        <td width="25%" style="display: inline;"><? ?> </td>
+                        <td width="25%" style="display: inline;"><?= $result['ref_img'] ?> </td>
                     </div>
                     <div class=" col-10 mb-4">
                         <h6 style="display: inline;">รายละเอียดสินค้า :</h6>
-                        <td width="25%" style="display: inline;"><? ?> </td>
+                        <td width="25%" style="display: inline;"><?= $result['s_type'] ?> </td>
                     </div>
                     <div class=" col-10 ">
                         <h6 style="display: inline;">ค่างวดที่ต้องจ่าย :</h6>
-                        <td width="25%" style="display: inline;"><? ?> </td>
+                        <td width="25%" style="display: inline;"><?= $rs['in_befor'] ?> </td>
                     </div>
                 </div>
             </div>
