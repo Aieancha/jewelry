@@ -124,6 +124,7 @@
 								<button type="submit" class="btn app-btn-primary w-100 theme-btn mx-auto">สมัครสมาชิก</button>
 							</div>
 						</form><!--//auth-form-->
+						<div class="auth-option text-center pt-5">เข้าสู่ระบบ ? <a class="text-link" href="signup.html" >คลิก</a>.</div>
 						
 					</div><!--//auth-form-container-->	
 					

@@ -16,9 +16,9 @@ if ($day3['day3'] > 0) {
 } else {
     $noti_day3 = "";
 }
-$mount = $result['c_date'];
+/* $mount = $result['c_date'];
 $mount = date('Y-m-d');
-$mountNew = date("Y-m-d", strtotime("-3 day", strtotime($mount)));
+$mountNew = date("Y-m-d", strtotime("-3 day", strtotime($mount))); */
 ?>
 <div class="container-fluid py-4 ">
     <div class="row justify-content-between">
@@ -26,10 +26,10 @@ $mountNew = date("Y-m-d", strtotime("-3 day", strtotime($mount)));
             <h3 class="font-weight-bolder text-dark text-gradient ">การจัดการการชำระดอกเบี้ย</h3>
         </div>
         <div class="d-flex justify-content-center mb-6">
-            <a href="?page=<?= $_GET['page'] ?>&function=index" class="btn btn-sm1 bg-gray-500 m-1">แจ้งเตือนการชำระดอกเบี้ย</a>
-            <a class="btn btn-sm1 bg-gray-600 text-white m-1">รายการสรุปการชำระดอกเบี้ยโดยลูกค้า</a>
-            <a href="?page=<?= $_GET['page'] ?>&function=wait" class="btn btn-sm1 bg-gray-500 m-1">ตรวจสอบการชำระดอกเบี้ย</a>
-        </div>
+      <a href="?page=<?= $_GET['page'] ?>&function=index"class="btn btn-sm1 bg-gray-500 m-1">แจ้งเตือนการชำระดอกเบี้ย</a>
+      <a  class="btn btn-sm1 bg-gray-600 text-white m-1">ตรวจสอบการชำระดอกเบี้ย</a>
+      <a href="?page=<?= $_GET['page'] ?>&function=wait" class="btn btn-sm1 bg-gray-500 m-1">รายการสรุปการชำระดอกเบี้ยโดยลูกค้า</a>
+</div>
     </div>
     <div class="row justify-content-between">
         <div class="d-flex justify-content-end">
@@ -62,8 +62,8 @@ $mountNew = date("Y-m-d", strtotime("-3 day", strtotime($mount)));
                                     <th scope="col">จำนวนเงินที่ต้องชำระ</th>
                                     <th scope="col">สถานะ</th>
                                     <th scope="col">ดูประวัติการโอน</th>
-
-
+                                    <th scope="col">แก้ไขสถานะ</th>
+                                    
 
                                 </tr>
                             </thead>

@@ -75,7 +75,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                             </div>
                             <div type="">
                                 <label class="text-danger">เปลี่ยนสถานะลูกค้าผิดสัญญา</label>
-                <select name="s_role" require class="btn btn-sm btn-gray-600">
+                <select name="s_role" require class="btn btn-sm ">
                   <option value="" selected="selected">เลือกสถานะ</option>
                   <option value="4">หลุดจำนำ</option>
                   <option value="5">ไถ่ถอนเเล้ว</option>
