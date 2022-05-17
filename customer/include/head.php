@@ -1,5 +1,5 @@
 <head>
-    <title>Portal - Bootstrap 5 Admin Dashboard Template For Developers</title>
+    <title>Jewelry Pawn</title>
     
     <!-- Meta -->
     <meta charset="utf-8">
@@ -40,5 +40,10 @@
 }
 .bg-dark{
     background: #0000;
+}
+.bg-NGG{
+    color: #9b0e21;
+    border-color: #9b0e21;
+    font-size: small;
 }
 </style>

@@ -38,12 +38,9 @@
             <h5 style="display: inline;">ภาพถ่ายสินค้าจริง</h5>
             <h5 class="form-label text-danger " style="display: inline;">*</h5>
             <input type="file" id="myFile" name="s_img" multiple required>
-            <div class="app-card-footer col-12 center p-4 mt-auto">
-							   <a class="btn app-btn-secondary " href="#">บันทึก</a>
-						    </div><!--//app-card-footer-->
           </div>
         </div>
-        <div>
+
         <div class="app-card-footer p-4 mt-auto">
 							   <a class="btn app-btn-secondary" href="#">บันทึก</a>
 </div>
