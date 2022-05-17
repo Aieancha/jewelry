@@ -17,13 +17,13 @@
 		<div class="app-wrapper">
 <div class="app-content pt-3 p-md-3 p-lg-4"> 
 		    <div class="container-xl">
-			    <h1 class="app-page-title">รายการชำระดอกเบี้ย</h1>
+			    <h1 class="app-page-title">ข้อมูลรายการชำระดอกเบี้ย</h1>
 				<div class="d-flex flex-row">
                 <div class="flex-fill d-flex justify-content-end gap-1 ">
-				<a class="btn app-btn-secondary bg-NGG" href="#">ตารางแสดงรายละเอียดการค้างชำระดอกเบี้ย</a>
+				<a class="btn app-btn-secondary bg-NGG" href="#">รายการที่ชำระเเล้ว</a>
 </div>
                 <div class="flex-fill d-flex justify-content-start gap-1"> 
-				<a class="btn app-btn-secondary" href="#">ตารางแสดงรายละเอียดการชำระดอกเบี้ย</a>
+				<a class="btn app-btn-secondary" href="interest_details.php">รายการที่ค้างชำระ</a>
 				<div>
 			</div>
 						   
@@ -42,46 +42,51 @@
 						                
 							        </div><!--//col-->
 							        <div class="col-auto">
-								        <h4 class="app-card-title">ตารางแสดงรายละเอียดการค้างชำระดอกเบี้ย</h4>
+								        <h4 class="app-card-title">รายละเอียดการชำระดอกเบี้ย</h4>
 							        </div><!--//col-->
 						        </div><!--//row-->
 						    </div><!--//app-card-header-->
-<div class="col-11 m-5 overflow-auto">
-	<table class="table">
-	<thead class="thead-dark">
-    <tr>
-      <th scope="col">ลำดับ</th>
-      <th scope="col">เลขที่สัญญา</th>
-      <th scope="col">จำนวนเดอกเบี้ยที่ต้องชำระ</th>
-      <th scope="col">สถานะ</th>
-      <th scope="col">แนบหลักฐานการชำระดอกเบี้ย</th>
 
-	  
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-	<td><a class="btn1 app-btn-secondary" href="#">ชำระ</a></td>
-	  
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+<div class="col-11 m-5 overflow-auto">
+<div class="col-6 col-md-4 mb-3 col-xl-3 col-xxl-2 ">
+					    <div class="app-card app-card-doc shadow-sm h-100">
+						    <div class="app-card-thumb-holder p-3">
+                            <div class="app-card-thumb">
+	                                <img class="thumb-image" src="assets/images/R4.jpg" alt="">
+	                            </div>
+	                            <span class="badge bg-success">ชำระแล้ว</span>
+                                <a class="app-card-link-mask" href="#file-link"></a>
+						    </div>
+						    <div class="app-card-body p-3 has-card-actions">
+							    
+							    <h4 class="app-doc-title truncate mb-0"><a href="#file-link">รหัสสินค้า : a125</a></h4>
+							    <div class="app-doc-meta">
+								    <ul class="list-unstyled mb-0">
+									    <li><span class="text-muted">รายละเอียด :</span> ตุ้มหูทอง 1 สลึง</li>
+								    </ul>
+							    </div><!--//app-doc-meta-->
+							    
+							    <div class="app-card-actions">
+								    <div class="dropdown">
+									    <div class="dropdown-toggle no-toggle-arrow" data-bs-toggle="dropdown" aria-expanded="false">
+										    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+											<path fill-rule="evenodd" d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.134 13.134 0 0 0 1.66 2.043C4.12 11.332 5.88 12.5 8 12.5c2.12 0 3.879-1.168 5.168-2.457A13.134 13.134 0 0 0 14.828 8a13.133 13.133 0 0 0-1.66-2.043C11.879 4.668 10.119 3.5 8 3.5c-2.12 0-3.879 1.168-5.168 2.457A13.133 13.133 0 0 0 1.172 8z"/>
+	  <path fill-rule="evenodd" d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+	        </svg>
+									    </div><!--//dropdown-toggle-->
+									    <ul class="dropdown-menu">
+										    <li><a class="dropdown-item" href="show_details.php"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye me-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+	  <path fill-rule="evenodd" d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.134 13.134 0 0 0 1.66 2.043C4.12 11.332 5.88 12.5 8 12.5c2.12 0 3.879-1.168 5.168-2.457A13.134 13.134 0 0 0 14.828 8a13.133 13.133 0 0 0-1.66-2.043C11.879 4.668 10.119 3.5 8 3.5c-2.12 0-3.879 1.168-5.168 2.457A13.133 13.133 0 0 0 1.172 8z"/>
+	  <path fill-rule="evenodd" d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+	</svg>ดูรายละเอียด</a></li>		
+										</ul>
+								    </div><!--//dropdown-->
+						        </div><!--//app-card-actions-->
+								    
+						    </div><!--//app-card-body-->
+
+						</div><!--//app-card-->
+				    </div><!--//col-->
 
 
 						</div>

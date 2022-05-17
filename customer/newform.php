@@ -22,7 +22,7 @@
                 <div class="row gy-4">
 	                <div class="col-12 ">
 		                <div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
-                                <h4 class="app-page-title m-4">กรอกข้อมูลเครื่องประดับที่ต้องการยื่นจำนำ</h4>
+                                <h4 class=" m-4">กรอกข้อมูลเครื่องประดับที่ต้องการยื่นจำนำ</h4>
         <div class="m-4 col-12">
           <div class="mb-2 col-12 center">
             <h5 style="display: inline;">รายละเอียดเครื่องประดับ</h5>
