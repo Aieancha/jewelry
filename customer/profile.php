@@ -186,13 +186,13 @@
     padding-top: 10px;
     font-size: 1rem;
     text-align: center;
-    border-radius: 50%;
+    border-radius: 50%
 	!important}
 .app-auth-wrapper {
     background: #f5f6fd;
-    height: 100px;
+    height: 100px
 	!important}
 .app-auth-wrapper .app-auth-body {
-    width: auto; !important
+    width: auto !important
 }
 </style>

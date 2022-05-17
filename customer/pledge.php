@@ -14,7 +14,7 @@
 		</div>
 </div>
 <div class="app-content pt-3 p-md-3 p-lg-4">
-<div style="margin-top: 1rem ]">	
+<div style="margin-top: 1rem ">	
         <h1>ข้อมูลการจำนำเครื่องประดับ</h1>
 </div> 	
 
@@ -297,14 +297,14 @@
     padding-top: 10px;
     font-size: 1rem;
     text-align: center;
-    border-radius: 50%;
+    border-radius: 50%
 	!important}
 .app-auth-wrapper {
     background: #f5f6fd;
-    height: 100px;
+    height: 100px
 	!important}
 .app-auth-wrapper .app-auth-body {
-    width: auto; !important
+    width: auto !important
 }
 .bg-dark{
     background: #0000;

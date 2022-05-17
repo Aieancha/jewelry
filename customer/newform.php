@@ -22,16 +22,19 @@
                 <div class="row gy-4">
 	                <div class="col-12 ">
 		                <div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
-						        <div class="row align-items-center gx-3">
-                                <h1 class="app-page-title m-4">กรอกข้อมูลเครื่องประดับที่ต้องการยื่นจำนำ</h1>
-                                </div>
+                                <h4 class="app-page-title m-4">กรอกข้อมูลเครื่องประดับที่ต้องการยื่นจำนำ</h4>
         <div class="m-4 col-12">
-          <div class="mb-4 col-12 center">
+          <div class="mb-2 col-12 center">
             <h5 style="display: inline;">รายละเอียดเครื่องประดับ</h5>
             <h5 class="form-label text-danger" style="display: inline;">*</h5>
             <input type="text" class="form-control " name="s_type" placeholder="สินทรัพย์ที่ใช้จำนำ" autocomplete="off" required>
           </div>
-          <div class="mb-4 col-10 center">
+          <div class="mb-2 col-12 center">
+            <h5 style="display: inline;">ราคาที่ต้องการจำนำ</h5>
+            <h5 class="form-label text-danger" style="display: inline;">*</h5>
+            <input type="text" class="form-control " name="s_type" placeholder="กรอกราคาที่ลูกค้าต้องการจำนำ" autocomplete="off" required>
+          </div>
+          <div class="mb-2 col-10 center">
             <h5 style="display: inline;">ภาพถ่ายสินค้าจริง</h5>
             <h5 class="form-label text-danger " style="display: inline;">*</h5>
             <input type="file" id="myFile" name="s_img" multiple required>
@@ -39,8 +42,14 @@
 							   <a class="btn app-btn-secondary " href="#">บันทึก</a>
 						    </div><!--//app-card-footer-->
           </div>
-        </div>  
-
+        </div>
+        <div>
+        <div class="app-card-footer p-4 mt-auto">
+							   <a class="btn app-btn-secondary" href="#">บันทึก</a>
+</div>
+						    </div><!--//app-card-footer-->
+        </div>
+        
                             </div><!--//app-card-header-->
                         </div><!--//app-card-->   
 	                </div><!--//col-->

@@ -134,7 +134,10 @@
 		    
 	    </div><!--//auth-main-col-->
 	    
+<<<<<<< HEAD
+=======
     
+>>>>>>> 5de221e237b5a17b9857b1ef09e64e30c4d5345c
     </div><!--//row-->
 	<script>
 	
@@ -142,4 +145,3 @@
 
 </body>
 </html> 
-

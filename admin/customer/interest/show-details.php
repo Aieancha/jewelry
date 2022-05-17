@@ -43,40 +43,41 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                         <div class="card-body">
                             <h4 class="mb-6">ตารางแสดงรายละเอียดการชำระค่างวด</h4>
                             <div class="d-flex flex-row m-4">
-                                <div class="justify-content-start flex-fill ">
-                                    <div class=" mb-3 ">
-                                        <h6 style="display: inline;">ชื่อผู้จำนำ :</h6>
-                                        <td width="25%" style="display: inline;"><?= $result['s_name'] ?></td>
-                                        <h6 style="display: inline;">นามสกุล :</h6>
-                                        <td width="25%" style="display: inline;"><?= $result['s_lastname'] ?></td>
+                            <div class="justify-content-start flex-fill ">
+                            <div class=" mb-3 ">
+                                <h6 style="display: inline;">ชื่อผู้จำนำ :</h6>
+                                <td width="25%" style="display: inline;"><?= $result['s_name'] ?></td>
+                                <h6 style="display: inline;">นามสกุล :</h6>
+                                <td width="25%" style="display: inline;"><?= $result['s_lastname'] ?></td>
 
-                                    </div>
-                                    <div class=" mb-3 ">
-                                        <h6 style="display: inline;">จำนวนเงินต้น :</h6>
-                                        <td width="25%" style="display: inline;"><?= $result['principle'] ?> บาท</td>
-                                    </div>
-                                </div>
-                                <div class="justify-content-start flex-fill ">
+                            </div>
+                            <div class=" mb-3 ">
+                                <h6 style="display: inline;">จำนวนเงินต้น :</h6>
+                                <td width="25%" style="display: inline;"><?= $result['principle'] ?> บาท</td>
+                            </div>
+                            
+                        </div>
+                <div class="justify-content-start flex-fill "> 
 
-                                    <div class=" mb-3 ">
-                                        <h6 style="display: inline;">ช่องทางการติดต่อ :</h6>
-                                        <td width="25%" style="display: inline;"><?= $result['social_contact'] ?></td>
-                                        <h6 style="display: inline;">ชื่อผู้ใช้ :</h6>
-                                        <td width="25%" style="display: inline;"><?= $result['social_name'] ?></td>
-                                    </div>
-                                    <div class=" mb-3 ">
-                                        <h6 style="display: inline;">จำนวนดอกเบี้ย :</h6>
-                                        <td width="25%" style="display: inline;"><?= $result['principle'] * 0.02 * $result['r_mount'] ?> บาท</td>
-                                    </div>
-                                    <div type="">
-                                        <label class="text-danger">เปลี่ยนสถานะลูกค้าผิดสัญญา</label>
-                                        <select name="s_role" require class="btn btn-sm ">
-                                            <option value="" selected="selected">เลือกสถานะ</option>
-                                            <option value="4">หลุดจำนำ</option>
-                                            <option value="5">ไถ่ถอนเเล้ว</option>
-                                        </select>
-                                    </div>
-                                </div>
+                        <div class=" mb-3 ">
+                                <h6 style="display: inline;">ช่องทางการติดต่อ :</h6>
+                                <td width="25%" style="display: inline;"><?= $result['social_contact'] ?></td>
+                                <h6 style="display: inline;">ชื่อผู้ใช้ :</h6>
+                                <td width="25%" style="display: inline;"><?= $result['social_name'] ?></td>
+                            </div>
+                            <div class=" mb-3 ">
+                                <h6 style="display: inline;">จำนวนดอกเบี้ย :</h6>
+                                <td width="25%" style="display: inline;"><?= $result['principle']*0.02*$result['r_mount'] ?> บาท</td>
+                            </div>
+                            <div type="">
+                                <label class="text-danger">เปลี่ยนสถานะลูกค้าผิดสัญญา</label>
+                <select name="s_role" require class="btn btn-sm ">
+                  <option value="" selected="selected">เลือกสถานะ</option>
+                  <option value="4">หลุดจำนำ</option>
+                  <option value="5">ไถ่ถอนเเล้ว</option>
+                </select>
+              </div>
+                        </div>
                             </div>
                             <div class="card-body overflow-auto p-3" style="text-align: center">
                                 <table class="table">
