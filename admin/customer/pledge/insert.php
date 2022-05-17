@@ -150,6 +150,11 @@ $nextId = $code.$yearMonth.$maxId;
             <input type="file" id="myFile" name="s_img" multiple required>
           </div>
           <div class="mb-3 col-3 ">
+            <h5>ราคาที่ลูกค้าต้องการ</h5>
+            <input type="number" min="0" name="price_img" class="form-control " placeholder="10000 บาท" autocomplete="off">
+            <input class="form-control " type="hidden" name="ref_img" value="<?php echo $nextId ?>" required>
+          </div>
+          <div class="mb-3 col-3 ">
             <h5>ราคาประเมินจากภาพ</h5>
             <input type="number" min="0" name="price_img" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
             <input class="form-control " type="hidden" name="ref_img" value="<?php echo $nextId ?>" required>

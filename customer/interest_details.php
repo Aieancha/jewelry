@@ -20,10 +20,10 @@
 			    <h1 class="app-page-title">รายการชำระดอกเบี้ย</h1>
 				<div class="d-flex flex-row">
                 <div class="flex-fill d-flex justify-content-end gap-1 ">
-				<a class="btn app-btn-secondary bg-NGG" href="#">ตารางแสดงรายละเอียดการค้างชำระดอกเบี้ย</a>
+				<a class="btn app-btn-secondary " href="interest_table.php">ตารางแสดงรายละเอียดการค้างชำระดอกเบี้ย</a>
 </div>
                 <div class="flex-fill d-flex justify-content-start gap-1"> 
-				<a class="btn app-btn-secondary" href="interest_details.php">ตารางแสดงรายละเอียดการชำระดอกเบี้ย</a>
+				<a class="btn app-btn-secondary bg-NGG" href="#">ตารางแสดงรายละเอียดการชำระดอกเบี้ย</a>
 				<div>
 			</div>
 						   
@@ -42,7 +42,7 @@
 						                
 							        </div><!--//col-->
 							        <div class="col-auto">
-								        <h4 class="app-card-title">ตารางแสดงรายละเอียดการค้างชำระดอกเบี้ย</h4>
+								        <h4 class="app-card-title">ตารางแสดงรายละเอียดการชำระดอกเบี้ย</h4>
 							        </div><!--//col-->
 						        </div><!--//row-->
 						    </div><!--//app-card-header-->
