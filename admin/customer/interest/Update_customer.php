@@ -152,7 +152,7 @@
                                     </div>
                                     <div class=" mb-3 col-8">
                                         <h6 style="display: inline;">จำนวนเงิน</h6>
-                                        <input class="form-control " type="number" min="0" id="myFile" name="in_befor" required>บาท
+                                        <input class="form-control " type="number" min="0" id="myFile" name="in_befor" required>
                                     </div>
                                 </div>
                                 <div class="col-3 mt-6">
@@ -162,10 +162,14 @@
 
                 </div>
             </div>
+            <div class="d-flex flex-row">
+                <div class="justify-content-start flex-fill ">
             <a href="?page=<?= $_GET['page'] ?>&function=wait" class="btn btn-sm btn-dark text-white">ย้อนกลับ</a>
-            <a href="?page=<?= $_GET['page'] ?>&function=showDetails&id=<?= $result['s_id'] ?>" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a>
+                </div>
+                <div class="flex-fill d-flex justify-content-end gap-1"> 
+            <a href="?page=<?= $_GET['page'] ?>&function=showDetails&id=<?= $result['s_id'] ?>" class="btn btn-sm btn-blue2 text-white">ประวัติการชำระดอกเบี้ย</a>
             <!-- <a href="?page=<?= $_GET['page'] ?>&function=qty&id=<?= $result['s_id'] ?>" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a> -->
-
+                </div>
         </div>
     </div>
     <div>
