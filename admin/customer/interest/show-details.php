@@ -61,6 +61,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                 <h6 style="display: inline;">จำนวนเงินต้น :</h6>
                                 <td width="25%" style="display: inline;"><?= $result['principle'] ?> บาท</td>
                             </div>
+                            
                         </div>
                         <div class="justify-content-start flex-fill ">
                             <div class=" mb-3 ">
@@ -72,6 +73,13 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                             <div class=" mb-3 ">
                                 <h6 style="display: inline;">จำนวนดอกเบี้ย :</h6>
                                 <td width="25%" style="display: inline;"><?= $result['principle']*0.02*$result['r_mount'] ?> บาท</td>
+                            </div>
+                            <div type="">
+                                <select name="" require class="btn btn-sm1 btn-blue2 text-white">
+                                <option value="" selected="selected"  >เปลี่ยนสถานะ</option>
+                                <option value="1">หลุดจำนำ</option>
+                                <option value="2">ไถ่ถอนแล้ว</option>
+                            </select>
                             </div>
                         </div>
                             </div>
