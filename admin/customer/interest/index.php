@@ -1,8 +1,8 @@
 <?php
 $sql = "SELECT *
 FROM tbl_social
-INNER JOIN tbl_status
-ON tbl_social.s_role = tbl_status.id
+INNER JOIN tbl_bill
+ON tbl_social.s_id = tbl_bill.bill_no
 /* WHERE tbl_status.id=2 AND */
 WHERE DATEDIFF(c_date, Now())= 3 or DATEDIFF(c_date, Now())= 2";
 $query = mysqli_query($connection, $sql);
@@ -75,7 +75,7 @@ if($day3['day3']>0){
                 <td><?= ++$i ?></td>
                 <td><?php echo $data['start_date']; ?></td>
                 <td><?php echo $data['c_date']; ?></td>
-                <td></td>
+                <td><?= $data['bill_no'] ?></td>
                 <td><?= $data['s_name'] ?></td>
                 <td><?= $data['principle']*0.02 ?></td>
                 <td><?= $data['phone'] ?></td>

@@ -3,6 +3,7 @@ $sql = "SELECT *
 FROM tbl_social
 INNER JOIN tbl_interest
 ON tbl_social.s_id = tbl_interest.ref_id
+group by tbl_social.s_id 
 ORDER BY in_date";
 $query = mysqli_query($connection, $sql);
 ?>
@@ -19,6 +20,7 @@ if ($day3['day3'] > 0) {
 /* $mount = $result['c_date'];
 $mount = date('Y-m-d');
 $mountNew = date("Y-m-d", strtotime("-3 day", strtotime($mount))); */
+
 ?>
 <div class="container-fluid py-4 ">
     <div class="row justify-content-between">
@@ -72,14 +74,15 @@ $mountNew = date("Y-m-d", strtotime("-3 day", strtotime($mount))); */
                                 $i = 0;
                                 if (isset($_GET['id']) && !empty($_GET['id'])) {
                                     $id = $_GET['id'];
-                                    $sql = "SELECT * FROM tbl_social WHERE s_id = '$id'";
+                                    $sql = "SELECT * FROM tbl_social left join tbl_bill 
+                                    ON tbl_social.s_id = tbl_bill.bill_no WHERE s_id = '$id'";
                                     $query = mysqli_query($connection, $sql);
                                 }
                                 foreach ($query as $data) : ?>
                                     <tr>
                                         <td><?= ++$i ?></td>
                                         <td><?= $data['in_date'] ?></td>
-                                        <td></td>
+                                        <td><?= $data['bill_no'] ?></td>
                                         <td><?= $data['s_name'] ?></td>
                                         <td><?= $data['phone']; ?></td>
                                         <td><?= $data['in_befor']; ?></td>
