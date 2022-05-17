@@ -34,7 +34,7 @@ if($day3['day3']>0){
 </div>
      <div class="d-flex justify-content-end">
         <div class="d-flex justify-content-end mb-2 ">
-            <form class="example " action="/action_page.php" style="margin: 7px;;max-width:200px">
+            <form class="example " action="" style="margin: 7px;;max-width:200px">
                 <input type="text" placeholder="" name="search2 ">
                 <button type="submit"><i class="fa fa-search btn-dark"></i></button>
             </form>

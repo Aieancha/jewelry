@@ -5,7 +5,6 @@ INNER JOIN tbl_interest
 ON tbl_social.s_id = tbl_interest.in_id
 ORDER BY in_date";
 $query = mysqli_query($connection, $sql);
-$result = mysqli_fetch_assoc($query);
 ?>
 <?php
 mysqli_select_db($connection, "");
@@ -27,10 +26,10 @@ $mountNew = date("Y-m-d", strtotime("-3 day", strtotime($mount)));
             <h3 class="font-weight-bolder text-dark text-gradient ">การจัดการการชำระดอกเบี้ย</h3>
         </div>
         <div class="d-flex justify-content-center mb-6">
-      <a href="?page=<?= $_GET['page'] ?>&function=index"class="btn btn-sm1 bg-gray-500 m-1">แจ้งเตือนการชำระดอกเบี้ย</a>
-      <a  class="btn btn-sm1 bg-gray-600 text-white m-1">รายการสรุปการชำระดอกเบี้ยโดยลูกค้า</a>
-      <a href="?page=<?= $_GET['page'] ?>&function=wait" class="btn btn-sm1 bg-gray-500 m-1">ตรวจสอบการชำระดอกเบี้ย</a>
-</div>
+            <a href="?page=<?= $_GET['page'] ?>&function=index" class="btn btn-sm1 bg-gray-500 m-1">แจ้งเตือนการชำระดอกเบี้ย</a>
+            <a class="btn btn-sm1 bg-gray-600 text-white m-1">รายการสรุปการชำระดอกเบี้ยโดยลูกค้า</a>
+            <a href="?page=<?= $_GET['page'] ?>&function=wait" class="btn btn-sm1 bg-gray-500 m-1">ตรวจสอบการชำระดอกเบี้ย</a>
+        </div>
     </div>
     <div class="row justify-content-between">
         <div class="d-flex justify-content-end">
@@ -56,6 +55,7 @@ $mountNew = date("Y-m-d", strtotime("-3 day", strtotime($mount)));
                             <thead>
                                 <tr>
                                     <th scope="col">ลำดับ</th>
+                                    <th scope="col">วันที่บันทึกสลิป</th>
                                     <th scope="col">เลขที่สัญญา</th>
                                     <th scope="col">ชื่อผู้จำนำ</th>
                                     <th scope="col">เบอร์โทรศัพท์</th>
@@ -63,44 +63,26 @@ $mountNew = date("Y-m-d", strtotime("-3 day", strtotime($mount)));
                                     <th scope="col">สถานะ</th>
                                     <th scope="col">ดูประวัติการโอน</th>
 
-                                    
+
 
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-
-                                if (isset($_POST) && !empty($_POST)) {
-                                    $role = $_POST['s_role'];
-                                    $sql = "UPDATE tbl_social SET s_role='$role' WHERE s_id ='$id'";
-                                    $query = mysqli_query($connection, $sql);
-                                    $result = mysqli_fetch_assoc($query);
-                                    $date = $result['c_date'];
-                                    $start = $result['start_date'];
-                                    $status = ($result['start_date'] == $start) ? $date : $start;
-
-                                    if (mysqli_query($connection, $sql)) {
-                                        echo "เพิ่มข้อมูลสำเร็จ";
-                                    } else {
-                                        echo "Error: " . $sql . "<br>" . mysqli_error($connection);
-                                    }
-
-                                    mysqli_close($connection);
-                                }
-
-                                //print_r($_POST);
-                                ?>
-
-
-                                <?php
                                 $i = 0;
+                                if (isset($_GET['id']) && !empty($_GET['id'])) {
+                                    $id = $_GET['id'];
+                                    $sql = "SELECT * FROM tbl_social WHERE s_id = '$id'";
+                                    $query = mysqli_query($connection, $sql);
+                                }
                                 foreach ($query as $data) : ?>
                                     <tr>
                                         <td><?= ++$i ?></td>
-                                        <td><?php echo $data['in_date']; ?></td>
+                                        <td><?= $data['in_date'] ?></td>
+                                        <td></td>
                                         <td><?= $data['s_name'] ?></td>
+                                        <td><?= $data['phone']; ?></td>
                                         <td><?= $data['in_befor']; ?></td>
-                                        <td><?= $data['ref_img'] ?></td>
                                         <td><?php $status = $data['in_date'];
                                             if ($status == $data['in_date']) {
                                                 echo "ชำระแล้ว";

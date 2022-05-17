@@ -43,7 +43,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
                 $resultPmt =  number_format($pmt, 2, '.', '');
                 ?>
-                <form action="" method="POST">
+                <form action="" method="GET">
                     <div class="card ">
                         <div class="card-body">
                             <h4 class="mb-6" >ตารางแสดงรายละเอียดการชำระค่างวด</h4>
@@ -77,12 +77,13 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                 <label class="text-danger">เปลี่ยนสถานะลูกค้าผิดสัญญา</label>
                 <select name="s_role" require class="btn btn-sm btn-gray-600">
                   <option value="" selected="selected">เลือกสถานะ</option>
-                  <option value="1">หลุดจำนำ</option>
-                  <option value="2">ไถ่ถอนเเล้ว</option>
+                  <option value="4">หลุดจำนำ</option>
+                  <option value="5">ไถ่ถอนเเล้ว</option>
                 </select>
               </div>
                         </div>
                             </div>
+                            <div class="card-body overflow-auto p-3" style="text-align: center">
                                 <table class="table">
                                     <thead>
                                         <tr>
@@ -130,10 +131,11 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                             }
 
                                             echo "<td>" . number_format($resultPmt, 2, '.', '') . "</td>";
-
+                                            echo"<td><a href='?page=$_GET[page]&function=detailsIn' class='btn btn-sm btn-blue2 text-white'>รายละเอียดการโอน</a></td>";
 
                                             echo "</tr>";
                                         }
+                                        
                                     
                                         ?>
                                     </tbody>
@@ -141,10 +143,11 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
                                 </table>
                             </div>
+                            </div>
                         </div>
                     </div>
                     <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-sm btn-dark text-white">ย้อนกลับ</a>
-                    <a href="?page=<?= $_GET['page'] ?>&function=detailsIn" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a>
+                    <a href="?page=<?= $_GET['page'] ?>&function=detailsIn&id=<?= $result['s_id'] ?>" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a>
                 </form>
             </div>
         </div>
