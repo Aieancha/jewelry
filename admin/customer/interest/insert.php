@@ -15,8 +15,8 @@ $query = mysqli_query($connection, $sql);
     </div>
     <div class="d-flex justify-content-center mb-6">
       <a href="?page=<?= $_GET['page'] ?>&function=index"class="btn btn-sm1 bg-gray-500 m-1">แจ้งเตือนการชำระดอกเบี้ย</a>
-      <a href="?page=<?= $_GET['page'] ?>&function=list" class="btn btn-sm1 bg-gray-500 m-1">ตรวจสอบการชำระดอกเบี้ยโดยลูกค้า</a>
-      <a class="btn btn-sm1 bg-gray-600 text-white m-1">รายการสรุปการชำระดอกเบี้ย</a>
+      <a href="?page=<?= $_GET['page'] ?>&function=list" class="btn btn-sm1 bg-gray-500 m-1">รายการสรุปการชำระดอกเบี้ย</a>
+      <a class="btn btn-sm1 bg-gray-600 text-white m-1">ตรวจสอบการชำระดอกเบี้ยโดยลูกค้า</a>
 </div>
   </div>
   <div class="row justify-content-between">
@@ -47,7 +47,6 @@ $query = mysqli_query($connection, $sql);
               <th scope="col">เลขที่สัญญา</th>
               <th scope="col">ชื่อผู้จำนำ</th>
               <th scope="col">เบอร์โทรศัพท์</th>
-              <th scope="col">รหัสสินค้า</th>
               <th scope="col">จำนวนเงินที่ชำระ</th>
               <th scope="col">สถานะ</th>
               <th scope="col">อัพเดทสถานะ</th>
@@ -63,11 +62,12 @@ $query = mysqli_query($connection, $sql);
               <tr>
                 <td><?= ++$i ?></td>
                 <td><?php echo $data['c_date']; ?></td>
+                <td>#วันที่กำหนดชำระ</td>
+                <td>#เลขที่สัญญา</td>
                 <td><?= $data['s_name'] ?></td>
                 <td><?= $data['phone'] ?></td>
-                <td><?= $data['ref_img'] ?></td>
                 <td><?= $data['principle']*0.02*$data['r_mount'] ?></td>
-                <td class="text-danger"><?php echo $data['status_name']; ?></td>
+                <td class="text-danger"><?php echo $data['status_name']; ?>รอยืนยัน</td>
                 <td><a href="?page=<?= $_GET['page'] ?>&function=updateCustomer&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-green3 text-white">ยืนยันข้อมูล</a></td>
               </tr>
             <?php endforeach; ?>

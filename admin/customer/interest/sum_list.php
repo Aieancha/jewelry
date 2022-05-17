@@ -35,6 +35,15 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                 <h6 style="display: inline;">เลขที่ราชการออกให้ผู้จำนำ :</h6>
                                 <td width="25%" style="display: inline;"><?= $result['code_id'] ?></td>
                             </div>
+                            <div type="">
+                                <label class="text-danger">เปลี่ยนสถานะลูกค้าผิดสัญญา</label>
+                <select name="s_role" require class="btn btn-sm ">
+                  <option value="" selected="selected">เลือกสถานะ</option>
+                  <option value="4">หลุดจำนำ</option>
+                  <option value="5">ไถ่ถอนเเล้ว</option>
+                </select>
+                <a class="btn btn-sm btn-green3 text-white">ยืนยันการเปลี่ยนสถานะ</a>
+              </div>
                     <form action="">
                         <table class="table">
                             <thead>
