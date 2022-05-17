@@ -1,8 +1,4 @@
 <?php
-
-
-
-
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
     $sql = "SELECT * FROM tbl_social
@@ -10,9 +6,35 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     $query = mysqli_query($connection, $sql);
     $result = mysqli_fetch_assoc($query);
 }
+?>
+<?php
+$code = "B";
+$yearMonth = substr(date("Y")+543, -2).date("m");
 
+//query MAX ID 
+$sqli = "SELECT MAX(bill_no) AS bill_no FROM tbl_bill";
+$qry = mysqli_query($connection,$sqli) or die("Error Query [".$sqli."]");
+$rs = mysqli_fetch_assoc($qry);
+$maxId = substr($rs['bill_no'], -5);  //ข้อมูลนี้จะติดรหัสตัวอักษรด้วย ตัดเอาเฉพาะตัวเลขท้ายนะครับ
+$maxId = ($maxId + 1); 
 
+$maxId = substr("00000".$maxId, -5);
+$nextId = $code.$yearMonth.$maxId;
+echo $nextId;
+$sqli = "INSERT INTO tbl_bill (bill_id) VALUES ( '$nextId')";
+          if (mysqli_query($connection, $sqli)) {
+            //echo "เพิ่มข้อมูลสำเร็จ";
+            $alert = '<script type="text/javascript">';
+            $alert .= 'alert("เพิ่มข้อมูลสำเร็จ");';
+            $alert .= 'window.location.href = "?page=pledge&function=success";';
+            $alert .= '</script>';
+            echo $alert;
+            exit();
+          } else {
+            echo "Error: " . $sqli . "<br>" . mysqli_error($connection);
+          }
 
+          mysqli_close($connection);
 ?>
 
 <!DOCTYPE html>
@@ -130,6 +152,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                         <option value="2" selected hidden></option>
                                     </select>
                                 </div>
+                                <input class="form-control " type="hidden" name="bill_id" value="<?php echo $nextId ?>" required>
 
                             </div>
 
@@ -141,7 +164,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                     <a href="?page=<?= $_GET['page'] ?>&function=updated" class="btn bg-gradient-dark">ย้อนกลับ</a>
                 </div> -->
                         <div class="flex-fill d-flex justify-content-end gap-1">
-                            <a href="?page=<?= $_GET['page'] ?>&function=success" class="btn btn-color1 btn-green3 text-white theme-btn  pull-right">ร่างสัญญา</a>
+                            <a href="?page=<?= $_GET['page'] ?>&function=success" type="submit" class="btn btn-color1 btn-green3 text-white theme-btn  pull-right">ร่างสัญญา</a>
                         </div>
                     </div>
 
@@ -156,6 +179,9 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 </body>
 
 </html>
+<?php
+mysqli_close($connection);
+?>
 <style>
     .wrapper-progressBar {
         width: 100%

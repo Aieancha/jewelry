@@ -17,9 +17,6 @@ if ($day3['day3'] > 0) {
 } else {
     $noti_day3 = "";
 }
-/* $mount = $result['c_date'];
-$mount = date('Y-m-d');
-$mountNew = date("Y-m-d", strtotime("-3 day", strtotime($mount))); */
 
 ?>
 <div class="container-fluid py-4 ">
@@ -57,7 +54,7 @@ $mountNew = date("Y-m-d", strtotime("-3 day", strtotime($mount))); */
                             <thead>
                                 <tr>
                                     <th scope="col">ลำดับ</th>
-                                    <th scope="col">วันที่บันทึกสลิป</th>
+                                    <th scope="col">วันที่ชำระดอกเบี้ย</th>
                                     <th scope="col">เลขที่สัญญา</th>
                                     <th scope="col">ชื่อผู้จำนำ</th>
                                     <th scope="col">เบอร์โทรศัพท์</th>
@@ -74,15 +71,14 @@ $mountNew = date("Y-m-d", strtotime("-3 day", strtotime($mount))); */
                                 $i = 0;
                                 if (isset($_GET['id']) && !empty($_GET['id'])) {
                                     $id = $_GET['id'];
-                                    $sql = "SELECT * FROM tbl_social left join tbl_bill 
-                                    ON tbl_social.s_id = tbl_bill.bill_no WHERE s_id = '$id'";
+                                    $sql = "SELECT * FROM tbl_social WHERE s_id = '$id'";
                                     $query = mysqli_query($connection, $sql);
                                 }
                                 foreach ($query as $data) : ?>
                                     <tr>
                                         <td><?= ++$i ?></td>
                                         <td><?= $data['in_date'] ?></td>
-                                        <td><?= $data['bill_no'] ?></td>
+                                        <td>#</td>
                                         <td><?= $data['s_name'] ?></td>
                                         <td><?= $data['phone']; ?></td>
                                         <td><?= $data['in_befor']; ?></td>
@@ -100,7 +96,6 @@ $mountNew = date("Y-m-d", strtotime("-3 day", strtotime($mount))); */
                         </table>
                     </form>
                 </div>
-
             </div>
         </div>
     </div>

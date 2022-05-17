@@ -177,7 +177,7 @@
               </div>
               <div class="mb-4 col-3 ">
                 <h6>ภาพยืนยันตัวตน*</h6>
-                <input type="file" id="myFile" name="c_img" multiple >
+                <img src="upload/customer/<?= $result['c_img'] ?>" alt="jewelry" width="300" height="200">
               </div>
               <div type="">
                 <select name="s_role" require>
