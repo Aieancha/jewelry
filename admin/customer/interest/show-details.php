@@ -43,12 +43,11 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
                 $resultPmt =  number_format($pmt, 2, '.', '');
                 ?>
-                <form action="" method="POST">
+                <form action="" method="GET">
                     <div class="card ">
                         <div class="card-body">
-                            <h4>ตารางแสดงรายละเอียดการชำระค่างวด</h4>
-                            <div class="card-body overflow-auto p-3 bg-white" style="text-align: center">
-                            <div class="d-flex flex-row mb-2">
+                            <h4 class="mb-6" >ตารางแสดงรายละเอียดการชำระค่างวด</h4>
+                            <div class="d-flex flex-row m-4">
                             <div class="justify-content-start flex-fill ">
                             <div class=" mb-3 ">
                                 <h6 style="display: inline;">ชื่อผู้จำนำ :</h6>
@@ -63,8 +62,9 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                             </div>
                             
                         </div>
-                        <div class="justify-content-start flex-fill ">
-                            <div class=" mb-3 ">
+                <div class="justify-content-start flex-fill "> 
+
+                        <div class=" mb-3 ">
                                 <h6 style="display: inline;">ช่องทางการติดต่อ :</h6>
                                 <td width="25%" style="display: inline;"><?= $result['social_contact'] ?></td>
                                 <h6 style="display: inline;">ชื่อผู้ใช้ :</h6>
@@ -75,14 +75,16 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                 <td width="25%" style="display: inline;"><?= $result['principle']*0.02*$result['r_mount'] ?> บาท</td>
                             </div>
                             <div type="">
-                                <select name="" require class="btn btn-sm1 btn-blue2 text-white">
-                                <option value="" selected="selected"  >เปลี่ยนสถานะ</option>
-                                <option value="1">หลุดจำนำ</option>
-                                <option value="2">ไถ่ถอนแล้ว</option>
-                            </select>
-                            </div>
+                                <label class="text-danger">เปลี่ยนสถานะลูกค้าผิดสัญญา</label>
+                <select name="s_role" require class="btn btn-sm ">
+                  <option value="" selected="selected">เลือกสถานะ</option>
+                  <option value="4">หลุดจำนำ</option>
+                  <option value="5">ไถ่ถอนเเล้ว</option>
+                </select>
+              </div>
                         </div>
                             </div>
+                            <div class="card-body overflow-auto p-3" style="text-align: center">
                                 <table class="table">
                                     <thead>
                                         <tr>
@@ -130,10 +132,11 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                             }
 
                                             echo "<td>" . number_format($resultPmt, 2, '.', '') . "</td>";
-
+                                            echo"<td><a href='?page=$_GET[page]&function=detailsIn' class='btn btn-sm btn-blue2 text-white'>รายละเอียดการโอน</a></td>";
 
                                             echo "</tr>";
                                         }
+                                        
                                     
                                         ?>
                                     </tbody>
@@ -141,10 +144,11 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
                                 </table>
                             </div>
+                            </div>
                         </div>
                     </div>
                     <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-sm btn-dark text-white">ย้อนกลับ</a>
-                    <a href="?page=<?= $_GET['page'] ?>&function=detailsIn" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a>
+                    <a href="?page=<?= $_GET['page'] ?>&function=detailsIn&id=<?= $result['s_id'] ?>" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a>
                 </form>
             </div>
         </div>

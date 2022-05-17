@@ -25,12 +25,14 @@
                 $strNewDate = date("Y-m-d", strtotime("+30 day", strtotime($strStartDate)));
                 $strDate = date("Y-m-d", strtotime("+27 day", strtotime($strStartDate)));
                 //echo ' + 10 วัน = ' . $strNewDate;
-                $role = $result['s_role']== 3? 4:3;
+                //$role = $result['s_role']== 3? 4:3;
                 //$role = 3;
+                $ref = $result['s_id'];
             }
             if (isset($_POST) && !empty($_POST)) {
                 $in_date = $_POST['in_date'];
                 $in_befor = $_POST['in_befor'];
+                
 
 
                 if (isset($_FILES['in_img']['name']) && !empty($_FILES['in_img']['name'])) {
@@ -60,14 +62,14 @@
                 } else {
                     $filename = '';
                 }
-                $sqli = "INSERT INTO tbl_interest (in_date, in_img, in_befor, in_role) VALUES ('$in_date', '$filename', '$in_befor', 1)";
-                $sql = "UPDATE tbl_social SET c_date ='$strNewDate',s_role ='$role', start_date = '$strDate' where s_id ='$id'";
+                $sql = "INSERT INTO tbl_interest (in_date, in_img, in_befor, in_role,ref_id) VALUES ('$in_date', '$filename', '$in_befor', 1, '$ref')";
+                //$sql = "UPDATE tbl_social SET c_date ='$strNewDate', start_date = '$strDate' where s_id ='$id'";
+                mysqli_query($connection, "UPDATE tbl_social SET c_date ='$strNewDate', start_date = '$strDate' WHERE s_id='$id'");
 
-                $sqli=mysqli_query($connection,$sqli);
                 if (mysqli_query($connection, $sql)) {
                     echo "เพิ่มข้อมูลสำเร็จ";
                 } else {
-                    echo "Error: " . $sql . "<br>" .$sqli. "<br>" . mysqli_error($connection);
+                    echo "Error: " . $sql . "<br>"  . mysqli_error($connection);
                 }
 
                 mysqli_close($connection);

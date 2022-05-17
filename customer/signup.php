@@ -47,8 +47,7 @@
                 ?>
 <form  action="" method="post" >
     <div class="row g-0 app-auth-wrapper">
-	    <div class="col-12 col-md-7 col-lg-6 auth-main-col text-center p-5">
-		    <div class="d-flex flex-column align-content-end">
+	    <div class="auth-main-col text-center p-5">
 			    <div class="app-auth-body mx-auto">	
 				    <div class="app-auth-branding"><a class="app-logo" href="index.html"><img class="logo-icon me-2" src="assets/images/PW-logo.png" alt="logo"></a></div>
 					<label class="mb-3">Jewelry Pawn</label>
@@ -125,6 +124,7 @@
 								<button type="submit" class="btn app-btn-primary w-100 theme-btn mx-auto">สมัครสมาชิก</button>
 							</div>
 						</form><!--//auth-form-->
+						<div class="auth-option text-center pt-5">เข้าสู่ระบบ ? <a class="text-link" href="signup.html" >คลิก</a>.</div>
 						
 					</div><!--//auth-form-container-->	
 					
@@ -132,9 +132,12 @@
 				    
 			    </div><!--//auth-body-->
 		    
-		    </div><!--//flex-column-->   
 	    </div><!--//auth-main-col-->
 	    
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 5de221e237b5a17b9857b1ef09e64e30c4d5345c
     </div><!--//row-->
 	<script>
 	

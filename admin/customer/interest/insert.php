@@ -15,8 +15,8 @@ $query = mysqli_query($connection, $sql);
     </div>
     <div class="d-flex justify-content-center mb-6">
       <a href="?page=<?= $_GET['page'] ?>&function=index"class="btn btn-sm1 bg-gray-500 m-1">แจ้งเตือนการชำระดอกเบี้ย</a>
-      <a href="?page=<?= $_GET['page'] ?>&function=list" class="btn btn-sm1 bg-gray-500 m-1">รายการสรุปการชำระดอกเบี้ยโดยลูกค้า</a>
-      <a class="btn btn-sm1 bg-gray-600 text-white m-1">ตรวจสอบการชำระดอกเบี้ย</a>
+      <a href="?page=<?= $_GET['page'] ?>&function=list" class="btn btn-sm1 bg-gray-500 m-1">ตรวจสอบการชำระดอกเบี้ยโดยลูกค้า</a>
+      <a class="btn btn-sm1 bg-gray-600 text-white m-1">รายการสรุปการชำระดอกเบี้ย</a>
 </div>
   </div>
   <div class="row justify-content-between">
@@ -42,7 +42,9 @@ $query = mysqli_query($connection, $sql);
       <thead>
             <tr>
               <th scope="col">ลำดับ</th>
-              <th scope="col">รอบการชำระ</th>
+              <th scope="col">วันที่แจ้งเตือน</th>
+              <th scope="col">วันที่กำหนดชำระ</th>
+              <th scope="col">เลขที่สัญญา</th>
               <th scope="col">ชื่อผู้จำนำ</th>
               <th scope="col">เบอร์โทรศัพท์</th>
               <th scope="col">รหัสสินค้า</th>

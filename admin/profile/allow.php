@@ -32,6 +32,7 @@ $query = mysqli_query($connection, $sql);
                             <th scope="col">เบอร์โทรศัพท์</th>
                             <th scope="col">รายละเอียดเพิ่มเติม</th>
                             <th scope="col">คำขอเข้าใช้ระบบ</th>
+                            <th scope="col">ลบคำขอเข้าใช้งาน</th>
                         </tr>
                     </thead>          
                     <tbody>
@@ -45,9 +46,15 @@ $query = mysqli_query($connection, $sql);
                            
                                 <td><a href="?page=<?=$_GET['page']?>&function=allowdetail&id=<?=$data['c_id']?>" class="btn btn-sm btn-green3 text-white">ดูรายละเอียด</a></td>
                                 <td>
-                                    <div>
-                                 <input <?php if($data['status']=='1'){echo "checked";}?> onclick="toggleStatus(<?php echo $data['c_id']?>)" type="checkbox" id="check" >
-                        </div>
+                                <?php if($data['status']==0){
+                                        echo '<p><a href="updateStatusCus.php?c_id='.$data['c_id'].'&status=0" class="btn btn-sm btn-green3 text-white" >เข้าใช้งาน</a></p>';
+                                   }else{
+                                        echo '<p><a href="updateStatusCus.php?c_id='.$data['c_id'].'&status=1" class="btn btn-sm btn-dark text-white">ปิดใช้งาน</a></p>';
+                                   }               
+                                   ?>
+                                </td>
+                                <td>
+                                <a href="?page=<?=$_GET['page']?>&function=deleteCus&id=<?=$data['c_id']?>" onclick="return confirm('คุณต้องการลบชื่อผู้ดูแลระบบ : <?= $data['c_name'] ?> หรือไม่')" class="btn btn-sm btn-danger">ลบ</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

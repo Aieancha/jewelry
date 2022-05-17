@@ -29,13 +29,13 @@ if($day3['day3']>0){
   <div class="row justify-content-between">
   <div class="d-flex justify-content-center mb-6">
       <a  class="btn btn-sm1 bg-gray-600 text-white m-1">แจ้งเตือนการชำระดอกเบี้ย</a>
-      <a href="?page=<?= $_GET['page'] ?>&function=list" class="btn btn-sm1 bg-gray-500 m-1">รายการสรุปการชำระดอกเบี้ยโดยลูกค้า</a>
-      <a href="?page=<?= $_GET['page'] ?>&function=wait" class="btn btn-sm1 bg-gray-500  m-1">ตรวจสอบการชำระดอกเบี้ย</a>
+      <a href="?page=<?= $_GET['page'] ?>&function=list" class="btn btn-sm1 bg-gray-500 m-1">ตรวจสอบการชำระดอกเบี้ยโดยลูกค้า</a>
+      <a href="?page=<?= $_GET['page'] ?>&function=wait" class="btn btn-sm1 bg-gray-500  m-1">รายการสรุปการชำระดอกเบี้ย</a>
 </div>
      <div class="d-flex justify-content-end">
         <div class="d-flex justify-content-end mb-2 ">
-            <form class="example " action="/action_page.php" style="margin: 7px;;max-width:200px">
-                <input type="text" placeholder="ชื่อผู้ใช้งาน.." name="search2 ">
+            <form class="example " action="" style="margin: 7px;;max-width:200px">
+                <input type="text" placeholder="" name="search2 ">
                 <button type="submit"><i class="fa fa-search btn-dark"></i></button>
             </form>
             
@@ -53,13 +53,15 @@ if($day3['day3']>0){
           <thead>
             <tr>
               <th scope="col">ลำดับ</th>
-              <th scope="col">วันที่แจ้งเตือน</th>
-              <th scope="col">รอบการชำระ</th>
+              <th scope="col">วันทีแจ้งเตือน</th>
+              <th scope="col">วันที่กำหนดชำระ</th>
+              <th scope="col">เลขที่สัญญา</th>
               <th scope="col">ชื่อผู้จำนำ</th>
               <th scope="col">จำนวนเงินที่ต้องชำระ</th>
               <th scope="col">เบอร์โทรศัพท์</th>
               <th scope="col">สถานะ</th>
               <th scope="col">อัพเดทสถานะ</th>
+
 
             </tr>
           </thead>
@@ -73,10 +75,16 @@ if($day3['day3']>0){
                 <td><?= ++$i ?></td>
                 <td><?php echo $data['start_date']; ?></td>
                 <td><?php echo $data['c_date']; ?></td>
+                <td></td>
                 <td><?= $data['s_name'] ?></td>
                 <td><?= $data['principle']*0.02 ?></td>
                 <td><?= $data['phone'] ?></td>
-                <td class="text-danger"><?php echo $data['status_name']; ?></td>
+                <td class="text-danger"><?php $status = $data['start_date'];
+                                            if ($status == $data['start_date']) {
+                                                echo "ค้างชำระ";
+                                            } else {
+                                                echo "ชำระแล้ว";
+                                            } ?></td>
                 <td> <a href="?page=<?= $_GET['page'] ?>&function=update&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-green3 text-white">อัพเดทสถานะ</a></td>
                 </td>
                 <!-- <td> <a href="?page=<?= $_GET['page'] ?>&function=check" class="btn btn-sm btn-dark">ทดลองรุูป</a></td> -->
