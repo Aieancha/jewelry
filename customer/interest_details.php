@@ -17,13 +17,13 @@
 		<div class="app-wrapper">
 <div class="app-content pt-3 p-md-3 p-lg-4"> 
 		    <div class="container-xl">
-			    <h1 class="app-page-title">รายการชำระดอกเบี้ย</h1>
+			    <h1 class="app-page-title">ข้อมูลรายการชำระดอกเบี้ย</h1>
 				<div class="d-flex flex-row">
                 <div class="flex-fill d-flex justify-content-end gap-1 ">
-				<a class="btn app-btn-secondary " href="interest_table.php">ตารางแสดงรายละเอียดการค้างชำระดอกเบี้ย</a>
+				<a class="btn app-btn-secondary " href="interest_table.php">รายการที่ชำระเเล้ว</a>
 </div>
                 <div class="flex-fill d-flex justify-content-start gap-1"> 
-				<a class="btn app-btn-secondary bg-NGG" href="#">ตารางแสดงรายละเอียดการชำระดอกเบี้ย</a>
+				<a class="btn app-btn-secondary bg-NGG" href="#">รายการที่ค้างชำระ</a>
 				<div>
 			</div>
 						   
@@ -47,7 +47,7 @@
 						        </div><!--//row-->
 						    </div><!--//app-card-header-->
 <div class="col-11 m-5 overflow-auto">
-	<table class="table">
+<table class="table">
 	<thead class="thead-dark">
     <tr>
       <th scope="col">ลำดับ</th>
@@ -82,8 +82,6 @@
     </tr>
   </tbody>
 </table>
-
-
 						</div>
 
 						    

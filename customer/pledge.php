@@ -6,7 +6,7 @@
 
 
 <body class="app"> 
-<div class="row g-0 app-wrapper app-auth-wrapper">
+<div class="row g-0 app-wrapper app-auth-wrapper m-3">
 		<div class="app-auth-body mx-auto ">
 			<div style="margin-top: 1rem">	
 		<div class="app-auth-branding text-center"><a class="app-logo" href="index.html" ><img class="logo-icon me-2" src="assets/images/PW-logo.png" alt="logo"></a></div>
@@ -14,7 +14,7 @@
 		</div>
 </div>
 <div class="app-content pt-3 p-md-3 p-lg-4">
-<div style="margin-top: 1rem ">	
+<div class="mb-3"style="margin-top: 1rem ">	
         <h1>ข้อมูลการจำนำเครื่องประดับ</h1>
 </div> 	
 
@@ -97,6 +97,7 @@
 
 						</div><!--//app-card-->
 				    </div><!--//col-->
+					<div class="m-3">
                     <div class="col-6 col-md-4 col-xl-3 col-xxl-2">
 					    <div class="app-card app-card-doc shadow-sm h-100">
 						    <div class="app-card-thumb-holder p-3">
@@ -214,6 +215,7 @@
 
 						</div><!--//app-card-->
 				    </div><!--//col-->
+</div>
 				    
 				   
 		    </div><!--//container-fluid-->

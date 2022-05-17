@@ -27,23 +27,37 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         <div class="row">
             <div class="card">
                 <!-- title -->
-                <h5 class="font-weight-bolder text-dark text-gradient m-3">ตารางแสดงข้อมูลการชำระดอกเบี้ย</h5>
+                <h5 class="font-weight-bolder text-dark text-gradient m-3">ข้อมูลการชำระดอกเบี้ย</h5>
 
                 <!-- end title -->
                 <div class="card-body overflow-auto p-3" style="text-align: center">
-                <div class=" mb-3 col-10 ">
-                                <h6 style="display: inline;">เลขที่ราชการออกให้ผู้จำนำ :</h6>
+                <div class="d-flex flex-row">
+                <div class="justify-content-start flex-fill ">
+                <div class=" mb-3 ">
+                                <h6 style="display: inline;">เลขที่สัญญา :</h6>
                                 <td width="25%" style="display: inline;"><?= $result['code_id'] ?></td>
-                            </div>
+</div>
+<div class=" mb-6 ">
+                                <h6 style="display: inline;">ท่านชำระไปแล้ว:</h6>
+                                <td>จำนวนงวดที่ชำระ 2 จาก 12 งวด</td>
+</div>
+<h5>ตารางแสดงข้อมูลการชำระดอกเบี้ย</h5>   
+
+</div>
+    <div class="d-flex flex-row m-4">
+    <div class="justify-content-start flex-fill ">
+<label class="text-danger">สถานะสัญญา </label><label>ปกติ</label>
+</div>
                             <div type="">
-                                <label class="text-danger">เปลี่ยนสถานะลูกค้าผิดสัญญา</label>
                 <select name="s_role" require class="btn btn-sm ">
                   <option value="" selected="selected">เลือกสถานะ</option>
-                  <option value="4">หลุดจำนำ</option>
-                  <option value="5">ไถ่ถอนเเล้ว</option>
+                  <option value="4">ผิดสัญญา</option>
+                  <option value="5">ไถ่ถอนก่อนกำหนด</option>
                 </select>
                 <a class="btn btn-sm btn-green3 text-white">ยืนยันการเปลี่ยนสถานะ</a>
               </div>
+</div>
+</div>
                     <form action="">
                         <table class="table">
                             <thead>
