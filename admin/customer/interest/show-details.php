@@ -92,6 +92,8 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                             <th scope="col">จำนวนดอกเบี้ย</th>
                                             <th scope="col">ชำระดอกเบี้ยต่อเดือน</th>
                                             <th scope="col">ยอดดอกเบี้ยคงเหลือ</th>
+                                            <th scope="col">ยอดดอกเบี้ยคงเหลือ</th>
+
                                             <!-- <th scope="col">รายละเอียดการโอน</th> -->
                                             <!-- <th scope="col">หลักฐานการโอน</th> -->
                                         </tr>
