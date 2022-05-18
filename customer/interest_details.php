@@ -47,6 +47,7 @@
 						        </div><!--//row-->
 						    </div><!--//app-card-header-->
 <div class="col-11 m-5 overflow-auto">
+  <body>
 <table class="table">
 	<thead class="thead-dark">
     <tr>
@@ -62,9 +63,9 @@
   <tbody>
     <tr>
       <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <td>A1234</td>
+      <td>1200</td>
+      <td>ถึงกำหนดชำระ</td>
 	<td><a class="btn1 app-btn-secondary" href="update_bill.php">ชำระ</a></td>
 	  
     </tr>
@@ -82,6 +83,7 @@
     </tr>
   </tbody>
 </table>
+  </body>
 						</div>
 
 						    
@@ -129,4 +131,36 @@ border-color: #9b0e21;
     font-size: 0.5rem;
 	border: #9b0e21;}
 
+@media sreen and (max-width: 600px){
+  thead{
+    display: none;
+  }
+}
+td{
+  display: block;
+}
+td:first-child{
+  background-color: #fff;
+color: #9b0e21;
+border-color: #9b0e21;
+}
+td:nth-child(2)::before{
+content: "เลขที่สัญญา";
+}
+td:nth-child(3)::before{
+content: "จำนวนดอกเบี้ยที่ต้องชำระ";
+}
+td:nth-child(4)::before{
+content: "สถานะ";
+}
+td:nth-child(5)::before{
+content: "แนบหลักฐานการโอน";
+}
+td::before{
+  text-align: right;
+}
+td::before{
+  float: left;
+  margin-right: 3rem;
+}
 </style>
