@@ -17,7 +17,7 @@
 		<div class="app-wrapper">
 <div class="app-content pt-3 p-md-3 p-lg-4"> 
 		    <div class="container-xl">
-			    <h5 class="">ข้อมูลการจำนำ ของ คุณ</h5>
+			    <h5 class="mb-3">ข้อมูลการจำนำเครื่องประดับ ของ คุณ</h5>
                 <div class="row gy-4">
 	                <div class="col-12 col-lg-6">
 		                <div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">

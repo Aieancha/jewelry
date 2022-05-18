@@ -81,5 +81,19 @@
 	        </div><!--//sidepanel-inner-->
 	    </div><!--//app-sidepanel-->
 		<style>
-			.sidepanel-visible{left:0; z-index: index 0;}
+			.app-sidepanel.sidepanel-visible {
+    display: block;
+    z-index: 2;
+}
+.app-card .app-card-body .app-card-actions {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    position: absolute;
+     z-index: 1; 
+    right: 0.75rem;
+    top: 0.75rem;
+}
 		</style>

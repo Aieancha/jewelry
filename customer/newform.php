@@ -17,12 +17,12 @@
 		<div class="app-wrapper">
 <div class="app-content pt-3 p-md-3 p-lg-4"> 
 		    <div class="container-xl ">
-			    <h1 class="app-page-title">แบบฟอร์มยื่นจำนำเครื่องประดับ</h1>
+			    <h1 class="">แบบฟอร์มยื่นจำนำเครื่องประดับ</h1>
                 <label>กรุณากรอกข้อมูลให้ถูกต้องครบถ้วน</label>
                 <div class="row gy-4">
 	                <div class="col-12 ">
 		                <div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
-                                <h4 class=" m-4">กรอกข้อมูลเครื่องประดับที่ต้องการยื่นจำนำ</h4>
+                                <h4 class="app-page-title m-4">กรอกข้อมูลเครื่องประดับที่ต้องการยื่นจำนำ</h4>
         <div class="m-4 col-12">
           <div class="mb-2 col-12 center">
             <h5 style="display: inline;">รายละเอียดเครื่องประดับ</h5>
@@ -44,6 +44,7 @@
         <div class="app-card-footer p-4 mt-auto">
 							   <a class="btn app-btn-secondary" href="#">บันทึก</a>
 </div>
+<div>
 						    </div><!--//app-card-footer-->
         </div>
         
@@ -71,13 +72,13 @@
     padding-top: 10px;
     font-size: 1rem;
     text-align: center;
-    border-radius: 50%;
+    border-radius: 50%
 	!important}
 .app-auth-wrapper {
     background: #f5f6fd;
-    height: 100px;
+    height: 100px
 	!important}
 .app-auth-wrapper .app-auth-body {
-    width: auto; !important
+    width: auto !important
 }
 </style>

@@ -1,8 +1,8 @@
 <?php
 $sql = "SELECT *
 FROM tbl_social
-INNER JOIN tbl_bill
-ON tbl_social.s_id = tbl_bill.bill_no
+INNER JOIN tbl_status
+ON tbl_social.s_role = tbl_status.id
 /* WHERE tbl_status.id=2 AND */
 WHERE DATEDIFF(c_date, Now())= 3 or DATEDIFF(c_date, Now())= 2";
 $query = mysqli_query($connection, $sql);
@@ -29,8 +29,8 @@ if($day3['day3']>0){
   <div class="row justify-content-between">
   <div class="d-flex justify-content-center mb-6">
       <a  class="btn btn-sm1 bg-gray-600 text-white m-1">แจ้งเตือนการชำระดอกเบี้ย</a>
-      <a href="?page=<?= $_GET['page'] ?>&function=list" class="btn btn-sm1 bg-gray-500 m-1">รายการสรุปการชำระดอกเบี้ย</a>
-      <a href="?page=<?= $_GET['page'] ?>&function=wait" class="btn btn-sm1 bg-gray-500  m-1">ตรวจสอบการชำระดอกเบี้ยโดยลูกค้า</a>
+      <a href="?page=<?= $_GET['page'] ?>&function=list" class="btn btn-sm1 bg-gray-500 m-1">ตรวจสอบการชำระดอกเบี้ยโดยลูกค้า</a>
+      <a href="?page=<?= $_GET['page'] ?>&function=wait" class="btn btn-sm1 bg-gray-500  m-1">รายการสรุปการชำระดอกเบี้ย</a>
 </div>
      <div class="d-flex justify-content-end">
         <div class="d-flex justify-content-end mb-2 ">
@@ -75,16 +75,19 @@ if($day3['day3']>0){
                 <td><?= ++$i ?></td>
                 <td><?php echo $data['start_date']; ?></td>
                 <td><?php echo $data['c_date']; ?></td>
-                <td><?= $data['bill_no'] ?></td>
+                <td></td>
                 <td><?= $data['s_name'] ?></td>
                 <td><?= $data['principle']*0.02 ?></td>
                 <td><?= $data['phone'] ?></td>
                 <td class="text-danger"><?php $status = $data['start_date'];
                                             if ($status == $data['start_date']) {
+                                                echo "ถึงกำหนดชำระ";
+                                            } elseif ($status != $data['start_date']){
                                                 echo "ค้างชำระ";
-                                            } else {
-                                                echo "ชำระแล้ว";
-                                            } ?></td>
+                                            }else {
+                                              echo "ชำระแล้ว";
+                                          } ?></td>
+                                          <!-- <td><?php $status = ($data['start_date'] == $status ? '<span class=" ">ถึงกำหนดชำระ</span>' : '<span class=" ">ค้างชำระ</span>') ?></td> -->
                 <td> <a href="?page=<?= $_GET['page'] ?>&function=update&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-green3 text-white">อัพเดทสถานะ</a></td>
                 </td>
                 <!-- <td> <a href="?page=<?= $_GET['page'] ?>&function=check" class="btn btn-sm btn-dark">ทดลองรุูป</a></td> -->

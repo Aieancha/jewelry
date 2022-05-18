@@ -46,20 +46,17 @@
 							        </div><!--//col-->
 						        </div><!--//row-->
 						    </div><!--//app-card-header-->
-
-<div class="col-11 m-5 overflow-auto">
+							
+<div class="row g-4">
+<div class="m-2 overflow-auto">
 <div class="col-6 col-md-4 mb-3 col-xl-3 col-xxl-2 ">
 					    <div class="app-card app-card-doc shadow-sm h-100">
-						    <div class="app-card-thumb-holder p-3">
-                            <div class="app-card-thumb">
-	                                <img class="thumb-image" src="assets/images/R4.jpg" alt="">
-	                            </div>
-	                            <span class="badge bg-success">ชำระแล้ว</span>
-                                <a class="app-card-link-mask" href="#file-link"></a>
-						    </div>
-						    <div class="app-card-body p-3 has-card-actions">
-							    
-							    <h4 class="app-doc-title truncate mb-0"><a href="#file-link">รหัสสินค้า : a125</a></h4>
+						<div class="text-end p-3">
+							<span class="badge bg-success">ชำระแล้ว</span>
+							<a class="app-card-link-mask" href="#file-link"></a>
+						</div>
+						    <div class="app-card-body p-3 has-card-actions">							    
+							    <h4 class="app-doc-title truncate mb-0"><a href="#file-link">เลขที่สัญญา : a125</a></h4>
 							    <div class="app-doc-meta">
 								    <ul class="list-unstyled mb-0">
 									    <li><span class="text-muted">รายละเอียด :</span> ตุ้มหูทอง 1 สลึง</li>
@@ -88,15 +85,16 @@
 						</div><!--//app-card-->
 				    </div><!--//col-->
 
+					
+							
+
 
 						</div>
 
 						    
-						    </div><!--//app-card-body-->
 						    
-						   
-						</div><!--//app-card-->
-	                </div><!--//col-->
+			</div><!-- overflow -->
+		</divdiv><!--//g-6-->
  
     <!-- Javascript -->          
     <script src="assets/plugins/popper.min.js"></script>
