@@ -1,13 +1,3 @@
-<?php
-$sql = "SELECT *
-FROM tbl_interest
-INNER JOIN tbl_social
-ON tbl_social.s_id = tbl_interest.ref_id ";
-$query = mysqli_query($connection, $sql);
-$result = mysqli_fetch_assoc($query);
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,9 +20,11 @@ $result = mysqli_fetch_assoc($query);
                         <?php
                         if (isset($_GET['id']) && !empty($_GET['id'])) {
                             $id = $_GET['id'];
-                            $sql = "SELECT * FROM tbl_interest WHERE in_id = '$id'";
+                            $sql = "SELECT * FROM tbl_interest INNER JOIN tbl_social ON tbl_social.s_id = tbl_interest.ref_id
+                            INNER JOIN tbl_bill ON tbl_interest.ref_id = tbl_bill.s_id 
+                            WHERE in_id ='$id'";
                             $query = mysqli_query($connection, $sql);
-                            $rs = mysqli_fetch_assoc($query);
+                            $result = mysqli_fetch_assoc($query);
                         }
                         //print_r($_POST);
                         ?>
@@ -52,7 +44,7 @@ $result = mysqli_fetch_assoc($query);
                             <div class="justify-content-start flex-fill m-3">
                                 <div class=" mb-3 col-10 ">
                                     <h6 style="display: inline;">เลขที่สัญญา :</h6>
-                                    <td width="25%" style="display: inline;"><? ?> </td>
+                                    <td width="25%" style="display: inline;"><?= $result['bill_no'] ?> </td>
                                 </div>
                                 <div class=" mb-3 col-10">
                                     <h6 style="display: inline;">ชื่อผู้จำนำ :</h6>
@@ -60,7 +52,7 @@ $result = mysqli_fetch_assoc($query);
                                 </div>
                                 <div class=" mb-3 col-10 ">
                                     <h6 style="display: inline;">วันที่ชำระค่างวด :</h6>
-                                    <td width="25%" style="display: inline;"><?= $rs['in_date'] ?> </td>
+                                    <td width="25%" style="display: inline;"><?= $result['in_date'] ?> </td>
                                 </div>
                                 <div class=" mb-3 col-10 ">
                                     <h6 style="display: inline;">หลักฐานการชำระค่างวด :</h6>
@@ -79,7 +71,7 @@ $result = mysqli_fetch_assoc($query);
                                 </div>
                                 <div class=" col-10 ">
                                     <h6 style="display: inline;">ค่างวดที่ต้องจ่าย :</h6>
-                                    <td width="25%" style="display: inline;"><?= $rs['in_befor'] ?> </td>
+                                    <td width="25%" style="display: inline;"><?= $result['in_befor'] ?> </td>
                                 </div>
                             </div>
                         </div>

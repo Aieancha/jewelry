@@ -1,41 +1,48 @@
 <?php
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
-    $sql = "SELECT * FROM tbl_social
-    WHERE s_id = '$id'";
+    $sql = "SELECT * FROM tbl_social WHERE s_id = '$id'";
     $query = mysqli_query($connection, $sql);
     $result = mysqli_fetch_assoc($query);
+    $num=$result['s_id'];
+    $role=$result['s_role']=2;
+    mysqli_query($connection, "UPDATE tbl_social SET s_role ='$role' WHERE s_id='$id'");
 }
+if (isset($_POST) && !empty($_POST)) {
+    $numId = $_POST['bill_no'];
+    $code = "B";
+    $yearMonth = substr(date("Y") + 543, -2) . date("m");
+    //query MAX ID 
+    $sqli = "SELECT MAX(bill_id) AS bill_no FROM tbl_bill";
+    $qry = mysqli_query($connection, $sqli) or die("Error Query [" . $sqli . "]");
+    $rs = mysqli_fetch_assoc($qry);
+    $maxId = substr($rs['bill_no'], -5);  //ข้อมูลนี้จะติดรหัสตัวอักษรด้วย ตัดเอาเฉพาะตัวเลขท้ายนะครับ
+    //$maxId = 237;   //<--- บรรทัดนี้เป็นเลขทดสอบ ตอนใช้จริงให้ ลบ! ออกด้วยนะครับ
+    //$maxId = ($maxId + 1); 
+    if ($maxId == '') {
+        $maxId = 1;
+    } else {
+        $maxId = ($maxId + 1);
+    }
+    $maxId = substr("00000" . $maxId, -5);
+    $numId = $code . $yearMonth . $maxId;
+    $sqlinsert = "INSERT INTO tbl_bill (bill_no,s_id) VALUES ('$numId','$num') ";
+
+    if (mysqli_query($connection, $sqlinsert)) {
+        //echo "เพิ่มข้อมูลสำเร็จ";
+        $alert = '<script type= "text/javascript">';
+        $alert .= 'alert("ร่างสัญญาสำเร็จ");';
+        $alert .= 'window.location.href = "?page=pledge&function=success&id='.$result['s_id'].'";';
+        $alert .= '</script>';
+        echo $alert;
+        exit();
+      } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($connection);
+      }
+}
+mysqli_close($connection);
 ?>
-<?php
-$code = "B";
-$yearMonth = substr(date("Y")+543, -2).date("m");
 
-//query MAX ID 
-$sqli = "SELECT MAX(bill_no) AS bill_no FROM tbl_bill";
-$qry = mysqli_query($connection,$sqli) or die("Error Query [".$sqli."]");
-$rs = mysqli_fetch_assoc($qry);
-$maxId = substr($rs['bill_no'], -5);  //ข้อมูลนี้จะติดรหัสตัวอักษรด้วย ตัดเอาเฉพาะตัวเลขท้ายนะครับ
-$maxId = ($maxId + 1); 
-
-$maxId = substr("00000".$maxId, -5);
-$nextId = $code.$yearMonth.$maxId;
-echo $nextId;
-$sqli = "INSERT INTO tbl_bill (bill_id) VALUES ( '$nextId')";
-          if (mysqli_query($connection, $sqli)) {
-            //echo "เพิ่มข้อมูลสำเร็จ";
-            $alert = '<script type="text/javascript">';
-            $alert .= 'alert("เพิ่มข้อมูลสำเร็จ");';
-            $alert .= 'window.location.href = "?page=pledge&function=success";';
-            $alert .= '</script>';
-            echo $alert;
-            exit();
-          } else {
-            echo "Error: " . $sqli . "<br>" . mysqli_error($connection);
-          }
-
-          mysqli_close($connection);
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -152,23 +159,21 @@ $sqli = "INSERT INTO tbl_bill (bill_id) VALUES ( '$nextId')";
                                         <option value="2" selected hidden></option>
                                     </select>
                                 </div>
-                                <input class="form-control " type="hidden" name="bill_id" value="<?php echo $nextId ?>" required>
 
                             </div>
 
                         </div>
                     </div>
-
-                    <div class="d-flex flex-row">
-                        <!-- <div class="justify-content-start flex-fill ">
+                    <form action="" method="POST">
+                        <div class="d-flex flex-row">
+                            <!-- <div class="justify-content-start flex-fill ">
                     <a href="?page=<?= $_GET['page'] ?>&function=updated" class="btn bg-gradient-dark">ย้อนกลับ</a>
                 </div> -->
-                        <div class="flex-fill d-flex justify-content-end gap-1">
-                            <a href="?page=<?= $_GET['page'] ?>&function=success" type="submit" class="btn btn-color1 btn-green3 text-white theme-btn  pull-right">ร่างสัญญา</a>
+                            <div class="flex-fill d-flex justify-content-end gap-1">
+                                <input class="form-control " type="hidden" name="bill_no" value="<?php echo $numtId ?>" required>
+                                <button type="submit" class="btn btn-color1 btn-green3 text-white theme-btn  pull-right">ร่างสัญญา</button>
+                            </div>
                         </div>
-                    </div>
-
-
 
                     </form>
                 </div>
@@ -179,9 +184,6 @@ $sqli = "INSERT INTO tbl_bill (bill_id) VALUES ( '$nextId')";
 </body>
 
 </html>
-<?php
-mysqli_close($connection);
-?>
 <style>
     .wrapper-progressBar {
         width: 100%

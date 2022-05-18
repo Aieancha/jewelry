@@ -16,7 +16,12 @@
       <div class="container-fluid py-4">
         <?php
         if (!isset($_GET['page']) && empty($_GET['page'])) {
-          include('dashboard/index.php');
+          if (isset($_GET['function']) && $_GET['function'] == 'sum_list') {
+            include('customer/interest/sum_list.php');
+          }else {
+            include('dashboard/index.php');
+          }
+          
         } elseif (isset($_GET['page']) && $_GET['page'] == 'interest') {
           if (isset($_GET['function']) && $_GET['function'] == 'update') {
             include('customer/interest/Update-In.php');

@@ -1,8 +1,5 @@
 <?php
 if(isset($_POST) && !empty($_POST)){
-    /* echo '<pre>';
-    print_r($_POST);
-    echo '</pre>'; */
     $name = $_POST['m_name'];
     $pass = $_POST['m_pass'];
     $sql = "SELECT * FROM tbl_member WHERE m_name = '$name' AND m_pass = '$pass' ";
@@ -51,22 +48,11 @@ if(isset($_POST) && !empty($_POST)){
                     <div class="mb-3">
                       <input type="password" class="form-control" name="m_pass" placeholder="กรอกรหัสผ่าน" require>
                     </div>
-                    <!-- remember -->
-                    <!-- <div class="form-check form-switch">
-                      <input class="form-check-input " type="checkbox" id="rememberMe" checked="">
-                      <h5 class="form-check-label" for="rememberMe">จดจำชื่อบัญชี</h5>
-                    </div> -->
                     <div class="nav-link active text-center" href="../pages/tables.html" >
                       <button type="submit" name="btn-login" class=" btn bg-gradient-dark w-100 mt-4 mb-0" >เข้าสู่ระบบ</button>
                     </div>
                   </form>
                 </div>
-                <!-- <div class="card-footer text-center pt-0 px-lg-2 px-1">
-                  <p class="mb-4 text-sm mx-auto">
-                    ต้องการสร้างบัญชีใหม่ ?
-                    <h6 class="nav-link  active text-danger" href="../pages/sign-up.html" >สร้างบัญชีใหม่</h6>
-                  </p>
-                </div> -->
               </div>
             </div>
             <div class="col-md-6">

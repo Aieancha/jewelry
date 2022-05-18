@@ -10,8 +10,12 @@ $qry = mysqli_query($connection,$sqli) or die("Error Query [".$sqli."]");
 $rs = mysqli_fetch_assoc($qry);
 $maxId = substr($rs['s_id'], -5);  //ข้อมูลนี้จะติดรหัสตัวอักษรด้วย ตัดเอาเฉพาะตัวเลขท้ายนะครับ
 //$maxId = 237;   //<--- บรรทัดนี้เป็นเลขทดสอบ ตอนใช้จริงให้ ลบ! ออกด้วยนะครับ
-$maxId = ($maxId + 1); 
-
+//$maxId = ($maxId + 1); 
+if ($maxId == '') {
+  $maxId = 1;
+} else {
+  $maxId = ($maxId + 1);
+}
 $maxId = substr("00000".$maxId, -5);
 $nextId = $code.$yearMonth.$maxId;
 //echo $nextId;
