@@ -1,11 +1,47 @@
+<?php
+if(isset($_POST) && !empty($_POST)){
+
+    /* echo '<pre>';
+    print_r($_POST);
+    echo '</pre>'; */
+    $name = $_POST['c_email'];
+    $pass = $_POST['c_pass'];
+    $sql = "SELECT * FROM tbl_social WHERE c_email = '$name' AND c_pass = '$pass' ";
+    $query = mysqli_query($connection,$sql);
+    $row = mysqli_num_rows($query);
+    
+
+    if($row > 0){
+        $result = mysqli_fetch_assoc($query);
+        $_SESSION['customer_login'] = $result['c_email'];
+        $alert = '<script type= "text/javascript">';
+        $alert .= 'alert("เข้าสู่ระบบสำเร็จ");';
+        $alert .= 'window.location.href = "";';
+        $alert .= '</script>';
+        echo $alert;
+        exit();
+    }else{
+            $alert = '<script type= "text/javascript">';
+            $alert .= 'alert("ชื่อผู้ใช้ หรือ รหัสผ่านไม่ถูกต้อง");';
+            $alert .= 'window.location.href = "";';
+            $alert .= '</script>';
+            echo $alert;
+            exit();
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en"> 
+    <head>
+        <meta charset="UTF-8">
+        <title>php session</title>
+    </head>
 <?php include('include/head.php') ?> 
 <?php include('include/style.php') ?>       
 
-<?php if(isset($_SESSION["type"]))
+<?php if(isset($_SESSION[1]))
 {
- header("location:index.php");
+ header("location:newform.php");
 }
 $message = '';
 if(isset($_POST["login"]))
@@ -37,11 +73,11 @@ if(isset($_POST["login"]))
      if(password_verify($_POST["c_pass"], $row["c_pass"]))
      {
       $_SESSION["type"] = $row["user_type"];
-      header("location: index.php");
+      header("location: .php");
      }
      else
      {
-      $message = '<div class="alert alert-danger">Wrong Password</div>';
+      $message = '<div class="alert alert-danger"></div>';
      }
     }
     else
@@ -52,12 +88,12 @@ if(isset($_POST["login"]))
   }
   else
   {
-   $message = "<div class='alert alert-danger'>Wrong Email Address</div>";
+   $message = "<div class='alert alert-danger'>กรุณากรอกชื่อผู้ใช้</div>";
   }
  }
 }
 ?>
-
+<script type= "text/javascript"></script>
 <body class="app app-login p-0"> 
 
     <div class="row g-0 app-auth-wrapper">
@@ -68,7 +104,7 @@ if(isset($_POST["login"]))
 					<label class="mb-3">Jewelry Pawn</label>
 					<h2 class="auth-heading text-center mb-5">เข้าสู่ระบบ</h2>
 			        <div class="auth-form-container text-start">
-						<form class="auth-form login-form">         
+						<form action="<?php $_SERVER['PHP_SELF']?>" method="post" class="auth-form login-form">         
 							<div class="email mb-3">
 								<label class="sr-only" for="signin-email">Email</label>
 								<input id="signin-email" name="c_email" type="email" class="form-control signin-email" placeholder="อีเมล" required="required">
@@ -93,7 +129,7 @@ if(isset($_POST["login"]))
 								</div><!--//extra-->
 							</div><!--//form-group-->
 							<div class="text-center">
-								<button type="submit" class="btn app-btn-primary w-100 theme-btn mx-auto">เข้าสู่ระบบ</button>
+								<button type="submit" name="submit" value="submit" class="btn app-btn-primary w-100 theme-btn mx-auto">เข้าสู่ระบบ</button>
 							</div>
 						</form>
 						
@@ -112,4 +148,3 @@ if(isset($_POST["login"]))
 
 </body>
 </html> 
-

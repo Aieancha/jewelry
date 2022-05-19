@@ -55,10 +55,11 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                 <h6 style="display: inline;">จำนวนเงินต้น :</h6>
                                 <td width="25%" style="display: inline;"><?= $result['principle'] ?> บาท</td>
                             </div>
-<label class="text-danger">สถานะสัญญา </label><label>ปกติ</label>
+<h6 style="display: inline;" class="text-danger">สถานะสัญญา </h6><h6 style="display: inline;">ปกติ</h6>
 <div class="mb-5">
                 <select name="s_role" require class="btn btn-sm ">
-                  <option value="" selected="selected">เลือกสถานะ</option>
+                  <option value="" selected="selected">เปลี่ยนสถานะ</option>
+                  <option value="4">ปิดสัญญา</option>
                   <option value="4">ผิดสัญญา</option>
                   <option value="5">ไถ่ถอนก่อนกำหนด</option>
                 </select>
@@ -91,7 +92,6 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                             <th scope="col">วันที่กำหนดชำระ</th>
                                             <th scope="col">จำนวนดอกเบี้ย</th>
                                             <th scope="col">ชำระดอกเบี้ยต่อเดือน</th>
-                                            <th scope="col">ยอดดอกเบี้ยคงเหลือ</th>
                                             <th scope="col">ยอดดอกเบี้ยคงเหลือ</th>
 
                                             <!-- <th scope="col">รายละเอียดการโอน</th> -->
@@ -150,15 +150,16 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
             </div>
             <div class="d-flex flex-row">
                 <div class="justify-content-start flex-fill ">
-            <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-sm btn-dark text-white">ย้อนกลับ</a>
+                    <?php
+                    echo "<a href='javascript:window.history.back()' class='btn bg-gradient-dark'>ย้อนกลับ</a>";
+                    ?>
                 </div>
-                <div class="flex-fill d-flex justify-content-end gap-1"> 
-            <a href="?page=<?= $_GET['page'] ?>&function=sum_list&id=<?= $result['s_id'] ?>" class="btn btn-sm btn-blue2 text-white">ประวัติการชำระดอกเบี้ย</a>
-
-                </div>    
+                <div class="flex-fill d-flex justify-content-end gap-1">
+                    <a href="?page=<?= $_GET['page'] ?>&function=sum_list&id=<?= $result['s_id'] ?>" class="btn btn-sm btn-blue2 text-white">ประวัติการชำระดอกเบี้ย</a>
+                </div>
+                    
         </form>
         </div>
-    </div>
     </div>
 </body>
 <?php

@@ -1,11 +1,42 @@
+
+
 <!DOCTYPE html>
 <html lang="en"> 
-    <?php include('include/head.php') ?> 
-    <?php include('include/nav.php') ?> 
-    <?php include('include/sidebar.php') ?> 
 
-<body class="app">   	
+<body class="app">  
+<?php  
+	$user = $_SESSION['customer_login']; 
+	$sql = "SELECT * FROM tbl_social WHERE c_email = '$user'"; 
+	$query = mysqli_query($connection, $sql); 
+	$result = mysqli_fetch_assoc($query);   
+	
+	if (isset($_POST) && !empty($_POST)) {
+		$email = $_POST['c_email'];
+		$firstname = $_POST['s_name'];
+		$lastname = $_POST['s_lastname'];
+		//echo sha1(md5($m_pass));
+			$sql = "UPDATE tbl_social
+					SET c_email='$email', s_name='$firstname', s_lastname='$lastname'
+					WHERE c_email = '$user'";
+
+			if (mysqli_query($connection, $sql)) {
+			  //echo "เพิ่มข้อมูลสำเร็จ";
+			  $alert = '<script type= "text/javascript">';
+			  $alert .= 'alert("อัพเดตข้อมูลสำเร็จ");';
+			  $alert .= 'window.location.href = "?page=profile";';
+			  $alert .= '</script>';
+			  echo $alert;
+			  exit();
+			} else {
+			  echo "Error: " . $sql . "<br>" . mysqli_error($connection);
+			}
+
+			mysqli_close($connection);
+		}
+		?>
+		
 <div class="row g-0 app-wrapper app-auth-wrapper">
+	<form action="" method="post" >	
 		<div class="app-auth-body mx-auto ">
 			<div style="margin-top: 1rem">	
 		<div class="app-auth-branding text-center"><a class="app-logo" href="index.html" ><img class="logo-icon me-2" src="assets/images/PW-logo.png" alt="logo"></a></div>
@@ -13,7 +44,6 @@
 		</div>
 		</div>
 </div>
-
 		<div class="app-wrapper">
 <div class="app-content pt-3 p-md-3 p-lg-4"> 
 		    <div class="container-xl">
@@ -43,22 +73,9 @@
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
 										    <div class="item-label"><strong>ชื่อผู้ใช้</strong></div>
-									        <div class="item-data">#อีเมลลูกค้า</div>
+											<input type="text"  name="c_email" value="<?= $result['c_email'] ?>" class="form-control1 " placeholder="" autocomplete="off">
 									    </div><!--//col-->
-									    <div class="col text-end">
-										    <a class="btn-sm app-btn-secondary" href="#">แก้ไข</a>
-									    </div><!--//col-->
-								    </div><!--//row-->   
-							    </div><!--//item-->
-                                <div class="item border-bottom py-3 mb-3">
-								    <div class="row justify-content-between align-items-center">
-									    <div class="col-auto">
-										    <div class="item-label"><strong>รหัสผ่าน</strong></div>
-									        <div class="item-data">#รหัสผ่าน</div>
-									    </div><!--//col-->
-									    <div class="col text-end">
-										    <a class="btn-sm app-btn-secondary" href="#">แก้ไข</a>
-									    </div><!--//col-->
+									   
 								    </div><!--//row-->   
 							    </div><!--//item-->
 								<label >ช่องทางการติดต่อ</label>
@@ -66,11 +83,10 @@
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
 										    <div class="item-label"><strong>ชื่อผู้ใช้เฟสบุ้ค</strong></div>
-									        <div class="item-data">#ชื่อผู้ใช้เฟสบุ้ค</div>
+											<input type="text"  name="c_facebook" value="<?= $result['c_facebook'] ?>" class="form-control1 " placeholder="" autocomplete="off">
+									
 									    </div><!--//col-->
-									    <div class="col text-end">
-										    <a class="btn-sm app-btn-secondary" href="#">แก้ไข</a>
-									    </div><!--//col-->
+									    
 								    </div><!--//row-->
 							    </div><!--//item-->
 							    <div class="item border-bottom py-3">
@@ -78,11 +94,9 @@
 									    <div class="col-auto">
 										    <div class="item-label"><strong>ไอดีไลน์</strong></div>
 									        <div class="item-data">
-										        #ไอดีไลน์</div>
+											<input type="text"  name="c_line" value="<?= $result['c_line'] ?>" class="form-control1 " placeholder="" autocomplete="off">
 									    </div><!--//col-->
-									    <div class="col text-end">
-										    <a class="btn-sm app-btn-secondary" href="#">แก้ไข</a>
-									    </div><!--//col-->
+	</div>
 								    </div><!--//row-->
 							    </div><!--//item-->
 							    
@@ -117,11 +131,7 @@
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
 										    <div class="item-label"><strong>ชื่อจริง</strong></div>
-									        <div class="item-data">
-										        #ชื่อจริงลูกค้า</div>
-									    </div><!--//col-->
-									    <div class="col text-end">
-										    <a class="btn-sm app-btn-secondary" href="#">แก้ไข</a>
+											<input type="text"  name="s_name" value="<?= $result['s_name'] ?>" class="form-control1 " placeholder="" autocomplete="off">
 									    </div><!--//col-->
 								    </div><!--//row-->
 							    </div><!--//item-->
@@ -129,43 +139,35 @@
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
 										    <div class="item-label"><strong>นามสกุล</strong></div>
-									        <div class="item-data">#นามสกุลลูกค้า</div>
-									    </div><!--//col-->
-									    <div class="col text-end">
-										    <a class="btn-sm app-btn-secondary" href="#">แก้ไข</a>
-									    </div><!--//col-->
+											<input type="text"  name="s_lastname" value="<?= $result['s_lastname'] ?>" class="form-control1 " placeholder="" autocomplete="off">
+										</div><!--//col-->
 								    </div><!--//row-->
 							    </div><!--//item-->
 								<div class="item border-bottom py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
 										    <div class="item-label"><strong>เบอร์โทรศัพท์</strong></div>
-									        <div class="item-data">#เบอร์</div>
-									    </div><!--//col-->
-									    <div class="col text-end">
-										    <a class="btn-sm app-btn-secondary" href="#">แก้ไข</a>
-									    </div><!--//col-->
+											<input type="text"  name="phone" value="<?= $result['phone'] ?>" class="form-control1 " placeholder="" autocomplete="off">
+										</div><!--//col-->
 								    </div><!--//row-->
 							    </div><!--//item-->
 								<div class="item border-bottom py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
 										    <div class="item-label"><strong>ที่อยู่ปัจจุบัน</strong></div>
-									        <div class="item-data">
-										        #ที่อยู่ลูกค้า</div>
-									    </div><!--//col-->
-									    <div class="col text-end">
-										    <a class="btn-sm app-btn-secondary" href="#">แก้ไข</a>
+											<input type="text"  name="c_address" value="<?= $result['c_address'] ?>" class="form-control1 " placeholder="" autocomplete="off">
 									    </div><!--//col-->
 								    </div><!--//row-->
 							    </div><!--//item-->
 						    </div><!--//app-card-body-->
 						    <div class="app-card-footer p-4 mt-auto">
-							   <a class="btn app-btn-secondary" href="#">บันทึก</a>
+							<button type="submit" name="save" class="btn app-btn-secondary">บันทึกข้อมูล</button>
+								  
 						    </div><!--//app-card-footer-->
 						   
 						</div><!--//app-card-->
 	                </div><!--//col-->
+	</form>
  
     <!-- Javascript -->          
     <script src="assets/plugins/popper.min.js"></script>

@@ -45,5 +45,16 @@
     color: #9b0e21;
     border-color: #9b0e21;
     font-size: small;
+}.form-control {
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    height: 2.5rem;
+    border-color: #212529;
+    color: #5d6778}
+    a {
+    color: #9b0e21;
 }
+
+
+
 </style>

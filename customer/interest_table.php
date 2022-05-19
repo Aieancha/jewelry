@@ -1,9 +1,34 @@
-<!DOCTYPE html>
-<html lang="en"> 
-    <?php include('include/head.php') ?> 
-    <?php include('include/nav.php') ?> 
-    <?php include('include/sidebar.php') ?> 
 
+	<?php  
+	$user = $_SESSION['customer_login']; 
+	$sql = "SELECT * FROM tbl_social WHERE c_email = '$user'"; 
+	$query = mysqli_query($connection, $sql); 
+	$result = mysqli_fetch_assoc($query);   
+	
+	if (isset($_POST) && !empty($_POST)) {
+		$email = $_POST['c_email'];
+		$firstname = $_POST['s_name'];
+		$lastname = $_POST['s_lastname'];
+		//echo sha1(md5($m_pass));
+			$sql = "UPDATE tbl_social
+					SET c_email='$email', s_name='$firstname', s_lastname='$lastname'
+					WHERE c_email = '$user'";
+
+			if (mysqli_query($connection, $sql)) {
+			  //echo "เพิ่มข้อมูลสำเร็จ";
+			  $alert = '<script type= "text/javascript">';
+			  $alert .= 'alert("อัพเดตข้อมูลสำเร็จ");';
+			  $alert .= 'window.location.href = "?page=profile";';
+			  $alert .= '</script>';
+			  echo $alert;
+			  exit();
+			} else {
+			  echo "Error: " . $sql . "<br>" . mysqli_error($connection);
+			}
+
+			mysqli_close($connection);
+		}
+		?>
 <body class="app">   	
 <div class="row g-0 app-wrapper app-auth-wrapper">
 		<div class="app-auth-body mx-auto ">
@@ -20,11 +45,12 @@
 			    <h1 class="app-page-title">ข้อมูลรายการชำระดอกเบี้ย</h1>
 				<div class="d-flex flex-row">
                 <div class="flex-fill d-flex justify-content-end gap-1 ">
-				<a class="btn app-btn-secondary bg-NGG" href="#">รายการที่ชำระเเล้ว</a>
+				<a class="btn app-btn-secondary bg-NGG" >รายการที่ชำระเเล้ว</a>
 </div>
-                <div class="flex-fill d-flex justify-content-start gap-1"> 
-				<a class="btn app-btn-secondary" href="interest_details.php">รายการที่ค้างชำระ</a>
-				<div>
+                <div class="flex-fill d-flex justify-content-start gap-1">
+				<div class="btn app-btn-secondary" >
+				<a >รายการที่<a href="?page=<?= $_GET['page'] ?>&function=interest2" style="color:#5d6778; text-decoration: underline">ค้าง<a>ชำระ</a>
+			</div>
 			</div>
 						   
 						</div><!--//app-card-->

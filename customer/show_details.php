@@ -1,8 +1,33 @@
-<!DOCTYPE html>
-<html lang="en"> 
-    <?php include('include/head.php') ?> 
-    <?php include('include/nav.php') ?> 
-    <?php include('include/sidebar.php') ?> 
+<?php  
+	$user = $_SESSION['customer_login']; 
+	$sql = "SELECT * FROM tbl_social WHERE c_email = '$user'"; 
+	$query = mysqli_query($connection, $sql); 
+	$result = mysqli_fetch_assoc($query);   
+	
+	if (isset($_POST) && !empty($_POST)) {
+		$email = $_POST['c_email'];
+		$firstname = $_POST['s_name'];
+		$lastname = $_POST['s_lastname'];
+		//echo sha1(md5($m_pass));
+			$sql = "UPDATE tbl_social
+					SET c_email='$email', s_name='$firstname', s_lastname='$lastname'
+					WHERE c_email = '$user'";
+
+			if (mysqli_query($connection, $sql)) {
+			  //echo "เพิ่มข้อมูลสำเร็จ";
+			  $alert = '<script type= "text/javascript">';
+			  $alert .= 'alert("อัพเดตข้อมูลสำเร็จ");';
+			  $alert .= 'window.location.href = "?page=profile";';
+			  $alert .= '</script>';
+			  echo $alert;
+			  exit();
+			} else {
+			  echo "Error: " . $sql . "<br>" . mysqli_error($connection);
+			}
+
+			mysqli_close($connection);
+		}
+		?>
 
 <body class="app">   	
 <div class="row g-0 app-wrapper app-auth-wrapper">
@@ -41,49 +66,59 @@
 							    <div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>เลขที่สำคัญที่ราชกาลออกให้</strong>#เลขสำคัญลูกค้า</div>
+										    <div class="item-label"><strong>เลขที่สำคัญที่ราชกาลออกให้</strong>
+											<td width="25%" style="display: inline;"><?= $result['code_id'] ?></td>
+											</div>
 									    </div><!--//col-->
 								    </div><!--//row-->   
 							    </div><!--//item-->
                                 <div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>ชื่อจริง</strong>#ชื่อลูกค้า</div>
+										    <div class="item-label"><strong>ชื่อจริง</strong>
+											<td width="25%" style="display: inline;"><?= $result['s_name'] ?></td>
+										</div>
 									    </div><!--//col-->  
 								    </div><!--//row-->   
 							    </div><!--//item-->
 							    <div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>นามสกุล</strong>#นามสกุลลูกค้า</div>
+										    <div class="item-label"><strong>นามสกุล</strong>
+											<td width="25%" style="display: inline;"><?= $result['s_lastname'] ?></td></div>
 									    </div><!--//col-->  
 								    </div><!--//row-->   
 							    </div><!--//item-->
 								<div class="item py-3">
 								<div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>เบอร์โทรศัพท์</strong>#เบอร์ลูกค้า</div>
+										    <div class="item-label"><strong>เบอร์โทรศัพท์</strong>	
+											<td width="25%" style="display: inline;"><?= $result['phone'] ?></td></div>
 									    </div><!--//col-->  
 							    </div><!--//item-->
 								</div><!--//row-->   
 								<div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>บัญชีเฟสบุ้ค</strong>#บัญชีเฟสบุ้คลูกค้า</div>
+										    <div class="item-label"><strong>บัญชีเฟสบุ้ค</strong>
+											<td width="25%" style="display: inline;"><?= $result['c_facebook'] ?></td></div>
 									    </div><!--//col-->  
 								    </div><!--//row-->   
 							    </div><!--//item-->
 								<div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>ไอดีไลน์</strong>#บัญชีไอดีไลน์</div>
+										    <div class="item-label"><strong>ไอดีไลน์</strong>
+											<td width="25%" style="display: inline;"><?= $result['c_line'] ?></td></div>
 									    </div><!--//col-->  
 								    </div><!--//row-->   
 							    </div><!--//item-->
 								<div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>ที่อยู่ปัจจุบัน</strong>#ที่อยู่ลูกค้า</div>
+										    <div class="item-label"><strong>ที่อยู่ปัจจุบัน</strong>
+											<td width="25%" style="display: inline;"><?= $result['c_address'] ?></td></div>
+											</div>
 									    </div><!--//col-->  
 								    </div><!--//row-->   
 							    </div><!--//item-->

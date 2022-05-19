@@ -1,8 +1,3 @@
-<!DOCTYPE html>
-<html lang="en"> 
-    <?php include('include/head.php') ?> 
-    <?php include('include/nav.php') ?> 
-    <?php include('include/sidebar.php') ?> 
 
 <body class="app">   	
 <div class="row g-0 app-wrapper app-auth-wrapper">
@@ -20,11 +15,12 @@
 			    <h1 class="app-page-title">ข้อมูลรายการชำระดอกเบี้ย</h1>
 				<div class="d-flex flex-row">
                 <div class="flex-fill d-flex justify-content-end gap-1 ">
-				<a class="btn app-btn-secondary " href="interest_table.php">รายการที่ชำระเเล้ว</a>
+				<a class="btn app-btn-secondary " href="?page=<?= $_GET['page'] ?>" >รายการที่ชำระเเล้ว</a>
 </div>
                 <div class="flex-fill d-flex justify-content-start gap-1"> 
-				<a class="btn app-btn-secondary bg-NGG" href="#">รายการที่ค้างชำระ</a>
-				<div>
+    <div class="btn app-btn-secondary bg-NGG" href="#">
+				<a >รายการที่<a style="text-decoration: underline">ค้าง<a>ชำระ</a>
+</div>
 			</div>
 						   
 						</div><!--//app-card-->
@@ -42,14 +38,15 @@
 						                
 							        </div><!--//col-->
 							        <div class="col-auto">
-								        <h4 class="app-card-title">ตารางแสดงรายละเอียดการชำระดอกเบี้ย</h4>
+								        <h4 class="app-card-title">รายละเอียดการชำระดอกเบี้ย</h4>
 							        </div><!--//col-->
 						        </div><!--//row-->
 						    </div><!--//app-card-header-->
 <div class="col-11 m-5 overflow-auto">
-  <body>
-<table class="table">
-	<thead class="thead-dark">
+
+<body class="body2">
+  <table>
+	<thead>
     <tr>
       <th scope="col">ลำดับ</th>
       <th scope="col">เลขที่สัญญา</th>
@@ -62,28 +59,36 @@
   </thead>
   <tbody>
     <tr>
-      <th scope="row">1</th>
+      <td scope="row">1</td>
       <td>A1234</td>
       <td>1200</td>
       <td>ถึงกำหนดชำระ</td>
-	<td><a class="btn1 app-btn-secondary" href="update_bill.php">ชำระ</a></td>
+	<td><a class="btn1 app-btn-secondary" href="update_bill.php"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z"/>
+</svg></a></td>
+  <tr>
+      <td scope="row">2</td>
+      <td>A1234</td>
+      <td>1200</td>
+      <td>ถึงกำหนดชำระ</td>
+	<td><a class="btn1 app-btn-secondary" href="update_bill.php"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z"/>
+</svg></a></td>
+  <tr>
+      <td scope="row">3</td>
+      <td>A1234</td>
+      <td>1200</td>
+      <td>ถึงกำหนดชำระ</td>
+	<td><a class="btn1 app-btn-secondary" href="update_bill.php"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z"/>
+</svg></a></td>
 	  
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    
+    
   </tbody>
 </table>
-  </body>
+</body>
+</div>
 						</div>
 
 						    
@@ -121,27 +126,52 @@
 .app-auth-wrapper .app-auth-body {
     width: auto !important
 }
-.thead-dark{
-background-color: #fff;
-color: #9b0e21;
-border-color: #9b0e21;
-}
-.btn1{font-weight: 600;
-    padding: 1rem 2rem;
-    font-size: 0.5rem;
-	border: #9b0e21;}
 
-@media sreen and (max-width: 600px){
-  thead{
-    display: none;
-  }
+.m-5 {
+    margin: 0rem !important;
 }
+.body2{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+table{
+  margin: auto;
+}
+th{
+  color:#9b0e21
+}
+th,td{
+  padding: .8rem;
+  text-align: center 
+  
+}
+.btn1 {
+    color: #9b0e21;
+    width: 50px;
+    line-height: 35px;
+    display: inline-block;
+    /* border: #9b0e21; */
+    border-color: #9b0e21;
+    text-align: center
+
+  }
+  thead{
+    background-color: #fff;
+color: #9b0e21;
+  }
+ 
+  @media screen and (max-width: 600px){
+    thead{
+    display: none;  
+  }
 td{
   display: block;
 }
 td:first-child{
-  background-color: #fff;
-color: #9b0e21;
+  background-color: #9b0e21;
+color: #fff;
 border-color: #9b0e21;
 }
 td:nth-child(2)::before{
@@ -156,11 +186,16 @@ content: "สถานะ";
 td:nth-child(5)::before{
 content: "แนบหลักฐานการโอน";
 }
-td::before{
+td{
   text-align: right;
 }
 td::before{
   float: left;
-  margin-right: 3rem;
+  margin-right: 3rem
 }
+  }
+  .m-5 {
+    margin: 1rem !important;
+}
+
 </style>

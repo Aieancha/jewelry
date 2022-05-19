@@ -12,18 +12,18 @@
           print_r($_FILES);
           echo '</pre>';
           exit(); */
-                    $id = $_POST['c_id'];
-                    $firstname = $_POST['firstname'];
-                    $lastname = $_POST['lastname'];
+                    $id = $_POST['s_id'];
+                    $firstname = $_POST['s_name'];
+                    $lastname = $_POST['s_lastname'];
                     $address = $_POST['c_address'];
-                    $phone = $_POST['c_phone'];
+                    $phone = $_POST['phone'];
                     $pass = $_POST['c_pass'];
                     $email = $_POST['c_email'];
                     $line = $_POST['c_line'];
                     $face = $_POST['c_facebook'];
 					
 					
-                    $sql = "INSERT INTO tbl_customer (c_id, firstname, lastname, c_address, c_phone, c_email,c_img, c_pass,c_line,c_facebook)
+                    $sql = "INSERT INTO tbl_social (s_id, s_name, s_lastname, c_address, phone, c_email,c_img, c_pass,c_line,c_facebook)
                                     VALUES ('$id', '$firstname', '$lastname','$address', '$phone', '$email','$img','$pass','$line','$face')";
 
                     if (mysqli_query($connection, $sql)) {
@@ -74,7 +74,7 @@
 							</div>
 							</div>
                             <div class="d-flex flex-row mb-3">
-                                <div class="justify-content-start flex-fill ">
+                                <div class="justify-content-start flex-fill " style='margin-right:5px'>
 								<label class="sr-only " for="signup-password">ไลน์</label>
 								<input  class="form-control signup-password" name="c_line" type="line"  placeholder="กรอกไอดีไลน์">
                             </div>
@@ -85,7 +85,7 @@
                             </div>
                             </div>
 							<div class="d-flex flex-row ">
-							<div class="justify-content-start flex-fill ">
+							<div class="justify-content-start flex-fill ml-1">
 								<label style="display: inline;">ชื่อจริง </label><label style="display: inline;" class ="text-danger"> *</label>
 								</div>	
 								<div class="flex-fill d-flex justify-content-start gap-1">
@@ -93,20 +93,20 @@
 							</div>
 							</div>
                             <div class="d-flex flex-row mb-3">
-                                <div class="justify-content-start flex-fill ">
+                                <div class="justify-content-start flex-fill "style='margin-right:5px'>
 								<label class="sr-only " for="signup-password">ชื่อจริง</label>
-								<input type="text" class="form-control " name="firstname"  class="form-control signup-password" placeholder="กรอกชื่อจริง ">
+								<input type="text" class="form-control " name="s_name"  class="form-control signup-password" placeholder="กรอกชื่อจริง ">
                             </div>
-                                <div class="flex-fill d-flex justify-content-end gap-1">
+                                <div class="flex-fill d-flex justify-content-end gap-1" >
 								<label class="sr-only" for="signup-password">นามสกุล</label>
-								<input type="text" class="form-control " name="lastname" class="form-control signup-password" placeholder="กรอกนามสกุล " >
+								<input type="text" class="form-control " name="s_lastname" class="form-control signup-password" placeholder="กรอกนามสกุล " >
 					
                             </div>
                             </div>
 							<div class="password mb-3">
 								<label style="display: inline;" >เบอร์โทรศัพท์ </label><label style="display: inline;" class ="text-danger"> *</label>
 								<label class="sr-only" for="signup-password">เบอร์โทร</label>
-								<input type="number" name="c_phone" pattern="^[0-9\s]+$" minlength="10" class="form-control signup-password" placeholder="กรอกเบอร์โทรศัพท์" required="required">
+								<input type="number" name="phone" pattern="^[0-9\s]+$" minlength="10" class="form-control signup-password" placeholder="กรอกเบอร์โทรศัพท์" required="required">
 							</div>
                             <div class="password mb-3">
 								<label >ที่อยู่</label>
@@ -134,10 +134,6 @@
 		    
 	    </div><!--//auth-main-col-->
 	    
-<<<<<<< HEAD
-=======
-    
->>>>>>> 5de221e237b5a17b9857b1ef09e64e30c4d5345c
     </div><!--//row-->
 	<script>
 	
