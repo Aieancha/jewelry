@@ -113,7 +113,7 @@ if(isset($_POST["login"]))
 							</div><!--//form-group-->
 							<div class="password mb-3">
 								<label class="sr-only" for="signin-password">Password</label>
-								<input id="signin-password" name="c_pass" type="pass" class="form-control signin-password" placeholder="รหัสผ่าน" required="required">
+								<input type="password" id="signin-password" name="c_pass" type="pass" class="form-control signin-password" placeholder="รหัสผ่าน" required="required">
 								<div class="extra mt-3 row justify-content-between">
 									<!--div class="col-6">
 										<div class="form-check">

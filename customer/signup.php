@@ -12,7 +12,7 @@
           print_r($_FILES);
           echo '</pre>';
           exit(); */
-                    $id = $_POST['s_id'];
+                    //$id = $_POST['s_id'];
                     $firstname = $_POST['s_name'];
                     $lastname = $_POST['s_lastname'];
                     $address = $_POST['c_address'];
@@ -23,8 +23,8 @@
                     $face = $_POST['c_facebook'];
 					
 					
-                    $sql = "INSERT INTO tbl_social (s_id, s_name, s_lastname, c_address, phone, c_email,c_img, c_pass,c_line,c_facebook)
-                                    VALUES ('$id', '$firstname', '$lastname','$address', '$phone', '$email','$img','$pass','$line','$face')";
+                    $sql = "INSERT INTO tbl_social ( s_name, s_lastname, c_address, phone, c_email, c_pass,c_line,c_facebook)
+                                    VALUES ( '$firstname', '$lastname','$address', '$phone', '$email','$pass','$line','$face')";
 
                     if (mysqli_query($connection, $sql)) {
                         //echo "เพิ่มข้อมูลสำเร็จ";
