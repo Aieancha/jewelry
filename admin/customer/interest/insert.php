@@ -29,7 +29,7 @@ $query = mysqli_query($connection, $sql);
             </form>
             
         </div>
-        <a href="?#=<?= $_GET['#'] ?>&function=insert" class="btn btn-sm btn-dark text-white">สถานะ</a>
+        <a href="" class="btn btn-sm btn-dark text-white">สถานะ</a>
     </div>   
   <div class="row">
     <div class="card">

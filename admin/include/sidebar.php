@@ -8,7 +8,7 @@ WHERE DATEDIFF(c_date, Now())= 3 or DATEDIFF(c_date, Now())= 2";
 $query = mysqli_query($connection, $sql);
 ?>
 <?php
-mysqli_select_db($connection,"");
+//mysqli_select_db($connection,"");
 $sqldb = "SELECT count(s_id) as day3 FROM tbl_social WHERE DATEDIFF(c_date, Now())= 3 or DATEDIFF(c_date, Now())= 2";
 $rs = mysqli_query($connection, $sqldb);
 $day3=mysqli_fetch_assoc($rs);

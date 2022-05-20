@@ -21,7 +21,7 @@ $query = mysqli_query($connection, $sql);
                 <button type="submit"><i class="fa fa-search btn-dark"></i></button>
             
         </div>
-        <a href="?#=<?= $_GET['#'] ?>&function=insert" class="btn btn-sm btn-dark text-white">สถานะ</a>
+        <a href="" class="btn btn-sm btn-dark text-white">สถานะ</a>
     </div>   
     </div>
     

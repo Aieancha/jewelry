@@ -1,15 +1,16 @@
 <?php
-$sql = "SELECT *
-FROM tbl_social
-INNER JOIN tbl_status
-ON tbl_social.s_role = tbl_status.id
+$sql = "SELECT * FROM tbl_social
+/* INNER JOIN tbl_status ON tbl_social.s_role = tbl_status.id */
+INNER JOIN tbl_bill ON tbl_social.s_id = tbl_bill.s_id
 /* WHERE tbl_status.id=2 AND */
-WHERE DATEDIFF(c_date, Now())= 3 or DATEDIFF(c_date, Now())= 2";
+/* WHERE DATEDIFF(c_date, Now())= 3 or DATEDIFF(c_date, Now())= 2  */
+group by tbl_social.s_id ORDER BY start_date";
 $query = mysqli_query($connection, $sql);
+$result=mysqli_fetch_assoc($query);
 ?>
 
 <?php
-mysqli_select_db($connection,"");
+//mysqli_select_db($connection,"");
 $sqldb = "SELECT count(s_id) as day3 FROM tbl_social WHERE DATEDIFF(c_date, Now())= 3 or DATEDIFF(c_date, Now())= 2";
 $rs = mysqli_query($connection, $sqldb);
 $day3=mysqli_fetch_assoc($rs);
@@ -17,9 +18,14 @@ if($day3['day3']>0){
   $noti_day3 = '<span class="noti-alert">'.$day3['day3'].'</span>';
 }else{
   $noti_day3="";
+  
 }
 ?>
-
+<?php
+date_default_timezone_set('asia/bangkok');
+$status = date('Y-m-d');
+//echo $status;
+?>
 <div class="container-fluid py-4 ">
   <div class="row justify-content-between">
     <div class="col-auto">
@@ -40,7 +46,7 @@ if($day3['day3']>0){
             </form>
             
         </div>
-        <a href="?#=<?= $_GET['#'] ?>&function=insert" class="btn btn-sm btn-dark text-white">สถานะ</a>
+        <a href="" class="btn btn-sm btn-dark text-white">สถานะ</a>
     </div>   
   <div class="row">
     <div class="card">
@@ -75,22 +81,20 @@ if($day3['day3']>0){
                 <td><?= ++$i ?></td>
                 <td><?php echo $data['start_date']; ?></td>
                 <td><?php echo $data['c_date']; ?></td>
-                <td></td>
+                <td><?php echo $data['bill_no']; ?></td>
                 <td><?= $data['s_name'] ?></td>
                 <td><?= $data['principle']*0.02 ?></td>
                 <td><?= $data['phone'] ?></td>
-                <td class="text-danger"><?php $status = $data['start_date'];
-                                            if ($status == $data['start_date']) {
+                <td class="text-danger"><?php 
+                                            if (($data['start_date'] <= $status ) && $status <= $data['c_date']) {
                                                 echo "ถึงกำหนดชำระ";
-                                            } elseif ($status != $data['start_date']){
+                                            } else {
                                                 echo "ค้างชำระ";
-                                            }else {
-                                              echo "ชำระแล้ว";
-                                          } ?></td>
-                                          <!-- <td><?php $status = ($data['start_date'] == $status ? '<span class=" ">ถึงกำหนดชำระ</span>' : '<span class=" ">ค้างชำระ</span>') ?></td> -->
+                                            } ?></td>
+
                 <td> <a href="?page=<?= $_GET['page'] ?>&function=update&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-green3 text-white">อัพเดทสถานะ</a></td>
                 </td>
-                <!-- <td> <a href="?page=<?= $_GET['page'] ?>&function=check" class="btn btn-sm btn-dark">ทดลองรุูป</a></td> -->
+                <td> <a href="?page=<?= $_GET['page'] ?>&function=qty" class="btn btn-sm btn-dark">ทดลองรุูป</a></td>
 
               </tr>
             <?php endforeach; ?>

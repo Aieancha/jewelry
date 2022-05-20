@@ -1,5 +1,10 @@
 <meta charset="utf-8">
+<?php
+    $sqli = "SELECT * FROM tbl_social INNER JOIN tbl_bill ON tbl_social.s_id = tbl_bill.s_id";
+    $query = mysqli_query($connection, $sqli);
+    $rs = mysqli_fetch_assoc($query);
 
+?>
 
 <?php
 if (isset($_GET['id']) && !empty($_GET['id'])) {
@@ -31,7 +36,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
                 $principle = $result['principle'];
                 $mount = $result['r_mount'];
-                $Date = $result['c_date'];
+                $date = $rs['bill_date'];
 
                 $int = (2 / 100); //2%
                 $pmt = ($principle * $int) * $mount;
@@ -93,15 +98,18 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                             <th scope="col">จำนวนดอกเบี้ย</th>
                                             <th scope="col">ชำระดอกเบี้ยต่อเดือน</th>
                                             <th scope="col">ยอดดอกเบี้ยคงเหลือ</th>
+<<<<<<< HEAD
 
                                             <!-- <th scope="col">รายละเอียดการโอน</th> -->
                                             <!-- <th scope="col">หลักฐานการโอน</th> -->
+=======
+>>>>>>> 8fd1bc12d434a0d9aaf84210e4d92fc0d1f2135c
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         for ($i = 1; $i <= $mount; $i++) {
-                                            $myDate = date("Y-m-d", strtotime(date("Y-m-d", strtotime(date("$Date"))) . "+$i month"));
+                                            $myDate = date("Y-m-d", strtotime(date("Y-m-d", strtotime(date("$date"))) . "+$i month"));
                                             //สำหรับเดือนสุดท้าย นำดอกเบี้ยมารวมใน ยอดชำระต่อเดือน	
                                             if ($mount == $i) {
                                                 $resultPmt = (($principle * 0.02) * $mount);
@@ -156,8 +164,12 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                 </div>
                 <div class="flex-fill d-flex justify-content-end gap-1">
                     <a href="?page=<?= $_GET['page'] ?>&function=sum_list&id=<?= $result['s_id'] ?>" class="btn btn-sm btn-blue2 text-white">ประวัติการชำระดอกเบี้ย</a>
+<<<<<<< HEAD
                 </div>
                     
+=======
+                </div> 
+>>>>>>> 8fd1bc12d434a0d9aaf84210e4d92fc0d1f2135c
         </form>
         </div>
     </div>

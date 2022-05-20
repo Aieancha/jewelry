@@ -1,14 +1,12 @@
 <?php
-$sql = "SELECT *
-FROM tbl_social
-INNER JOIN tbl_interest
-ON tbl_social.s_id = tbl_interest.ref_id
-group by tbl_social.s_id 
-ORDER BY in_date";
+$sql = "SELECT * FROM tbl_social
+INNER JOIN tbl_interest ON tbl_interest.ref_id = tbl_social.s_id
+INNER JOIN tbl_bill ON tbl_social.s_id = tbl_bill.s_id
+group by tbl_social.s_id ORDER BY in_date";
 $query = mysqli_query($connection, $sql);
 ?>
 <?php
-mysqli_select_db($connection, "");
+//mysqli_select_db($connection, "");
 $sqldb = "SELECT count(s_id) as day3 FROM tbl_social WHERE DATEDIFF(c_date, Now())= 3 or DATEDIFF(c_date, Now())= 2";
 $rs = mysqli_query($connection, $sqldb);
 $day3 = mysqli_fetch_assoc($rs);
@@ -40,7 +38,7 @@ if ($day3['day3'] > 0) {
                 </form>
 
             </div>
-            <a href="?#=<?= $_GET['#'] ?>&function=insert" class="btn btn-sm btn-dark text-white">สถานะ</a>
+            <a href="" class="btn btn-sm btn-dark text-white">สถานะ</a>
         </div>
         <div class="row">
             <div class="card">
@@ -78,7 +76,7 @@ if ($day3['day3'] > 0) {
                                     <tr>
                                         <td><?= ++$i ?></td>
                                         <td><?= $data['in_date'] ?></td>
-                                        <td>#</td>
+                                        <td><?= $data['bill_no'] ?></td>
                                         <td><?= $data['s_name'] ?></td>
                                         <td><?= $data['phone']; ?></td>
                                         <td><?= $data['in_befor']; ?></td>

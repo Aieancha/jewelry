@@ -21,6 +21,7 @@
           $sql = "SELECT * FROM tbl_social WHERE s_id = '$id'";
           $query = mysqli_query($connection, $sql);
           $result = mysqli_fetch_assoc($query);
+          $role=$result['s_role']=1;
         }
         if (isset($_POST) && !empty($_POST)) {
           $social_name = $_POST['social_name'];
@@ -28,7 +29,7 @@
           $price_img = $_POST['price_img'];
           $s_type = $_POST['s_type'];
           $s_name = $_POST['s_name'];
-          $s_role = $_POST['s_role'];
+          //$s_role = $_POST['s_role'];
           $s_lastname = $_POST['s_lastname'];
           $code = $_POST['code_id'];
           $age = $_POST['c_age'];
@@ -87,7 +88,7 @@
           //echo $filename;
           //exit();
           $sql = "UPDATE tbl_social 
-          SET social_name='$social_name', social_contact='$social_contact', price_img='$price_img', s_name='$s_name', s_lastname='$s_lastname', s_role='$s_role'
+          SET social_name='$social_name', social_contact='$social_contact', price_img='$price_img', s_name='$s_name', s_lastname='$s_lastname', s_role='$role'
           , code_id='$code', c_age='$age', c_address='$address', phone='$phone', principle='$principle', price_item='$price_item', c_email='$email', c_img='$filename', c_date='$c_date'
           , r_mount='$mount', rate_name='$rate_name'
           WHERE s_id ='$id'";
@@ -179,13 +180,16 @@
                 <h6>ภาพยืนยันตัวตน*</h6>
                 <input type="file" id="myFile" name="c_img" multiple >
               </div>
-              <div type="">
+              <div class="mb-4 col-3 ">
+                <input type="file" id="myFile" name="c_img" multiple>
+              </div>
+              <!-- <div type="">
                 <select name="s_role" require>
                   <option value="" selected="selected">- เลือกสถานะ -</option>
                   <option value="1">รอร่างสัญญา</option>
                   <option value="2">ผู้จำนำ</option>
                 </select>
-              </div>
+              </div> -->
 
             </div>
             <div class="justify-content-start flex-fill ">
