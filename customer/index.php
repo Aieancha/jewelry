@@ -1,16 +1,20 @@
 <?php include('../connection/connection.php') ?>
 <?php session_start(); ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <?php include('include/head.php') ?>
 
-<?php if (isset($_SESSION['customer_login']) && !empty($_SESSION['customer_login'])) : ?>
+<?php if (isset($_SESSION['s_id']) && !empty($_SESSION['s_id'])) : ?>
   <?php include('include/sidebar.php') ?> 
 <body>
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
 <?php include('include/nav.php') ?>
       <div class="container-fluid py-4">
+      <?php echo ($_SESSION['s_id']);?> <!--show detail login-->
+      <?php //session_destroy();?>
         <?php
         if (!isset($_GET['page']) && empty($_GET['page'])) {
           include('newform.php');

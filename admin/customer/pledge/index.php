@@ -3,7 +3,8 @@
 $sql = "SELECT tbl_social.social_name,tbl_social.social_contact,tbl_social.s_id,tbl_social.price_img,tbl_social.s_date,tbl_status.status_name,tbl_social.s_img
         FROM tbl_social
         INNER JOIN tbl_status
-        ON tbl_social.s_role = tbl_status.id";
+        ON tbl_social.s_role = tbl_status.id
+        WHERE status=0";
 $query = mysqli_query($connection, $sql);
 
 ?>

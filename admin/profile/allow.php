@@ -1,8 +1,12 @@
-<?php
+<!-- ?php
 $sql = "SELECT * FROM tbl_social";
 if($_GET['action']=='login'){
 
-} */
+} 
+$query = mysqli_query($connection, $sql);
+? -->
+<?php
+$sql = "SELECT * FROM tbl_social WHERE user_login=1";
 $query = mysqli_query($connection, $sql);
 ?>
 <div class="container-fluid py-4">
@@ -36,9 +40,11 @@ $query = mysqli_query($connection, $sql);
                         </tr>
                     </thead>          
                     <tbody>
-                        <?php foreach ($query as $data):?>
+                        <?php
+                        $i = 0;
+                         foreach ($query as $data):?>
                             <tr>
-                                <td><?= $data['s_id'] ?></td>
+                                <td><?= ++$i ?></td>
                                 <td><?= $data['c_email'] ?></td>
                                 <td><?= $data['s_name'] ?></td>
                                 <td><?= $data['s_lastname'] ?></td>
@@ -47,10 +53,10 @@ $query = mysqli_query($connection, $sql);
                                 <td><a href="?page=<?=$_GET['page']?>&function=allowdetail&id=<?=$data['s_id']?>" class="btn btn-sm btn-green3 text-white">ดูรายละเอียด</a></td>
                                 <td>
                                 <?php if($data['status']==0){
-                                        echo '<p><a href="updateStatusCus.php?s_id='.$data['s_id'].'&status=1" class="btn btn-sm btn-dark text-white">ปิดใช้งาน</a></p>';
+                                        echo '<p><a  class="btn btn-sm btn-dark text-white">ปิดใช้งาน</a></p>';
                                    }else{
-                                        echo '<p><a href="updateStatusCus.php?s_id='.$data['s_id'].'&status=0" class="btn btn-sm btn-green3 text-white" >เข้าใช้งาน</a></p>';
-                                   }               
+                                        echo '<p><a  class="btn btn-sm btn-green3 text-white" >เข้าใช้งาน</a></p>';
+                                   }       
                                    ?>
                                 </td>
                                 <td>

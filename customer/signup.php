@@ -23,8 +23,8 @@
                     $face = $_POST['c_facebook'];
 					
 					
-                    $sql = "INSERT INTO tbl_social ( s_name, s_lastname, c_address, phone, c_email, c_pass,c_line,c_facebook)
-                                    VALUES ( '$firstname', '$lastname','$address', '$phone', '$email','$pass','$line','$face')";
+                    $sql = "INSERT INTO tbl_social ( s_name, s_lastname, c_address, phone, c_email, c_pass,c_line,c_facebook,user_login)
+                                    VALUES ( '$firstname', '$lastname','$address', '$phone', '$email','$pass','$line','$face',1)";
 
                     if (mysqli_query($connection, $sql)) {
                         //echo "เพิ่มข้อมูลสำเร็จ";
