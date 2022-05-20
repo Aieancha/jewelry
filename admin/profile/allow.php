@@ -1,11 +1,6 @@
 <?php
-<<<<<<< HEAD
 $sql = "SELECT * FROM tbl_social";
 if($_GET['action']=='login'){
-=======
-$sql = "SELECT * FROM tbl_customer";
-/* if($_GET['action']=='login'){
->>>>>>> 8fd1bc12d434a0d9aaf84210e4d92fc0d1f2135c
 
 } */
 $query = mysqli_query($connection, $sql);

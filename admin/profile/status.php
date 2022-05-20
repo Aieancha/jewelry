@@ -1,12 +1,7 @@
 <?php
     include('../connection/connection.php');
-<<<<<<< HEAD
-$c_id = $_POST['s_id'];
-$sql = select * from tbl_social WHERE id = $c_id;
-=======
 $c_id = $_POST['c_id'];
 $sql = "select * from tbl_customer WHERE id = $c_id";
->>>>>>> 8fd1bc12d434a0d9aaf84210e4d92fc0d1f2135c
 $result = mysqli_query($conn,$sql);
 $data =mysqli_fetch_assoc($result);
 $status = $data['status'];

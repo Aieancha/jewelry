@@ -51,7 +51,7 @@
                 <div class="row gy-4">
 	                <div class="col-12 col-lg-6">
 		                <div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
-						    <div class="app-card-header p-3 border-bottom-0">
+						    <div class="app-card-header p-3 ">
 						        <div class="row align-items-center gx-3">
 							        <div class="col-auto">
 								        <div class="app-icon-holder">
@@ -63,13 +63,12 @@
 						                
 							        </div><!--//col-->
 							        <div class="col-auto">
-								        <h4 class="app-card-title">ข้อมูลการเข้าใช้งานระบบ และ ช่องทางการติดต่อ</h4>
+								        <h4 class="app-card-title">ข้อมูลการเข้าใช้งานระบบ</h4>
 							        </div><!--//col-->
 						        </div><!--//row-->
 						    </div><!--//app-card-header-->
 						    <div class="app-card-body px-4 w-100">
-							<label >ข้อมูลการเข้าใช้งานระบบ</label>
-							    <div class="item border-bottom py-3">
+							    <div class="item  py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
 										    <div class="item-label"><strong>ชื่อผู้ใช้</strong></div>
@@ -78,8 +77,8 @@
 									   
 								    </div><!--//row-->   
 							    </div><!--//item-->
-								<label >ช่องทางการติดต่อ</label>
-							    <div class="item border-bottom py-3">
+								<h6 class="">ช่องทางการติดต่อ</h6>
+							    <div class="item  py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
 										    <div class="item-label"><strong>ชื่อผู้ใช้เฟสบุ้ค</strong></div>
@@ -89,7 +88,7 @@
 									    
 								    </div><!--//row-->
 							    </div><!--//item-->
-							    <div class="item border-bottom py-3">
+							    <div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
 										    <div class="item-label"><strong>ไอดีไลน์</strong></div>
@@ -102,14 +101,14 @@
 							    
 						    </div><!--//app-card-body-->
 						    <div class="app-card-footer p-4 mt-auto">
-							   <a class="btn app-btn-secondary" href="#">บันทึก</a>
+							   <a class="btn app-btn-secondary " href="#">บันทึกข้อมูล</a>
 						    </div><!--//app-card-footer-->
 						   
 						</div><!--//app-card-->
 	                </div><!--//col-->
 	                <div class="col-12 col-lg-6">
-		                <div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
-						    <div class="app-card-header p-3 border-bottom-0">
+		                <div class=" app-card app-card-header app-card-account shadow-sm d-flex flex-column align-items-start">
+						    <div class="app-card-header p-3 ">
 						        <div class="row align-items-center gx-3">
 							        <div class="col-auto">
 								        <div class="app-icon-holder">
@@ -120,14 +119,14 @@
 						                
 							        </div><!--//col-->
 							        <div class="col-auto">
-								        <h4 class="app-card-title">ข้อมูลผู้ใช้งานระบบ</h4>
+								        <h4 class="">ข้อมูลผู้ใช้งานระบบ</h4>
 							        </div><!--//col-->
 						        </div><!--//row-->
 						    </div><!--//app-card-header-->
 
 
 						    <div class="app-card-body px-4 w-100">
-							<div class="item border-bottom py-3">
+							<div class="item  py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
 										    <div class="item-label"><strong>ชื่อจริง</strong></div>
@@ -135,7 +134,7 @@
 									    </div><!--//col-->
 								    </div><!--//row-->
 							    </div><!--//item-->
-								<div class="item border-bottom py-3">
+								<div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
 										    <div class="item-label"><strong>นามสกุล</strong></div>
@@ -143,7 +142,7 @@
 										</div><!--//col-->
 								    </div><!--//row-->
 							    </div><!--//item-->
-								<div class="item border-bottom py-3">
+								<div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
 										    <div class="item-label"><strong>เบอร์โทรศัพท์</strong></div>
@@ -151,10 +150,10 @@
 										</div><!--//col-->
 								    </div><!--//row-->
 							    </div><!--//item-->
-								<div class="item border-bottom py-3">
+								<div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>ที่อยู่ปัจจุบัน</strong></div>
+										    <div class="item-label col-12"><strong>ที่อยู่ปัจจุบัน</strong></div>
 											<input type="text"  name="c_address" value="<?= $result['c_address'] ?>" class="form-control1 " placeholder="" autocomplete="off">
 									    </div><!--//col-->
 								    </div><!--//row-->

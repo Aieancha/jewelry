@@ -41,11 +41,7 @@ if (isset($_POST) && !empty($_POST)) {
                 <input type="text" placeholder="ชื่อผู้ใช้งาน.." name="search2 ">
                 <button type="submit"><i class="fa fa-search btn-dark"></i></button>
             </form>
-<<<<<<< HEAD
-</div>
-=======
         </div>
->>>>>>> 8fd1bc12d434a0d9aaf84210e4d92fc0d1f2135c
         </div>
         <div class="row">
             <div class="card">
@@ -72,7 +68,6 @@ if (isset($_POST) && !empty($_POST)) {
                                 <label class="text-danger">สถานะสัญญา </label><label>ปกติ</label>
                             </div>
                             <div type="">
-<<<<<<< HEAD
                             <select name="s_role" require class="btn btn-sm ">
                   <option value="" selected="selected">เปลี่ยนสถานะ</option>
                   <option value="4">ปิดสัญญา</option>
@@ -83,17 +78,6 @@ if (isset($_POST) && !empty($_POST)) {
               </div>
 </div>
 </div>
-=======
-                                <select name="s_role" require class="btn btn-sm ">
-                                    <option value="" selected="selected">เลือกสถานะ</option>
-                                    <option value="4">ผิดสัญญา</option>
-                                    <option value="5">ไถ่ถอนก่อนกำหนด</option>
-                                </select>
-                                <a class="btn btn-sm btn-green3 text-white">ยืนยันการเปลี่ยนสถานะ</a>
-                            </div>
-                        </div>
-                    </div>
->>>>>>> 8fd1bc12d434a0d9aaf84210e4d92fc0d1f2135c
                     <form action="">
                         <table class="table">
                             <thead>

@@ -58,9 +58,9 @@ $result = mysqli_fetch_assoc($query);
 
 					
 					
-                    //$sql = "UPDATE tbl_social SET s_type ='$type',cus_price='$cusprice',s_img='$s_img',s_detail='$detail' WHERE c_email = '$user'";
-                    $sql = "INSERT INTO tbl_social (c_img,s_type,cus_price,s_detail)
-                                            VALUES ('$img','$type','$cus_price','$s_detail')";
+                    $sql = "UPDATE tbl_social SET s_type ='$type',cus_price='$cusprice',s_img='$s_img',s_detail='$detail' WHERE c_email = '$user'";
+                    // $sql = "INSERT INTO tbl_social (c_img,s_type,cus_price,s_detail)
+                    //                         VALUES ('$img','$type','$cus_price','$s_detail')";
 
                     if (mysqli_query($connection, $sql)) {
                         //echo "เพิ่มข้อมูลสำเร็จ";
