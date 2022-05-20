@@ -94,7 +94,7 @@ $status = date('Y-m-d');
 
                 <td> <a href="?page=<?= $_GET['page'] ?>&function=update&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-green3 text-white">อัพเดทสถานะ</a></td>
                 </td>
-                <td> <a href="?page=<?= $_GET['page'] ?>&function=qty" class="btn btn-sm btn-dark">ทดลองรุูป</a></td>
+                <!-- <td> <a href="?page=<?= $_GET['page'] ?>&function=qty" class="btn btn-sm btn-dark">ทดลองรุูป</a></td> -->
 
               </tr>
             <?php endforeach; ?>

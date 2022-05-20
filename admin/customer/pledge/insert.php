@@ -2,24 +2,23 @@
 <html lang="en">
 <?php
 $code = "A";
-$yearMonth = substr(date("Y")+543, -2).date("m");
+$yearMonth = substr(date("Y") + 543, -2) . date("m");
 
 //query MAX ID 
 $sqli = "SELECT MAX(s_id) AS s_id FROM tbl_social";
-$qry = mysqli_query($connection,$sqli) or die("Error Query [".$sqli."]");
+$qry = mysqli_query($connection, $sqli) or die("Error Query [" . $sqli . "]");
 $rs = mysqli_fetch_assoc($qry);
 $maxId = substr($rs['s_id'], -5);  //ข้อมูลนี้จะติดรหัสตัวอักษรด้วย ตัดเอาเฉพาะตัวเลขท้ายนะครับ
-//$maxId = 237;   //<--- บรรทัดนี้เป็นเลขทดสอบ ตอนใช้จริงให้ ลบ! ออกด้วยนะครับ
-//$maxId = ($maxId + 1); 
 if ($maxId == '') {
   $maxId = 1;
 } else {
   $maxId = ($maxId + 1);
 }
-$maxId = substr("00000".$maxId, -5);
-$nextId = $code.$yearMonth.$maxId;
+$maxId = substr("00000" . $maxId, -5);
+$nextId = $code . $yearMonth . $maxId;
 //echo $nextId;
 ?>
+
 <body class="g-sidenav-show bg-gray-100">
   <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
     <div class="container-fluid">
@@ -45,7 +44,8 @@ $nextId = $code.$yearMonth.$maxId;
           $price_img = $_POST['price_img'];
           $s_type = $_POST['s_type'];
           $nextId = $_POST['ref_img'];
-
+          $detail = $_POST['s_detail'];
+        
           if (isset($_FILES['s_img']['name']) && !empty($_FILES['s_img']['name'])) {
             $extension = array("jpeg", "jpg", "png");
             $target = 'upload/social/';
@@ -89,11 +89,97 @@ $nextId = $code.$yearMonth.$maxId;
           } else {
             $filename = '';
           }
-          //echo $filename;
-          //exit();
+          /* img1 */
+          if (isset($_FILES['img1']['name']) && !empty($_FILES['img1']['name'])) {
+            $extension = array("jpeg", "jpg", "png");
+            $target = 'upload/social/';
+            $filename1 = $_FILES['img1']['name'];
+            $filetmp = $_FILES['img1']['tmp_name'];
+            $ext = pathinfo($filename1, PATHINFO_EXTENSION);
+            if (in_array($ext, $extension)) {
+              if (!file_exists($target . $filename1)) {
+                if (move_uploaded_file($filetmp, $target . $filename1)) {
+                  $filename1 = $filename1;
+                } else {
+                  $alert = '<script type="text/javascript">';
+                  $alert .= 'alert("เพิ่มไฟล์เข้าโฟลเดอร์ไม่สำเร็จ");';
+                  $alert .= 'window.location.href = "?page=admin&function=insert";';
+                  $alert .= '</script>';
+                  echo $alert;
+                  exit();
+                }
+              } else {
+                $newfilename1 = time() . $filename1;
+                if (move_uploaded_file($filetmp, $target . $newfilename1)) {
+                  $filename1 = $newfilename1;
+                } else {
+                  $alert = '<script type="text/javascript">';
+                  $alert .= 'alert("เพิ่มไฟล์เข้าโฟลเดอร์ไม่สำเร็จ");';
+                  $alert .= 'window.location.href = "?page=admin&function=insert";';
+                  $alert .= '</script>';
+                  echo $alert;
+                  exit();
+                }
+              }
+            } else {
+              echo 'ประเภทไฟล์ไม่ถูกต้อง';
+              $alert = '<script type="text/javascript">';
+              $alert .= 'alert("ประเภทไฟล์ไม่ถูกต้อง");';
+              $alert .= 'window.location.href = "?page=admin&function=insert";';
+              $alert .= '</script>';
+              echo $alert;
+              exit();
+            }
+          } else {
+            $filename1 = '';
+          }
+          /* img2 */
+          if (isset($_FILES['img2']['name']) && !empty($_FILES['img2']['name'])) {
+            $extension = array("jpeg", "jpg", "png");
+            $target = 'upload/social/';
+            $filename2 = $_FILES['img2']['name'];
+            $filetmp = $_FILES['img2']['tmp_name'];
+            $ext = pathinfo($filename2, PATHINFO_EXTENSION);
+            if (in_array($ext, $extension)) {
+              if (!file_exists($target . $filename2)) {
+                if (move_uploaded_file($filetmp, $target . $filename2)) {
+                  $filename1 = $filename1;
+                } else {
+                  $alert = '<script type="text/javascript">';
+                  $alert .= 'alert("เพิ่มไฟล์เข้าโฟลเดอร์ไม่สำเร็จ");';
+                  $alert .= 'window.location.href = "?page=admin&function=insert";';
+                  $alert .= '</script>';
+                  echo $alert;
+                  exit();
+                }
+              } else {
+                $newfilename2 = time() . $filename2;
+                if (move_uploaded_file($filetmp, $target . $newfilename2)) {
+                  $filename2 = $newfilename2;
+                } else {
+                  $alert = '<script type="text/javascript">';
+                  $alert .= 'alert("เพิ่มไฟล์เข้าโฟลเดอร์ไม่สำเร็จ");';
+                  $alert .= 'window.location.href = "?page=admin&function=insert";';
+                  $alert .= '</script>';
+                  echo $alert;
+                  exit();
+                }
+              }
+            } else {
+              echo 'ประเภทไฟล์ไม่ถูกต้อง';
+              $alert = '<script type="text/javascript">';
+              $alert .= 'alert("ประเภทไฟล์ไม่ถูกต้อง");';
+              $alert .= 'window.location.href = "?page=admin&function=insert";';
+              $alert .= '</script>';
+              echo $alert;
+              exit();
+            }
+          } else {
+            $filename2 = '';
+          }
 
-          $sql = "INSERT INTO tbl_social (social_name, social_contact, price_img, s_type, s_img, ref_img)
-                      VALUES ('$social_name', '$social_contact', '$price_img', '$s_type', '$filename', '$nextId')";
+          $sql = "INSERT INTO tbl_social (social_name, social_contact, price_img, s_type, s_img, ref_img,img1,img2, s_detail)
+                      VALUES ('$social_name', '$social_contact', '$price_img', '$s_type', '$filename', '$nextId', '$filename1', '$filename2', '$detail')";
 
           if (mysqli_query($connection, $sql)) {
             //echo "เพิ่มข้อมูลสำเร็จ";
@@ -147,11 +233,14 @@ $nextId = $code.$yearMonth.$maxId;
             <h5 style="display: inline;">ประเภทสินทรัพย์จำนำ</h5>
             <h5 class="form-label text-danger" style="display: inline;">*</h5>
             <input type="text" class="form-control " name="s_type" placeholder="สินทรัพย์ที่ใช้จำนำ" autocomplete="off" required>
+            <input type="text" class="form-control " name="s_detail" placeholder="สินทรัพย์ที่ใช้จำนำ" autocomplete="off">
           </div>
           <div class="mb-4 col-3 ">
             <h5 style="display: inline;">ภาพถ่ายสินค้าจริง</h5>
             <h5 class="form-label text-danger" style="display: inline;">*</h5>
             <input type="file" id="myFile" name="s_img" multiple required>
+            <input type="file" id="myFile" name="img1" multiple required>
+            <input type="file" id="myFile" name="img2" multiple required>
           </div>
           <div class="mb-3 col-3 ">
             <h5>ราคาที่ลูกค้าต้องการ</h5>
@@ -163,8 +252,6 @@ $nextId = $code.$yearMonth.$maxId;
             <input type="number" min="0" name="price_img" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
             <input class="form-control " type="hidden" name="ref_img" value="<?php echo $nextId ?>" required>
           </div>
-      
-
       </div>
     </div>
     <div class="d-flex flex-row">
