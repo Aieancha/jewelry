@@ -31,7 +31,7 @@
                         $alert = '<script type="text/javascript">';
                         $alert .= 'alert("เพิ่มข้อมูลสำเร็จ");';
                         $alert .= 'window.location.href = "?function=check";';
-                        $alert .= 'window.location.href = "login.php";';
+                        $alert .= 'window.location.href = "../customer/";';
                         $alert .= '</script>';
                         echo $alert;
                         exit();

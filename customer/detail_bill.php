@@ -1,8 +1,9 @@
-<!DOCTYPE html>
-<html lang="en"> 
-    <?php include('include/head.php') ?> 
-    <?php include('include/nav.php') ?> 
-    <?php include('include/sidebar.php') ?> 
+<?php  
+	$user = $_SESSION['customer_login']; 
+	$sql = "SELECT * FROM tbl_social WHERE c_email = '$user'"; 
+	$query = mysqli_query($connection, $sql); 
+	$result = mysqli_fetch_assoc($query);   
+		?>
 <body class="app">   	
 <div class="row g-0 app-wrapper app-auth-wrapper">
 		<div class="app-auth-body mx-auto ">
@@ -16,7 +17,7 @@
 		<div class="app-wrapper">
 <div class="app-content pt-3 p-md-3 p-lg-4"> 
 		    <div class="container-xl">
-			    <label class="mb-3">ข้อมูลการจำนำเครื่องประดับ ของ คุณwanwasa</label>
+			    <label class="mb-3">ข้อมูลการจำนำเครื่องประดับของ คุณ</label><?= $result['s_name'] ?>
                 <div class="row gy-4">
 	                <div class="col-12 col-lg-6">
 		                <div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
@@ -53,7 +54,7 @@
                                 <div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>ชื่อผู้จำนำ</strong>
+										    <div class="item-label"><strong>ชื่อผู้จำนำ : </strong><?= $result['s_name'] ?>  <?= $result['s_lastname'] ?>
 											<td width="25%" style="display: inline;"></td>
 										</div>
 									    </div><!--//col-->
@@ -62,7 +63,52 @@
                                 <div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>รหัสสินค้า</strong>
+										    <div class="item-label"><strong>รหัสสินค้า : </strong>
+											<td width="25%" style="display: inline;"><?= $result['ref_img'] ?></td>
+										</div>
+									    </div><!--//col-->
+								    </div><!--//row-->   
+							    </div><!--//item-->
+								<div class="item py-3">
+								    <div class="row justify-content-between align-items-center">
+									    <div class="col-auto">
+										    <div class="item-label"><strong>ราคาที่ตกลงจำนำ : </strong>
+											<td width="25%" style="display: inline;"><?= $result['principle'] ?> บาท</td>
+										</div>
+									    </div><!--//col-->
+								    </div><!--//row-->   
+							    </div><!--//item-->
+								<div class="item py-3">
+								    <div class="row justify-content-between align-items-center">
+									    <div class="col-auto">
+										    <div class="item-label"><strong>ดอกเบี้ยรวมทั้งหมด : </strong>
+											<td width="25%" style="display: inline;"><?= $result['principle']*0.02*$result['r_mount'] ?> บาท</td>
+										</div>
+									    </div><!--//col-->
+								    </div><!--//row-->   
+							    </div><!--//item-->
+								<div class="item py-3">
+								    <div class="row justify-content-between align-items-center">
+									    <div class="col-auto">
+										    <div class="item-label"><strong>ดอกเบี้ยที่ต้องชำระต่อเดือน : </strong>
+											<td width="25%" style="display: inline;"><?= ($result['principle']*0.02) ?> บาท</td>
+										</div>
+									    </div><!--//col-->
+								    </div><!--//row-->   
+							    </div><!--//item-->
+								<div class="item py-3">
+								    <div class="row justify-content-between align-items-center">
+									    <div class="col-auto">
+										    <div class="item-label"><strong>จำนวนงวดรวมทั้งหมด : </strong>
+											<td width="25%" style="display: inline;"><?= $result['r_mount']?> งวด</td>
+										</div>
+									    </div><!--//col-->
+								    </div><!--//row-->   
+							    </div><!--//item-->
+								<div class="item py-3">
+								    <div class="row justify-content-between align-items-center">
+									    <div class="col-auto">
+										    <div class="item-label"><strong>จำนวนงวดที่ชำระเเล้ว : </strong>
 											<td width="25%" style="display: inline;"></td>
 										</div>
 									    </div><!--//col-->
@@ -71,7 +117,7 @@
 								<div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>ราคาที่ตกลงจำนำ</strong>
+										    <div class="item-label"><strong>จำนวนงวดที่เหลือ(รอชำระ) : </strong>
 											<td width="25%" style="display: inline;"></td>
 										</div>
 									    </div><!--//col-->
@@ -80,52 +126,7 @@
 								<div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>ดอกเบี้ยรวมทั้งหมด</strong>
-											<td width="25%" style="display: inline;"></td>
-										</div>
-									    </div><!--//col-->
-								    </div><!--//row-->   
-							    </div><!--//item-->
-								<div class="item py-3">
-								    <div class="row justify-content-between align-items-center">
-									    <div class="col-auto">
-										    <div class="item-label"><strong>ดอกเบี้ยที่ต้องชำระต่อเดือน</strong>
-											<td width="25%" style="display: inline;"></td>
-										</div>
-									    </div><!--//col-->
-								    </div><!--//row-->   
-							    </div><!--//item-->
-								<div class="item py-3">
-								    <div class="row justify-content-between align-items-center">
-									    <div class="col-auto">
-										    <div class="item-label"><strong>จำนวนงวดรวมทั้งหมด</strong>
-											<td width="25%" style="display: inline;"></td>
-										</div>
-									    </div><!--//col-->
-								    </div><!--//row-->   
-							    </div><!--//item-->
-								<div class="item py-3">
-								    <div class="row justify-content-between align-items-center">
-									    <div class="col-auto">
-										    <div class="item-label"><strong>จำนวนงวดที่ชำระเเล้ว</strong>
-											<td width="25%" style="display: inline;"></td>
-										</div>
-									    </div><!--//col-->
-								    </div><!--//row-->   
-							    </div><!--//item-->
-								<div class="item py-3">
-								    <div class="row justify-content-between align-items-center">
-									    <div class="col-auto">
-										    <div class="item-label"><strong>จำนวนงวดที่เหลือ(รอชำระ)</strong>
-											<td width="25%" style="display: inline;"></td>
-										</div>
-									    </div><!--//col-->
-								    </div><!--//row-->   
-							    </div><!--//item-->
-								<div class="item py-3">
-								    <div class="row justify-content-between align-items-center">
-									    <div class="col-auto">
-										    <div class="item-label"><strong>รอบกำหนดชำระ ทุกวันที่</strong>
+										    <div class="item-label"><strong>รอบกำหนดชำระ ทุกวันที่ ; </strong>
 											<td width="25%" style="display: inline;"></td>
 										</div>
 									    </div><!--//col-->

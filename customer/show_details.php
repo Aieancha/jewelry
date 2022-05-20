@@ -42,11 +42,11 @@
 		<div class="app-wrapper">
 <div class="app-content pt-3 p-md-3 p-lg-4"> 
 		    <div class="container-xl">
-			    <label class="mb-3">ข้อมูลการจำนำเครื่องประดับ ของ คุณ<?= $result['s_name'] ?></label>
+			    <label class="mb-3">ข้อมูลการจำนำเครื่องประดับของ คุณ <?= $result['s_name'] ?></label>
                 <div class="row gy-4">
-	                <div class="col-12 col-lg-6">
-		                <div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
-						    <div class="app-card-header p-3 border-bottom-0">
+				<div class="col-12 col-lg-6">
+		                <div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start mb-2">
+						    <div class="app-card-header p-3 border-bottom">
 						        <div class="row align-items-center gx-3">
 							        <div class="col-auto">
 								        <div class="app-icon-holder">
@@ -66,7 +66,7 @@
 							    <div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>เลขที่สำคัญที่ราชกาลออกให้</strong>
+										    <div class="item-label"><strong>เลขที่สำคัญที่ราชกาลออกให้ : </strong>
 											<td width="25%" style="display: inline;"><?= $result['code_id'] ?></td>
 											</div>
 									    </div><!--//col-->
@@ -75,24 +75,16 @@
                                 <div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>ชื่อจริง</strong>
-											<td width="25%" style="display: inline;"><?= $result['s_name'] ?></td>
+										    <div class="item-label"><strong>ชื่อผู้จำนำ : </strong>
+											<td width="25%" style="display: inline;"><?= $result['s_name'] ?> <?= $result['s_lastname'] ?></td>
 										</div>
-									    </div><!--//col-->  
-								    </div><!--//row-->   
-							    </div><!--//item-->
-							    <div class="item py-3">
-								    <div class="row justify-content-between align-items-center">
-									    <div class="col-auto">
-										    <div class="item-label"><strong>นามสกุล</strong>
-											<td width="25%" style="display: inline;"><?= $result['s_lastname'] ?></td></div>
 									    </div><!--//col-->  
 								    </div><!--//row-->   
 							    </div><!--//item-->
 								<div class="item py-3">
 								<div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>เบอร์โทรศัพท์</strong>	
+										    <div class="item-label"><strong>เบอร์โทรศัพท์ : </strong>	
 											<td width="25%" style="display: inline;"><?= $result['phone'] ?></td></div>
 									    </div><!--//col-->  
 							    </div><!--//item-->
@@ -100,7 +92,7 @@
 								<div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>บัญชีเฟสบุ้ค</strong>
+										    <div class="item-label"><strong>บัญชีเฟสบุ้ค : </strong>
 											<td width="25%" style="display: inline;"><?= $result['c_facebook'] ?></td></div>
 									    </div><!--//col-->  
 								    </div><!--//row-->   
@@ -108,7 +100,7 @@
 								<div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>ไอดีไลน์</strong>
+										    <div class="item-label"><strong>ไอดีไลน์ : </strong>
 											<td width="25%" style="display: inline;"><?= $result['c_line'] ?></td></div>
 									    </div><!--//col-->  
 								    </div><!--//row-->   
@@ -116,7 +108,7 @@
 								<div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>ที่อยู่ปัจจุบัน</strong>
+										    <div class="item-label"><strong>ที่อยู่ปัจจุบัน : </strong>
 											<td width="25%" style="display: inline;"><?= $result['c_address'] ?></td></div>
 											</div>
 									    </div><!--//col-->  
@@ -132,7 +124,7 @@
 	                </div><!--//col-->
 	                <div class="col-12 col-lg-6">
 		                <div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
-						    <div class="app-card-header p-3 border-bottom-0">
+						    <div class="app-card-header p-3 border-bottom">
 						        <div class="row align-items-center gx-3">
 							        <div class="col-auto">
 								        <div class="app-icon-holder">
@@ -154,7 +146,7 @@
 							<div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>รหัสสินค้า</strong>
+										    <div class="item-label"><strong>รหัสสินค้า : </strong>
 											<td width="25%" style="display: inline;"><?= $result['ref_img'] ?></td>
 										</div>
 									    </div><!--//col-->
@@ -163,7 +155,7 @@
 								<div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>รายละเอียดเครื่องประดับ</strong>
+										    <div class="item-label"><strong>รายละเอียดเครื่องประดับ : </strong>
 											<td width="25%" style="display: inline;"><?= $result['s_type'] ?></td>
 										</div>
 									    </div><!--//col-->
@@ -181,8 +173,8 @@
 								<div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>ราคาที่ประเมินจากภาพ</strong>
-											<td width="25%" style="display: inline;"><?= $result['price_img'] ?>บาท</td>
+										    <div class="item-label"><strong>ราคาที่ประเมินจากภาพ : </strong>
+											<td width="25%" style="display: inline;"><?= $result['price_img'] ?> บาท</td>
 										</div>
 									    </div><!--//col-->
 								    </div><!--//row-->   
@@ -190,8 +182,8 @@
 								<div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>ราคาประเมินจากสินค้าจริง</strong>
-											<td width="25%" style="display: inline;"><?= $result['price_item'] ?>บาท</td>
+										    <div class="item-label"><strong>ราคาประเมินจากสินค้าจริง : </strong>
+											<td width="25%" style="display: inline;"><?= $result['price_item'] ?> บาท</td>
 										</div>
 									    </div><!--//col-->
 								    </div><!--//row-->   
@@ -199,8 +191,8 @@
 								<div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>ราคาที่ตกลงจำนำ</strong>
-											<td width="25%" style="display: inline;"><?= $result['principle'] ?>บาท</td>
+										    <div class="item-label"><strong>ราคาที่ตกลงจำนำ : </strong>
+											<td width="25%" style="display: inline;"><?= $result['principle'] ?> บาท</td>
 										</div>
 									    </div><!--//col-->
 								    </div><!--//row-->   
@@ -214,7 +206,7 @@
 	                </div><!--//col-->
 					<div class="col-12 col-lg-6">
 		                <div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start">
-						    <div class="app-card-header p-3 border-bottom-0">
+						    <div class="app-card-header p-3 border-bottom">
 						        <div class="row align-items-center gx-3">
 							        <div class="col-auto">
 								        <div class="app-icon-holder">
@@ -235,7 +227,7 @@
 							<div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>เลขสัญญาการจำนำ</strong>
+										    <div class="item-label"><strong>เลขสัญญาการจำนำ : </strong>
 											<td width="25%" style="display: inline;"></td>
 										</div>
 									    </div><!--//col-->
@@ -244,8 +236,8 @@
 								<div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>ราคาที่ตกลงจำนำ</strong>
-											<td width="25%" style="display: inline;"><?= $result['principle'] ?>บาท</td>
+										    <div class="item-label"><strong>ราคาที่ตกลงจำนำ : </strong>
+											<td width="25%" style="display: inline;"><?= $result['principle'] ?> บาท</td>
 										</div>
 									    </div><!--//col-->
 								    </div><!--//row-->   
@@ -253,7 +245,7 @@
 								<div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>ดอกเบี้ยรวมทั้งหมด</strong>
+										    <div class="item-label"><strong>ดอกเบี้ยรวมทั้งหมด : </strong>
 											<td width="25%" style="display: inline;"><?= $result['principle']*0.02*$result['r_mount'] ?> บาท</td>
 										</div>
 									    </div><!--//col-->
@@ -262,7 +254,7 @@
 								<div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>ดอกเบี้ยที่ต้องชำระต่อเดือน</strong>
+										    <div class="item-label"><strong>ดอกเบี้ยที่ต้องชำระต่อเดือน : </strong>
 											<td width="25%" style="display: inline;"><?= ($result['principle']*0.02) ?> บาท</td>
 										</div>
 									    </div><!--//col-->
@@ -271,7 +263,7 @@
 								<div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>จำนวนงวดรวมทั้งหมด</strong>
+										    <div class="item-label"><strong>จำนวนงวดรวมทั้งหมด : </strong>
 											<td width="25%" style="display: inline;"><?= $result['r_mount']?> งวด</td>
 										</div>
 									    </div><!--//col-->
@@ -280,7 +272,7 @@
 								<div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>จำนวนงวดที่ชำระเเล้ว</strong>
+										    <div class="item-label"><strong>จำนวนงวดที่ชำระเเล้ว : </strong>
 											<td width="25%" style="display: inline;"></td>
 										</div>
 									    </div><!--//col-->
@@ -289,7 +281,7 @@
 								<div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>จำนวนงวดที่เหลือ(รอชำระ)</strong>
+										    <div class="item-label"><strong>จำนวนงวดที่เหลือ(รอชำระ) : </strong>
 											<td width="25%" style="display: inline;"></td>
 										</div>
 									    </div><!--//col-->
@@ -298,7 +290,7 @@
 								<div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>รอบกำหนดชำระ ทุกวันที่</strong>
+										    <div class="item-label"><strong>รอบกำหนดชำระ ทุกวันที่ : </strong>
 											<td width="25%" style="display: inline;"></td>
 										</div>
 									    </div><!--//col-->
@@ -330,6 +322,7 @@
     height: 50px;
     padding-top: 10px;
     font-size: 1rem;
+	border-bottom: 1px solid #e7e9ed;
     text-align: center;
     border-radius: 50%
 	!important}

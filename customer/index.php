@@ -24,7 +24,11 @@
       }elseif (isset($_GET['page']) && $_GET['page'] == 'interest') {
         if (isset($_GET['function']) && $_GET['function'] == 'interest2') {
           include('interest_details.php');    
-      }else{
+        }elseif (isset($_GET['function']) && $_GET['function'] == 'updatebill') {
+          include('update_bill.php');
+        }elseif (isset($_GET['function']) && $_GET['function'] == 'detailbill') {
+          include('detail_bill.php');
+        }else{
         include('interest_table.php');    
       }
     }

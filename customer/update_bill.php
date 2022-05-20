@@ -1,9 +1,63 @@
-<!DOCTYPE html>
-<html lang="en"> 
-    <?php include('include/head.php') ?> 
-    <?php include('include/nav.php') ?> 
-    <?php include('include/sidebar.php') ?> 
+<?php
+            if (isset($_GET['id']) && !empty($_GET['id'])) {
+                $id = $_GET['id'];
+                $sql = "SELECT * FROM tbl_social WHERE s_id = '$id'";
+                $query = mysqli_query($connection, $sql);
+                $result = mysqli_fetch_assoc($query);
+                $strStartDate = $result['c_date'];
+                $strStartDate = date('Y-m-d');
+                $strNewDate = date("Y-m-d", strtotime("+30 day", strtotime($strStartDate)));
+                //echo ' + 10 วัน = ' . $strNewDate;
+                $role = $result['s_role'];
+                $role = 3;
+            }
+            if (isset($_POST) && !empty($_POST)) {
+                $in_date = $_POST['in_date'];
+                $in_befor = $_POST['in_befor'];
 
+
+                if (isset($_FILES['in_img']['name']) && !empty($_FILES['in_img']['name'])) {
+                    $extension = array("jpeg", "jpg", "png");
+                    $target = 'upload/interest/';
+                    $filename = $_FILES['in_img']['name'];
+                    $filetmp = $_FILES['in_img']['tmp_name'];
+                    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                    if (in_array($ext, $extension)) {
+                        if (!file_exists($target . $filename)) {
+                            if (move_uploaded_file($filetmp, $target . $filename)) {
+                                $filename = $filename;
+                            } else {
+                                echo 'เพิ่มข้อมูลลงโฟล์เดอร์ไม่สำเร็จ';
+                            }
+                        } else {
+                            $newfilename = time() . $filename;
+                            if (move_uploaded_file($filetmp, $target . $newfilename)) {
+                                $filename = $newfilename;
+                            } else {
+                                echo 'เพิ่มข้อมูลลงโฟล์เดอร์ไม่สำเร็จ';
+                            }
+                        }
+                    } else {
+                        echo 'ประเภทไฟล์ไม่ถูกต้อง';
+                    }
+                } else {
+                    $filename = '';
+                }
+                $sqli = "INSERT INTO tbl_interest (in_date, in_img, in_befor, in_role) VALUES ('$in_date', '$filename', '$in_befor', 1)";
+                $sql = "UPDATE tbl_social SET c_date ='$strNewDate',s_role ='$role' where s_id ='$id'";
+
+                $sqli=mysqli_query($connection,$sqli);
+                if (mysqli_query($connection, $sql)) {
+                    echo "เพิ่มข้อมูลสำเร็จ";
+                } else {
+                    echo "Error: " . $sql . "<br>" .$sqli. "<br>" . mysqli_error($connection);
+                }
+
+                mysqli_close($connection);
+            }
+
+            //print_r($_POST);
+            ?>
 <body class="app">   	
 <div class="row g-0 app-wrapper app-auth-wrapper">
 		<div class="app-auth-body mx-auto ">
@@ -46,28 +100,29 @@
 						    </div><!--//app-card-header-->
                             <div class="col-11 " style="margin-left: 5% ">
                                     <div class="mb-3" style="margin-top: 2rem">
-										    <div class="item-label"><strong>เลขที่สำคัญที่ราชกาลออกให้</strong>#เลขสำคัญ</div>
+										        <div class="item-label "><strong>เลขที่สัญญา : </strong><?= $result['code_id'] ?>
+                                            </div>
                                     </div>
                                     <div class="mb-3">
-										    <div class="item-label"><strong>ชื่อ :</strong>#วรรณวษา</div>
+										    <div class="item-label"><strong>ชื่อ : </strong><?= $result['s_name'] ?></div>
                                 </div>
                                 <div class="mb-3">
-										    <div class="item-label"><strong>นามสกุล :</strong>#นามสกุล</div>
+										    <div class="item-label"><strong>นามสกุล : </strong><?= $result['s_lastname'] ?></div>
                                 </div>
                                 <div class="mb-3">
-										    <div class="item-label"><strong>ชื่อผู้ใช้เฟสบุ้ค :</strong>#ชื่อผู้ใช้เฟสบุ้คของลูกค้า</div>
+										    <div class="item-label"><strong>ชื่อผู้ใช้เฟสบุ้ค : </strong><?= $result['c_facebook'] ?></div>
                                 </div>
                                 <div class="mb-3">
-										    <div class="item-label"><strong>ไอดีไลน์ลูกค้า :</strong>#ไอดีไลน์ลูกค้า</div>
+										    <div class="item-label"><strong>ไอดีไลน์ลูกค้า : </strong><?= $result['c_line'] ?></div>
                                 </div>
                                 <div class="mb-3">
-										    <div class="item-label"><strong>รายละเอียดเครื่องประดับ :</strong>#ประเภท น้ำหนัก  </div>
+										    <div class="item-label"><strong>รายละเอียดเครื่องประดับ : </strong><?= $result['s_type'] ?></div>
                                 </div>
                                 <div class="mb-3">
-										    <div class="item-label"><strong>วันที่กำหนดชำระ :</strong>#วัน/เดือน/ปี</div>
+										    <div class="item-label"><strong>วันที่กำหนดชำระ : </strong><?= $result['c_date'] ?> </div>
                                 </div>
                                 <div class="mb-3">
-										    <div class="item-label"><strong>จำนวนเงินที่ต้องชำระ :</strong>#หน่วยเป็นบาท</div>
+										    <div class="item-label"><strong>จำนวนเงินที่ต้องชำระ : </strong><?= $result['principle']*0.02 ?> บาท</div>
                                 </div>
                                 <div class="app-card-footer p-4 mt-auto">
 </div>     
@@ -97,22 +152,26 @@
 						    </div><!--//app-card-header-->
                             <div class="col-11 " style="margin-left: 5% ">
                                     <div class="" style="margin-top: 2rem">
-										    <div class="item-label"><strong>แนบหลักฐานการชำระดอกเบี้ย * </strong></div>
-                                   
+										    <div class="item-label mb-2"><strong>แนบหลักฐานการชำระดอกเบี้ย * </strong></div>
+                                            <div>
                                             <input type="file" id="myFile" name="s_img" multiple required>
                                         </div>
-                                            <div class="mb-4" style="margin-top: 2rem">
+                                        </div>    <div class="mb-4" style="margin-top: 2rem">
 
 
                                     </div>
                                 <div class="col-6 mb-3">
 										    <div class="item-label"><strong>จำนวนเงินที่ชำระ *</strong</div>
-                                            <input type="text" class=" form-control " name="s_type" placeholder="หน่วยเป็นบาท" autocomplete="off" required>
-                                </div>  
+                                            <div class="col-10">
+                                                <input type="text" class=" form-control " name="s_type" placeholder="หน่วยเป็นบาท" autocomplete="off" required>
+                                            </div>
+                                        </div>  
                             </div>
-                                <div class="mb-3">
+                                <div class="mb-3 ">
 										    <div class="item-label"><strong>เลือกวันที่ชำระตามหลักฐานการโอน *</strong></div>
-							   <a class="btn app-btn-secondary " href="#">เลือกวันที่</a>
+                                        <div class="col-5">
+                                            <input type="date" class=" form-control " name="s_type" placeholder="หน่วยเป็นบาท" autocomplete="off" required>
+                                        </div>
                                 </div>  
                                 <div class="app-card-footer p-4 mt-auto">
 							   <a class="btn app-btn-secondary" href="#">บันทึก</a>
