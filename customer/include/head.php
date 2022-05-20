@@ -46,13 +46,19 @@
     border-color: #9b0e21;
     font-size: small;
 }.form-control {
+    font-size: 0.75rem;
     padding-top: 0.6rem;
     padding-bottom: 0.6rem;
-    height: 2.5rem;
-    border-color: #212529;
-    color: #5d6778}
+    height: 2rem;
+    border-color: #5d67788c;
+    color: #5d6778
+    }
     a {
     color: #9b0e21;
+}
+* {
+    font-family: 'Prompt', sans-serif;
+    color: #252930f2;
 }
 
 

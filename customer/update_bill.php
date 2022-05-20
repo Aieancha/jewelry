@@ -115,7 +115,7 @@
 							   <a class="btn app-btn-secondary " href="#">เลือกวันที่</a>
                                 </div>  
                                 <div class="app-card-footer p-4 mt-auto">
-							   <a class="btn app-btn-secondary " href="#">บันทึก</a>
+							   <a class="btn app-btn-secondary" href="#">บันทึก</a>
 </div> 
                 </div>
                 
@@ -160,6 +160,27 @@ border-color: #9b0e21;
 .btn1{font-weight: 600;
     padding: 1rem 2rem;
     font-size: 0.5rem;
+    background-color: #0000002b;
 	border: #9b0e21;}
 
+
+    .btn2 {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #0000004a;
+    border: 1px solid #00000033;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out !important}
 </style>

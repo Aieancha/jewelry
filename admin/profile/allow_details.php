@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-$sql = "SELECT * FROM tbl_customer";
+$sql = "SELECT * FROM tbl_social";
 $query = mysqli_query($connection, $sql);
 ?>
 <body class="g-sidenav-show bg-gray-100">
@@ -16,7 +16,7 @@ $query = mysqli_query($connection, $sql);
             <?php
                 if (isset($_GET['id']) && !empty($_GET['id'])) {
                     $id = $_GET['id'];
-                    $sql = "SELECT * FROM tbl_customer WHERE c_id = '$id'";
+                    $sql = "SELECT * FROM tbl_social WHERE s_id = '$id'";
                     $query = mysqli_query($connection, $sql);
                     $result = mysqli_fetch_assoc($query);
                     
@@ -41,9 +41,9 @@ $query = mysqli_query($connection, $sql);
                                 <td width="25%" style="display: inline;"><?= $result['c_email'] ?></td>
                                 <div class=" mb-3 ">
                                 <h6 style="display: inline;">ชื่อผู้จำนำ :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['firstname'] ?></td>
+                                <td width="25%" style="display: inline;"><?= $result['s_name'] ?></td>
                                 <h6 style="display: inline;">นามสกุล :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['lastname'] ?></td>
+                                <td width="25%" style="display: inline;"><?= $result['s_lastname'] ?></td>
                             </div>
                             </div> 
                             </div>
@@ -58,7 +58,7 @@ $query = mysqli_query($connection, $sql);
                             </div>
                             <div class=" mb-3 ">
                             <h6 class="text-end" style="display: inline;">เบอร์โทรศัพท์ :</h6>
-                                <td style="display: inline;"><?= $result['c_phone'] ?></td>
+                                <td style="display: inline;"><?= $result['phone'] ?></td>
                             </div>
                             <div class=" mb-3 ">
                             <h6 class="text-end" style="display: inline;">ที่อยู่ปัจจุบัน :</h6>
@@ -71,9 +71,9 @@ $query = mysqli_query($connection, $sql);
                     <a href="?page=<?= $_GET['page'] ?>" class="btn btn-sm btn-dark text-white">ย้อนกลับ</a>
                 </div>
                 <div class="flex-fill d-flex justify-content-end gap-1"> 
-                <a href="?page=<?= $_GET['page'] ?>&function=updateStatusCus&id=<?=$result['c_id']?>"onclick="return confirm('คุณต้องการปิดการใช้งาน: <?= $result['c_email'] ?> หรือไม่')"  class="btn btn-sm btn-dark text-white">ปิดการใช้งาน</a>
-                <a href="?page=<?= $_GET['page'] ?>&function=updateStatusCus2&id=<?=$result['c_id']?>"onclick="return confirm('คุณต้องการอนุญาติให้ : <?= $result['c_email'] ?> เข้าใช้งานระบบหรือไม่')"  class="btn btn-sm btn-green3 text-white">เปิดการใช้งาน</a>
-                <a href="?page=<?=$_GET['page']?>&function=deleteCus&id=<?=$result['c_id']?>" onclick="return confirm('คุณต้องการลบผู้ขอเข้าใช้งานระบบ : <?= $result['c_id'] ?> หรือไม่')" class="btn btn-sm btn-danger">ลบคำขอ</a>
+                <a href="?page=<?= $_GET['page'] ?>&function=updateStatusCus2&id=<?=$result['s_id']?>"onclick="return confirm('คุณต้องการปิดการใช้งาน: <?= $result['c_email'] ?> หรือไม่')"  class="btn btn-sm btn-dark text-white">ปิดการใช้งาน</a>
+                <a href="?page=<?= $_GET['page'] ?>&function=updateStatusCus&id=<?=$result['s_id']?>"onclick="return confirm('คุณต้องการอนุญาติให้ : <?= $result['c_email'] ?> เข้าใช้งานระบบหรือไม่')"  class="btn btn-sm btn-green3 text-white">เปิดการใช้งาน</a>
+                <a href="?page=<?=$_GET['page']?>&function=deleteCus&id=<?=$result['s_id']?>" onclick="return confirm('คุณต้องการลบผู้ขอเข้าใช้งานระบบ : <?= $result['s_id'] ?> หรือไม่')" class="btn btn-sm btn-danger">ลบคำขอ</a>
 
                 </div>
                 </div>

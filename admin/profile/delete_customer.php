@@ -1,7 +1,7 @@
 <?php 
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
-    $sql = "DELETE FROM tbl_customer WHERE c_id = '$id'";
+    $sql = "DELETE FROM tbl_social WHERE s_id = '$id'";
 
     if (mysqli_query($connection, $sql)) {
         // echo "เพิ่มข้อมูลสำเร็จ";

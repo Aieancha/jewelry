@@ -1,5 +1,5 @@
 <?php
-$sql = "SELECT * FROM tbl_customer";
+$sql = "SELECT * FROM tbl_social";
 if($_GET['action']=='login'){
 
 }
@@ -38,23 +38,23 @@ $query = mysqli_query($connection, $sql);
                     <tbody>
                         <?php foreach ($query as $data):?>
                             <tr>
-                                <td><?= $data['c_id'] ?></td>
+                                <td><?= $data['s_id'] ?></td>
                                 <td><?= $data['c_email'] ?></td>
-                                <td><?= $data['firstname'] ?></td>
-                                <td><?= $data['lastname'] ?></td>
-                                <td><?= $data['c_phone'] ?></td>
+                                <td><?= $data['s_name'] ?></td>
+                                <td><?= $data['s_lastname'] ?></td>
+                                <td><?= $data['phone'] ?></td>
                            
-                                <td><a href="?page=<?=$_GET['page']?>&function=allowdetail&id=<?=$data['c_id']?>" class="btn btn-sm btn-green3 text-white">ดูรายละเอียด</a></td>
+                                <td><a href="?page=<?=$_GET['page']?>&function=allowdetail&id=<?=$data['s_id']?>" class="btn btn-sm btn-green3 text-white">ดูรายละเอียด</a></td>
                                 <td>
                                 <?php if($data['status']==0){
-                                        echo '<p><a href="updateStatusCus.php?c_id='.$data['c_id'].'&status=0" class="btn btn-sm btn-green3 text-white" >เข้าใช้งาน</a></p>';
+                                        echo '<p><a href="updateStatusCus.php?s_id='.$data['s_id'].'&status=1" class="btn btn-sm btn-dark text-white">ปิดใช้งาน</a></p>';
                                    }else{
-                                        echo '<p><a href="updateStatusCus.php?c_id='.$data['c_id'].'&status=1" class="btn btn-sm btn-dark text-white">ปิดใช้งาน</a></p>';
+                                        echo '<p><a href="updateStatusCus.php?s_id='.$data['s_id'].'&status=0" class="btn btn-sm btn-green3 text-white" >เข้าใช้งาน</a></p>';
                                    }               
                                    ?>
                                 </td>
                                 <td>
-                                <a href="?page=<?=$_GET['page']?>&function=deleteCus&id=<?=$data['c_id']?>" onclick="return confirm('คุณต้องการลบชื่อผู้ดูแลระบบ : <?= $data['c_name'] ?> หรือไม่')" class="btn btn-sm btn-danger">ลบ</a>
+                                <a href="?page=<?=$_GET['page']?>&function=deleteCus&id=<?=$data['s_id']?>" onclick="return confirm('คุณต้องการลบชื่อผู้ดูแลระบบ : <?= $data['s_name'] ?> หรือไม่')" class="btn btn-sm btn-danger">ลบ</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -67,7 +67,7 @@ function toggleStatus(id){
     $.ajex({
         url:"status.php",
         type:"post",
-        data:(c_id:id),
+        data:(s_id:id),
         success :function(result){
             if(result == '1'){
                 swal("ปิดการใช้งานสำเร็จ","success");

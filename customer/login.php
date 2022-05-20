@@ -102,6 +102,8 @@ if(isset($_POST["login"]))
 			    <div class="app-auth-body mx-auto">	
 				    <div class="app-auth-branding "><a class="app-logo" href="index.html"><img class="logo-icon me-2" src="assets/images/PW-logo.png" alt="logo"></a></div>
 					<label class="mb-3">Jewelry Pawn</label>
+					<label class="mb-3">หากคุณเคยจำ</label>
+
 					<h2 class="auth-heading text-center mb-5">เข้าสู่ระบบ</h2>
 			        <div class="auth-form-container text-start">
 						<form action="<?php $_SERVER['PHP_SELF']?>" method="post" class="auth-form login-form">         
@@ -133,7 +135,7 @@ if(isset($_POST["login"]))
 							</div>
 						</form>
 						
-						<div class="auth-option text-center pt-5">ต้องการสมัครสมาชิกใหม่ ? <a class="text-link" href="signup.html" >คลิก</a>.</div>
+						<div class="auth-option text-center pt-5">ต้องการสมัครสมาชิกใหม่ ? <a class="text-link" href="signup.php" >คลิก</a>.</div>
 					</div><!--//auth-form-container-->	
 
 			    </div><!--//auth-body-->

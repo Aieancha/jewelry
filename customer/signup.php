@@ -31,6 +31,7 @@
                         $alert = '<script type="text/javascript">';
                         $alert .= 'alert("เพิ่มข้อมูลสำเร็จ");';
                         $alert .= 'window.location.href = "?function=check";';
+                        $alert .= 'window.location.href = "login.php";';
                         $alert .= '</script>';
                         echo $alert;
                         exit();
@@ -124,7 +125,7 @@
 								<button type="submit" class="btn app-btn-primary w-100 theme-btn mx-auto">สมัครสมาชิก</button>
 							</div>
 						</form><!--//auth-form-->
-						<div class="auth-option text-center pt-5">เข้าสู่ระบบ ? <a class="text-link" href="signup.html" >คลิก</a>.</div>
+						<div class="auth-option text-center pt-5">เข้าสู่ระบบ ? <a class="text-link" href="login.php" >คลิก</a>.</div>
 						
 					</div><!--//auth-form-container-->	
 					

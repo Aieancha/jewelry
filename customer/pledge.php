@@ -1,4 +1,12 @@
-
+<?php
+	$user = $_SESSION['customer_login']; 
+	$sql = "SELECT * FROM tbl_social WHERE c_email = '$user'"; 
+	$query = mysqli_query($connection, $sql); 
+	$result = mysqli_fetch_assoc($query);   
+	
+                
+                
+                ?>
 <body class="app"> 
 	<div class="m-2">
 <div class="row g-0 app-wrapper app-auth-wrapper">
@@ -18,17 +26,17 @@
 					    <div class="app-card app-card-doc shadow-sm h-100">
 						    <div class="app-card-thumb-holder p-3">
                             <div class="app-card-thumb">
-	                                <img class="thumb-image" src="assets/images/R2.jpg" alt="">
+	                                <img class="thumb-image" src="../admin/upload/social/<?= $result['s_img'] ?>" alt="jewelry">
 	                            </div>
 	                            <span class="badge bg-danger">ค้างชำระ</span>
 	                             <a class="app-card-link-mask" href="#file-link"></a>
 						    </div>
 						    <div class="app-card-body p-3 has-card-actions">
 							    
-							    <h4 class="app-doc-title truncate mb-0"><a href="#file-link">รหัสสินค้า : a123</a></h4>
+							    <h4 class="app-doc-title truncate mb-0"><a href="#file-link">รหัสสินค้า</a><?= $result['ref_img'] ?></h4>
 							    <div class="app-doc-meta">
 								    <ul class="list-unstyled mb-0">
-									    <li><span class="text-muted">รายละเอียด :</span> สร้อยทองพร้อมจี้ หนัก 1 บาท</li>
+									    <li><span class="text-muted">รายละเอียด :</span><?= $result['s_type'] ?></li>
 								    </ul>
 							    </div><!--//app-doc-meta-->
 							    
