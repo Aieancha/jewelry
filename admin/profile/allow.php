@@ -1,8 +1,8 @@
 <?php
 $sql = "SELECT * FROM tbl_customer";
-if($_GET['action']=='login'){
+/* if($_GET['action']=='login'){
 
-}
+} */
 $query = mysqli_query($connection, $sql);
 ?>
 <div class="container-fluid py-4">
@@ -62,7 +62,7 @@ $query = mysqli_query($connection, $sql);
                 </table>
 
                 <script>
-function toggleStatus(id){
+/* function toggleStatus(id){
     var id = id;
     $.ajex({
         url:"status.php",
@@ -78,7 +78,7 @@ function toggleStatus(id){
         }
         
     });
-}
+} */
 </script>
 
             </div>

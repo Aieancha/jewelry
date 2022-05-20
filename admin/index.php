@@ -16,9 +16,13 @@
       <div class="container-fluid py-4">
         <?php
         if (!isset($_GET['page']) && empty($_GET['page'])) {
-          if (isset($_GET['function']) && $_GET['function'] == 'sum_list') {
-            include('customer/interest/sum_list.php');
-          }else {
+          if (isset($_GET['function']) && $_GET['function'] == 'ChangeStatus') {
+            include('dashboard/ChangeStatus.php');
+          }elseif (isset($_GET['function']) && $_GET['function'] == 'detailsIn') {
+            include('customer/interest/Details-In.php');
+          }elseif (isset($_GET['function']) && $_GET['function'] == 'details') {
+            include('customer/pledge/details.php');
+        }else {
             include('dashboard/index.php');
           }
           
@@ -54,7 +58,7 @@
           } elseif (isset($_GET['function']) && $_GET['function'] == 'contract') {
             include('customer/pledge/contract.php');
           } elseif (isset($_GET['function']) && $_GET['function'] == 'success') {
-            include('customer/pledge/success.php');
+            include('ExportExcell/indexRE.php');
           } elseif (isset($_GET['function']) && $_GET['function'] == 'updated') {
             include('customer/pledge/edit.php');
           } elseif (isset($_GET['function']) && $_GET['function'] == 'check') {
