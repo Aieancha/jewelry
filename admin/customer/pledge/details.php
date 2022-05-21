@@ -209,17 +209,17 @@
 
                                     <div class="mySlides">
                                         <div class="numbertext">1 / 4</div>
-                                        <img src="upload/social/<?= $result['s_img'] ?>" style="width:100%">
+                                        <img src="upload/social/<?= $result['s_img'] ?>" style="width:100%; height:auto">
                                     </div>
 
                                     <div class="mySlides">
                                         <div class="numbertext">2 / 4</div>
-                                        <img src="upload/social/<?= $result['img1'] ?>" style="width:100%">
+                                        <img src="upload/social/<?= $result['img1'] ?>" style="width:100% height:auto">
                                     </div>
 
                                     <div class="mySlides">
                                         <div class="numbertext">3 / 3</div>
-                                        <img src="upload/social/<?= $result['img2'] ?>" style="width:100%">
+                                        <img src="upload/social/<?= $result['img2'] ?>" style="width:100% height:auto">
                                     </div>
                                 </div>
                             </div>

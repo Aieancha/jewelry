@@ -60,16 +60,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                 <h6 style="display: inline;">จำนวนเงินต้น :</h6>
                                 <td width="25%" style="display: inline;"><?= $result['principle'] ?> บาท</td>
                             </div>
-<h6 style="display: inline;" class="text-danger">สถานะสัญญา </h6><h6 style="display: inline;">ปกติ</h6>
-<div class="mb-5">
-                <select name="s_role" require class="btn btn-sm ">
-                  <option value="" selected="selected">เปลี่ยนสถานะ</option>
-                  <option value="4">ปิดสัญญา</option>
-                  <option value="4">ผิดสัญญา</option>
-                  <option value="5">ไถ่ถอนก่อนกำหนด</option>
-                </select>
-                <a class="btn btn-sm btn-green3 text-white">ยืนยันการเปลี่ยนสถานะ</a>
-              </div>
+
               <h5>ตารางคำนวณค่างวดการชำระดอกเบี้ย</h5>   
 
                         </div>
@@ -85,7 +76,19 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                 <h6 style="display: inline;">จำนวนดอกเบี้ย :</h6>
                                 <td width="25%" style="display: inline;"><?= $result['principle']*0.02*$result['r_mount'] ?> บาท</td>
                             </div>
+                            <h6 style="display: inline;" class="text-danger">สถานะสัญญา </h6><h6 style="display: inline;">ปกติ</h6>
+                            <div >
+                                <select name="s_role" require class="btn btn-sm ">
+                                <option value="" selected="selected">เปลี่ยนสถานะ</option>
+                                <option value="4">ปิดสัญญา</option>
+                                <option value="4">ผิดสัญญา</option>
+                                <option value="5">ไถ่ถอนก่อนกำหนด</option>
+                            </select>
+              <a class="btn btn-sm btn-green3 text-white">ยืนยันการเปลี่ยนสถานะ</a>
 
+                        </div>
+              <div class="mb-5">
+            </div>
                             
                         </div>
                             </div>
@@ -98,12 +101,6 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                             <th scope="col">จำนวนดอกเบี้ย</th>
                                             <th scope="col">ชำระดอกเบี้ยต่อเดือน</th>
                                             <th scope="col">ยอดดอกเบี้ยคงเหลือ</th>
-<<<<<<< HEAD
-
-                                            <!-- <th scope="col">รายละเอียดการโอน</th> -->
-                                            <!-- <th scope="col">หลักฐานการโอน</th> -->
-=======
->>>>>>> 8fd1bc12d434a0d9aaf84210e4d92fc0d1f2135c
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -164,12 +161,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                 </div>
                 <div class="flex-fill d-flex justify-content-end gap-1">
                     <a href="?page=<?= $_GET['page'] ?>&function=sum_list&id=<?= $result['s_id'] ?>" class="btn btn-sm btn-blue2 text-white">ประวัติการชำระดอกเบี้ย</a>
-<<<<<<< HEAD
-                </div>
-                    
-=======
                 </div> 
->>>>>>> 8fd1bc12d434a0d9aaf84210e4d92fc0d1f2135c
         </form>
         </div>
     </div>

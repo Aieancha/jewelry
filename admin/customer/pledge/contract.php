@@ -163,7 +163,7 @@ mysqli_close($connection);
                             </div>
 
                         </div>
-                    </div>
+                    
                     <form action="" method="POST">
                         <div class="d-flex flex-row">
                             <!-- <div class="justify-content-start flex-fill ">
@@ -177,6 +177,7 @@ mysqli_close($connection);
 
                     </form>
                 </div>
+            </div>
             </div>
 
         </div>

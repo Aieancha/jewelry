@@ -15,14 +15,15 @@ $result=mysqli_fetch_assoc($query);
       <h3 class="font-weight-bolder text-dark text-gradient ">ข้อมูลการจำนำเครื่องประดับ</h3>
     </div>
   </div>
-  <div class="d-flex justify-content-end">
-    <div class="d-flex justify-content-end mb-2">
-      <form class="example" action="/action_page.php" style="margin: 7px;;max-width:200px">
-        <input type="text" placeholder="เลขที่ราชการออกให้.." name="search2">
-        <button type="submit"><i class="fa fa-search"></i></button>
-      </form>
-    </div>
-    <a href="" class="btn bg-gradient-primary">สถานะ</a>
+  <div class="row justify-content-between">
+     <div class="d-flex justify-content-end">
+        <div class="d-flex justify-content-end mb-2 ">
+            <form class="example " action="/action_page.php" style="margin: 7px;;max-width:200px ">
+                <input type="text" placeholder="ชื่อผู้ใช้งาน.." name="search2 ">
+                <button type="submit"><i class="fa fa-search btn-dark"></i></button>
+            
+        </div>
+    <a href="" class="btn btn-sm btn-dark text-white">สถานะ</a>
   </div>
   <div class="row">
     <div class="card">
@@ -131,4 +132,20 @@ mysqli_close($connection);
     clear: both;
     display: table;
   }
+  form.example button {
+    float: left;
+    width: 20%;
+    padding: 5px;
+    background: #344767;
+    color: white;
+    font-size: 15px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+    border-radius: 10px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px!important
+}
+
+
 </style>
