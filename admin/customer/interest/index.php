@@ -2,11 +2,15 @@
 $sql = "SELECT * FROM tbl_social
 /* INNER JOIN tbl_status ON tbl_social.s_role = tbl_status.id */
 INNER JOIN tbl_bill ON tbl_social.s_id = tbl_bill.s_id
+INNER JOIN tbl_orders ON tbl_orders.s_id = tbl_bill.s_id
 /* WHERE tbl_status.id=2 AND */
 /* WHERE DATEDIFF(c_date, Now())= 3 or DATEDIFF(c_date, Now())= 2  */
-group by tbl_social.s_id ORDER BY start_date";
+group by tbl_social.s_id ORDER BY c_date";
 $query = mysqli_query($connection, $sql);
 $result=mysqli_fetch_assoc($query);
+$strStartDate = $result['bill_date'];
+                $strStartDate = date('Y-m-d');
+                $strDate = date("Y-m-d", strtotime("+27 day", strtotime($strStartDate)));
 ?>
 
 <?php
@@ -79,7 +83,7 @@ $status = date('Y-m-d');
             foreach ($query as $data) : ?>
               <tr>
                 <td><?= ++$i ?></td>
-                <td><?php echo $data['start_date']; ?></td>
+                <td><?php echo $strDate; ?></td>
                 <td><?php echo $data['c_date']; ?></td>
                 <td><?php echo $data['bill_no']; ?></td>
                 <td><?= $data['s_name'] ?></td>

@@ -30,9 +30,11 @@ ob_start();
 // <img src="picture/img/programmerthailand_social.jpg" width="100%" />
 // ');
 
+
 if (isset($_GET['id']) && !empty($_GET['id'])) {
   $id = $_GET['id'];
-  $sql = "SELECT * FROM tbl_social INNER JOIN tbl_bill ON tbl_social.s_id = tbl_bill.s_id  WHERE bill_id ='$id'";
+  $sql = "SELECT * FROM tbl_orders INNER JOIN tbl_social ON tbl_orders.s_id=tbl_social.s_id
+  INNER JOIN tbl_bill ON tbl_social.s_id = tbl_bill.s_id WHERE o_id = '$id'";
   $query = mysqli_query($connection, $sql);
   $result = mysqli_fetch_assoc($query);
 }

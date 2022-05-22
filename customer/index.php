@@ -13,8 +13,7 @@
 <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
 <?php include('include/nav.php') ?>
       <div class="container-fluid py-4">
-      <?php echo ($_SESSION['s_id']);?> <!--show detail login-->
-      <?php //session_destroy();?>
+
         <?php
         if (!isset($_GET['page']) && empty($_GET['page'])) {
           include('newform.php');
@@ -23,6 +22,8 @@
             include('show_details.php');    
       }else{
           include('pledge.php');
+        }elseif (isset($_GET['page']) && $_GET['page'] == 'logout') {
+          include('logout.php');
         } elseif (isset($_GET['page']) && $_GET['page'] == 'profile') {
             include('profile.php');     
       }elseif (isset($_GET['page']) && $_GET['page'] == 'interest') {
@@ -47,5 +48,4 @@
 <?php else : ?>
   <?php include('login.php')  ?>
 <?php endif; ?>
-
 </html>

@@ -1,6 +1,7 @@
 <?php  
 	$user = $_SESSION['customer_login']; 
-	$sql = "SELECT * FROM tbl_social WHERE c_email = '$user'"; 
+	$sql = "SELECT * FROM tbl_social INNER JOIN tbl_bill ON tbl_social.s_id=tbl_bill.s_id 
+	INNER JOIN tbl_orders ON tbl_social.s_id=tbl_orders.s_id WHERE c_email = '$user'"; 
 	$query = mysqli_query($connection, $sql); 
 	$result = mysqli_fetch_assoc($query);   
 		?>
@@ -45,7 +46,7 @@
 							<div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>เลขสัญญาการจำนำ</strong>
+										    <div class="item-label"><strong>เลขสัญญาการจำนำ <?= $result['bill_no'] ?></strong>
 											<td width="25%" style="display: inline;"></td>
 										</div>
 									    </div><!--//col-->
@@ -64,7 +65,7 @@
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
 										    <div class="item-label"><strong>รหัสสินค้า : </strong>
-											<td width="25%" style="display: inline;"><?= $result['ref_img'] ?></td>
+											<td width="25%" style="display: inline;"><?= $result['o_code'] ?></td>
 										</div>
 									    </div><!--//col-->
 								    </div><!--//row-->   

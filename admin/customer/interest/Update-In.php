@@ -17,7 +17,7 @@
             <?php
             if (isset($_GET['id']) && !empty($_GET['id'])) {
                 $id = $_GET['id'];
-                $sql = "SELECT * FROM tbl_social WHERE s_id = '$id'";
+                $sql = "SELECT * FROM tbl_social INNER JOIN tbl_orders ON tbl_social.s_id=tbl_orders.s_id WHERE tbl_social.s_id = '$id'";
                 $query = mysqli_query($connection, $sql);
                 $result = mysqli_fetch_assoc($query);
                 $strStartDate = $result['c_date'];
@@ -37,7 +37,7 @@
 
                 if (isset($_FILES['in_img']['name']) && !empty($_FILES['in_img']['name'])) {
                     $extension = array("jpeg", "jpg", "png");
-                    $target = 'upload/interest/';
+                    $target = '../images/interest/';
                     $filename = $_FILES['in_img']['name'];
                     $filetmp = $_FILES['in_img']['tmp_name'];
                     $ext = pathinfo($filename, PATHINFO_EXTENSION);
@@ -63,7 +63,6 @@
                     $filename = '';
                 }
                 $sql = "INSERT INTO tbl_interest (in_date, in_img, in_befor, in_role,ref_id) VALUES ('$in_date', '$filename', '$in_befor', 1, '$ref')";
-                //$sql = "UPDATE tbl_social SET c_date ='$strNewDate', start_date = '$strDate' where s_id ='$id'";
                 mysqli_query($connection, "UPDATE tbl_social SET c_date ='$strNewDate', start_date = '$strDate' WHERE s_id='$id'");
 
                 if (mysqli_query($connection, $sql)) {
@@ -101,7 +100,7 @@
                             </div>
                             <div class=" mb-3 col-10 ">
                                 <h6 style="display: inline;">รายละเอียดสินค้า :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['s_type'] ?></td>
+                                <td width="25%" style="display: inline;"><?= $result['o_type'] ?></td>
                             </div>
                             <div class=" mb-3 ">
                                 <h6 style="display: inline;">จำนวนเงินต้น :</h6>
@@ -113,12 +112,12 @@
                             </div>
                         </div>
                         <div class="justify-content-start flex-fill ">
-                            <div class=" mb-3 ">
+                            <!-- <div class=" mb-3 ">
                                 <h6 style="display: inline;">ช่องทางการติดต่อ :</h6>
                                 <td width="25%" style="display: inline;"><?= $result['social_contact'] ?></td>
                                 <h6 style="display: inline;">ชื่อผู้ใช้ :</h6>
                                 <td width="25%" style="display: inline;"><?= $result['social_name'] ?></td>
-                            </div>
+                            </div> -->
                             <div class=" mb-3 ">
                                 <h6 style="display: inline;">เงินที่ต้องจ่ายต่องวด :</h6>
                                 <td width="25%" style="display: inline;"><?= ($result['principle'] * 0.02) ?> บาท</td>
@@ -131,10 +130,6 @@
                                 <h6 style="display: inline;">วันที่กำหนดชำระ :</h6>
                                 <td width="25%" style="display: inline;"><?= $result['c_date'] ?> </td>
                             </div>
-                            <!-- <div class=" mb-3 ">
-                        <h6 style="display: inline;">จำนวนงวดที่ชำระเเล้ว :</h6><td width="25%" style="display: inline;">3 เดือน</td>
-                        <h6 style="display: inline;">จำนวนงวดที่เหลือ :</h6><td width="25%" style="display: inline;">9 เดือน</td>
-                    </div> -->
                         </div>
                     </div>
                     <form action="" method="POST" enctype="multipart/form-data">
@@ -144,17 +139,19 @@
                                 <div class="justify-content-start flex-fill col-5" style="margin-left:3rem">
                                     <div class="col-12 mt-3">
                                         <h6>แนบภาพหลักฐานการชำระค่างวด</h6>
-                                        <input class="form-control " type="file" id="myFile" name="in_img" multiple required>
+                                        <input class="form-control " type="file" id="myFile" name="in_img" required>
 
                                     </div>
                                 </div>
                                 <div class="justify-content-start flex-fill col-6" style="margin-left:3rem">
                                     <div class=" mb-3 mt-3 col-8">
                                         <h6 style="display: inline;">วันที่ชำระค่างวด</h6>
+                                        <label class="form-label text-danger" style="display: inline;">*</label>
                                         <input class="form-control " type="datetime-local" id="myFile" name="in_date" required>
                                     </div>
                                     <div class=" mb-3 col-8">
                                         <h6 style="display: inline;">จำนวนเงิน</h6>
+                                        <label class="form-label text-danger" style="display: inline;">*</label>
                                         <input class="form-control " type="number" min="0" id="myFile" name="in_befor" required>บาท
                                     </div>
                                 </div>
@@ -166,7 +163,7 @@
                 </div>
             </div>
             <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-sm btn-dark text-white">ย้อนกลับ</a>
-            <a href="?page=<?= $_GET['page'] ?>&function=showDetails&id=<?= $result['s_id'] ?>" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a>
+            <a href="?page=<?= $_GET['page'] ?>&function=showDetails&id=<?= $result['o_id'] ?>" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a>
             <!-- <a href="?page=<?= $_GET['page'] ?>&function=qty&id=<?= $result['s_id'] ?>" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a> -->
 
         </div>

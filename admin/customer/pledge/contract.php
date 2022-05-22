@@ -1,13 +1,12 @@
 <?php
+
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
-    $sql = "SELECT * FROM tbl_social WHERE s_id = '$id'";
+    $sql = "SELECT * FROM tbl_orders INNER JOIN tbl_social ON tbl_orders.s_id=tbl_social.s_id WHERE o_id = '$id'";
     $query = mysqli_query($connection, $sql);
     $result = mysqli_fetch_assoc($query);
-    $num=$result['s_id'];
-    $role=$result['s_role']=2;
-    mysqli_query($connection, "UPDATE tbl_social SET s_role ='$role' WHERE s_id='$id'");
 }
+
 if (isset($_POST) && !empty($_POST)) {
     $numId = $_POST['bill_no'];
     $code = "B";
@@ -26,19 +25,21 @@ if (isset($_POST) && !empty($_POST)) {
     }
     $maxId = substr("00000" . $maxId, -5);
     $numId = $code . $yearMonth . $maxId;
+    $num=$result['s_id'];
     $sqlinsert = "INSERT INTO tbl_bill (bill_no,s_id) VALUES ('$numId','$num') ";
+    mysqli_query($connection, "UPDATE tbl_orders SET o_role = 2 WHERE s_id='$id'");
 
     if (mysqli_query($connection, $sqlinsert)) {
         //echo "เพิ่มข้อมูลสำเร็จ";
         $alert = '<script type= "text/javascript">';
         $alert .= 'alert("ร่างสัญญาสำเร็จ");';
-        $alert .= 'window.location.href = "?page=pledge&function=success&id='.$result['s_id'].'";';
+        $alert .= 'window.location.href = "?page=pledge&function=success&id=' . $result['o_id'] . '";';
         $alert .= '</script>';
         echo $alert;
         exit();
-      } else {
+    } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($connection);
-      }
+    }
 }
 mysqli_close($connection);
 ?>
@@ -84,23 +85,11 @@ mysqli_close($connection);
 
                                 </ul>
 
-                                <h5 class="pb-5">กรอกข้อมูลผู้สนใจจำนำเครื่องประดับ</h5>
+                                <h5 class="pb-5">ตรวจสอบความถูกต้องของข้อมูล</h5>
                         </div>
 
                         <div class="d-flex flex-row">
                             <div class="justify-content-start flex-fill ">
-                                <div class=" mb-4 col-6 ">
-                                    <h6 style="display: inline;">ช่องทางการติดต่อ :</h6>
-                                    <td width="25%" style="display: inline;"><?= $result['social_contact'] ?></td>
-                                </div>
-                                <div class=" mb-4 col-10 ">
-                                    <h6 style="display: inline;">ชื่อผู้ใช้ :</h6>
-                                    <td width="25%" style="display: inline;"><?= $result['social_name'] ?></td>
-                                </div>
-                                <div class=" mb-4 col-10 ">
-                                    <h6 style="display: inline;">ภาพถ่ายสินค้าจริง</h6>
-                                    <img src="upload/social/<?= $result['s_img'] ?>" alt="jewelry" width="304" height="228">
-                                </div>
                                 <div class=" mb-4 col-10 ">
                                     <h6 style="display: inline;">ราคาประเมินข้างต้น :</h6>
                                     <td width="25%" style="display: inline;"><?= $result['price_img'] ?> บาท</td>
@@ -144,40 +133,35 @@ mysqli_close($connection);
                                 </div>
                                 <div class=" mb-4 ">
                                     <h6 style="display: inline;">รหัสสินค้า:</h6>
-                                    <td width="25%" style="display: inline;"><?= $result['ref_img'] ?></td>
+                                    <td width="25%" style="display: inline;"><?= $result['o_code'] ?></td>
                                 </div>
                                 <div class=" mb-6">
                                     <h6 style="display: inline;">รายละเอียดสินค้า:</h6>
-                                    <td width="25%" style="display: inline;"><?= $result['s_type'] ?></td>
+                                    <td width="25%" style="display: inline;"><?= $result['o_type'] ?></td>
                                 </div>
                                 <div class=" mb-6">
                                     <h6 style="display: inline;">รูปแบบการชำระ:</h6>
                                     <td width="25%" style="display: inline;"><?= $result['rate_name'] ?></td>
                                 </div>
-                                <div type="hidden">
-                                    <select name="s_role" require hidden>
-                                        <option value="2" selected hidden></option>
-                                    </select>
-                                </div>
 
                             </div>
 
                         </div>
-                    
-                    <form action="" method="POST">
-                        <div class="d-flex flex-row">
-                            <!-- <div class="justify-content-start flex-fill ">
+
+                        <form action="" method="POST">
+                            <div class="d-flex flex-row">
+                                <!-- <div class="justify-content-start flex-fill ">
                     <a href="?page=<?= $_GET['page'] ?>&function=updated" class="btn bg-gradient-dark">ย้อนกลับ</a>
                 </div> -->
-                            <div class="flex-fill d-flex justify-content-end gap-1">
-                                <input class="form-control " type="hidden" name="bill_no" value="<?php echo $numtId ?>" required>
-                                <button type="submit" class="btn btn-color1 btn-green3 text-white theme-btn  pull-right">ร่างสัญญา</button>
+                                <div class="flex-fill d-flex justify-content-end gap-1">
+                                    <input class="form-control " type="hidden" name="bill_no" value="<?php echo $numtId ?>" required>
+                                    <button type="submit" class="btn btn-color1 btn-green3 text-white theme-btn  pull-right">ร่างสัญญา</button>
+                                </div>
                             </div>
-                        </div>
 
-                    </form>
+                        </form>
+                    </div>
                 </div>
-            </div>
             </div>
 
         </div>

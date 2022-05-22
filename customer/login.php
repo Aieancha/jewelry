@@ -11,10 +11,11 @@ if (isset($_REQUEST['c_email'])) {
     if (mysqli_num_rows($result) == 1) {
 
         $row = mysqli_fetch_array($result);
-
+        $_SESSION['customer_login'] = $row['c_email'];
         $_SESSION["s_id"] = $row["s_id"]; //ประกาศตัวแปรUserIDไว้เพื่อส่งค่า
-        $_SESSION["user"] = $row["s_name"] . " " . $row["s_lastname"]; //ประกาศตัวแปรUserไว้เพื่อส่งค่า
+        $_SESSION["username"] = $row["s_name"] . " " . $row["s_lastname"]; //ประกาศตัวแปรUserไว้เพื่อส่งค่า
         $_SESSION["status"] = $row["status"]; //ประกาศตัวแปรUserlevelไว้เพื่อส่งค่า
+        $_SESSION["user"] = $row["s_name"];
 
         if ($_SESSION["status"] == 1) { //ถ้าเป็น admin ให้กระโดดไปหน้า admin_page.php
 
@@ -24,12 +25,11 @@ if (isset($_REQUEST['c_email'])) {
             $alert .= '</script>';
             echo $alert;
             exit();
-        }
-        if ($_SESSION["status"] == 0) {  
+        } else {
 
             $alert = '<script type= "text/javascript">';
             $alert .= 'alert("รอการยืนยันจากพนักงาน");';
-            $alert .= 'window.location = "login.php";';
+            $alert .= 'window.location.href = "../customer/";';
             $alert .= '</script>';
             echo $alert;
             exit();
@@ -43,7 +43,7 @@ if (isset($_REQUEST['c_email'])) {
 } else {
 
 
-     //user & password incorrect back to login again
+    //user & password incorrect back to login again
 
 }
 ?>

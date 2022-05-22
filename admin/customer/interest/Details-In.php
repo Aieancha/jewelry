@@ -21,8 +21,9 @@
                         if (isset($_GET['id']) && !empty($_GET['id'])) {
                             $id = $_GET['id'];
                             $sql = "SELECT * FROM tbl_interest INNER JOIN tbl_social ON tbl_social.s_id = tbl_interest.ref_id
+                            INNER JOIN tbl_orders ON tbl_orders.s_id = tbl_social.s_id
                             INNER JOIN tbl_bill ON tbl_interest.ref_id = tbl_bill.s_id 
-                            WHERE in_id ='$id'";
+                            WHERE tbl_interest.in_id ='$id'";
                             $query = mysqli_query($connection, $sql);
                             $result = mysqli_fetch_assoc($query);
                         }
@@ -63,11 +64,11 @@
                             <div class="justify-content-end flex-fill m-3">
                                 <div class=" mb-3 col-10 ">
                                     <h6 style="display: inline;">รหัสสินค้าที่จำนำ :</h6>
-                                    <td width="25%" style="display: inline;"><?= $result['ref_img'] ?> </td>
+                                    <td width="25%" style="display: inline;"><?= $result['o_code'] ?> </td>
                                 </div>
                                 <div class=" col-10 mb-4">
                                     <h6 style="display: inline;">รายละเอียดสินค้า :</h6>
-                                    <td width="25%" style="display: inline;"><?= $result['s_type'] ?> </td>
+                                    <td width="25%" style="display: inline;"><?= $result['o_type'] ?> </td>
                                 </div>
                                 <div class=" col-10 ">
                                     <h6 style="display: inline;">ค่างวดที่ต้องจ่าย :</h6>

@@ -1,12 +1,13 @@
 <?php
 $sql = "SELECT *
 FROM tbl_social
-INNER JOIN tbl_status
-ON tbl_social.s_role = tbl_status.id
-WHERE tbl_social.s_role=3";
+INNER JOIN tbl_interest
+ON tbl_social.s_id = tbl_interest.ref_id
+INNER JOIN tbl_bill
+ON tbl_interest.ref_id= tbl_bill.s_id
+WHERE tbl_interest.in_role=0
+group by tbl_social.s_id ORDER BY start_date";
 $query = mysqli_query($connection, $sql);
-
-
 ?>
 <div class="container-fluid py-4 ">
   <div class="row justify-content-between">
@@ -61,13 +62,13 @@ $query = mysqli_query($connection, $sql);
             foreach ($query as $data) : ?>
               <tr>
                 <td><?= ++$i ?></td>
-                <td><?php echo $data['c_date']; ?></td>
-                <td>#วันที่กำหนดชำระ</td>
-                <td>#เลขที่สัญญา</td>
-                <td><?= $data['s_name'] ?></td>
+                <td><?php echo $data['start_date']; ?></td>
+                <td><?= $data['c_date'] ?></td>
+                <td><?= $data['bill_no'] ?></td>
+                <td><?= $data['s_name'] .' '. $data['s_lastname'] ?></td>
                 <td><?= $data['phone'] ?></td>
                 <td><?= $data['principle']*0.02*$data['r_mount'] ?></td>
-                <td class="text-danger"><?php echo $data['status_name']; ?>รอยืนยัน</td>
+                <td class="text-danger">รอยืนยัน</td>
                 <td><a href="?page=<?= $_GET['page'] ?>&function=updateCustomer&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-green3 text-white">ยืนยันข้อมูล</a></td>
               </tr>
             <?php endforeach; ?>

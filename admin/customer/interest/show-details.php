@@ -6,10 +6,11 @@
 
 ?>
 
+
 <?php
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
-    $sql = "SELECT * FROM tbl_social INNER JOIN tbl_interest ON tbl_social.s_id = tbl_interest.ref_id WHERE s_id = '$id'";
+    $sql = "SELECT * FROM tbl_social WHERE tbl_social.s_id = '$id'";
     $query = mysqli_query($connection, $sql);
     $result = mysqli_fetch_assoc($query);
     $principle = $result['principle'];
@@ -66,12 +67,6 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                         </div>
                 <div class="justify-content-start flex-fill "> 
                    
-                        <div class=" mb-3 ">
-                                <h6 style="display: inline;">ช่องทางการติดต่อ :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['social_contact'] ?></td>
-                                <h6 style="display: inline;">ชื่อผู้ใช้ :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['social_name'] ?></td>
-                            </div>
                             <div class=" mb-3 ">
                                 <h6 style="display: inline;">จำนวนดอกเบี้ย :</h6>
                                 <td width="25%" style="display: inline;"><?= $result['principle']*0.02*$result['r_mount'] ?> บาท</td>

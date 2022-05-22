@@ -2,40 +2,17 @@
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
     $sql = "SELECT * FROM tbl_interest INNER JOIN tbl_social ON tbl_social.s_id = tbl_interest.ref_id
-                            INNER JOIN tbl_bill ON tbl_interest.ref_id = tbl_bill.s_id 
-                            WHERE in_id ='$id'";
+            INNER JOIN tbl_bill ON tbl_social.s_id = tbl_bill.s_id 
+            WHERE tbl_interest.in_id ='$id'";
     $query = mysqli_query($connection, $sql);
     $result = mysqli_fetch_assoc($query);
     $Num_Rows = mysqli_num_rows($query);
     //echo $Num_Rows;
 }
 ?>
-<?php
-if (isset($_POST) && !empty($_POST)) {
-    $status = $_POST['s_role'];
-
-    $sql = "UPDATE tbl_social SET s_role ='$status' where s_id ='$id'";
-
-    if (mysqli_query($connection, $sql)) {
-        $alert = '<script type="text/javascript">';
-        $alert .= 'alert("เปลี่ยนสถานะสำเร็จ");';
-        $alert .= 'window.location.href = "?page=interest";';
-        $alert .= '</script>';
-        echo $alert;
-        exit();
-    } else {
-        echo "Error: " . $sql . "<br>"  . mysqli_error($connection);
-    }
-
-    mysqli_close($connection);
-}
-
-//print_r($_POST);
-?>
 
 <div class="row justify-content-between">
     <div class="d-flex justify-content-end">
-
         <div class="d-flex justify-content-end mb-2 ">
             <form class="example " action="/action_page.php" style="margin: 7px;;max-width:200px">
                 <input type="text" placeholder="ชื่อผู้ใช้งาน.." name="search2 ">

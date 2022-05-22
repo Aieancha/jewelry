@@ -2,7 +2,7 @@
 <html lang="en">
 <style>
     body {
-        
+
         margin: 0;
     }
 
@@ -47,7 +47,7 @@
         padding: 0;
         width: 50%;
         max-width: 1200px;
-  display: block;
+        display: block;
     }
 
     /* The Close Button */
@@ -75,7 +75,7 @@
         cursor: pointer;
     }
 
-  
+
     /* Position the "next button" to the right */
     .next {
         right: 0;
@@ -147,14 +147,18 @@
                             $result = mysqli_fetch_assoc($query);
                         }
                         //print_r($_POST);
+                        if (isset($_GET['id']) && !empty($_GET['id'])) {
+                            $id = $_GET['id'];
+                            $sql = "SELECT * FROM tbl_orders WHERE o_id = '$id'";
+                            $query = mysqli_query($connection, $sql);
+                            $rs = mysqli_fetch_assoc($query);
+                        }
                         ?>
 
-
+</div>
                         <script type="text/javascript"></script>
                         <form action="" method="post" enctype="multipart/form-data">
-                            <div class="row">
-                            </div>
-                    </div>
+                    
                     <div class="d-flex flex-row">
                         <div class="justify-content-start flex-fill ">
                             <div class=" mb-3 ">
@@ -174,52 +178,49 @@
                                 <h6 style="display: inline;">ที่อยู่ปัจจุบัน :</h6>
                                 <td width="25%" style="display: inline;"><?= $result['c_address'] ?></td>
                             </div>
-                            <div class=" mb-3 col-6 ">
+                            <!-- <div class=" mb-3 col-6 ">
                                 <h6 style="display: inline;">ช่องทางการติดต่อ :</h6>
                                 <td width="25%" style="display: inline;"><?= $result['social_contact'] ?></td>
                             </div>
                             <div class=" mb-3 col-10 ">
                                 <h6 style="display: inline;">ชื่อผู้ใช้ :</h6>
                                 <td width="25%" style="display: inline;"><?= $result['social_name'] ?></td>
-                            </div>
-                            <div class=" mb-5 col-10 ">
+                            </div> -->
+                            <div class=" mb-3 col-10 ">
                                 <h6 style="display: inline;">หลักฐานการยืนยันตัวตน</h6>
-                                <img src="upload/customer/<?= $result['c_img'] ?>" alt="IDcard" width="304" height="228">
+                                <div>
+                                    <img src="../images/customer/<?= $result['c_img'] ?>" style="width:50%; height:auto;" alt="IDcard" width="304" height="228">
+                                </div>
                             </div>
                             <div class=" mb-3 ">
                                 <h4 style="display: inline;">ข้อมูลเครื่องประดับ</h4>
                             </div>
                             <div class=" mb-3 ">
                                 <h6 style="display: inline;">รหัสสินค้า:</h6>
-                                <td width="25%" style="display: inline;"></td>
+                                <td width="25%" style="display: inline;"><?= $rs['o_code'] ?></td>
                             </div>
                             <div class=" mb-3">
                                 <h6 style="display: inline;">รายละเอียดสินค้า:</h6>
-                                <td width="25%" style="display: inline;"><?= $result['s_type'] ?></td>
+                                <td width="25%" style="display: inline;"><?= $rs['o_type'] ?></td>
                             </div>
-                            <div class=" mb-4 col-10 ">
-                                <h6>ภาพถ่ายสินค้าจริง</h6>
-                                <img src="upload/social/<?= $result['s_img'] ?>" alt="jewelry" width="500" height="500" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
-                                <img src="upload/social/<?= $result['img1'] ?>" alt="jewelry" width="500" height="500" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
-                                <img src="upload/social/<?= $result['img2'] ?>" alt="jewelry" width="500" height="500" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
-                            </div>
+
                             <div id="myModal" class="modal">
                                 <span class="close cursor" onclick="closeModal()">&times;</span>
                                 <div class="modal-content">
 
                                     <div class="mySlides">
-                                        <div class="numbertext">1 / 4</div>
-                                        <img src="upload/social/<?= $result['s_img'] ?>" style="width:100%; height:auto">
+                                        <div class="numbertext">1 / 3</div>
+                                        <img src="../images/social/<?= $rs['img3'] ?>" style="width:100%; height:auto">
                                     </div>
 
                                     <div class="mySlides">
-                                        <div class="numbertext">2 / 4</div>
-                                        <img src="upload/social/<?= $result['img1'] ?>" style="width:100% height:auto">
+                                        <div class="numbertext">2 / 3</div>
+                                        <img src="../images/social/<?= $result['img1'] ?>" style="width:100% height:auto">
                                     </div>
 
                                     <div class="mySlides">
                                         <div class="numbertext">3 / 3</div>
-                                        <img src="upload/social/<?= $result['img2'] ?>" style="width:100% height:auto">
+                                        <img src="../images/social/<?= $result['img2'] ?>" style="width:100% height:auto">
                                     </div>
                                 </div>
                             </div>
@@ -254,6 +255,12 @@
                             </div>
 
                         </div>
+                    </div>
+                    <div class=" mb-4 col-10 ">
+                        <h6>ภาพถ่ายสินค้าจริง</h6>
+                        <img src="../images/social/<?= $rs['img3'] ?>" alt="jewelry" style="width:20%; height:auto;" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+                        <img src="../images/social/<?= $rs['img1'] ?>" alt="jewelry" style="width:20%; height:auto;" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+                        <img src="../images/social/<?= $rs['img2'] ?>" alt="jewelry" style="width:20%; height:auto;" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
                     </div>
                 </div>
             </div>
@@ -378,4 +385,5 @@
     .progressBar .active:after {
         background-color: dodgerblue;
     }
-</style>
+
+    </style=>
