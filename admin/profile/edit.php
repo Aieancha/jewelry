@@ -47,34 +47,31 @@
         <div class ="box">
         <script type="text/javascript"></script>
         <form action="" method="post" class="regis">
-          <label class="form-label">ชื่อผู้ใช้*</label>
+          <label class="form-label">ชื่อผู้ใช้</label>
           <div class="mb-3">
             <input type="text" class="form-control" name="m_name" value="<?=$result['m_name'] ?>" autocomplete="off" require disabled>
           </div>
           <hr class="mb-4 mt-4">
-          <label class="form-label">ชื่อ*</label>
+          <label class="form-label">ชื่อ</label>
           <div class="mb-3">
             <input type="text" class="form-control" name="m_firstname" placeholder="" value="<?=$result['m_firstname'] ?>" autocomplete="off" require>
           </div>
-          <label class="form-label">นามสกุล*</label>
+          <label class="form-label">นามสกุล</label>
           <div class="mb-3">
             <input type="text" class="form-control" name="m_lastname" value="<?=$result['m_lastname'] ?>"  autocomplete="off" require>
           </div>
-          <label class="form-label">อีเมล*</label>
+          <label class="form-label">อีเมล</label>
           <div class="mb-3">
             <input type="email" class="form-control" name="m_email" value="<?=$result['m_email'] ?>" autocomplete="off" require>
           </div>
-          <!-- <label class="form-label">สถานะ*</label>
+          <label class="form-label">รหัสผ่าน</label>
           <div class="mb-3">
-            <select name="status" class="form-control" value="<?=$result['status'] ?>" require>
-              <option value="" selected="selected">- เลือกสถานะ -</option>
-              <option value="1">ผู้จัดการ</option>
-              <option value="2">พนักงาน</option>
-            </select>
-          </div> -->
+            <input type="text" class="form-control" name="m_pass" value="<?=$result['m_pass'] ?>" autocomplete="off" require>
+          </div>
+          
           <div class="text-center mb-5">
-          <a href="?page=<?= $_GET['page'] ?>" class="btn btn-primary mb-0 mt-3">ย้อนกลับ</a>
-            <button type="submit" name="save" class="btn bg-gradient-dark mb-0 mt-3">บันทึกข้อมูล</button>
+          <a href="?page=<?= $_GET['page'] ?>" class="btn bg-dark text-white mb-0 mt-3">ย้อนกลับ</a>
+            <button type="submit" name="save" class="btn btn-green3 text-white mb-0 mt-3">บันทึกข้อมูล</button>
           
         </form>
       </div>

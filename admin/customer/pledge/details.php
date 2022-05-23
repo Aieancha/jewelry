@@ -234,11 +234,11 @@
                                 <td width="25%" style="display: inline;"><?= $result['price_img'] ?> บาท</td>
                             </div>
                             <div class=" mb-3 col-10 ">
-                                <h6 style="display: inline;">ราคาประเมินจากสินค้าจริง:</h6>
+                                <h6 style="display: inline;">ราคาประเมินจากสินค้าจริง :</h6>
                                 <td width="25%" style="display: inline;"><?= $result['price_item'] ?> บาท</td>
                             </div>
                             <div class=" mb-3 col-10 ">
-                                <h6 style="display: inline;">ราคาที่ตกลงจำนำ:</h6>
+                                <h6 style="display: inline;">ราคาที่ตกลงจำนำ :</h6>
                                 <td width="25%" style="display: inline;"><?= $result['principle'] ?> บาท</td>
                             </div>
                             <div class=" mb-3 ">

@@ -66,6 +66,7 @@
             <input type="text" class="form-control" name="m_lastname" placeholder="กรอกนามสกุลผู้ใช้" autocomplete="off" required>
           </div>
           <label class="form-label ">ชื่อผู้ใช้</label><labal class="form-label text-danger">*</labal>
+          <label class="text-danger">กรอกเฉพาะภาษาอังกฤษเท่านั้น</label>
           <div class="mb-3">
             <input type="text" class="form-control" name="m_name" placeholder="กรอกชื่อผู้ใช้" autocomplete="off" required>
             <label class="form-label ">อีเมล</label><labal class="form-label text-danger">*</labal>
@@ -90,7 +91,7 @@
           </div>
           <div class="text-center mb-5">
             <a href="?page=<?= $_GET['page'] ?>" class="btn btn-dark   mb-0 mt-3 " >ย้อนกลับ</a>
-            <button type="submit" name="save" class="btn bg-gradient-primary mb-0 mt-3">บันทึกข้อมูล</button>
+            <button type="submit" name="save" class="btn btn-green3 text-white mb-0 mt-3">บันทึกข้อมูล</button>
       </div>   
          
         </form>

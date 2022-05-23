@@ -138,31 +138,48 @@
           </div>
           <div class="d-flex flex-row">
             <div class="justify-content-start flex-fill ">
-              <div class=" mb-4 col-6 ">
-                <h6 style="display: inline;">ช่องทางการติดต่อ :</h6>
-                <div class=" mb-4 col-6 ">
+              <div class=" mb-3 col-6 ">
+                <h5 style="display: inline;">ช่องทางการติดต่อ </h5>
+            </div>
+                <div class=" mb-3 col-6 ">
                   <h6 style="display: inline;">Facebook : <?php echo $result['c_facebook'] ?></h6>
                 </div>
+                <div class=" mb-5 col-6 ">
                 <h6 style="display: inline;">LINE: <?php echo $result['c_line'] ?></h6>
+                </div>
+                <div class=" mb-3 col-6 ">
+                <h5 style="display: inline;">การประเมินราคา </h5>
+            </div>
+            <div class=" mb-4 col-6 ">
+                        <h6>ภาพถ่ายสินค้าจริง</h6>
+                        <img src="../images/social/<?= $rs['img3'] ?>" alt="jewelry" style="width:30%; height:auto;" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+                        <img src="../images/social/<?= $rs['img1'] ?>" alt="jewelry" style="width:30%; height:auto;" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+                        <img src="../images/social/<?= $rs['img2'] ?>" alt="jewelry" style="width:30%; height:auto;" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
+                    </div>
+            <div class=" mb-3 col-6 ">
+                <h6 style="display: inline;">ราคาที่ลูกค้าต้องการจำนำ </h6>
+                <input type="number" min="0" name="price_img" class="form-control1 " value="<?= $result['o_price'] ?>" placeholder="" autocomplete="off">
               </div>
-              <div class=" mb-4 col-6 ">
-                <h6 style="display: inline;">ราคาประเมินข้างต้น :</h6>
+              <div class=" mb-3 col-6 ">
+                <h6 style="display: inline;">ราคาประเมินข้างต้น </h6>
                 <input type="number" min="0" name="price_img" class="form-control1 " value="<?= $result['price_img'] ?>" placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
               </div>
-              <div class="mb-4 col-6 ">
+              <div class="mb-3 col-6 ">
                 <h6>ราคาประเมินจากสินค้าจริง</h6>
                 <input type="number" min="0" name="price_item" value="<?= $result['price_item'] ?>" class="form-control1 " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
               </div>
-              <div class="mb-4 col-6 ">
+              <div class="mb-3 col-6 ">
                 <h6>ราคาที่ตกลงจำนำ</h6>
                 <input type="number" min="0" name="principle" value="<?= $result['principle'] ?>" class="form-control1 " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
               </div>
               <div class="mb-4 col-6">
-                <h5 class="" style="display: inline;">จำนวนงวดที่จำนำ</h5>
+                <h6 class="" style="display: inline;">จำนวนงวดที่จำนำ</h6><h6 style="display: inline;">(หน่วยเป็นงวด)</h6>
                 <!-- <h5 class="form-label text-danger" style="display: inline;">*</h5> -->
-                <input type="number" class="form-control " name="r_mount" value="<?= $result['r_mount'] ?>"  max="24" placeholder="สูงสุด 24 งวด" autocomplete="off">
+                <div class="col-3">
+                <input type="number" class="form-control "  name="r_mount" value="<?= $result['r_mount'] ?>"  max="24" placeholder="สูงสุด 24 งวด" autocomplete="off">
               </div>
-              <h5 class="" style="display: inline;">รูปแบบการชำระดอกเบี้ย</h5>
+              </div>
+              <h6 class="" style="display: inline;">รูปแบบการชำระดอกเบี้ย</h6>
               <!-- <h5 class="form-label text-danger" style="display: inline;">*</h5> -->
               <div class="mb-4 col-12 ">
                 <select name="rate_name" class="form-control w-60">
@@ -370,4 +387,7 @@
     border-radius: 0.5rem;
     transition: box-shadow 0.15s ease, border-color 0.15s ease;
   }
+  .flex-fill {
+    flex: 1 !important;
+}
 </style>
