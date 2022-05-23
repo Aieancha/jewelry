@@ -267,15 +267,15 @@ VALUES ( '$type', '$price','$filename3', '$filename1', '$filename2','$detail','$
                     </div>
                     <div class="mb-3">
                       <label>ภาพถ่ายสินค้าจริงด้านหน้า / ด้านบน</label>
-                      <input type="file" id="myFile" name="img3" multiple required>
+                      <input type="file" id="myFile" name="img3" accept="image/png, image/jpeg, image/jpg" multiple required>
                     </div>
                     <div class="mb-3">
                       <label>ภาพถ่ายสินค้าจริงด้านหลัง / ด้านล่าง</label>
-                      <input type="file" id="myFile" name="img1" multiple>
+                      <input type="file" id="myFile" name="img1" accept="image/png, image/jpeg, image/jpg" multiple>
                     </div>
                     <div class="mb-3">
                       <label>ภาพถ่ายสินค้าจริงด้านข้าง</label>
-                      <input type="file" id="myFile" name="img2" multiple>
+                      <input type="file" id="myFile" name="img2" accept="image/png, image/jpeg, image/jpg" multiple>
                     </div>
                   </div>
                   <div class="mb-3 col-12 ">

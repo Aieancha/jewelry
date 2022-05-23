@@ -179,7 +179,7 @@
                 <img src="../images/customer/<?= $result['c_img'] ?>"  alt="jewelry" width="300" height="200" >
               </div>
               <div class="mb-4 col-3 ">
-                <input type="file" id="myFile" name="c_img" multiple>
+                <input type="file" id="myFile" name="c_img" accept="image/png, image/jpeg, image/jpg" multiple>
               </div>
 
             </div>
@@ -187,37 +187,37 @@
               <div class=" mb-4 col-6 ">
                 <h6 style="display: inline;">เลขสำคัญที่ราชการออกให้</h6>
                 <h6 class="form-label text-danger" style="display: inline;">*</h6>
-                <input type="text" class="form-control " name="code_id" value="<?= $result['code_id'] ?>" placeholder="กรอกเลขสำคัญที่ราชการออกให้ลูกค้า" autocomplete="off" require>
+                <input type="text" class="form-control " name="code_id" value="<?= $result['code_id'] ?>" placeholder="กรอกเลขสำคัญที่ราชการออกให้ลูกค้า" autocomplete="off" required>
               </div>
               <div class=" mb-4 col-6 ">
                 <h6 style="display: inline;">ชื่อ</h6>
                 <h6 class="form-label text-danger" style="display: inline;">*</h6>
-                <input type="text" class="form-control " name="s_name" value="<?= $result['s_name'] ?>" placeholder="กรอกชื่อจริงลูกค้า" autocomplete="off" require>
+                <input type="text" class="form-control " name="s_name" value="<?= $result['s_name'] ?>" placeholder="กรอกชื่อจริงลูกค้า" autocomplete="off" required>
               </div>
               <div class=" mb-4 col-6 ">
                 <h6 style="display: inline;">นามสกุล</h6>
                 <h6 class="form-label text-danger" style="display: inline;">*</h6>
-                <input type="text" class="form-control " name="s_lastname" value="<?= $result['s_lastname'] ?>" placeholder="กรอกนามสกุลลูกค้า" autocomplete="off" require>
+                <input type="text" class="form-control " name="s_lastname" value="<?= $result['s_lastname'] ?>" placeholder="กรอกนามสกุลลูกค้า" autocomplete="off" required>
               </div>
               <div class=" mb-4 col-6 ">
                 <h6 style="display: inline;">อายุ</h6>
                 <h6 class="form-label text-danger" style="display: inline;">*</h6>
-                <input type="text" class="form-control1 " name="c_age" value="<?= $result['c_age'] ?>" placeholder="กรอกอายุ (ปี)" autocomplete="off" require>
+                <input type="text" class="form-control1 " name="c_age" value="<?= $result['c_age'] ?>" placeholder="กรอกอายุ (ปี)" autocomplete="off" required>
               </div>
               <div class=" mb-4 col-10 ">
                 <h6 style="display: inline;">ที่อยู่</h6>
                 <h6 class="form-label text-danger" style="display: inline;">*</h6>
-                <input type="text" class="form-control3 " name="c_address" value="<?= $result['c_address'] ?>" placeholder="กรอกที่อยู่ปัจจุบันลูกค้า" autocomplete="off" require>
+                <input type="text" class="form-control3 " name="c_address" value="<?= $result['c_address'] ?>" placeholder="กรอกที่อยู่ปัจจุบันลูกค้า" autocomplete="off" required>
               </div>
               <div class=" mb-4 col-6 ">
                 <h6 style="display: inline;">เบอร์โทร</h6>
                 <h6 class="form-label text-danger" style="display: inline;">*</h6>
-                <input type="number" class="form-control2 " name="phone" value="<?= $result['phone'] ?>" pattern="^[0-9\s]+$" minlength="10" placeholder="กรอกเบอร์โทรศัพท์" autocomplete="off" require>
+                <input type="number" class="form-control2 " name="phone" value="<?= $result['phone'] ?>" pattern="^[0-9\s]+$" minlength="10" placeholder="กรอกเบอร์โทรศัพท์" autocomplete="off" required>
               </div>
               <div class=" mb-4 col-6 ">
                 <h6 style="display: inline;">อีเมล</h6>
                 <h6 class="form-label text-danger" style="display: inline;">*</h6>
-                <input type="email" class="form-control " name="c_email" value="<?= $result['c_email'] ?>" placeholder="example@gmail.com" autocomplete="off" require>
+                <input type="email" class="form-control " name="c_email" value="<?= $result['c_email'] ?>" placeholder="example@gmail.com" autocomplete="off" required>
               </div>
               <div class=" mb-4 col-6 ">
                 <h6 style="display: inline;">วันที่ชำระงวดแรก</h6>

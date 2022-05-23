@@ -139,7 +139,7 @@
                                 <div class="justify-content-start flex-fill col-5" style="margin-left:3rem">
                                     <div class="col-12 mt-3">
                                         <h6>แนบภาพหลักฐานการชำระค่างวด</h6>
-                                        <input class="form-control " type="file" id="myFile" name="in_img" required>
+                                        <input class="form-control " type="file" id="myFile" name="in_img" accept="image/png, image/jpeg, image/jpg" required>
 
                                     </div>
                                 </div>

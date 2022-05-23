@@ -59,18 +59,18 @@
         <form  action="" method="post" class="regis">
         <label class="form-label ">ชื่อ</label><labal class="form-label text-danger">*</labal>
           <div class="mb-3">
-            <input type="text" class="form-control" name="m_firstname" placeholder="กรอกชื่อจริงผู้ใช้" value="<?= (isset($_POST['m_firstname']) && !empty($_POST['m_firstname']) ? $_POST['m_firstname'] : '') ?>" autocomplete="off" require>
+            <input type="text" class="form-control" name="m_firstname" placeholder="กรอกชื่อจริงผู้ใช้" value="<?= (isset($_POST['m_firstname']) && !empty($_POST['m_firstname']) ? $_POST['m_firstname'] : '') ?>" autocomplete="off" required>
           </div>
           <label class="form-label ">นามสกุล</label><labal class="form-label text-danger">*</labal>
           <div class="mb-3">
-            <input type="text" class="form-control" name="m_lastname" placeholder="กรอกนามสกุลผู้ใช้" autocomplete="off" require>
+            <input type="text" class="form-control" name="m_lastname" placeholder="กรอกนามสกุลผู้ใช้" autocomplete="off" required>
           </div>
           <label class="form-label ">ชื่อผู้ใช้</label><labal class="form-label text-danger">*</labal>
           <div class="mb-3">
-            <input type="text" class="form-control" name="m_name" placeholder="กรอกชื่อผู้ใช้" autocomplete="off" require>
+            <input type="text" class="form-control" name="m_name" placeholder="กรอกชื่อผู้ใช้" autocomplete="off" required>
             <label class="form-label ">อีเมล</label><labal class="form-label text-danger">*</labal>
           <div class="mb-3">
-            <input type="email" class="form-control" name="m_email" placeholder="examp@gmail.com" autocomplete="off" require>
+            <input type="email" class="form-control" name="m_email" placeholder="examp@gmail.com" autocomplete="off" required>
           </div>
           </div>
           <label class="form-label ">รหัสผ่าน</label><labal class="form-label text-danger">*</labal>
