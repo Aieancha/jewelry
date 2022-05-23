@@ -1,8 +1,8 @@
 <?php
 $sql = "SELECT * FROM tbl_social
-INNER JOIN tbl_status ON tbl_social.s_role = tbl_status.id
 INNER JOIN tbl_bill ON tbl_social.s_id = tbl_bill.s_id
 INNER JOIN tbl_orders ON tbl_social.s_id = tbl_orders.s_id
+INNER JOIN tbl_status ON tbl_orders.o_role = tbl_status.id
 /* WHERE tbl_status.id=2 AND */
 /* WHERE DATEDIFF(c_date, Now())= 3 or DATEDIFF(c_date, Now())= 2  */
 group by tbl_social.s_id ORDER BY start_date";
@@ -18,6 +18,7 @@ $result=mysqli_fetch_assoc($query);
   </div>
   <div class="row justify-content-between">
      <div class="d-flex justify-content-end">
+     <a href="?function=report" class="btn btn-sm btn-blue2 text-white">รายงาน</a>
         <div class="d-flex justify-content-end mb-2 ">
             <form class="example " action="/action_page.php" style="margin: 7px;;max-width:200px ">
                 <input type="text" placeholder="ชื่อผู้ใช้งาน.." name="search2 ">
@@ -53,11 +54,6 @@ $result=mysqli_fetch_assoc($query);
 
             <?php
             $i = 0;
-            if (isset($_GET['id']) && !empty($_GET['id'])) {
-              $id = $_GET['id'];
-              $sql = "SELECT * FROM tbl_social WHERE s_id = '$id'";
-              $query = mysqli_query($connection, $sql);
-          }
             foreach ($query as $data) : ?>
               <tr>
                 <td><?= ++$i ?></td>

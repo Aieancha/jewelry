@@ -1,28 +1,46 @@
-<?php
-if(isset($_POST) && !empty($_POST)){
-    $name = $_POST['m_name'];
-    $pass = $_POST['m_pass'];
-    $sql = "SELECT * FROM tbl_member WHERE m_name = '$name' AND m_pass = '$pass' ";
-    $query = mysqli_query($connection,$sql);
-    $row = mysqli_num_rows($query);
-    if($row > 0){
-        $result = mysqli_fetch_assoc($query);
-        $_SESSION['admin_login'] = $result['m_name'];
-        $alert = '<script type= "text/javascript">';
+<?php 
+if(isset($_REQUEST['m_name'])){
+$name = $_REQUEST['m_name'];
+ $pass = $_REQUEST['m_pass'];
+ $sql="SELECT * FROM tbl_member Where m_name='".$name."' and m_pass='".$pass."' ";
+ $query = mysqli_query($connection,$sql);
+ if(mysqli_num_rows($query)==1){
+ 
+  $row = mysqli_fetch_array($query);
+
+  $_SESSION["userID"] = $row["m_id"];//ประกาศตัวแปรUserIDไว้เพื่อส่งค่า
+  $_SESSION["user"] = $row["m_name"];//ประกาศตัวแปรUserไว้เพื่อส่งค่า
+  $_SESSION["userlevel"] = $row["status"];//ประกาศตัวแปรUserlevelไว้เพื่อส่งค่า
+
+  if($_SESSION["userlevel"]=="admin"){ //ถ้าเป็น admin ให้กระโดดไปหน้า admin_page.php
+    $alert = '<script type= "text/javascript">';
         $alert .= 'alert("เข้าสู่ระบบสำเร็จ");';
         $alert .= 'window.location.href = "";';
         $alert .= '</script>';
         echo $alert;
         exit();
-    }else{
-            $alert = '<script type= "text/javascript">';
-            $alert .= 'alert("ชื่อผู้ใช้ หรือ รหัสผ่านไม่ถูกต้อง");';
-            $alert .= 'window.location.href = "";';
-            $alert .= '</script>';
-            echo $alert;
-            exit();
-    }
+
+  }
+
+  if ($_SESSION["userlevel"]=="staff"){  //ถ้าเป็น member ให้กระโดดไปหน้า user_page.php
+    $alert = '<script type= "text/javascript">';
+        $alert .= 'alert("เข้าสู่ระบบสำเร็จ");';
+        $alert .= 'window.location.href = "";';
+        $alert .= '</script>';
+        echo $alert;
+        exit();
+
+  }
+
+}else{
+echo "<script>";
+    echo "alert(\" user หรือ  password ไม่ถูกต้อง\");"; 
+    echo "window.history.back()";
+echo "</script>";
+
 }
+}
+ 
 ?>
 <script type="text/javascript"></script>
 <div class="container-fluid py-4">

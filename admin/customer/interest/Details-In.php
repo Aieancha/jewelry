@@ -57,8 +57,7 @@
                                 </div>
                                 <div class=" mb-3 col-10 ">
                                     <h6 style="display: inline;">หลักฐานการชำระค่างวด :</h6>
-                                    <img src="upload/interest/<?= $result['in_img'] ?>" alt="IDcard" width="304" height="228">
-
+                                    <img src="../images/interest/<?= $result['in_img'] ?>" alt="IDcard" width="304" height="228">
                                 </div>
                             </div>
                             <div class="justify-content-end flex-fill m-3">

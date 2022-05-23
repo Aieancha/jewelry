@@ -1,3 +1,4 @@
+<?php include('include/head.php') ?>
 <?php
 if (isset($_REQUEST['c_email'])) {
     //รับค่า user & password
@@ -29,7 +30,7 @@ if (isset($_REQUEST['c_email'])) {
 
             $alert = '<script type= "text/javascript">';
             $alert .= 'alert("รอการยืนยันจากพนักงาน");';
-            $alert .= 'window.location.href = "../customer/";';
+            $alert .= 'window.location.href = "../customer/login_not.php";';
             $alert .= '</script>';
             echo $alert;
             exit();

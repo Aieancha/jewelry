@@ -2,17 +2,40 @@
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
     $sql = "SELECT * FROM tbl_interest INNER JOIN tbl_social ON tbl_social.s_id = tbl_interest.ref_id
-            INNER JOIN tbl_bill ON tbl_social.s_id = tbl_bill.s_id 
-            WHERE tbl_interest.in_id ='$id'";
+                            INNER JOIN tbl_bill ON tbl_interest.ref_id = tbl_bill.s_id 
+                            WHERE tbl_social.s_id ='$id'";
     $query = mysqli_query($connection, $sql);
     $result = mysqli_fetch_assoc($query);
     $Num_Rows = mysqli_num_rows($query);
     //echo $Num_Rows;
 }
 ?>
+<?php
+if (isset($_POST) && !empty($_POST)) {
+    $status = $_POST['s_role'];
+
+    $sql = "UPDATE tbl_social SET s_role ='$status' where s_id ='$id'";
+
+    if (mysqli_query($connection, $sql)) {
+        $alert = '<script type="text/javascript">';
+        $alert .= 'alert("เปลี่ยนสถานะสำเร็จ");';
+        $alert .= 'window.location.href = "?page=interest";';
+        $alert .= '</script>';
+        echo $alert;
+        exit();
+    } else {
+        echo "Error: " . $sql . "<br>"  . mysqli_error($connection);
+    }
+
+    mysqli_close($connection);
+}
+
+//print_r($_POST);
+?>
 
 <div class="row justify-content-between">
     <div class="d-flex justify-content-end">
+
         <div class="d-flex justify-content-end mb-2 ">
             <form class="example " action="/action_page.php" style="margin: 7px;;max-width:200px">
                 <input type="text" placeholder="ชื่อผู้ใช้งาน.." name="search2 ">
@@ -26,7 +49,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
             <h5 class="font-weight-bolder text-dark text-gradient m-3">ข้อมูลการชำระดอกเบี้ย</h5>
 
             <!-- end title -->
-            <div class="card-body overflow-auto p-3 m-4" >
+            <div class="card-body overflow-auto p-3" style="text-align: center">
                 <div class="d-flex flex-row">
                     <div class="justify-content-start flex-fill ">
                         <div class=" mb-3 ">
@@ -42,17 +65,16 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                     </div>
                     <div class="d-flex flex-row m-4">
                         <div class="justify-content-start flex-fill ">
+                            <label class="text-danger">สถานะสัญญา </label><label>ปกติ</label>
                         </div>
-                        <h6 style="display: inline;" class="text-danger">สถานะสัญญา </h6><h6 style="display: inline;">ปกติ</h6>
-                            <div >
-                                <select name="s_role" require class="btn btn-sm ">
+                        <div type="">
+                            <select name="s_role" require class="btn btn-sm ">
                                 <option value="" selected="selected">เปลี่ยนสถานะ</option>
                                 <option value="4">ปิดสัญญา</option>
                                 <option value="4">ผิดสัญญา</option>
                                 <option value="5">ไถ่ถอนก่อนกำหนด</option>
                             </select>
-              <a class="btn btn-sm btn-green3 text-white">ยืนยันการเปลี่ยนสถานะ</a>
-
+                            <a class="btn btn-sm btn-green3 text-white">ยืนยันการเปลี่ยนสถานะ</a>
                         </div>
                     </div>
                 </div>

@@ -64,7 +64,7 @@
 							<div class="email mb-3">
 							<label style="display: inline;">รหัสผ่าน </label><label style="display: inline;" class ="text-danger"> *</label>
 								<label class="sr-only" for="signup-email">รหัสผ่าน</label>
-								<input id="signup-password" name="c_pass" type="password" class="form-control signup-password" placeholder="สร้างรหัสผ่าน " required="required">
+								<input id="signup-password" name="c_pass" type="password" class="form-control signup-password" pattern="(?=.*\d).{8,}" placeholder="สร้างรหัสผ่านอย่างน้อย 8 ตัว " required="required">
 							</div>
 							<div class="d-flex flex-row ">
 							<div class="justify-content-start flex-fill ">

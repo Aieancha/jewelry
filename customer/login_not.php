@@ -105,7 +105,7 @@ if (isset($_REQUEST['c_email'])) {
                             </div>
                             <!--//form-group-->
                             <div class="text-center">
-                                <button type="submit" name="submit" value="submit" class="btn app-btn-primary w-100 theme-btn mx-auto">กลับหน้าหลัก</button>
+                                <a href="../customer/login.php" class="btn app-btn-primary w-100 theme-btn mx-auto">กลับหน้าหลัก</a>
                             </div>
                         </form>
 

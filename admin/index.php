@@ -5,7 +5,7 @@
 <?php include('include/head.php'); ?>
 <?php include('include/script.php') ?>
 
-<?php if (isset($_SESSION['admin_login']) && !empty($_SESSION['admin_login'])) : ?>
+<?php if (isset($_SESSION['userID']) && !empty($_SESSION['userID'])) : ?>
   <?php include('include/sidebar.php') ?>
 
   <body class="g-sidenav-show  bg-gray-100">
@@ -22,7 +22,9 @@
             include('customer/interest/Details-In.php');
           }elseif (isset($_GET['function']) && $_GET['function'] == 'details') {
             include('customer/pledge/details.php');
-        }else {
+        }elseif (isset($_GET['function']) && $_GET['function'] == 'report') {
+          include('dashboard/report.php');
+      }else {
             include('dashboard/index.php');
           }
           
@@ -67,7 +69,15 @@
             include('customer/pledge/calculate.php');
           }elseif (isset($_GET['function']) && $_GET['function'] == 'details') {
             include('customer/pledge/details.php');
-        } else {
+          }elseif (isset($_GET['function']) && $_GET['function'] == 'wait') {
+            include('customer/pledge/wait.php');
+          }elseif (isset($_GET['function']) && $_GET['function'] == 'contractSuccess') {
+            include('customer/pledge/contractSuccess.php');
+          }elseif (isset($_GET['function']) && $_GET['function'] == 'CreateContract') {
+            include('customer/pledge/CreateContract.php');
+          }elseif (isset($_GET['function']) && $_GET['function'] == 'CustomerCreate') {
+            include('customer/pledge/CustomerCreate.php');
+          }else {
             include('customer/pledge/index.php');
           }
         } elseif (isset($_GET['page']) && $_GET['page'] == 'profile') {

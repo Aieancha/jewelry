@@ -19,6 +19,8 @@ $nextId = $code . $yearMonth . $maxId;
 //echo $nextId;
 ?>
 
+
+
 <body class="g-sidenav-show bg-gray-100">
   <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
     <div class="container-fluid">
@@ -43,6 +45,7 @@ $nextId = $code . $yearMonth . $maxId;
               //$nextId = $_POST['ref_img'];
               $detail = $_POST['o_detail'];
               $price = $_POST['o_price'];
+              $status = $_SESSION["userlevel"];
 
               if (isset($_FILES['img3']['name']) && !empty($_FILES['img3']['name'])) {
                 $extension = array("jpeg", "jpg", "png");
@@ -182,8 +185,8 @@ $nextId = $code . $yearMonth . $maxId;
               if ($result) {
                 //insert id of users table
                 $s_id = $connection->insert_id;
-                $sqli = "INSERT INTO tbl_orders ( o_type, o_price, img3, img1, img2, o_detail,o_code,s_id)
-VALUES ( '$type', '$price','$filename3', '$filename1', '$filename2','$detail','$nextId','$s_id')";
+                $sqli = "INSERT INTO tbl_orders ( o_type, o_price, img3, img1, img2, o_detail,o_code,s_id,lavel)
+VALUES ( '$type', '$price','$filename3', '$filename1', '$filename2','$detail','$nextId','$s_id','$status')";
               }
               if ( mysqli_query($connection, $sqli)) {
                 //echo "เพิ่มข้อมูลสำเร็จ";
@@ -237,7 +240,7 @@ VALUES ( '$type', '$price','$filename3', '$filename1', '$filename2','$detail','$
                     </div>
                   </div>
                   <div class="mb-5 col-6 ">
-                    <h6 style="display: inline;">ชื่อผู้ใช้เฟสบุ้ค</h6>
+                    <h6 style="display: inline;">ชื่อผู้ใช้เฟซบุ๊ก</h6>
                     <!-- <h6 class="form-label text-danger" style="display: inline;">*</h6> -->
                     <input type="text" class="form-control " name="c_line" placeholder="กรอกชื่อผู้ใช้เฟสบุ้ค" autocomplete="off">
                   </div>

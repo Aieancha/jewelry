@@ -125,6 +125,15 @@
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 </style>
+<?php
+//print_r($_POST);
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM tbl_orders INNER JOIN tbl_social ON tbl_social.s_id=tbl_orders.s_id  WHERE o_id = '$id'";
+    $query = mysqli_query($connection, $sql);
+    $result = mysqli_fetch_assoc($query);
+}
+?>
 
 <body class="g-sidenav-show bg-gray-100">
     <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
@@ -135,50 +144,37 @@
             <!-- end title -->
             <div class="card mb-3">
                 <div class="card-body">
+                    <div class="flex-fill d-flex justify-content-end gap-1">
+                        <h6 class="font-weight-bolder text-dark text-gradient ">บันทึกข้อมูลโดย : <?= $result['lavel'].': ' ?></h6>
+                    </div>
                     <div class="col-5">
                         <div class="col-auto mb-3">
                             <h3 class="font-weight-bolder text-dark text-gradient ">รายละเอียดข้อมูลลูกค้า</h3>
                         </div>
-                        <?php
-                        if (isset($_GET['id']) && !empty($_GET['id'])) {
-                            $id = $_GET['id'];
-                            $sql = "SELECT * FROM tbl_social WHERE s_id = '$id'";
-                            $query = mysqli_query($connection, $sql);
-                            $result = mysqli_fetch_assoc($query);
-                        }
-                        //print_r($_POST);
-                        if (isset($_GET['id']) && !empty($_GET['id'])) {
-                            $id = $_GET['id'];
-                            $sql = "SELECT * FROM tbl_orders WHERE o_id = '$id'";
-                            $query = mysqli_query($connection, $sql);
-                            $rs = mysqli_fetch_assoc($query);
-                        }
-                        ?>
+                    </div>
+                    <script type="text/javascript"></script>
+                    <form action="" method="post" enctype="multipart/form-data">
 
-</div>
-                        <script type="text/javascript"></script>
-                        <form action="" method="post" enctype="multipart/form-data">
-                    
-                    <div class="d-flex flex-row">
-                        <div class="justify-content-start flex-fill ">
-                            <div class=" mb-3 ">
-                                <h4 style="display: inline;">ข้อมูลลูกค้า</h4>
-                            </div>
-                            <div class=" mb-3 ">
-                                <h6 style="display: inline;">เลขที่ราชการออกให้ :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['code_id'] ?></td>
-                            </div>
-                            <div class=" mb-3 ">
-                                <h6 style="display: inline;">ชื่อผู้จำนำ :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['s_name'] ?></td>
-                                <h6 style="display: inline;">นามสกุล :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['s_lastname'] ?></td>
-                            </div>
-                            <div class=" mb-3 ">
-                                <h6 style="display: inline;">ที่อยู่ปัจจุบัน :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['c_address'] ?></td>
-                            </div>
-                            <!-- <div class=" mb-3 col-6 ">
+                        <div class="d-flex flex-row">
+                            <div class="justify-content-start flex-fill ">
+                                <div class=" mb-3 ">
+                                    <h4 style="display: inline;">ข้อมูลลูกค้า</h4>
+                                </div>
+                                <div class=" mb-3 ">
+                                    <h6 style="display: inline;">เลขที่ราชการออกให้ :</h6>
+                                    <td width="25%" style="display: inline;"><?= $result['code_id'] ?></td>
+                                </div>
+                                <div class=" mb-3 ">
+                                    <h6 style="display: inline;">ชื่อผู้จำนำ :</h6>
+                                    <td width="25%" style="display: inline;"><?= $result['s_name'] ?></td>
+                                    <h6 style="display: inline;">นามสกุล :</h6>
+                                    <td width="25%" style="display: inline;"><?= $result['s_lastname'] ?></td>
+                                </div>
+                                <div class=" mb-3 ">
+                                    <h6 style="display: inline;">ที่อยู่ปัจจุบัน :</h6>
+                                    <td width="25%" style="display: inline;"><?= $result['c_address'] ?></td>
+                                </div>
+                                <!-- <div class=" mb-3 col-6 ">
                                 <h6 style="display: inline;">ช่องทางการติดต่อ :</h6>
                                 <td width="25%" style="display: inline;"><?= $result['social_contact'] ?></td>
                             </div>
@@ -186,82 +182,82 @@
                                 <h6 style="display: inline;">ชื่อผู้ใช้ :</h6>
                                 <td width="25%" style="display: inline;"><?= $result['social_name'] ?></td>
                             </div> -->
-                            <div class=" mb-3 col-10 ">
-                                <h6 style="display: inline;">หลักฐานการยืนยันตัวตน</h6>
-                                <div>
-                                    <img src="../images/customer/<?= $result['c_img'] ?>" style="width:50%; height:auto;" alt="IDcard" width="304" height="228">
-                                </div>
-                            </div>
-                            <div class=" mb-3 ">
-                                <h4 style="display: inline;">ข้อมูลเครื่องประดับ</h4>
-                            </div>
-                            <div class=" mb-3 ">
-                                <h6 style="display: inline;">รหัสสินค้า:</h6>
-                                <td width="25%" style="display: inline;"><?= $rs['o_code'] ?></td>
-                            </div>
-                            <div class=" mb-3">
-                                <h6 style="display: inline;">รายละเอียดสินค้า:</h6>
-                                <td width="25%" style="display: inline;"><?= $rs['o_type'] ?></td>
-                            </div>
-
-                            <div id="myModal" class="modal">
-                                <span class="close cursor" onclick="closeModal()">&times;</span>
-                                <div class="modal-content">
-
-                                    <div class="mySlides">
-                                        <div class="numbertext">1 / 3</div>
-                                        <img src="../images/social/<?= $rs['img3'] ?>" style="width:100%; height:auto">
-                                    </div>
-
-                                    <div class="mySlides">
-                                        <div class="numbertext">2 / 3</div>
-                                        <img src="../images/social/<?= $result['img1'] ?>" style="width:100% height:auto">
-                                    </div>
-
-                                    <div class="mySlides">
-                                        <div class="numbertext">3 / 3</div>
-                                        <img src="../images/social/<?= $result['img2'] ?>" style="width:100% height:auto">
+                                <div class=" mb-3 col-10 ">
+                                    <h6 style="display: inline;">หลักฐานการยืนยันตัวตน</h6>
+                                    <div>
+                                        <img src="../images/customer/<?= $result['c_img'] ?>" style="width:50%; height:auto;" alt="IDcard" width="304" height="228">
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="justify-content-start flex-fill ">
-                            <div class=" mb-4 ">
-                                <h4 style="display: inline;">ข้อมูลการจำนำ</h4>
-                            </div>
-                            <div class=" mb-4 col-10 ">
-                                <h6 style="display: inline;">ราคาประเมินข้างต้น :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['price_img'] ?> บาท</td>
-                            </div>
-                            <div class=" mb-3 col-10 ">
-                                <h6 style="display: inline;">ราคาประเมินจากสินค้าจริง :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['price_item'] ?> บาท</td>
-                            </div>
-                            <div class=" mb-3 col-10 ">
-                                <h6 style="display: inline;">ราคาที่ตกลงจำนำ :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['principle'] ?> บาท</td>
-                            </div>
-                            <div class=" mb-3 ">
-                                <h6 style="display: inline;">จำนวนงวด :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['r_mount'] ?> เดือน</td>
-                            </div>
-                            <div class=" mb-3 ">
-                                <h6 style="display: inline;">ดอกเบี้ย :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['principle'] * 0.02 * $result['r_mount'] ?> บาท</td>
-                            </div>
-                            <div class=" mb-3 ">
-                                <h6 style="display: inline;">เงินที่ต้องจ่ายต่องวด :</h6>
-                                <td width="25%" style="display: inline;"><?= ($result['principle'] * 0.02) ?> บาท</td>
-                            </div>
+                                <div class=" mb-3 ">
+                                    <h4 style="display: inline;">ข้อมูลเครื่องประดับ</h4>
+                                </div>
+                                <div class=" mb-3 ">
+                                    <h6 style="display: inline;">รหัสสินค้า:</h6>
+                                    <td width="25%" style="display: inline;"><?= $result['o_code'] ?></td>
+                                </div>
+                                <div class=" mb-3">
+                                    <h6 style="display: inline;">รายละเอียดสินค้า:</h6>
+                                    <td width="25%" style="display: inline;"><?= $result['o_type'] ?></td>
+                                </div>
 
+                                <div id="myModal" class="modal">
+                                    <span class="close cursor" onclick="closeModal()">&times;</span>
+                                    <div class="modal-content">
+
+                                        <div class="mySlides">
+                                            <div class="numbertext">1 / 3</div>
+                                            <img src="../images/social/<?= $result['img3'] ?>" style="width:100%; height:auto">
+                                        </div>
+
+                                        <div class="mySlides">
+                                            <div class="numbertext">2 / 3</div>
+                                            <img src="../images/social/<?= $result['img1'] ?>" style="width:100% height:auto">
+                                        </div>
+
+                                        <div class="mySlides">
+                                            <div class="numbertext">3 / 3</div>
+                                            <img src="../images/social/<?= $result['img2'] ?>" style="width:100% height:auto">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="justify-content-start flex-fill ">
+                                <div class=" mb-4 ">
+                                    <h4 style="display: inline;">ข้อมูลการจำนำ</h4>
+                                </div>
+                                <div class=" mb-4 col-10 ">
+                                    <h6 style="display: inline;">ราคาประเมินข้างต้น :</h6>
+                                    <td width="25%" style="display: inline;"><?= $result['price_img'] ?> บาท</td>
+                                </div>
+                                <div class=" mb-3 col-10 ">
+                                    <h6 style="display: inline;">ราคาประเมินจากสินค้าจริง :</h6>
+                                    <td width="25%" style="display: inline;"><?= $result['price_item'] ?> บาท</td>
+                                </div>
+                                <div class=" mb-3 col-10 ">
+                                    <h6 style="display: inline;">ราคาที่ตกลงจำนำ :</h6>
+                                    <td width="25%" style="display: inline;"><?= $result['principle'] ?> บาท</td>
+                                </div>
+                                <div class=" mb-3 ">
+                                    <h6 style="display: inline;">จำนวนงวด :</h6>
+                                    <td width="25%" style="display: inline;"><?= $result['r_mount'] ?> เดือน</td>
+                                </div>
+                                <div class=" mb-3 ">
+                                    <h6 style="display: inline;">ดอกเบี้ย :</h6>
+                                    <td width="25%" style="display: inline;"><?= $result['principle'] * 0.02 * $result['r_mount'] ?> บาท</td>
+                                </div>
+                                <div class=" mb-3 ">
+                                    <h6 style="display: inline;">เงินที่ต้องจ่ายต่องวด :</h6>
+                                    <td width="25%" style="display: inline;"><?= ($result['principle'] * 0.02) ?> บาท</td>
+                                </div>
+
+                            </div>
                         </div>
-                    </div>
-                    <div class=" mb-4 col-10 ">
-                        <h6>ภาพถ่ายสินค้าจริง</h6>
-                        <img src="../images/social/<?= $rs['img3'] ?>" alt="jewelry" style="width:20%; height:auto;" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
-                        <img src="../images/social/<?= $rs['img1'] ?>" alt="jewelry" style="width:20%; height:auto;" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
-                        <img src="../images/social/<?= $rs['img2'] ?>" alt="jewelry" style="width:20%; height:auto;" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
-                    </div>
+                        <div class=" mb-4 col-10 ">
+                            <h6>ภาพถ่ายสินค้าจริง</h6>
+                            <img src="../images/social/<?= $result['img3'] ?>" alt="jewelry" style="width:20%; height:auto;" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+                            <img src="../images/social/<?= $result['img1'] ?>" alt="jewelry" style="width:20%; height:auto;" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+                            <img src="../images/social/<?= $result['img2'] ?>" alt="jewelry" style="width:20%; height:auto;" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
+                        </div>
                 </div>
             </div>
 
@@ -270,8 +266,6 @@
                     <?php
                     echo "<a href='javascript:window.history.back()' class='btn bg-gradient-dark'>ย้อนกลับ</a>";
                     ?>
-                </div>
-                <div class="flex-fill d-flex justify-content-end gap-1">
                 </div>
                 </form>
             </div>

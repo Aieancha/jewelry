@@ -18,24 +18,14 @@
             <?php
             if (isset($_GET['id']) && !empty($_GET['id'])) {
               $id = $_GET['id'];
-              $sql = "SELECT * FROM tbl_orders WHERE o_id = '$id'";
+              $sql = "SELECT * FROM tbl_orders INNER JOIN tbl_social ON tbl_orders.s_id=tbl_social.s_id WHERE o_id = '$id'";
               $query = mysqli_query($connection, $sql);
               $rs = mysqli_fetch_assoc($query);
-          }
-            if (isset($_GET['id']) && !empty($_GET['id'])) {
-              $id = $_GET['id'];
-              $sql = "SELECT * FROM tbl_social WHERE s_id = '$id'";
-              $query = mysqli_query($connection, $sql);
-              $result = mysqli_fetch_assoc($query);
-              $role = $result['s_role'] = 1;
             }
             if (isset($_POST) && !empty($_POST)) {
-              $social_name = $_POST['social_name'];
-              $social_contact = $_POST['social_contact'];
               $price_img = $_POST['price_img'];
-              $s_type = $_POST['s_type'];
               $s_name = $_POST['s_name'];
-              //$s_role = $_POST['s_role'];
+              $o_price = $_POST['o_price'];
               $s_lastname = $_POST['s_lastname'];
               $code = $_POST['code_id'];
               $age = $_POST['c_age'];
@@ -93,12 +83,31 @@
               }
               //echo $filename;
               //exit();
-              $sql = "UPDATE tbl_social 
-          SET social_name='$social_name', social_contact='$social_contact', price_img='$price_img', s_name='$s_name', s_lastname='$s_lastname', s_role='$role'
+              /* $sql = "UPDATE tbl_social 
+          SET  price_img='$price_img', s_name='$s_name', s_lastname='$s_lastname'
           , code_id='$code', c_age='$age', c_address='$address', phone='$phone', principle='$principle', price_item='$price_item', c_email='$email', c_img='$filename', c_date='$c_date'
           , r_mount='$mount', rate_name='$rate_name'
           WHERE s_id ='$id'";
-
+          mysqli_query($connection, "UPDATE tbl_orders SET o_role = 1,o_price='$o_price' WHERE tbl_orders.s_id='$id'"); */
+              $sql = "UPDATE tbl_social t1 
+          JOIN tbl_orders t2 ON (t1.s_id = t2.s_id) 
+          SET t1.price_img='$price_img', 
+              t1.s_name='$s_name',
+              t1.s_lastname='$s_lastname',
+               t1.s_lastname='$s_lastname',
+               t1.code_id='$code',
+               t1.c_address='$address',
+               t1.phone='$phone',
+               t1.principle='$principle',
+               t1.price_item='$price_item', 
+               t1.c_email='$email', 
+               t1.c_img='$filename', 
+               t1.c_date='$c_date',
+               t1.r_mount='$mount', 
+               t1.rate_name='$rate_name',
+          t2.o_role = 1,
+          t2.o_price='$o_price'
+          WHERE t2.o_id = '$id'";
 
               if (mysqli_query($connection, $sql)) {
                 //echo "เพิ่มข้อมูลสำเร็จ";
@@ -140,44 +149,45 @@
             <div class="justify-content-start flex-fill ">
               <div class=" mb-3 col-6 ">
                 <h5 style="display: inline;">ช่องทางการติดต่อ </h5>
-            </div>
-                <div class=" mb-3 col-6 ">
-                  <h6 style="display: inline;">Facebook : <?php echo $result['c_facebook'] ?></h6>
-                </div>
-                <div class=" mb-5 col-6 ">
-                <h6 style="display: inline;">LINE: <?php echo $result['c_line'] ?></h6>
-                </div>
-                <div class=" mb-3 col-6 ">
+              </div>
+              <div class=" mb-3 col-6 ">
+                <h6 style="display: inline;">Facebook : <?php echo $rs['c_facebook'] ?></h6>
+              </div>
+              <div class=" mb-5 col-6 ">
+                <h6 style="display: inline;">LINE: <?php echo $rs['c_line'] ?></h6>
+              </div>
+              <div class=" mb-3 col-6 ">
                 <h5 style="display: inline;">การประเมินราคา </h5>
-            </div>
-            <div class=" mb-4 col-6 ">
-                        <h6>ภาพถ่ายสินค้าจริง</h6>
-                        <img src="../images/social/<?= $rs['img3'] ?>" alt="jewelry" style="width:30%; height:auto;" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
-                        <img src="../images/social/<?= $rs['img1'] ?>" alt="jewelry" style="width:30%; height:auto;" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
-                        <img src="../images/social/<?= $rs['img2'] ?>" alt="jewelry" style="width:30%; height:auto;" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
-                    </div>
-            <div class=" mb-3 col-6 ">
+              </div>
+              <div class=" mb-4 col-6 ">
+                <h6>ภาพถ่ายสินค้าจริง</h6>
+                <img src="../images/social/<?= $rs['img3'] ?>" alt="jewelry" style="width:30%; height:auto;" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
+                <img src="../images/social/<?= $rs['img1'] ?>" alt="jewelry" style="width:30%; height:auto;" onclick="openModal();currentSlide(2)" class="hover-shadow cursor">
+                <img src="../images/social/<?= $rs['img2'] ?>" alt="jewelry" style="width:30%; height:auto;" onclick="openModal();currentSlide(3)" class="hover-shadow cursor">
+              </div>
+              <div class=" mb-3 col-6 ">
                 <h6 style="display: inline;">ราคาที่ลูกค้าต้องการจำนำ </h6>
-                <input type="number" min="0" name="price_img" class="form-control1 " value="<?= $result['o_price'] ?>" placeholder="" autocomplete="off">
+                <input type="number" min="0" name="o_price" class="form-control1 " value="<?= $rs['o_price'] ?>" placeholder="" autocomplete="off">
               </div>
               <div class=" mb-3 col-6 ">
                 <h6 style="display: inline;">ราคาประเมินข้างต้น </h6>
-                <input type="number" min="0" name="price_img" class="form-control1 " value="<?= $result['price_img'] ?>" placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
+                <input type="number" min="0" name="price_img" class="form-control1 " value="<?= $rs['price_img'] ?>" placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
               </div>
               <div class="mb-3 col-6 ">
                 <h6>ราคาประเมินจากสินค้าจริง</h6>
-                <input type="number" min="0" name="price_item" value="<?= $result['price_item'] ?>" class="form-control1 " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
+                <input type="number" min="0" name="price_item" value="<?= $rs['price_item'] ?>" class="form-control1 " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
               </div>
               <div class="mb-3 col-6 ">
                 <h6>ราคาที่ตกลงจำนำ</h6>
-                <input type="number" min="0" name="principle" value="<?= $result['principle'] ?>" class="form-control1 " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
+                <input type="number" min="0" name="principle" value="<?= $rs['principle'] ?>" class="form-control1 " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
               </div>
               <div class="mb-4 col-6">
-                <h6 class="" style="display: inline;">จำนวนงวดที่จำนำ</h6><h6 style="display: inline;">(หน่วยเป็นงวด)</h6>
+                <h6 class="" style="display: inline;">จำนวนงวดที่จำนำ</h6>
+                <h6 style="display: inline;">(หน่วยเป็นงวด)</h6>
                 <!-- <h5 class="form-label text-danger" style="display: inline;">*</h5> -->
                 <div class="col-3">
-                <input type="number" class="form-control "  name="r_mount" value="<?= $result['r_mount'] ?>"  max="24" placeholder="สูงสุด 24 งวด" autocomplete="off">
-              </div>
+                  <input type="number" class="form-control " name="r_mount" value="<?= $rs['r_mount'] ?>" max="24" placeholder="สูงสุด 24 งวด" autocomplete="off">
+                </div>
               </div>
               <h6 class="" style="display: inline;">รูปแบบการชำระดอกเบี้ย</h6>
               <!-- <h5 class="form-label text-danger" style="display: inline;">*</h5> -->
@@ -192,8 +202,8 @@
               <div class="mb-4 col-3 ">
                 <h6>ภาพยืนยันตัวตน</h6>
                 <!-- <h5 class="form-label text-danger" style="display: inline;">*</h5> -->
-                
-                <img src="../images/customer/<?= $result['c_img'] ?>"  alt="jewelry" width="300" height="200" >
+
+                <img src="../images/customer/<?= $rs['c_img'] ?>" alt="jewelry" width="300" height="200">
               </div>
               <div class="mb-4 col-3 ">
                 <input type="file" id="myFile" name="c_img" accept="image/png, image/jpeg, image/jpg" multiple>
@@ -204,53 +214,56 @@
               <div class=" mb-4 col-6 ">
                 <h6 style="display: inline;">เลขสำคัญที่ราชการออกให้</h6>
                 <h6 class="form-label text-danger" style="display: inline;">*</h6>
-                <input type="text" class="form-control " name="code_id" value="<?= $result['code_id'] ?>" placeholder="กรอกเลขสำคัญที่ราชการออกให้ลูกค้า" autocomplete="off" required>
+                <input type="text" class="form-control " name="code_id" value="<?= $rs['code_id'] ?>" placeholder="กรอกเลขสำคัญที่ราชการออกให้ลูกค้า" autocomplete="off" required>
               </div>
               <div class=" mb-4 col-6 ">
                 <h6 style="display: inline;">ชื่อ</h6>
                 <h6 class="form-label text-danger" style="display: inline;">*</h6>
-                <input type="text" class="form-control " name="s_name" value="<?= $result['s_name'] ?>" placeholder="กรอกชื่อจริงลูกค้า" autocomplete="off" required>
+                <input type="text" class="form-control " name="s_name" value="<?= $rs['s_name'] ?>" placeholder="กรอกชื่อจริงลูกค้า" autocomplete="off" required>
               </div>
               <div class=" mb-4 col-6 ">
                 <h6 style="display: inline;">นามสกุล</h6>
                 <h6 class="form-label text-danger" style="display: inline;">*</h6>
-                <input type="text" class="form-control " name="s_lastname" value="<?= $result['s_lastname'] ?>" placeholder="กรอกนามสกุลลูกค้า" autocomplete="off" required>
+                <input type="text" class="form-control " name="s_lastname" value="<?= $rs['s_lastname'] ?>" placeholder="กรอกนามสกุลลูกค้า" autocomplete="off" required>
               </div>
               <div class=" mb-4 col-6 ">
                 <h6 style="display: inline;">อายุ</h6>
                 <h6 class="form-label text-danger" style="display: inline;">*</h6>
-                <input type="text" class="form-control1 " name="c_age" value="<?= $result['c_age'] ?>" placeholder="กรอกอายุ (ปี)" autocomplete="off" required>
+                <input type="text" class="form-control1 " name="c_age" value="<?= $rs['c_age'] ?>" placeholder="กรอกอายุ (ปี)" autocomplete="off" required>
               </div>
               <div class=" mb-4 col-10 ">
                 <h6 style="display: inline;">ที่อยู่</h6>
                 <h6 class="form-label text-danger" style="display: inline;">*</h6>
-                <input type="text" class="form-control3 " name="c_address" value="<?= $result['c_address'] ?>" placeholder="กรอกที่อยู่ปัจจุบันลูกค้า" autocomplete="off" required>
+                <input type="text" class="form-control3 " name="c_address" value="<?= $rs['c_address'] ?>" placeholder="กรอกที่อยู่ปัจจุบันลูกค้า" autocomplete="off" required>
               </div>
               <div class=" mb-4 col-6 ">
                 <h6 style="display: inline;">เบอร์โทร</h6>
                 <h6 class="form-label text-danger" style="display: inline;">*</h6>
-                <input type="number" class="form-control2 " name="phone" value="<?= $result['phone'] ?>" pattern="^[0-9\s]+$" minlength="10" placeholder="กรอกเบอร์โทรศัพท์" autocomplete="off" required>
+                <input type="number" class="form-control2 " name="phone" value="<?= $rs['phone'] ?>" pattern="^[0-9\s]+$" minlength="10" placeholder="กรอกเบอร์โทรศัพท์" autocomplete="off" required>
               </div>
               <div class=" mb-4 col-6 ">
                 <h6 style="display: inline;">อีเมล</h6>
                 <h6 class="form-label text-danger" style="display: inline;">*</h6>
-                <input type="email" class="form-control " name="c_email" value="<?= $result['c_email'] ?>" placeholder="example@gmail.com" autocomplete="off" required>
+                <input type="email" class="form-control " name="c_email" value="<?= $rs['c_email'] ?>" placeholder="example@gmail.com" autocomplete="off" required>
               </div>
               <div class=" mb-4 col-6 ">
                 <h6 style="display: inline;">วันที่ชำระงวดแรก</h6>
                 <!-- <h6 class="form-label text-danger" style="display: inline;">*</h6> -->
-                <input type="date" class="form-control " name="c_date" value="<?= $result['c_date'] ?>" placeholder="example@gmail.com" autocomplete="off">
+                <input type="date" class="form-control " name="c_date" value="<?= $rs['c_date'] ?>" placeholder="example@gmail.com" autocomplete="off">
               </div>
             </div>
           </div>
 
           <div class="d-flex flex-row">
             <div class="justify-content-start flex-fill ">
+              <?php
+              echo "<a href='javascript:window.history.back()' class='btn bg-gradient-dark'>ย้อนกลับ</a>";
+              ?>
 
             </div>
             <div class="flex-fill d-flex justify-content-end gap-1">
               <button type="submit" class="btn btn-blue2 text-white pull-right ">บันทึก</button>
-              <a href="?page=<?= $_GET['page'] ?>&function=contract&id=<?= $result['s_id'] ?>" class="btn btn-color1 btn-green3 text-white theme-btn  pull-right">ดำเนินการต่อ</a>
+              <a href="?page=<?= $_GET['page'] ?>&function=contract&id=<?= $rs['s_id'] ?>" class="btn btn-color1 btn-green3 text-white theme-btn  pull-right">ดำเนินการต่อ</a>
 
             </div>
             </form>
@@ -387,7 +400,8 @@
     border-radius: 0.5rem;
     transition: box-shadow 0.15s ease, border-color 0.15s ease;
   }
+
   .flex-fill {
     flex: 1 !important;
-}
+  }
 </style>

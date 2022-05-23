@@ -30,7 +30,7 @@ $result = mysqli_fetch_assoc($query);
 							<div class="app-card-thumb-holder p-3">
 								<div class="app-card-thumb">
 								
-									<img class="thumb-image" src="upload/social/<?= $result['img3'] ?>" alt="jewelry">
+									<img class="thumb-image" src="../images/social/<?= $result['img3'] ?>" alt="jewelry">
 								</div>
 								<span class="badge bg-danger"><?= $result['status_name'] ?></span>
 								<a class="app-card-link-mask" href="#file-link"></a>

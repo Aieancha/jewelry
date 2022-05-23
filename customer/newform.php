@@ -17,6 +17,7 @@ $maxId = substr("00000" . $maxId, -5);
 $nextId = $code . $yearMonth . $maxId;
 /* จบ id สินค้า */
 
+$status = "user"; 
 $id = $_SESSION['s_id']; 
 	$sql = "SELECT * FROM tbl_social WHERE s_id = '$id'"; 
 	$query = mysqli_query($connection, $sql); 
@@ -162,8 +163,8 @@ if (isset($_POST) && !empty($_POST)) {
   //echo $filename;
   //exit();
   //$sql = "UPDATE tbl_order SET o_type ='$type',o_price='$price',img3='$filename3',img1='$filename1',img2='$filename2',0_detail='$detail',o_code='$nextId' WHERE s_id = '$id'";
-  $sql = "INSERT INTO tbl_orders ( o_type, o_price, img3, img1, img2, o_detail,o_code,s_id)
-  VALUES ( '$type', '$price','$filename3', '$filename1', '$filename2','$detail','$nextId','$s_id')";
+  $sql = "INSERT INTO tbl_orders ( o_type, o_price, img3, img1, img2, o_detail,o_code,s_id,lavel)
+  VALUES ( '$type', '$price','$filename3', '$filename1', '$filename2','$detail','$nextId','$s_id','$status')";
 
 
   if (mysqli_query($connection, $sql)) {

@@ -43,7 +43,7 @@ if ($day3['day3'] > 0) {
         <div class="row">
             <div class="card">
                 <!-- title -->
-                <h5 class="font-weight-bolder text-dark text-gradient m-3">ตารางแสดงข้อมูลลูกค้าทั้งหมด</h5>
+                <h5 class="font-weight-bolder text-dark text-gradient m-3">ตารางแสดงข้อมูลลูกค้าที่ชำระแล้ว</h5>
 
                 <!-- end title -->
                 <div class="card-body overflow-auto p-3" style="text-align: center">

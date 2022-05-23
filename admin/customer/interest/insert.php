@@ -67,7 +67,7 @@ $query = mysqli_query($connection, $sql);
                 <td><?= $data['bill_no'] ?></td>
                 <td><?= $data['s_name'] .' '. $data['s_lastname'] ?></td>
                 <td><?= $data['phone'] ?></td>
-                <td><?= $data['principle']*0.02*$data['r_mount'] ?></td>
+                <td><?= $data['principle']*0.02 ?></td>
                 <td class="text-danger">รอยืนยัน</td>
                 <td><a href="?page=<?= $_GET['page'] ?>&function=updateCustomer&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-green3 text-white">ยืนยันข้อมูล</a></td>
               </tr>

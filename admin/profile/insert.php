@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,49 +52,55 @@
         }
         //print_r($_POST);
         ?>
-        <div class ="box ">
-        <script type="text/javascript" ></script>
-        <form  action="" method="post" class="regis">
-        <label class="form-label ">ชื่อ</label><labal class="form-label text-danger">*</labal>
-          <div class="mb-3">
-            <input type="text" class="form-control" name="m_firstname" placeholder="กรอกชื่อจริงผู้ใช้" value="<?= (isset($_POST['m_firstname']) && !empty($_POST['m_firstname']) ? $_POST['m_firstname'] : '') ?>" autocomplete="off" required>
-          </div>
-          <label class="form-label ">นามสกุล</label><labal class="form-label text-danger">*</labal>
-          <div class="mb-3">
-            <input type="text" class="form-control" name="m_lastname" placeholder="กรอกนามสกุลผู้ใช้" autocomplete="off" required>
-          </div>
-          <label class="form-label ">ชื่อผู้ใช้</label><labal class="form-label text-danger">*</labal>
-          <label class="text-danger">กรอกเฉพาะภาษาอังกฤษเท่านั้น</label>
-          <div class="mb-3">
-            <input type="text" class="form-control" name="m_name" placeholder="กรอกชื่อผู้ใช้" autocomplete="off" required>
-            <label class="form-label ">อีเมล</label><labal class="form-label text-danger">*</labal>
-          <div class="mb-3">
-            <input type="email" class="form-control" name="m_email" placeholder="examp@gmail.com" autocomplete="off" required>
-          </div>
-          </div>
-          <label class="form-label ">รหัสผ่าน</label><labal class="form-label text-danger">*</labal>
-          <div class="mb-3">
-            <input type="password" class="form-control" name="m_pass" placeholder="กรอกรหัสผ่าน" require>
-          </div>
-          
-          
-          
-          <label class="form-label ">สถานะ</label><labal class="form-label text-danger">*</labal>
-          <div class="mb-4 ">
-            <select name="status" class="form-control w-40" require>
-              <option value="" selected="selected">- เลือกสถานะ -</option>
-              <option value="admin">ผู้จัดการ</option>
-              <option value="staff">พนักงาน</option>
-            </select>
-          </div>
-          <div class="text-center mb-5">
-            <a href="?page=<?= $_GET['page'] ?>" class="btn btn-dark   mb-0 mt-3 " >ย้อนกลับ</a>
-            <button type="submit" name="save" class="btn btn-green3 text-white mb-0 mt-3">บันทึกข้อมูล</button>
-      </div>   
-         
-        </form>
-         
-      </div>
+        <div class="box ">
+          <script type="text/javascript"></script>
+          <form action="" method="post" class="regis">
+            <label class="form-label ">ชื่อ</label>
+            <labal class="form-label text-danger">*</labal>
+            <div class="mb-3">
+              <input type="text" class="form-control" name="m_firstname" placeholder="กรอกชื่อจริงผู้ใช้" value="<?= (isset($_POST['m_firstname']) && !empty($_POST['m_firstname']) ? $_POST['m_firstname'] : '') ?>" autocomplete="off" required>
+            </div>
+            <label class="form-label ">นามสกุล</label>
+            <labal class="form-label text-danger">*</labal>
+            <div class="mb-3">
+              <input type="text" class="form-control" name="m_lastname" placeholder="กรอกนามสกุลผู้ใช้" autocomplete="off" required>
+            </div>
+            <label class="form-label ">ชื่อผู้ใช้</label>
+            <labal class="form-label text-danger">*</labal>
+            <label class="text-danger">กรอกเฉพาะภาษาอังกฤษเท่านั้น</label>
+            <div class="mb-3">
+              <input type="text" class="form-control" name="m_name" placeholder="กรอกชื่อผู้ใช้" pattern="^[a-zA-Z0-9]+$" autocomplete="off" required>
+              <label class="form-label ">อีเมล</label>
+              <labal class="form-label text-danger">*</labal>
+              <div class="mb-3">
+                <input type="email" class="form-control" name="m_email" placeholder="examp@gmail.com" autocomplete="off" value="<?= (isset($_POST['m_email']) && !empty($_POST['m_email']) ? $_POST['m_email'] : '') ?>" required>
+              </div>
+            </div>
+            <label class="form-label ">รหัสผ่าน</label>
+            <labal class="form-label text-danger">*</labal>
+            <div class="mb-3">
+              <input type="password" class="form-control" name="m_pass" pattern="(?=.*\d).{8,}" placeholder="กรอกรหัสผ่านอย่างน้อย 8 ตัว" require>
+            </div>
+
+
+
+            <label class="form-label ">สถานะ</label>
+            <labal class="form-label text-danger">*</labal>
+            <div class="mb-4 ">
+              <select name="status" class="form-control w-40" require>
+                <option value="" selected="selected" disabled require>- เลือกสถานะ -</option>
+                <option value="admin">ผู้จัดการ</option>
+                <option value="staff">พนักงาน</option>
+              </select>
+            </div>
+            <div class="text-center mb-5">
+              <a href="?page=<?= $_GET['page'] ?>" class="btn btn-dark   mb-0 mt-3 ">ย้อนกลับ</a>
+              <button type="submit" name="save" class="btn btn-green3 text-white mb-0 mt-3">บันทึกข้อมูล</button>
+            </div>
+
+          </form>
+
+        </div>
       </div>
     </div>
   </div>

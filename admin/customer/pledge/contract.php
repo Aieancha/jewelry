@@ -27,7 +27,7 @@ if (isset($_POST) && !empty($_POST)) {
     $numId = $code . $yearMonth . $maxId;
     $num=$result['s_id'];
     $sqlinsert = "INSERT INTO tbl_bill (bill_no,s_id) VALUES ('$numId','$num') ";
-    mysqli_query($connection, "UPDATE tbl_orders SET o_role = 2 WHERE s_id='$id'");
+    mysqli_query($connection, "UPDATE tbl_orders SET o_role = 2 WHERE o_id='$id'");
 
     if (mysqli_query($connection, $sqlinsert)) {
         //echo "เพิ่มข้อมูลสำเร็จ";
