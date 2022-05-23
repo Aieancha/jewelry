@@ -28,6 +28,8 @@ $result=mysqli_fetch_assoc($query);
   </div>
   <div class="row">
     <div class="card">
+    <h5 class="font-weight-bolder text-dark text-gradient m-3">ตารางแสดงข้อมูลลูกค้าทั้งหมด</h5>
+
       <!-- title -->
 
       <!-- end title -->

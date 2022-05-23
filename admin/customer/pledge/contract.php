@@ -90,6 +90,10 @@ mysqli_close($connection);
 
                         <div class="d-flex flex-row">
                             <div class="justify-content-start flex-fill ">
+                            <div class=" mb-4 col-10 ">
+                                    <h6 style="display: inline;">ราคาที่ลูกค้าต้องการจำนำ :</h6>
+                                    <td width="25%" style="display: inline;"><?= $result['o_price'] ?> บาท</td>
+                                </div>
                                 <div class=" mb-4 col-10 ">
                                     <h6 style="display: inline;">ราคาประเมินข้างต้น :</h6>
                                     <td width="25%" style="display: inline;"><?= $result['price_img'] ?> บาท</td>
@@ -135,7 +139,7 @@ mysqli_close($connection);
                                     <h6 style="display: inline;">รหัสสินค้า:</h6>
                                     <td width="25%" style="display: inline;"><?= $result['o_code'] ?></td>
                                 </div>
-                                <div class=" mb-6">
+                                <div class=" mb-4">
                                     <h6 style="display: inline;">รายละเอียดสินค้า:</h6>
                                     <td width="25%" style="display: inline;"><?= $result['o_type'] ?></td>
                                 </div>

@@ -118,3 +118,10 @@ if (isset($_REQUEST['c_email'])) {
 </body>
 
 </html>
+<style>
+    .app-btn-primary {
+    background: #212529;
+    color: #fff;
+    border-color: #9b0e21;
+}
+</style>

@@ -37,13 +37,14 @@
 		
 <div class="row g-0 app-wrapper app-auth-wrapper">
 	<form action="" method="post" >	
+	<div class="row g-0 app-wrapper app-auth-wrapper">
 		<div class="app-auth-body mx-auto ">
-			<div style="margin-top: 1rem">	
-		<div class="app-auth-branding text-center"><a class="app-logo" href="index.html" ><img class="logo-icon me-2" src="assets/images/PW-logo.png" alt="logo"></a></div>
-		<label class="mb-3">Jewelry Pawn</label>
+			<div style="margin-top: 1rem">
+				<div class="app-auth-branding text-center"><a class="app-logo" href="index.html"><img class="logo-icon me-2" src="assets/images/PW-logo.png" alt="logo"></a></div>
+				<label class="mb-3">Jewelry Pawn</label>
+			</div>
 		</div>
-		</div>
-</div>
+	</div>
 		<div class="app-wrapper">
 <div class="app-content pt-3 p-md-3 p-lg-4"> 
 		    <div class="container-xl">

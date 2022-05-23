@@ -230,13 +230,13 @@ VALUES ( '$type', '$price','$filename3', '$filename1', '$filename2','$detail','$
                       <h5 style="display: inline;">ช่องทางการติดต่อ</h5>
                       <h5 class="form-label text-danger" style="display: inline;">*</h5>
                     </div>
-                    <div class="mb-4 col-6 ">
+                    <div class="mb-3 col-6 ">
                       <h6 style="display: inline;">ไอดีไลน์ลูกค้า </h6>
                       <!-- <h6 class="form-label text-danger" style="display: inline;">*</h6> -->
                       <input type="text" class="form-control " name="c_facebook" placeholder="กรอกไอดีไลน์ลูกค้า" autocomplete="off">
                     </div>
                   </div>
-                  <div class="mb-4 col-6 ">
+                  <div class="mb-5 col-6 ">
                     <h6 style="display: inline;">ชื่อผู้ใช้เฟสบุ้ค</h6>
                     <!-- <h6 class="form-label text-danger" style="display: inline;">*</h6> -->
                     <input type="text" class="form-control " name="c_line" placeholder="กรอกชื่อผู้ใช้เฟสบุ้ค" autocomplete="off">
@@ -260,10 +260,11 @@ VALUES ( '$type', '$price','$filename3', '$filename1', '$filename2','$detail','$
 
                 </div>
                 <div class="justify-content-start col-6 ">
-                  <div class="mb-4 col-12 " style="margin-left: 3 rem;">
+                  <div class="mb-5 col-12 " style="margin-left: 3 rem;">
                     <div class="mb-4">
                       <h5 style="display: inline;">ภาพถ่ายสินค้าจริง</h5>
                       <h5 class="form-label text-danger" style="display: inline;">*</h5>
+                      <label class="form-label text-danger" >เพิ่มรูปภาพอย่างน้อย 1 ภาพ</label>
                     </div>
                     <div class="mb-3">
                       <label>ภาพถ่ายสินค้าจริงด้านหน้า / ด้านบน</label>
@@ -278,16 +279,19 @@ VALUES ( '$type', '$price','$filename3', '$filename1', '$filename2','$detail','$
                       <input type="file" id="myFile" name="img2" multiple>
                     </div>
                   </div>
+                  <div class="mb-3">
+                      <h5 style="display: inline;">การประเมินราคา</h5>
+                    </div>
                   <div class="mb-3 col-12 ">
-                    <h5>ราคาที่ลูกค้าต้องการ</h5>
+                    <h6 style="display: inline;">ราคาที่ลูกค้าต้องการจำนำ</h6><label style="display: inline;">(ถ้ามี)</label>
                     <div class="col-4">
                       <input type="number" min="0" name="o_price" class="form-control " placeholder="10000 บาท" autocomplete="off">
                       <!-- <input class="form-control " type="hidden" name="ref_img" value="<?php echo $nextId ?>" required> -->
                     </div>
                   </div>
                   <div class="mb-3 col-12 ">
-                    <h5>ราคาประเมินจากภาพ</h5>
-                    <div class="col-4">
+                    <h6>ราคาประเมินจากภาพ</h6>
+                    <div class="col-3">
                       <input type="number" min="0" name="price_img" class="form-control " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
                     </div>
                   </div>

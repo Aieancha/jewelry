@@ -26,7 +26,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
             <h5 class="font-weight-bolder text-dark text-gradient m-3">ข้อมูลการชำระดอกเบี้ย</h5>
 
             <!-- end title -->
-            <div class="card-body overflow-auto p-3" style="text-align: center">
+            <div class="card-body overflow-auto p-3 m-4" >
                 <div class="d-flex flex-row">
                     <div class="justify-content-start flex-fill ">
                         <div class=" mb-3 ">
@@ -42,16 +42,17 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                     </div>
                     <div class="d-flex flex-row m-4">
                         <div class="justify-content-start flex-fill ">
-                            <label class="text-danger">สถานะสัญญา </label><label>ปกติ</label>
                         </div>
-                        <div type="">
-                            <select name="s_role" require class="btn btn-sm ">
+                        <h6 style="display: inline;" class="text-danger">สถานะสัญญา </h6><h6 style="display: inline;">ปกติ</h6>
+                            <div >
+                                <select name="s_role" require class="btn btn-sm ">
                                 <option value="" selected="selected">เปลี่ยนสถานะ</option>
                                 <option value="4">ปิดสัญญา</option>
                                 <option value="4">ผิดสัญญา</option>
                                 <option value="5">ไถ่ถอนก่อนกำหนด</option>
                             </select>
-                            <a class="btn btn-sm btn-green3 text-white">ยืนยันการเปลี่ยนสถานะ</a>
+              <a class="btn btn-sm btn-green3 text-white">ยืนยันการเปลี่ยนสถานะ</a>
+
                         </div>
                     </div>
                 </div>

@@ -233,19 +233,21 @@ if (isset($_POST) && !empty($_POST)) {
                   <input type="number" class="form-control " name="o_price" placeholder="หน่วยเป็นบาท" autocomplete="off">
                 </div>
               </div>
-              <div class="mb-3 col-12 center">
+              <div class="m-4 col-12 ">
                 <div class=" col-12 " style="margin-top: 2;">
+                <div class="mb-3" >
                   <h6 style="display: inline;">ภาพถ่ายสินค้าจริง</h6>
                   <h5 class="form-label text-danger " style="display: inline;">*</h5>
-                  <div class="mb-3">
+                </div>
+                  <div class="mb-2 ">
                     <label>ภาพถ่ายสินค้าจริงด้านหน้า / ด้านบน</label>
                     <input type="file" id="myFile" name="img3" accept="image/png, image/jpeg, image/jpg" multiple required>
                   </div>
-                  <div class="mb-3">
+                  <div class="mb-2">
                     <label>ภาพถ่ายสินค้าจริงด้านหลัง / ด้านล่าง</label>
                     <input type="file" id="myFile" name="img1" accept="image/png, image/jpeg, image/jpg" multiple>
                   </div>
-                  <div class="mb-3">
+                  <div class="mb-2">
                     <label>ภาพถ่ายสินค้าจริงด้านข้าง</label>
                     <input type="file" id="myFile" name="img2" accept="image/png, image/jpeg, image/jpg" multiple>
                   </div>

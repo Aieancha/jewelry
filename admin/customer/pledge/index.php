@@ -16,7 +16,10 @@ $query = mysqli_query($connection, $sql);
         <hr class="mb-4 mt-4">
     </div>
     <div class="row justify-content-between">
-        <div class="d-flex justify-content-end">
+        <div class="justify-content-start flex-fill ">
+            <a href="?page=<?= $_GET['page'] ?>&function=insert" class="btn  btn-green3 text-white">เพิ่มข้อมูลการจำนำ</a>
+        </div>
+        <div class="flex-fill d-flex justify-content-end gap-1">
             <div class="d-flex justify-content-end mb-2 ">
                 <form class="example " action="/action_page.php" style="margin: 7px;;max-width:200px">
                     <input type="text" placeholder="ชื่อผู้ใช้งาน.." name="search2 ">
@@ -28,6 +31,7 @@ $query = mysqli_query($connection, $sql);
 
     <div class="row">
         <div class="card">
+        <h5 class="m-3">ตารางแสดงรายชื่อลูกค้าทั้งหมด</h5>
             <div class="card-body overflow-auto p-1 " style="text-align: center">
                 <table class="table" id="pledge">
                     <thead>
@@ -48,7 +52,7 @@ $query = mysqli_query($connection, $sql);
                                 <td><?= ++$i ?></td>
                                 <td><?= $data['c_facebook'] . '' . $data['c_line'] ?></td>
                                 <td class="text-danger"><?php echo $data['status_name']; ?></td>
-                                <td> <a href="?page=<?= $_GET['page'] ?>&function=details&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-gray-600"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="icon " style="display: inline-block;color: #1e48dd;height: 2em;width: 2em;" viewBox="0 0 16 16">
+                                <td> <a href="?page=<?= $_GET['page'] ?>&function=details&id=<?= $data['s_id'] ?>" class=" btn-sm btn-gray-600"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="icon " style="display: inline-block;color: #1e48dd;height: 2em;width: 2em;" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z" />
                                         </svg></a></td>
                                 <td> <a href="?page=<?= $_GET['page'] ?>&function=updated&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-blue2 text-white">ดำเนินการต่อ</a>
@@ -59,9 +63,7 @@ $query = mysqli_query($connection, $sql);
                 </table>
             </div>
         </div>
-        <div class="p-3 d-flex justify-content-end">
-            <a href="?page=<?= $_GET['page'] ?>&function=insert" class="btn  btn-green3 text-white">เพิ่มข้อมูลการจำนำ</a>
-        </div>
+        
     </div>
     </form>
 </div>
