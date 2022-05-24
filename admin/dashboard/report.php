@@ -1,74 +1,100 @@
+<?php
+$sql = "SELECT * FROM tbl_social
+INNER JOIN tbl_bill ON tbl_social.s_id = tbl_bill.s_id
+INNER JOIN tbl_interest ON tbl_interest.ref_id = tbl_social.s_id ORDER BY start_date";
+$query = mysqli_query($connection, $sql);
+//$result=mysqli_fetch_assoc($query);
+?>
+<!-- เดือน -->
+<!-- ?php
+$sqli="SELECT DISTINCT month(in_date) as month FROM tbl_interest ORDER by month ASC";
+$query_month = mysqli_query($connection, $sqli);
+$thai=array("มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม");
+while ($data=mysqli_fetch_array($query_month)){
+  $month = sprintf("%02d",$data['month']);
+
+  $sqli="SELECT * FROM tbl_interest WHERE month(in_date)='$month'";
+  $qry = mysqli_query($connection, $sqli);
+  $row=mysqli_num_rows($qry);
+  echo "<button type='button' class='btn btn-default' onClick='window.location.href =\"./?function=report=$month\"'>".$thai[(int)($data['month']-1)]."($row)</button>";
+}
+? -->
 <div class="row justify-content-between">
-    <div class="d-flex justify-content-center mb-6">
-      <a class="btn btn-sm1 bg-gray-600 text-white m-1">แจ้งเตือนการชำระดอกเบี้ย</a>
-      <a href="?page=<?= $_GET['page'] ?>&function=list" class="btn btn-sm1 bg-gray-500 m-1">ตรวจสอบการชำระดอกเบี้ยโดยลูกค้า</a>
-      <a href="?page=<?= $_GET['page'] ?>&function=wait" class="btn btn-sm1 bg-gray-500  m-1">รายการสรุปการชำระดอกเบี้ย</a>
-    </div>
-    <div class="d-flex justify-content-end">
-      <div class="d-flex justify-content-end mb-2 ">
-        <form class="example " action="" style="margin: 7px;;max-width:200px">
-          <input type="text" placeholder="" name="search2 ">
-          <button type="submit"><i class="fa fa-search btn-dark"></i></button>
-        </form>
+  <div class="d-flex justify-content-center mb-6">
+    <a href="?function=report" class="btn btn-sm1 bg-gray-600 text-white m-1">รายงานสรุปยอดการชำระดอกเบี้ย</a>
+    <a href="?&function=overdue" class="btn btn-sm1 bg-gray-500 m-1">รายงานสรุปยอดค้างชำระชำระดอกเบี้ย</a>
+    <a href="?&function=EndContract" class="btn btn-sm1 bg-gray-500  m-1">รายการสรุปการปิดบัญชี</a>
+  </div>
+  <!-- <div class="d-flex justify-content-end">
+    <div class="d-flex justify-content-end mb-2 ">
+      <form class="example " action="" style="margin: 7px;;max-width:200px">
+        <input type="text" placeholder="" name="search2 ">
+        <button type="submit"><i class="fa fa-search btn-dark"></i></button>
+      </form>
 
-      </div>
-      <a href="" class="btn btn-sm btn-dark text-white">สถานะ</a>
     </div>
-    <div class="row">
-      <div class="card">
-        <!-- title -->
-        <h5 class="font-weight-bolder text-dark text-gradient m-3">ตารางแสดงข้อมูลลูกค้าที่ใกล้ครบกำหนดชำระค่างวด</h5>
+    <a href="" class="btn btn-sm btn-dark text-white">สถานะ</a>
+  </div> -->
+  <div class="row">
+    <div class="card">
+      <!-- title -->
+      <h5 class="font-weight-bolder text-dark text-gradient m-3">รายงานสรุปยอดการชำระดอกเบี้ย</h5>
 
-        <div class="row">
+      <div class="row">
         <div class="card">
-        <h5 class="m-3">ตารางแสดงรายชื่อลูกค้าทั้งหมด</h5>
-            <div class="card-body overflow-auto p-1 " style="text-align: center">
-                <table class="table" id="pledge">
-                    <thead>
-                        <div class="card-body overflow-auto p-1  " style="text-align: center">
-                            <tr class="">
-                                <th scope="col">ลำดับ</th>
-                                <th scope="col">วันที่บันทึกข้อมูล</th>
-                                <th scope="col">สถานะผู้บันทึก</th>
-                                <!-- <th scope="col">ผู้บันทึกข้อมูล</th> -->
-                                <th scope="col">ชื่อผู้ใช้ติดต่อ</th>
-                                <th scope="col">สถานะ</th>
-                                <th scope="col">ดูรายละเอียด</th>
-                                <th scope="col">ดำเนินการต่อ</th>
-                            </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $i = 0;
-                        foreach ($query as $data) : ?>
-                            <tr>
-                                <td><?= ++$i ?></td>
-                                <td><?= $data['o_date'] ?></td>
-                                <td> <?php 
-                                            if ($data['lavel'] == 'admin' ) {
-                                                echo "ผู้จัดการ";
-                                            } else if ($data['lavel'] == 'staff' ) {
-                                                echo "พนักงาน";
-                                            }else {
-                                                echo "ลูกค้า";
-                                            } ?></td>
-                                <!-- <td></td> -->
-                                <td><?= $data['c_facebook'] . '' . $data['c_line'] ?></td>
-                                <td class="text-danger"><?php echo $data['status_name']; ?></td>
-                                <td> <a href="?page=<?= $_GET['page'] ?>&function=details&id=<?= $data['s_id'] ?>" class=" btn-sm btn-gray-600"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="icon " style="display: inline-block;color: #1e48dd;height: 2em;width: 2em;" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z" />
-                                        </svg></a></td>
-                                <td> <a href="?page=<?= $_GET['page'] ?>&function=updated&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-blue2 text-white">ดำเนินการต่อ</a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
+          <div class="card-body overflow-auto p-1 " style="text-align: center">
+            <table class="table" id="pledge">
+              <thead>
+                <div class="card-body overflow-auto p-1  " style="text-align: center">
+                  <tr class="">
+                    <th scope="col">ลำดับ</th>
+                    <th scope="col">วันที่ชำระดอกเบี้ย</th>
+                    <th scope="col">เลขที่สัญญา</th>
+                    <th scope="col">ชื่อ-นามสกุล</th>
+                    <th scope="col">งวดที่ชำระ</th>
+                    <th scope="col">จำนวนดอกเบี้ยที่ชำระ</th>
+                    <th scope="col">จำนวนดอกเบี้ยคงเหลือ</th>
+                  </tr>
+              </thead>
+              <tbody>
+                <?php
+                $i = 0;
+                $bill = " SELECT count(bill_no) AS bill, SUM(in_befor) AS sum_price FROM tbl_bill INNER JOIN tbl_interest ON tbl_interest.ref_id=tbl_bill.s_id";
+                $q = mysqli_query($connection, $bill);
+                $f = mysqli_fetch_assoc($q);
+                $select = " SELECT count(bill_no) AS bill FROM tbl_bill";
+                $q = mysqli_query($connection, $select);
+                $r = mysqli_fetch_assoc($q);
+                while ($data = mysqli_fetch_array($query)) {
+                  $principle = $data['principle'];
+                  $balance = $data['in_balance'];
+                  $total=$balance-$principle;
+
+                ?>
+                  <tr>
+                    <td><?= ++$i ?></td>
+                    <td><?= $data['in_date'] ?></td>
+                    <td><?php echo $data['bill_no']; ?></td>
+                    <td><?= $data['s_name'] . ' ' . $data['s_lastname'] ?></td>
+                    <td><?= $data['in_after'] .'/'.$data['r_mount'] ?></td>
+                    <td><?= number_format($data['in_befor']) ?></td>
+                    <td><?php echo number_format($total) ?></td>
+                  </tr>
+
+                <?php } ?>
+                <table class="table">
+                  <tr>
+                    <td>เลขที่สัญญาจำนวน : <?php echo $r['bill']; ?> ฉบับ </td>
+                    <td>รวมยอดชำระดอกเบี้ย : <?php echo number_format($f['sum_price']); ?> บาท </td>
+                  </tr>
                 </table>
-            </div>
+              </tbody>
+            </table>
+          </div>
         </div>
-        
-    </div>
 
       </div>
+
     </div>
   </div>
+</div>

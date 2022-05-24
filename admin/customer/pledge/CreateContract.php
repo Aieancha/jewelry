@@ -1,5 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM tbl_social INNER JOIN tbl_orders ON tbl_social.s_id=tbl_orders.s_id 
+                INNER JOIN tbl_bill ON tbl_orders.s_id =tbl_bill.s_id WHERE tbl_bill.s_id = '$id'";
+    $query = mysqli_query($connection, $sql);
+    $result = mysqli_fetch_assoc($query);
+}
+if (isset($_POST["submit"])) {
+    if (isset($_FILES['bill_img']['name']) && !empty($_FILES['bill_img']['name'])) {
+        $extension = array("jpeg", "jpg", "png");
+        $target = '../images/bill/';
+        $filename = $_FILES['bill_img']['name'];
+        $filetmp = $_FILES['bill_img']['tmp_name'];
+        $ext = pathinfo($filename, PATHINFO_EXTENSION);
+        if (in_array($ext, $extension)) {
+            if (!file_exists($target . $filename)) {
+                if (move_uploaded_file($filetmp, $target . $filename)) {
+                    $filename = $filename;
+                } else {
+                    echo 'เพิ่มข้อมูลลงโฟล์เดอร์ไม่สำเร็จ';
+                }
+            } else {
+                $newfilename = time() . $filename;
+                if (move_uploaded_file($filetmp, $target . $newfilename)) {
+                    $filename = $newfilename;
+                } else {
+                    echo 'เพิ่มข้อมูลลงโฟล์เดอร์ไม่สำเร็จ';
+                }
+            }
+        } else {
+            echo 'ประเภทไฟล์ไม่ถูกต้อง';
+        }
+    } else {
+        $filename = '';
+    }
+    $sqlIns = "UPDATE tbl_bill SET bill_img ='$filename' WHERE tbl_bill.s_id ='$id'";
+
+    if (mysqli_query($connection, $sqlIns)) {
+        //echo "เพิ่มข้อมูลสำเร็จ";
+        $alert = '<script type="text/javascript">';
+        $alert .= 'alert("อัพเดตสัญญาที่มีการลงนามสำเร็จ");';
+        $alert .= 'window.location.href = "";';
+        $alert .= '</script>';
+        echo $alert;
+        exit();
+    } else {
+        echo "Error: " . $sqlIns . "<br>" . mysqli_error($connection);
+    }
+
+    mysqli_close($connection);
+}
+
+//print_r($_POST);
+?>
 
 <body class="g-sidenav-show bg-gray-100">
     <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
@@ -12,57 +67,6 @@
             </div>
             <!-- end title -->
             <hr class="mb-4">
-
-
-            <?php
-            if (isset($_GET['id']) && !empty($_GET['id'])) {
-                $id = $_GET['id'];
-                $sql = "SELECT * FROM tbl_social INNER JOIN tbl_orders ON tbl_social.s_id=tbl_orders.s_id 
-                INNER JOIN tbl_bill ON tbl_orders.s_id =tbl_bill.s_id WHERE tbl_bill.s_id = '$id'";
-                $query = mysqli_query($connection, $sql);
-                $result = mysqli_fetch_assoc($query);
-            }
-            if (isset($_POST) && !empty($_POST)) {
-                if (isset($_FILES['img']['name']) && !empty($_FILES['img']['name'])) {
-                    $extension = array("jpeg", "jpg", "png");
-                    $target = '../images/bill/';
-                    $filename = $_FILES['img']['name'];
-                    $filetmp = $_FILES['img']['tmp_name'];
-                    $ext = pathinfo($filename, PATHINFO_EXTENSION);
-                    if (in_array($ext, $extension)) {
-                        if (!file_exists($target . $filename)) {
-                            if (move_uploaded_file($filetmp, $target . $filename)) {
-                                $filename = $filename;
-                            } else {
-                                echo 'เพิ่มข้อมูลลงโฟล์เดอร์ไม่สำเร็จ';
-                            }
-                        } else {
-                            $newfilename = time() . $filename;
-                            if (move_uploaded_file($filetmp, $target . $newfilename)) {
-                                $filename = $newfilename;
-                            } else {
-                                echo 'เพิ่มข้อมูลลงโฟล์เดอร์ไม่สำเร็จ';
-                            }
-                        }
-                    } else {
-                        echo 'ประเภทไฟล์ไม่ถูกต้อง';
-                    }
-                } else {
-                    $filename = '';
-                }
-                $sql = "UPDATE tbl_bill SET bill_img ='$filename' , createdate_img ='$date' WHERE tbl_bill.bill_id ='$id')";
-
-                if (mysqli_query($connection, $sql)) {
-                    echo "เพิ่มข้อมูลสำเร็จ";
-                } else {
-                    echo "Error: " . $sql . "<br>"  . mysqli_error($connection);
-                }
-
-                mysqli_close($connection);
-            }
-
-            //print_r($_POST);
-            ?>
 
             <div class="card mb-4">
                 <div class="card-body">
@@ -111,20 +115,21 @@
                                 <div class="justify-content-start flex-fill col-5" style="margin-left:3rem">
                                     <div class="col-10 mt-4">
                                         <h6>แนบภาพหลักฐานสัญญาการลงนาม</h6>
-                                        <input class="form-control " type="file" id="myFile" name="img" accept="image/png, image/jpeg, image/jpg" required>
+                                        <input class="form-control " type="file" id="myFile" name="bill_img" accept="image/png, image/jpeg, image/jpg" required>
 
                                     </div>
                                 </div>
                                 <div class="col-3 mt-5">
-                                    <button type="submit" class="col-6 btn btn-green3 text-white">บันทึก</button>
+                                    <button type="submit" name="submit" class="col-6 btn btn-green3 text-white">บันทึก</button>
                                 </div>
                     </form>
 
                 </div>
             </div>
-            <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-sm btn-dark text-white">ย้อนกลับ</a>
-            <a href="?page=<?= $_GET['page'] ?>&function=showDetails&id=<?= $result['o_id'] ?>" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a>
-            <!-- <a href="?page=<?= $_GET['page'] ?>&function=qty&id=<?= $result['s_id'] ?>" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a> -->
+            <?php
+            echo "<a href='javascript:window.history.back()' class='btn btn-sm btn-dark text-white'>ย้อนกลับ</a>";
+            ?>
+            <a href="?page=<?= $_GET['page'] ?>&function=SuccessContract&id=<?= $result['o_id'] ?>" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a>
 
         </div>
     </div>

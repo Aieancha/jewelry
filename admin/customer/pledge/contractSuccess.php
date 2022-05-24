@@ -1,5 +1,5 @@
 <?php
-$sql = "SELECT * FROM tbl_social INNER JOIN tbl_orders ON tbl_social.s_id = tbl_orders.s_id
+$sql = "SELECT * FROM tbl_social INNER JOIN tbl_orders ON tbl_social.s_id = tbl_orders.s_id INNER JOIN tbl_bill ON tbl_social.s_id = tbl_bill.s_id
 INNER JOIN tbl_status ON tbl_orders.o_role = tbl_status.id WHERE tbl_orders.o_role=2 ";
 $query = mysqli_query($connection, $sql);
 $rs = mysqli_fetch_assoc($query);
@@ -25,10 +25,10 @@ if ($success == '') {
         </div>
         <div class="flex-fill d-flex justify-content-end gap-1">
             <div class="col">
-            <a href="?page=<?= $_GET['page'] ?>&function=CustomerCreate " class="btn btn-sm1 bg-gray-600 text-white m-1">เพิ่มข้อมูลโดยลูกค้า </a>
-                <a href="?page=<?= $_GET['page'] ?>" class="btn btn-sm1 bg-gray-600 text-white m-1">รอประเมิน </a>
+            <a href="?page=<?= $_GET['page'] ?>&function=CustomerCreate " class="btn btn-sm1 bg-gray-500 m-1">เพิ่มข้อมูลโดยลูกค้า </a>
+                <a href="?page=<?= $_GET['page'] ?>" class="btn btn-sm1 bg-gray-500 m-1">รอประเมิน </a>
                 <a href="?page=<?= $_GET['page'] ?>&function=wait" class="btn btn-sm1 bg-gray-500 m-1">รอร่างสัญญา </a>
-                <a href="?page=<?= $_GET['page'] ?>&function=contractSuccess" class="btn btn-sm1 bg-gray-500  m-1">ลงนามสัญญาเรียบร้อยแล้ว <?php echo  $success; ?> </a>
+                <a href="?page=<?= $_GET['page'] ?>&function=contractSuccess" class="btn btn-sm1 bg-gray-600 text-white m-1">ลงนามสัญญาเรียบร้อยแล้ว <?php echo  $success; ?> </a>
             </div>
             <div class="d-flex justify-content-end mb-2 ">
                 <form class="example " action="/action_page.php" style="margin: 7px;;max-width:200px">
@@ -76,7 +76,7 @@ if ($success == '') {
                                 <td> <a href="?page=<?= $_GET['page'] ?>&function=details&id=<?= $data['o_id'] ?>" class=" btn-sm btn-gray-600"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="icon " style="display: inline-block;color: #1e48dd;height: 2em;width: 2em;" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.854 8.803a.5.5 0 1 1-.708-.707L9.243 6H6.475a.5.5 0 1 1 0-1h3.975a.5.5 0 0 1 .5.5v3.975a.5.5 0 1 1-1 0V6.707l-4.096 4.096z" />
                                         </svg></a></td>
-                                <td> <a href="?page=<?= $_GET['page'] ?>&function=CreateContract&id=<?= $data['o_id'] ?>" class="btn btn-sm btn-blue2 text-white">อัปโหลดสัญญา</a>
+                                <td> <a href="?page=<?= $_GET['page'] ?>&function=CreateContract&id=<?= $data['bill_id'] ?>" class="btn btn-sm btn-blue2 text-white">อัปโหลดสัญญา</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

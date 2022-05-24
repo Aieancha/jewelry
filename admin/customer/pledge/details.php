@@ -174,14 +174,6 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                     <h6 style="display: inline;">ที่อยู่ปัจจุบัน :</h6>
                                     <td width="25%" style="display: inline;"><?= $result['c_address'] ?></td>
                                 </div>
-                                <!-- <div class=" mb-3 col-6 ">
-                                <h6 style="display: inline;">ช่องทางการติดต่อ :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['social_contact'] ?></td>
-                            </div>
-                            <div class=" mb-3 col-10 ">
-                                <h6 style="display: inline;">ชื่อผู้ใช้ :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['social_name'] ?></td>
-                            </div> -->
                                 <div class=" mb-3 col-10 ">
                                     <h6 style="display: inline;">หลักฐานการยืนยันตัวตน</h6>
                                     <div>
@@ -227,15 +219,15 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                 </div>
                                 <div class=" mb-4 col-10 ">
                                     <h6 style="display: inline;">ราคาประเมินข้างต้น :</h6>
-                                    <td width="25%" style="display: inline;"><?= $result['price_img'] ?> บาท</td>
+                                    <td width="25%" style="display: inline;"><?= number_format($result['price_img']) ?> บาท</td>
                                 </div>
                                 <div class=" mb-3 col-10 ">
                                     <h6 style="display: inline;">ราคาประเมินจากสินค้าจริง :</h6>
-                                    <td width="25%" style="display: inline;"><?= $result['price_item'] ?> บาท</td>
+                                    <td width="25%" style="display: inline;"><?= number_format($result['price_item']) ?> บาท</td>
                                 </div>
                                 <div class=" mb-3 col-10 ">
                                     <h6 style="display: inline;">ราคาที่ตกลงจำนำ :</h6>
-                                    <td width="25%" style="display: inline;"><?= $result['principle'] ?> บาท</td>
+                                    <td width="25%" style="display: inline;"><?= number_format($result['principle']) ?> บาท</td>
                                 </div>
                                 <div class=" mb-3 ">
                                     <h6 style="display: inline;">จำนวนงวด :</h6>
@@ -243,11 +235,11 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                 </div>
                                 <div class=" mb-3 ">
                                     <h6 style="display: inline;">ดอกเบี้ย :</h6>
-                                    <td width="25%" style="display: inline;"><?= $result['principle'] * 0.02 * $result['r_mount'] ?> บาท</td>
+                                    <td width="25%" style="display: inline;"><?= number_format($result['principle'] * 0.02 * $result['r_mount']) ?> บาท</td>
                                 </div>
                                 <div class=" mb-3 ">
                                     <h6 style="display: inline;">เงินที่ต้องจ่ายต่องวด :</h6>
-                                    <td width="25%" style="display: inline;"><?= ($result['principle'] * 0.02) ?> บาท</td>
+                                    <td width="25%" style="display: inline;"><?= number_format($result['principle'] * 0.02) ?> บาท</td>
                                 </div>
 
                             </div>

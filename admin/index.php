@@ -18,35 +18,43 @@
         if (!isset($_GET['page']) && empty($_GET['page'])) {
           if (isset($_GET['function']) && $_GET['function'] == 'ChangeStatus') {
             include('dashboard/ChangeStatus.php');
-          }elseif (isset($_GET['function']) && $_GET['function'] == 'detailsIn') {
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'detailsIn') {
             include('customer/interest/Details-In.php');
-          }elseif (isset($_GET['function']) && $_GET['function'] == 'details') {
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'details') {
             include('customer/pledge/details.php');
-        }elseif (isset($_GET['function']) && $_GET['function'] == 'report') {
-          include('dashboard/report.php');
-      }else {
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'report') {
+            include('dashboard/report.php');
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'overdue') {
+            include('dashboard/overdue.php');
+          }elseif (isset($_GET['function']) && $_GET['function'] == 'EndContract') {
+            include('dashboard/EndContract.php');
+          }elseif (isset($_GET['function']) && $_GET['function'] == 'RedemContract') {
+            include('dashboard/RedemContract.php');
+          }elseif (isset($_GET['function']) && $_GET['function'] == 'SuccessContract') {
+            include('dashboard/SuccessContract.php');
+          }elseif (isset($_GET['function']) && $_GET['function'] == 'WrongContract') {
+            include('dashboard/WrongContract.php');
+          } else {
             include('dashboard/index.php');
           }
-          
         } elseif (isset($_GET['page']) && $_GET['page'] == 'interest') {
           if (isset($_GET['function']) && $_GET['function'] == 'update') {
             include('customer/interest/Update-In.php');
-          }elseif (isset($_GET['function']) && $_GET['function'] == 'wait') {
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'wait') {
             include('customer/interest/insert.php');
-          }elseif (isset($_GET['function']) && $_GET['function'] == 'updateCustomer') {
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'updateCustomer') {
             include('customer/interest/Update_customer.php');
-          }elseif (isset($_GET['function']) && $_GET['function'] == 'showDetails') {
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'showDetails') {
             include('customer/interest/show-details.php');
-          }elseif (isset($_GET['function']) && $_GET['function'] == 'detailsIn') {
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'detailsIn') {
             include('customer/interest/Details-In.php');
-          }elseif (isset($_GET['function']) && $_GET['function'] == 'qty') {
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'qty') {
             include('customer/interest/qty.php');
-          }elseif (isset($_GET['function']) && $_GET['function'] == 'list') {
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'list') {
             include('customer/interest/list_summary.php');
-          }elseif (isset($_GET['function']) && $_GET['function'] == 'sum_list') {
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'sum_list') {
             include('customer/interest/sum_list.php');
-          }
-           else {
+          } else {
             include('customer/interest/index.php');
           }
         } elseif (isset($_GET['page']) && $_GET['page'] == 'pledge') {
@@ -65,19 +73,21 @@
             include('customer/pledge/edit.php');
           } elseif (isset($_GET['function']) && $_GET['function'] == 'check') {
             include('customer/pledge/check_bill.php');
-          }elseif (isset($_GET['function']) && $_GET['function'] == 'calculate') {
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'calculate') {
             include('customer/pledge/calculate.php');
-          }elseif (isset($_GET['function']) && $_GET['function'] == 'details') {
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'details') {
             include('customer/pledge/details.php');
-          }elseif (isset($_GET['function']) && $_GET['function'] == 'wait') {
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'wait') {
             include('customer/pledge/wait.php');
-          }elseif (isset($_GET['function']) && $_GET['function'] == 'contractSuccess') {
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'contractSuccess') {
             include('customer/pledge/contractSuccess.php');
-          }elseif (isset($_GET['function']) && $_GET['function'] == 'CreateContract') {
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'CreateContract') {
             include('customer/pledge/CreateContract.php');
-          }elseif (isset($_GET['function']) && $_GET['function'] == 'CustomerCreate') {
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'CustomerCreate') {
             include('customer/pledge/CustomerCreate.php');
-          }else {
+          }elseif (isset($_GET['function']) && $_GET['function'] == 'SuccessContract') {
+            include('customer/pledge/SuccessContract.php');
+          } else {
             include('customer/pledge/index.php');
           }
         } elseif (isset($_GET['page']) && $_GET['page'] == 'profile') {
@@ -87,28 +97,24 @@
             include('profile/edit.php');
           } elseif (isset($_GET['function']) && $_GET['function'] == 'delete') {
             include('profile/delete.php');
-          }  else {
+          } else {
             include('profile/profile.php');
           }
-        } 
-        
-        elseif (isset($_GET['page']) && $_GET['page'] == 'logout') {
+        } elseif (isset($_GET['page']) && $_GET['page'] == 'logout') {
           include('logout/logout.php');
-        }
-        
-        elseif (isset($_GET['page']) && $_GET['page'] == 'allow') {
+        } elseif (isset($_GET['page']) && $_GET['page'] == 'allow') {
           if (isset($_GET['function']) && $_GET['function'] == 'allowdetail') {
             include('profile/allow_details.php');
-          }elseif (isset($_GET['function']) && $_GET['function'] == 'deleteCus') {
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'deleteCus') {
             include('profile/delete_customer.php');
-          }elseif (isset($_GET['function']) && $_GET['function'] == 'updateStatusCus') {
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'updateStatusCus') {
             include('profile/update_status.php');
-          }elseif (isset($_GET['function']) && $_GET['function'] == 'updateStatusCus2') {
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'updateStatusCus2') {
             include('profile/update_status2.php');
-          }else{
-          include('profile/allow.php');
-        }  
-      }
+          } else {
+            include('profile/allow.php');
+          }
+        }
 
 
         ?>

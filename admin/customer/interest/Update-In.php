@@ -12,7 +12,14 @@
             </div>
             <!-- end title -->
             <hr class="mb-4">
-
+            <?php
+            if (isset($_GET['id']) && !empty($_GET['id'])) {
+                $id = $_GET['id'];
+                $sql1 = "SELECT * FROM tbl_interest INNER JOIN tbl_social ON tbl_social.s_id = tbl_interest.ref_id WHERE tbl_social.s_id ='$id'";
+                $qry = mysqli_query($connection, $sql1);
+                $Num_Rows = mysqli_num_rows($qry);
+            }
+            ?>
 
             <?php
             if (isset($_GET['id']) && !empty($_GET['id'])) {
@@ -28,11 +35,34 @@
                 //$role = $result['s_role']== 3? 4:3;
                 //$role = 3;
                 $ref = $result['s_id'];
+                $in = $result['o_inter']; //ดอกเบี้ยทั้งหมด
             }
+            $sqli = "SELECT * FROM tbl_interest INNER JOIN tbl_social ON tbl_social.s_id=tbl_interest.ref_id WHERE tbl_social.s_id=tbl_interest.ref_id";
+            $qry = mysqli_query($connection, $sqli);
+            $rs = mysqli_fetch_assoc($qry);
+
             if (isset($_POST) && !empty($_POST)) {
                 $in_date = $_POST['in_date'];
                 $in_befor = $_POST['in_befor'];
-                
+                $ins = "";
+
+                $total_principle = $result['o_total']; //จำนวนเงินต้น+ดอกเบี้ย
+                for ($i = -1; $i < $Num_Rows; $i++) {
+
+                    if ($ins == '') {
+                        $ins = ($total_principle) - $in_befor; //จำนวนเงินต้น+ดอกเบี้ยคงเหลือ
+                    } else {
+                        $ins = ($ins - $in_befor);
+                    }
+                }
+                //echo $balance;
+                     $balance =  $ins;
+
+                if ($Num_Rows == '') {
+                    $Num_Rows = 1;
+                } else {
+                    $Num_Rows = ($Num_Rows + 1);
+                }
 
 
                 if (isset($_FILES['in_img']['name']) && !empty($_FILES['in_img']['name'])) {
@@ -62,7 +92,7 @@
                 } else {
                     $filename = '';
                 }
-                $sql = "INSERT INTO tbl_interest (in_date, in_img, in_befor, in_role,ref_id) VALUES ('$in_date', '$filename', '$in_befor', 1, '$ref')";
+                $sql = "INSERT INTO tbl_interest (in_date, in_img, in_befor, in_role,ref_id,in_balance,in_after) VALUES ('$in_date', '$filename', '$in_befor', 1, '$ref','$balance','$Num_Rows')";
                 mysqli_query($connection, "UPDATE tbl_social SET c_date ='$strNewDate', start_date = '$strDate' WHERE s_id='$id'");
 
                 if (mysqli_query($connection, $sql)) {
@@ -104,27 +134,21 @@
                             </div>
                             <div class=" mb-3 ">
                                 <h6 style="display: inline;">จำนวนเงินต้น :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['principle'] ?> บาท</td>
+                                <td width="25%" style="display: inline;"><?= number_format($result['principle']) ?> บาท</td>
                             </div>
                             <div class=" mb-3 ">
                                 <h6 style="display: inline;">จำนวนดอกเบี้ยทั้งหมด :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['principle']*0.02*$result['r_mount'] ?> บาท</td>
+                                <td width="25%" style="display: inline;"><?= number_format($result['o_inter']) ?> บาท</td>
                             </div>
                         </div>
                         <div class="justify-content-start flex-fill ">
-                            <!-- <div class=" mb-3 ">
-                                <h6 style="display: inline;">ช่องทางการติดต่อ :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['social_contact'] ?></td>
-                                <h6 style="display: inline;">ชื่อผู้ใช้ :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['social_name'] ?></td>
-                            </div> -->
                             <div class=" mb-3 ">
                                 <h6 style="display: inline;">เงินที่ต้องจ่ายต่องวด :</h6>
-                                <td width="25%" style="display: inline;"><?= ($result['principle'] * 0.02) ?> บาท</td>
+                                <td width="25%" style="display: inline;"><?= number_format($result['principle'] * 0.02) ?> บาท</td>
                             </div>
                             <div class=" mb-3  ">
-                                <h6 style="display: inline;">จำนวนงวดที่ต้องชำระ :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['r_mount'] ?> เดือน</td>
+                                <h6 style="display: inline;">จำนวนงวดที่ชำระแล้ว :</h6>
+                                <td width="25%" style="display: inline;"><?php echo $Num_Rows . ' จาก ' .  $result['r_mount'] ?> เดือน</td>
                             </div>
                             <div class="   ">
                                 <h6 style="display: inline;">วันที่กำหนดชำระ :</h6>
@@ -147,7 +171,7 @@
                                     <div class=" mb-3 mt-3 col-8">
                                         <h6 style="display: inline;">วันที่ชำระค่างวด</h6>
                                         <label class="form-label text-danger" style="display: inline;">*</label>
-                                        <input class="form-control " type="datetime-local" id="myFile" name="in_date" required>
+                                        <input class="form-control " type="datetime-local" name="in_date" required>
                                     </div>
                                     <div class=" mb-3 col-8">
                                         <h6 style="display: inline;">จำนวนเงิน</h6>

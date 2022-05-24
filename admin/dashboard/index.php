@@ -18,14 +18,16 @@ $result=mysqli_fetch_assoc($query);
   </div>
   <div class="row justify-content-between">
      <div class="d-flex justify-content-end">
-     <a href="?function=report" class="btn btn-sm btn-blue2 text-white">รายงาน</a>
+     <div class="col">
+    <a href="?function=report" class="btn btn-sm1 bg-gray-600 text-white m-1">รายงานสรุปยอดการชำระดอกเบี้ย</a>
+  </div>
         <div class="d-flex justify-content-end mb-2 ">
             <form class="example " action="/action_page.php" style="margin: 7px;;max-width:200px ">
                 <input type="text" placeholder="ชื่อผู้ใช้งาน.." name="search2 ">
                 <button type="submit"><i class="fa fa-search btn-dark"></i></button>
             
         </div>
-    <a href="" class="btn btn-sm btn-dark text-white">สถานะ</a>
+    <!-- <a href="" class="btn btn-sm btn-dark text-white">สถานะ</a> -->
   </div>
   <div class="row">
     <div class="card">

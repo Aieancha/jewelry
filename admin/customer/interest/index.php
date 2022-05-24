@@ -86,7 +86,7 @@ $status = date('Y-m-d');
                   <td><?php echo $data['c_date']; ?></td>
                   <td><?php echo $data['bill_no']; ?></td>
                   <td><?= $data['s_name'] ?></td>
-                  <td><?= $data['principle'] * 0.02 ?></td>
+                  <td><?= number_format($data['principle'] * 0.02) ?></td>
                   <td><?= $data['phone'] ?></td>
                   <td class="text-danger"><?php
                                           if (($data['start_date'] <= $status) && $status <= $data['c_date']) {
