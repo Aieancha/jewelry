@@ -45,7 +45,7 @@ $nextId = $code . $yearMonth . $maxId;
               //$nextId = $_POST['ref_img'];
               $detail = $_POST['o_detail'];
               $price = $_POST['o_price'];
-              $status = $_SESSION["userlevel"];
+              $status = $_SESSION["userID"];
 
               if (isset($_FILES['img3']['name']) && !empty($_FILES['img3']['name'])) {
                 $extension = array("jpeg", "jpg", "png");
@@ -179,14 +179,14 @@ $nextId = $code . $yearMonth . $maxId;
                 $filename2 = '';
               }
 
-              $sql = "INSERT INTO tbl_social (c_facebook, c_line, price_img)
-                      VALUES ('$facebook', '$line','$img_price')";
+              $sql = "INSERT INTO tbl_social (c_facebook, c_line)
+                      VALUES ('$facebook', '$line')";
               $result = $connection->query($sql);
               if ($result) {
                 //insert id of users table
                 $s_id = $connection->insert_id;
-                $sqli = "INSERT INTO tbl_orders ( o_type, o_price, img3, img1, img2, o_detail,o_code,s_id,lavel)
-VALUES ( '$type', '$price','$filename3', '$filename1', '$filename2','$detail','$nextId','$s_id','$status')";
+                $sqli = "INSERT INTO tbl_orders ( o_type, o_price, img3, img1, img2, o_detail,o_code,s_id,lavel, price_img)
+VALUES ( '$type', '$price','$filename3', '$filename1', '$filename2','$detail','$nextId','$s_id','$status','$img_price')";
               }
               if ( mysqli_query($connection, $sqli)) {
                 //echo "เพิ่มข้อมูลสำเร็จ";

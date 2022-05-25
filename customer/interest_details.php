@@ -1,9 +1,29 @@
 <?php
 $id = $_SESSION['customer_login'];
-$sql = "SELECT * FROM tbl_social INNER JOIN tbl_bill ON tbl_social.s_id=tbl_bill.s_id WHERE c_email = '$id'";
+$sql = "SELECT * FROM tbl_social INNER JOIN tbl_orders ON tbl_social.s_id=tbl_orders.s_id INNER JOIN tbl_bill ON tbl_social.s_id=tbl_bill.s_id WHERE c_email = '$id'";
 $query = mysqli_query($connection, $sql);
 $result = mysqli_fetch_assoc($query);
+$status = $result['bill_role'];
+if($status==0){
+	 $status = "ค้างชำระ";
+}elseif($status==1){
+	 $status = "ครบสัญญา";
+}elseif($status==2){
+	 $status = "ผิดสัญญาสัญญา";
+}else{
+	 $status = "ไถ่ถอนก่อนกำหนด";
+}
+$id=$_SESSION["s_id"];
+$sqldb = "SELECT count(s_id) as day3 FROM tbl_social WHERE DATEDIFF(c_date, Now())= 3 or DATEDIFF(c_date, Now())= 2 && s_id='$id'";
+$rs = mysqli_query($connection, $sqldb);
+$day3=mysqli_fetch_assoc($rs);
+if($day3['day3']>0){
+  $noti_day3 = '<span class="noti-alert">'.$day3['day3'].'</span>';
+}else{
+  $noti_day3="";
+}
 ?>
+
 
 <body class="app">
   <div class="row g-0 app-wrapper app-auth-wrapper">
@@ -26,6 +46,7 @@ $result = mysqli_fetch_assoc($query);
           <div class="flex-fill d-flex justify-content-start gap-1">
             <div class="btn app-btn-secondary bg-NGG" href="#">
               <a>รายการที่<a style="text-decoration: underline">ค้าง<a>ชำระ</a>
+              <!-- <span class="text-danger">&nbsp;<?php  echo  $noti_day3; ?></span> -->
             </div>
           </div>
 
@@ -63,7 +84,7 @@ $result = mysqli_fetch_assoc($query);
                   <tr>
                     <th scope="col">ลำดับ</th>
                     <th scope="col">เลขที่สัญญา</th>
-                    <th scope="col">จำนวนเดอกเบี้ยที่ต้องชำระ</th>
+                    <th scope="col">จำนวนดอกเบี้ยที่ต้องชำระ</th>
                     <th scope="col">สถานะ</th>
                     <th scope="col">แนบหลักฐานการชำระดอกเบี้ย</th>
 
@@ -78,7 +99,7 @@ $result = mysqli_fetch_assoc($query);
                       <td><?= ++$i ?></td>
                       <td><?= $result['bill_no'] ?></td>
                       <td><?= ($result['principle'] * 0.02) ?>฿</td>
-                      <td><?= $result['status'] ?></td>
+                      <td><?php echo $status; ?></td>
                       <td><a class="btn1 app-btn-secondary" href="?page=<?= $_GET['page'] ?>&function=updatebill&id=<?= $result['s_id'] ?>"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z" />
                           </svg></a></td>

@@ -84,9 +84,9 @@
               } else {
                 $filename = '';
               }
-              $sql = "UPDATE tbl_social t1 JOIN tbl_orders t2 ON (t1.s_id = t2.s_id) SET t1.price_img='$price_img', t1.s_name='$s_name',t1.s_lastname='$s_lastname',
-               t1.s_lastname='$s_lastname',t1.code_id='$code',t1.c_address='$address',t1.phone='$phone',t1.principle='$principle',t1.price_item='$price_item', 
-               t1.c_email='$email', t1.c_img='$filename', t1.c_date='$c_date',t1.r_mount='$mount', t1.rate_name='$rate_name',t2.o_role = 1,t2.o_price='$o_price',t2.o_total='$total',t2.o_inter='$inter'WHERE t2.o_id = '$id'";
+              $sql = "UPDATE tbl_social t1 JOIN tbl_orders t2 ON (t1.s_id = t2.s_id) SET t2.price_img='$price_img', t1.s_name='$s_name',t1.s_lastname='$s_lastname',
+               t1.s_lastname='$s_lastname',t1.code_id='$code',t1.c_address='$address',t1.phone='$phone',t2.principle='$principle',t2.price_item='$price_item', 
+               t1.c_email='$email', t1.c_img='$filename', t1.c_date='$c_date',t2.r_mount='$mount', t2.rate_name='$rate_name',t2.o_role = 1,t2.o_price='$o_price',t2.o_total='$total',t2.o_inter='$inter'WHERE t2.o_id = '$id'";
 
               if (mysqli_query($connection, $sql)) {
                 //echo "เพิ่มข้อมูลสำเร็จ";

@@ -22,15 +22,27 @@
 		$email = $_POST['c_email'];
 		$line = $_POST['c_line'];
 		$face = $_POST['c_facebook'];
-
-		if ($pass == $cpass) {
+		if (!empty($email)) {
+            $sql_check = "SELECT * FROM tbl_social WHERE c_email = '$email'";
+            $query_check = mysqli_query($connection, $sql_check);
+            $row_check = mysqli_num_rows($query_check);
+            if ($row_check > 0) {
+              //echo 'ชื่อผู้ใช้ซ้ำ กรุณากรอกใหม่อีกครั้ง';
+              $alert = '<script type="text/javascript">';
+              $alert .= 'alert("มีอีเมลนี้แล้ว กรุณากรอกใหม่อีกครั้ง");';
+              $alert .= 'window.location.href = "";';
+              $alert .= '</script>';
+              echo $alert;
+              exit();
+            }else{
+					if ($pass == $cpass) {
 
 			$sql = "INSERT INTO tbl_social ( s_name, s_lastname, c_address, phone, c_email, c_pass,c_line,c_facebook,user_login)
                                     VALUES ( '$firstname', '$lastname','$address', '$phone', '$email','$pass','$line','$face',1)";
 			if (mysqli_query($connection, $sql)) {
 				//echo "เพิ่มข้อมูลสำเร็จ";
 				$alert = '<script type="text/javascript">';
-				$alert .= 'alert("เพิ่มข้อมูลสำเร็จ");';
+				$alert .= 'alert("สมัครสมาชิกสำเร็จ กรุณารอการยืนยันจากพนักงาน");';
 				$alert .= 'window.location.href = "?function=check";';
 				$alert .= 'window.location.href = "../customer/";';
 				$alert .= '</script>';
@@ -48,9 +60,12 @@
 			echo $alert;
 			exit();
 		}
+	
 
 		mysqli_close($connection);
 	}
+}
+}
 
 
 

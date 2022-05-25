@@ -66,12 +66,6 @@
                             </div>
                         </div>
                         <div class="justify-content-start flex-fill ">
-                            <!-- <div class=" mb-3 ">
-                                <h6 style="display: inline;">ช่องทางการติดต่อ :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['social_contact'] ?></td>
-                                <h6 style="display: inline;">ชื่อผู้ใช้ :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['social_name'] ?></td>
-                            </div> -->
                             <div class=" mb-3 ">
                                 <h6 style="display: inline;">เงินที่ต้องจ่ายต่องวด :</h6>
                                 <td width="25%" style="display: inline;"><?= ($result['principle'] * 0.02) ?> บาท</td>
@@ -97,7 +91,7 @@
                                 <div class="justify-content-start flex-fill col-5" style="margin-left:3rem">
                                     <div class="col-12 mt-3">
                                         <h6>แนบภาพหลักฐานการชำระค่างวด</h6>
-                                        <img src="../customer/upload/interest/<?= $result['in_img'] ?>" alt="jewelry" width="300" height="200">
+                                        <img src="../images/interest/<?= $result['in_img'] ?>" alt="jewelry" width="300" height="200">
 
                                     </div>
                                 </div>

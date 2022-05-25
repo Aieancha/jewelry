@@ -1,11 +1,22 @@
 <?php
 $user = $_SESSION['customer_login'];
 $sql = "SELECT * FROM tbl_social INNER JOIN tbl_bill ON tbl_bill.s_id=tbl_social.s_id
-	INNER JOIN tbl_orders ON tbl_social.s_id=tbl_orders.s_id WHERE c_email = '$user'";
+INNER JOIN tbl_orders ON tbl_social.s_id=tbl_orders.s_id WHERE c_email = '$user'";
 $query = mysqli_query($connection, $sql);
 $result = mysqli_fetch_assoc($query);
 ?>
-
+<?php 
+$status = $result['bill_role'];
+if($status==0){
+	 $status = "ค้างชำระ";
+}elseif($status==1){
+	 $status = "ครบสัญญา";
+}elseif($status==2){
+	 $status = "ผิดสัญญาสัญญา";
+}else{
+	 $status = "ไถ่ถอนก่อนกำหนด";
+}
+?>
 <body class="app">
 	<div class="row g-0 app-wrapper app-auth-wrapper">
 		<div class="app-auth-body mx-auto ">
@@ -67,7 +78,7 @@ $result = mysqli_fetch_assoc($query);
 									<div class="app-card app-card-doc shadow-sm h-100">
 
 										<div class="text-end p-3">
-											<span class="badge bg-success">ชำระแล้ว</span>
+											<span class="badge bg-success"><?php echo $status; ?></span>
 											<a class="app-card-link-mask" href="#file-link"></a>
 										</div>
 										<div class="app-card-body p-3 has-card-actions">

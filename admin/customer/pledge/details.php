@@ -132,6 +132,21 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     $sql = "SELECT * FROM tbl_orders INNER JOIN tbl_social ON tbl_social.s_id=tbl_orders.s_id  WHERE o_id = '$id'";
     $query = mysqli_query($connection, $sql);
     $result = mysqli_fetch_assoc($query);
+
+
+    $member = "SELECT * FROM tbl_member INNER JOIN tbl_orders ON tbl_member.m_id=tbl_orders.lavel WHERE tbl_orders.o_id = '$id'";
+    $qry = mysqli_query($connection, $member);
+    $rs = mysqli_fetch_assoc($qry);
+
+    //$name=$rs['status'];
+    //$m_id = $rs["m_id"];
+    $status = $result['lavel'];
+    if($status == $rs["m_id"]){
+
+        $status = $rs['status'] .': '. $rs['m_name'];
+    }else{
+        $status = "ลูกค้า";
+    }
 }
 ?>
 
@@ -145,7 +160,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
             <div class="card mb-3">
                 <div class="card-body">
                     <div class="flex-fill d-flex justify-content-end gap-1">
-                        <h6 class="font-weight-bolder text-dark text-gradient ">บันทึกข้อมูลโดย : <?= $result['lavel'].': ' ?></h6>
+                        <h6 class="font-weight-bolder text-dark text-gradient ">บันทึกข้อมูลโดย : <?php echo $status; ?></h6>
                     </div>
                     <div class="col-5">
                         <div class="col-auto mb-3">

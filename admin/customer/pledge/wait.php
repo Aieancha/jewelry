@@ -31,7 +31,7 @@ if ($wait == '') {
             <div class="col">
             <a href="?page=<?= $_GET['page'] ?>&function=CustomerCreate " class="btn btn-sm1 bg-gray-500  m-1">เพิ่มข้อมูลโดยลูกค้า </a>
                 <a href="?page=<?= $_GET['page'] ?> " class="btn btn-sm1 bg-gray-500  m-1">รอประเมิน </a>
-                <a href="?page=<?= $_GET['page'] ?>&function=wait" class="btn btn-sm1 bg-gray-600 text-white m-1">รอร่างสัญญา <?php echo  $wait; ?></a>
+                <a href="?page=<?= $_GET['page'] ?>&function=wait" class="btn btn-sm1 bg-gray-600 text-white m-1">(<?php echo  $wait; ?>) รอร่างสัญญา </a>
                 <a href="?page=<?= $_GET['page'] ?>&function=contractSuccess" class="btn btn-sm1 bg-gray-500  m-1">ลงนามสัญญาเรียบร้อยแล้ว </a>
             </div>
             <div class="d-flex justify-content-end mb-2 ">
@@ -39,7 +39,6 @@ if ($wait == '') {
                     <input type="text" placeholder="ชื่อผู้ใช้งาน.." name="search2 ">
                     <button type="submit"><i class="fa fa-search btn-dark"></i></button>
             </div>
-            <a href="" class="btn btn-sm btn-dark text-white">สถานะ</a>
         </div>
     </div>
 

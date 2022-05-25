@@ -2,6 +2,7 @@
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
     $sql = "SELECT * FROM tbl_interest INNER JOIN tbl_social ON tbl_social.s_id = tbl_interest.ref_id
+    INNER JOIN tbl_orders ON tbl_social.s_id = tbl_orders.s_id
                             INNER JOIN tbl_bill ON tbl_interest.ref_id = tbl_bill.s_id 
                             WHERE tbl_social.s_id ='$id'";
     $query = mysqli_query($connection, $sql);

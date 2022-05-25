@@ -6,6 +6,18 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     $query = mysqli_query($connection, $sql);
     $result = mysqli_fetch_assoc($query);
 }
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    $id = $_GET['id'];
+    $sql1 = "SELECT * FROM tbl_interest INNER JOIN tbl_social ON tbl_social.s_id = tbl_interest.ref_id WHERE tbl_social.s_id ='$id'";
+    $qry = mysqli_query($connection, $sql1);
+    $Num_Rows = mysqli_num_rows($qry);
+	if ($Num_Rows == 0) {
+		$Num_Rows = 0;
+	} else {
+		$Num_Rows = ($Num_Rows + 1);
+	}
+	$wait=$result['r_mount']-$Num_Rows; //งวดที่รอชำระ
+}
 ?>
 
 <body class="app">
@@ -330,7 +342,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 								<div class="row justify-content-between align-items-center">
 									<div class="col-auto">
 										<div class="item-label"><strong>จำนวนงวดที่ชำระเเล้ว : </strong>
-											<td width="25%" style="display: inline;"></td>
+											<td width="25%" style="display: inline;"><?php echo $Num_Rows; ?> งวด</td>
 										</div>
 									</div>
 									<!--//col-->
@@ -342,7 +354,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 								<div class="row justify-content-between align-items-center">
 									<div class="col-auto">
 										<div class="item-label"><strong>จำนวนงวดที่เหลือ(รอชำระ) : </strong>
-											<td width="25%" style="display: inline;"></td>
+											<td width="25%" style="display: inline;"><?php echo $wait; ?> งวด</td>
 										</div>
 									</div>
 									<!--//col-->

@@ -1,6 +1,7 @@
 <!-- ค้างชำระ -->
 <?php
 $sql = "SELECT * FROM tbl_social
+INNER JOIN tbl_orders ON tbl_social.s_id = tbl_orders.s_id
 INNER JOIN tbl_bill ON tbl_social.s_id = tbl_bill.s_id
 INNER JOIN tbl_interest ON tbl_interest.ref_id = tbl_social.s_id
 group by tbl_social.s_id ORDER BY start_date";
@@ -72,20 +73,20 @@ while ($data=mysqli_fetch_array($query_month)){
                   $total_price = ($principle*$rate)*$month;
 
                 ?>
-                  <tr>
+                  <!-- <tr>
                     <td><?= ++$i ?></td>
                     <td><?= $data['in_date'] ?></td>
                     <td><?php echo $data['bill_no']; ?></td>
                     <td><?= $data['s_name'] . ' ' . $data['s_lastname'] ?></td>
                     <td><?= number_format($data['principle']) ?></td>
                     <td><?php echo number_format($total_price) ?></td>
-                  </tr>
+                  </tr> -->
 
                 <?php } ?>
                 <table class="table">
                   <tr>
-                    <td>เลขที่สัญญาจำนวน : <?php echo $f['bill']; ?> ฉบับ </td>
-                    <td>รวมยอดชำระดอกเบี้ย : <?php echo $f['sum_price']; ?> บาท </td>
+                    <!-- <td>เลขที่สัญญาจำนวน : <?php echo $f['bill']; ?> ฉบับ </td>
+                    <td>รวมยอดชำระดอกเบี้ย : <?php echo $f['sum_price']; ?> บาท </td> -->
                   </tr>
                 </table>
               </tbody>

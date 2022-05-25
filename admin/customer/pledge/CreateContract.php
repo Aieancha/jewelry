@@ -9,6 +9,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     $result = mysqli_fetch_assoc($query);
 }
 if (isset($_POST["submit"])) {
+    $date=date("Y-m-d");
     if (isset($_FILES['bill_img']['name']) && !empty($_FILES['bill_img']['name'])) {
         $extension = array("jpeg", "jpg", "png");
         $target = '../images/bill/';
@@ -36,7 +37,7 @@ if (isset($_POST["submit"])) {
     } else {
         $filename = '';
     }
-    $sqlIns = "UPDATE tbl_bill SET bill_img ='$filename' WHERE tbl_bill.s_id ='$id'";
+    $sqlIns = "UPDATE tbl_bill SET bill_img ='$filename',create_date ='$date' WHERE tbl_bill.s_id ='$id'";
 
     if (mysqli_query($connection, $sqlIns)) {
         //echo "เพิ่มข้อมูลสำเร็จ";

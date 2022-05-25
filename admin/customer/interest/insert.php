@@ -1,6 +1,8 @@
 <?php
 $sql = "SELECT *
 FROM tbl_social
+INNER JOIN tbl_orders
+ON tbl_social.s_id = tbl_orders.s_id
 INNER JOIN tbl_interest
 ON tbl_social.s_id = tbl_interest.ref_id
 INNER JOIN tbl_bill

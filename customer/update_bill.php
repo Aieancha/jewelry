@@ -1,27 +1,30 @@
 <?php
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
-    $sql = "SELECT * FROM tbl_social WHERE s_id = '$id'";
+    $sql = "SELECT * FROM tbl_orders INNER JOIN tbl_social ON tbl_social.s_id=tbl_orders.s_id  WHERE tbl_orders.s_id = '$id'";
     $query = mysqli_query($connection, $sql);
     $result = mysqli_fetch_assoc($query);
+    $total=($result['principle']*0.02);
     $strStartDate = $result['c_date'];
     $strStartDate = date('Y-m-d');
     $strNewDate = date("Y-m-d", strtotime("+30 day", strtotime($strStartDate)));
     $strDate = date("Y-m-d", strtotime("+27 day", strtotime($strStartDate)));
-    //echo ' + 10 วัน = ' . $strNewDate;
-    //$role = $result['s_role']== 3? 4:3;
-    //$role = 3;
     $ref = $result['s_id'];
 }
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    $id = $_GET['id'];
+    $sql1 = "SELECT * FROM tbl_interest INNER JOIN tbl_social ON tbl_social.s_id = tbl_interest.ref_id WHERE tbl_social.s_id ='$id'";
+    $qry = mysqli_query($connection, $sql1);
+    $Num_Rows = mysqli_num_rows($qry);
+}
+    $Num_Rows = ($Num_Rows + 1);
 if (isset($_POST) && !empty($_POST)) {
     $in_date = $_POST['in_date'];
     $in_befor = $_POST['in_befor'];
 
-
-
     if (isset($_FILES['in_img']['name']) && !empty($_FILES['in_img']['name'])) {
         $extension = array("jpeg", "jpg", "png");
-        $target = 'upload/interest/';
+        $target = '../images/interest/';
         $filename = $_FILES['in_img']['name'];
         $filetmp = $_FILES['in_img']['tmp_name'];
         $ext = pathinfo($filename, PATHINFO_EXTENSION);
@@ -115,10 +118,7 @@ if (isset($_POST) && !empty($_POST)) {
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <div class="item-label"><strong>ชื่อ : </strong><?= $result['s_name'] ?></div>
-                            </div>
-                            <div class="mb-3">
-                                <div class="item-label"><strong>นามสกุล : </strong><?= $result['s_lastname'] ?></div>
+                                <div class="item-label"><strong>ชื่อ-นามสกุล : </strong><?= $result['s_name'] .' '. $result['s_lastname'] ?></div>
                             </div>
                             <div class="mb-3">
                                 <div class="item-label"><strong>ชื่อผู้ใช้เฟสบุ้ค : </strong><?= $result['c_facebook'] ?></div>
@@ -127,13 +127,16 @@ if (isset($_POST) && !empty($_POST)) {
                                 <div class="item-label"><strong>ไอดีไลน์ลูกค้า : </strong><?= $result['c_line'] ?></div>
                             </div>
                             <div class="mb-3">
-                                <div class="item-label"><strong>รายละเอียดเครื่องประดับ : </strong><?= $result['s_type'] ?></div>
+                                <div class="item-label"><strong>รายละเอียดเครื่องประดับ : </strong><?= $result['o_type'] ?></div>
                             </div>
                             <div class="mb-3">
                                 <div class="item-label"><strong>วันที่กำหนดชำระ : </strong><?= $result['c_date'] ?> </div>
                             </div>
                             <div class="mb-3">
-                                <div class="item-label"><strong>จำนวนเงินที่ต้องชำระ : </strong><?= $result['principle'] * 0.02 ?> บาท</div>
+                                <div class="item-label"><strong>งวดที่ : </strong><?php echo $Num_Rows .' จาก '. $result['r_mount']  ?> งวด </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="item-label"><strong>จำนวนเงินที่ต้องชำระ : </strong><?php echo $total ?> บาท</div>
                             </div>
                             <div class="app-card-footer p-4 mt-auto">
                             </div>
