@@ -1,24 +1,24 @@
 <?php
 $sql = "SELECT * FROM tbl_social INNER JOIN tbl_orders ON tbl_social.s_id = tbl_orders.s_id
-INNER JOIN tbl_status ON tbl_orders.o_role = tbl_status.id ";
+INNER JOIN tbl_status ON tbl_orders.o_role = tbl_status.id WHERE tbl_orders.o_role=0 ";
 $query = mysqli_query($connection, $sql);
 $rs = mysqli_fetch_assoc($query);
 $day3 = mysqli_num_rows($query);
 //$name = $rs['lavel'];
-$admin = 'admin';
-$staff = 'staff';
+$admin='admin';
+$staff='staff';
 $status = $_SESSION["userlevel"];
-$rename = $name = $status = $admin = "ผู้ดูแลระบบ: ";
-$ren = $name = $status = $staff = "พนักงาน: ";
+$rename=$name=$status=$admin="ผู้ดูแลระบบ: ";
+$ren=$name=$status=$staff="พนักงาน: ";
 $m_name = $_SESSION["user"];
 if ($day3 == '') {
     $day3 = '';
-} else {
+  } else {
     $day3 = $day3;
-}
-$member = "SELECT * FROM tbl_member INNER JOIN tbl_orders ON tbl_member.m_id = tbl_orders.lavel ";
-$qry = mysqli_query($connection, $member);
-$result = mysqli_fetch_assoc($qry);
+  }
+  $member = "SELECT * FROM tbl_member INNER JOIN tbl_orders ON tbl_member.m_id = tbl_orders.lavel ";
+  $qry = mysqli_query($connection, $member);
+  $result = mysqli_fetch_assoc($qry);
 ?>
 
 <div class="container-fluid py-4">
@@ -32,17 +32,16 @@ $result = mysqli_fetch_assoc($qry);
         </div>
         <div class="flex-fill d-flex justify-content-end gap-1">
             <div class="col">
-                <a href="?page=<?= $_GET['page'] ?> " class="btn btn-sm1 bg-gray-600 text-white m-1"> การจำนำ </a>
-                <a href="?page=<?= $_GET['page'] ?>&function=CustomerCreate " class="btn btn-sm1 bg-gray-500  m-1">เพิ่มข้อมูลโดยลูกค้า </a>
-                <a href="?page=<?= $_GET['page'] ?>&function=waitPledge " class="btn btn-sm1 bg-gray-500 m-1"> รอประเมิน </a>
+            <a href="?page=<?= $_GET['page'] ?> " class="btn btn-sm1 bg-gray-500  m-1">  การจำนำ </a>
+            <a href="?page=<?= $_GET['page'] ?>&function=CustomerCreate " class="btn btn-sm1 bg-gray-500  m-1">เพิ่มข้อมูลโดยลูกค้า </a>
+                <a href="?page=<?= $_GET['page'] ?>&function=waitPledge " class="btn btn-sm1 bg-gray-600 text-white m-1"> (<?php echo  $day3; ?>) รอประเมิน </a>
                 <a href="?page=<?= $_GET['page'] ?>&function=wait" class="btn btn-sm1 bg-gray-500 m-1">รอร่างสัญญา </a>
                 <a href="?page=<?= $_GET['page'] ?>&function=contractSuccess" class="btn btn-sm1 bg-gray-500  m-1">ลงนามสัญญาเรียบร้อยแล้ว </a>
             </div>
             <div class="d-flex justify-content-end mb-2 ">
-                <form class="example " action="" method="POST" style="margin: 7px;;max-width:200px">
-                    <input type="text" placeholder="ชื่อผู้ใช้งาน.." >
-                    <button type="submit" name="submit"><i class="fa fa-search btn-dark"></i></button>
-                </form>
+                <form class="example " action="/action_page.php" style="margin: 7px;;max-width:200px">
+                    <input type="text" placeholder="ชื่อผู้ใช้งาน.." name="search2 ">
+                    <button type="submit"><i class="fa fa-search btn-dark"></i></button>
             </div>
         </div>
     </div>
@@ -73,7 +72,7 @@ $result = mysqli_fetch_assoc($qry);
                                 <td><?= $data['o_date'] ?></td>
                                 <td> <?php
                                         if ($data['lavel'] == $result['m_id']) {
-                                            echo $result['status'] . ':' . $result['m_name'];
+                                            echo $result['status'].':'.$result['m_name'];
                                         } else {
                                             echo "ลูกค้า";
                                         } ?></td>
@@ -92,7 +91,7 @@ $result = mysqli_fetch_assoc($qry);
         </div>
 
     </div>
-
+    </form>
 </div>
 <?php
 mysqli_close($connection);

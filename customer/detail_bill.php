@@ -1,7 +1,7 @@
 <?php  
 	$user = $_SESSION['customer_login']; 
 	$sql = "SELECT * FROM tbl_social INNER JOIN tbl_bill ON tbl_social.s_id=tbl_bill.s_id 
-	INNER JOIN tbl_orders ON tbl_social.s_id=tbl_orders.s_id WHERE c_email = '$user'"; 
+	INNER JOIN tbl_orders ON tbl_social.s_id=tbl_orders.s_id INNER JOIN tbl_interest ON tbl_social.s_id=tbl_interest.ref_id WHERE c_email = '$user'"; 
 	$query = mysqli_query($connection, $sql); 
 	$result = mysqli_fetch_assoc($query);   
 		?>
@@ -109,34 +109,34 @@
 								<div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
-										    <div class="item-label"><strong>จำนวนงวดที่ชำระเเล้ว : </strong>
-											<td width="25%" style="display: inline;"></td>
+										    <div class="item-label"><strong>ชำระงวดที่ : </strong>
+											<td width="25%" style="display: inline;">2 จาก 3</td>
 										</div>
 									    </div><!--//col-->
 								    </div><!--//row-->   
 							    </div><!--//item-->
-								<div class="item py-3">
+								<!-- <div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
 										    <div class="item-label"><strong>จำนวนงวดที่เหลือ(รอชำระ) : </strong>
 											<td width="25%" style="display: inline;"></td>
 										</div>
-									    </div><!--//col-->
-								    </div><!--//row-->   
-							    </div><!--//item-->
-								<div class="item py-3">
+									    </div>
+								    </div>
+							    </div> -->
+								<!-- <div class="item py-3">
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
 										    <div class="item-label"><strong>รอบกำหนดชำระ ทุกวันที่ ; </strong>
 											<td width="25%" style="display: inline;"></td>
 										</div>
-									    </div><!--//col-->
-								    </div><!--//row-->   
-							    </div><!--//item-->
+									    </div>
+								    </div>
+							    </div> -->
 						    </div><!--//app-card-body-->
-						    <div class="app-card-footer p-4 mt-auto ">
+						    <!-- <div class="app-card-footer p-4 mt-auto ">
 							<a class="btn app-btn-secondary" href="">ดูสัญญาการจำนำ</a>
-						    </div><!--//app-card-footer-->
+						    </div> --><!--//app-card-footer-->
 						   
 						</div><!--//app-card-->
 	                </div><!--//col-->

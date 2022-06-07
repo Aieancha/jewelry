@@ -376,9 +376,9 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 							<!--//item-->
 						</div>
 						<!--//app-card-body-->
-						<div class="app-card-footer p-4 mt-auto">
+						<!-- <div class="app-card-footer p-4 mt-auto">
 							<a class="btn app-btn-secondary" href="">ดูสัญญาการจำนำ</a>
-						</div>
+						</div> -->
 						<!--//app-card-footer-->
 
 					</div>

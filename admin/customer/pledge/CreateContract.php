@@ -87,11 +87,11 @@ if (isset($_POST["submit"])) {
                             </div>
                             <div class=" mb-3 ">
                                 <h6 style="display: inline;">จำนวนเงินต้น :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['principle'] ?> บาท</td>
+                                <td width="25%" style="display: inline;"><?= number_format($result['principle']) ?> บาท</td>
                             </div>
                             <div class=" mb-3 ">
                                 <h6 style="display: inline;">จำนวนดอกเบี้ยทั้งหมด :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['principle'] * 0.02 * $result['r_mount'] ?> บาท</td>
+                                <td width="25%" style="display: inline;"><?= number_format($result['principle'] * 0.02 * $result['r_mount']) ?> บาท</td>
                             </div>
                         </div>
                         <div class="justify-content-start flex-fill ">
@@ -101,7 +101,7 @@ if (isset($_POST["submit"])) {
                             </div>
                             <div class=" mb-3 ">
                                 <h6 style="display: inline;">เงินที่ต้องจ่ายต่องวด :</h6>
-                                <td width="25%" style="display: inline;"><?= ($result['principle'] * 0.02) ?> บาท</td>
+                                <td width="25%" style="display: inline;"><?= number_format(($result['principle'] * 0.02)) ?> บาท</td>
                             </div>
                             <div class=" mb-3  ">
                                 <h6 style="display: inline;">จำนวนงวดที่ต้องชำระ :</h6>
@@ -130,7 +130,7 @@ if (isset($_POST["submit"])) {
             <?php
             echo "<a href='javascript:window.history.back()' class='btn btn-sm btn-dark text-white'>ย้อนกลับ</a>";
             ?>
-            <a href="?page=<?= $_GET['page'] ?>&function=SuccessContract&id=<?= $result['o_id'] ?>" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a>
+            <a href="?page=<?= $_GET['page'] ?>&function=SuccessContract&id=<?= $result['o_id'] ?>" class="btn btn-sm btn-blue2 text-white">รายละเอียดการอัปโหลด</a>
 
         </div>
     </div>

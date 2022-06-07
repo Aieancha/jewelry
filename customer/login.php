@@ -72,7 +72,8 @@ if (isset($_REQUEST['c_email'])) {
                             <!--//form-group-->
                             <div class="password mb-3">
                                 <label class="sr-only" for="signin-password">Password</label>
-                                <input id="signin-password" name="c_pass" type="password" class="form-control signin-password" placeholder="รหัสผ่าน" required="required">
+                                <input id="signin-password" name="c_pass" type="password" class="form-control pass-swap" placeholder="รหัสผ่าน" required="required">
+                                <button style="width: 20%;" type="button" class="form-control btn-toggle-pass">Show</button>
                                 <div class="extra mt-3 row justify-content-between">
                                     <!--div class="col-6">
 										<div class="form-check">
@@ -116,7 +117,21 @@ if (isset($_REQUEST['c_email'])) {
 
 
 </body>
-
+<script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    // ใช้วิธีการ สลับ type 
+     $(document.body).on("click",".btn-toggle-pass",function(){
+        let ele = $(this).prev(".pass-swap");
+        let condCheck = $(this).text();
+        $(this).text((condCheck=='Show')?'Hide':'Show');
+        let swap_attr = (ele.attr("type")=="password")?"text":"password";
+        console.log(ele.attr("type")); 
+        ele.attr("type",swap_attr);
+     });
+  
+});
+</script>
 </html>
 <style>
     .app-btn-primary {

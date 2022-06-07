@@ -32,7 +32,7 @@ $query = mysqli_query($connection, $sql);
             </form>
             
         </div>
-        <a href="" class="btn btn-sm btn-dark text-white">สถานะ</a>
+        
     </div>   
   <div class="row">
     <div class="card">

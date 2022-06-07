@@ -37,7 +37,7 @@ if($status==0){
 					</div>
 					<div class="flex-fill d-flex justify-content-start gap-1">
 						<div class="btn app-btn-secondary">
-							<a>รายการที่<a href="?page=<?= $_GET['page'] ?>&function=interest2" style="color:#5d6778; text-decoration: underline">ค้าง<a>ชำระ</a>
+							<a>รายการที่<a href="?page=<?= $_GET['page'] ?>&function=interest2" style="color:#5d6778; text-decoration: underline">ครบกำหนด<a>ชำระ</a>
 						</div>
 					</div>
 
@@ -78,7 +78,7 @@ if($status==0){
 									<div class="app-card app-card-doc shadow-sm h-100">
 
 										<div class="text-end p-3">
-											<span class="badge bg-success"><?php echo $status; ?></span>
+											<span class="badge bg-success">ชำระแล้ว</span>
 											<a class="app-card-link-mask" href="#file-link"></a>
 										</div>
 										<div class="app-card-body p-3 has-card-actions">

@@ -10,7 +10,7 @@ $rs = mysqli_fetch_assoc($query);
 <?php
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
-    $sql = "SELECT * FROM tbl_social INNER JOIN tbl_orders ON tbl_orders.s_id = tbl_social.s_id WHERE tbl_social.s_id = '$id'";
+    $sql = "SELECT * FROM tbl_social INNER JOIN tbl_orders ON tbl_orders.s_id = tbl_social.s_id WHERE tbl_orders.o_id = '$id'";
     $query = mysqli_query($connection, $sql);
     $result = mysqli_fetch_assoc($query);
     $principle = $result['principle'];

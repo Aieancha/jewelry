@@ -120,21 +120,6 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
             </div>
 
             <div style="width: 900px; margin:auto;">
-            <div style="width:100%;text-align:right;">
-              <div class="d-flex flex-row">
-                <div class="justify-content-start flex-fill ">
-                  <div style="font-weight: bold; margin: 0;"><span> ผู้ขายฝาก:</span></div>
-                  <div><span>ลงชื่อ ...................................................................</span></div>
-                  <div style="text-indent: 50px;"><span>(<?= $result['s_name'] . '  ' . $result['s_lastname'] ?>)</span></div>
-                </div>
-                <div class="justify-content-start flex-fill ">
-                  <div style="font-weight: bold; margin: 0;"><span> ผู้ซื้อฝาก:</span></div>
-                  <div><span>บริษัท มีทรัพย์สิน โฮลดิ้ง จำกัด</span></div>
-                  <div><span>ลงชื่อ ...................................................................</span></div>
-                </div>
-              </div>
-            </div>
-
             <div style="width:100%;text-align:left;">
               <div class="d-flex flex-row">
                 <div class="justify-content-start flex-fill ">
@@ -149,6 +134,21 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                 </div>
               </div>
             </div>
+
+            <!-- <div style="width:100%;text-align:left;">
+              <div class="d-flex flex-row">
+                <div class="justify-content-start flex-fill ">
+                  <div style="font-weight: bold; margin: 0;"><span> ผู้ขายฝาก:</span></div>
+                  <div><span>ลงชื่อ ...................................................................</span></div>
+                  <div style="text-indent: 50px;"><span>(<?= $result['s_name'] . '  ' . $result['s_lastname'] ?>)</span></div>
+                </div>
+                <div class="justify-content-start flex-fill ">
+                  <div style="font-weight: bold; margin: 0;"><span> ผู้ซื้อฝาก:</span></div>
+                  <div><span>บริษัท มีทรัพย์สิน โฮลดิ้ง จำกัด</span></div>
+                  <div><span>ลงชื่อ ...................................................................</span></div>
+                </div>
+              </div>
+            </div> -->
             
           </div>
 

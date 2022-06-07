@@ -1,5 +1,6 @@
 <?php
 $sql = "SELECT * FROM tbl_social
+INNER JOIN tbl_orders ON tbl_orders.s_id = tbl_social.s_id
 INNER JOIN tbl_interest ON tbl_interest.ref_id = tbl_social.s_id
 INNER JOIN tbl_bill ON tbl_social.s_id = tbl_bill.s_id
 group by tbl_social.s_id ORDER BY in_date";
@@ -38,7 +39,7 @@ if ($day3['day3'] > 0) {
                 </form>
 
             </div>
-            <a href="" class="btn btn-sm btn-dark text-white">สถานะ</a>
+            
         </div>
         <div class="row">
             <div class="card">
@@ -86,7 +87,7 @@ if ($day3['day3'] > 0) {
                                             } else {
                                                 echo "ค้างชำระ";
                                             } ?></td>
-                                        <td> <a href="?page=<?= $_GET['page'] ?>&function=showDetails&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-blue2 text-white">ดูตาราง</a></td>
+                                        <td> <a href="?page=<?= $_GET['page'] ?>&function=showDetails&id=<?= $data['o_id'] ?>" class="btn btn-sm btn-blue2 text-white">ดูตาราง</a></td>
                                         <td> <a href="?page=<?= $_GET['page'] ?>&function=sum_list&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-green3 text-white">แก้ไขสถานะ</a></td>
                                     </tr>
                                 <?php endforeach; ?>

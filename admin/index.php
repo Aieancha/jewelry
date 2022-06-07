@@ -61,6 +61,8 @@
 
           if (isset($_GET['function']) && $_GET['function'] == 'insert') {
             include('customer/pledge/insert.php');
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'waitPledge') {
+            include('customer/pledge/waitPledge.php');
           } elseif (isset($_GET['function']) && $_GET['function'] == 'customr') {
             include('customer/pledge/customr.php');
           } elseif (isset($_GET['function']) && $_GET['function'] == 'cal') {

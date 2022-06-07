@@ -144,7 +144,7 @@
 							<div class="password mb-3">
 								<label>ที่อยู่</label>
 								<label class="sr-only" for="signup-password">ที่อยู่</label>
-								<input type="text" class="form-control " name="c_address" class="form-control signup-password" placeholder="กรอกที่อยู่ปัจจุบัน" required="required">
+								<input type="text" class="form-control " name="c_address" class="form-control signup-password" placeholder="กรอกที่อยู่ปัจจุบัน">
 							</div>
 
 							<!--div class="extra mb-3">

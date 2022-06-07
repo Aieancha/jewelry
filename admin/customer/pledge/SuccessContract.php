@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+//print_r($_POST);
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    $id = $_GET['id'];
 
+    $member = "SELECT * FROM tbl_member INNER JOIN tbl_orders ON tbl_member.m_id=tbl_orders.lavel WHERE tbl_orders.o_id = '$id'";
+    $qry = mysqli_query($connection, $member);
+    $rs = mysqli_fetch_assoc($qry);
+
+    //$name=$rs['status'];
+    //$m_id = $rs["m_id"];
+    $status = $rs['lavel'];
+    if($status == $rs["m_id"]){
+
+        $status = $rs['status'] .': '. $rs['m_name'];
+    }else{
+        $status = "ลูกค้า";
+    }
+}
+?>
 <body class="g-sidenav-show bg-gray-100">
     <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
         <div class="container-fluid">
@@ -12,7 +31,7 @@
                 <div class="card-body">
                     <div class="justify-content-start flex-fill">
                         <div class="justify-content-start flex-fill m-1">
-                            <h6 class="font-weight-bolder text-dark text-gradient text-end">ผู้บันทึกข้อมูล :</h6>
+                            <h6 class="font-weight-bolder text-dark text-gradient text-end">ผู้บันทึกข้อมูล : <?php echo $status; ?></h6>
                             <div class="justify-content-end flex-fill m-3">
                                 <h3 class="font-weight-bolder text-dark text-gradient ">รายละเอียดการโอน</h3>
                             </div>
@@ -22,7 +41,7 @@
                             $id = $_GET['id'];
                             $sql = "SELECT * FROM tbl_social INNER JOIN tbl_orders ON tbl_orders.s_id = tbl_social.s_id
                             INNER JOIN tbl_bill ON tbl_social.s_id = tbl_bill.s_id 
-                            WHERE tbl_orders.s_id ='$id'";
+                            WHERE tbl_bill.s_id  ='$id'";
                             $query = mysqli_query($connection, $sql);
                             $result = mysqli_fetch_assoc($query);
                         }
@@ -39,7 +58,6 @@
                         <div class=" mb-3">
                             <h4 style="display: inline;">ข้อมูลการจำนำ</h4>
                         </div>
-
                         <div class="d-flex flex-row bg-gray1">
                             <div class="justify-content-start flex-fill m-3">
                                 <div class=" mb-3 col-10 ">
@@ -48,7 +66,7 @@
                                 </div>
                                 <div class=" mb-3 col-10">
                                     <h6 style="display: inline;">ชื่อผู้จำนำ :</h6>
-                                    <td width="25%" style="display: inline;"><?= $result['s_name'] .' '. $result['s_lastname'] ?> </td>
+                                    <td width="25%" style="display: inline;"><?= $result['s_name'] . ' ' . $result['s_lastname'] ?> </td>
                                 </div>
                                 <div class=" mb-3 col-10 ">
                                     <h6 style="display: inline;">วันที่อัปโหลดสัญญา :</h6>

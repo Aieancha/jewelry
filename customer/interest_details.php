@@ -45,7 +45,7 @@ if($day3['day3']>0){
           </div>
           <div class="flex-fill d-flex justify-content-start gap-1">
             <div class="btn app-btn-secondary bg-NGG" href="#">
-              <a>รายการที่<a style="text-decoration: underline">ค้าง<a>ชำระ</a>
+              <a>รายการที่<a style="text-decoration: underline">ครบกำหนด<a>ชำระ</a>
               <!-- <span class="text-danger">&nbsp;<?php  echo  $noti_day3; ?></span> -->
             </div>
           </div>
@@ -82,7 +82,7 @@ if($day3['day3']>0){
               <table>
                 <thead>
                   <tr>
-                    <th scope="col">ลำดับ</th>
+                    <th scope="col">งวดที่</th>
                     <th scope="col">เลขที่สัญญา</th>
                     <th scope="col">จำนวนดอกเบี้ยที่ต้องชำระ</th>
                     <th scope="col">สถานะ</th>
@@ -96,7 +96,7 @@ if($day3['day3']>0){
                   $i = 0;
                   foreach ($query as $result) : ?>
                     <tr>
-                      <td><?= ++$i ?></td>
+                      <td>3</td>
                       <td><?= $result['bill_no'] ?></td>
                       <td><?= ($result['principle'] * 0.02) ?>฿</td>
                       <td><?php echo $status; ?></td>

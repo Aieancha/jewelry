@@ -5,13 +5,9 @@ $query = mysqli_query($connection, $sql);
 $rs = mysqli_fetch_assoc($query);
 $success = mysqli_num_rows($query);
 
-$status = $_SESSION["userlevel"];
-$m_name = $_SESSION["user"];
-if ($success == '') {
-    $success = '';
-  } else {
-    $success = $success;
-  }
+$member = "SELECT * FROM tbl_member INNER JOIN tbl_orders ON tbl_member.m_id = tbl_orders.lavel ";
+$qry = mysqli_query($connection, $member);
+$result = mysqli_fetch_assoc($qry);
 ?>
 
 <div class="container-fluid py-4">
@@ -25,8 +21,9 @@ if ($success == '') {
         </div>
         <div class="flex-fill d-flex justify-content-end gap-1">
             <div class="col">
+            <a href="?page=<?= $_GET['page'] ?> " class="btn btn-sm1 bg-gray-500 m-1">  การจำนำ </a>
             <a href="?page=<?= $_GET['page'] ?>&function=CustomerCreate " class="btn btn-sm1 bg-gray-500 m-1">เพิ่มข้อมูลโดยลูกค้า </a>
-                <a href="?page=<?= $_GET['page'] ?>" class="btn btn-sm1 bg-gray-500 m-1">รอประเมิน </a>
+                <a href="?page=<?= $_GET['page'] ?>&function=waitPledge" class="btn btn-sm1 bg-gray-500 m-1">รอประเมิน </a>
                 <a href="?page=<?= $_GET['page'] ?>&function=wait" class="btn btn-sm1 bg-gray-500 m-1">รอร่างสัญญา </a>
                 <a href="?page=<?= $_GET['page'] ?>&function=contractSuccess" class="btn btn-sm1 bg-gray-600 text-white m-1">(<?php echo  $success; ?>) ลงนามสัญญาเรียบร้อยแล้ว  </a>
             </div>
@@ -63,10 +60,8 @@ if ($success == '') {
                                 <td><?= ++$i ?></td>
                                 <td><?= $data['o_date'] ?></td>
                                 <td> <?php
-                                        if ($data['lavel'] == 'admin') {
-                                            echo "ผู้จัดการ";
-                                        } else if ($data['lavel'] == 'staff') {
-                                            echo "พนักงาน";
+                                        if ($data['lavel'] == $result['m_id']) {
+                                            echo $result['status'].':'.$result['m_name'];
                                         } else {
                                             echo "ลูกค้า";
                                         } ?></td>

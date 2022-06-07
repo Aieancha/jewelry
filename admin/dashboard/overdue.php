@@ -57,7 +57,7 @@ $p=$result['principle'];
                     <td><?= $data['s_name'] . ' ' . $data['s_lastname'] ?></td>
                     <td><?php echo number_format($data['principle']); ?></td>
                     <td><?php echo $month; ?></td>
-                    <td><?php echo number_format($balance); ?></td>
+                    <td><?php echo number_format($data['o_inter']); ?></td>
                   </tr>
 
                 <?php } ?>

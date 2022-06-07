@@ -31,8 +31,9 @@ while ($data=mysqli_fetch_array($query_month)){
   <div class="d-flex justify-content-end">
   <div class="d-flex justify-content-end mb-3">
         <a href="?function=EndContract" class="btn btn-sm1 btn-green text-white m-1">ครบสัญญา</a>
-        <a href="?&function=WrongContract" class="btn btn-sm1 bg-gray-500  m-1">ผิดสัญญา</a>
         <a href="?&function=RedemContract" class="btn btn-sm1 bg-gray-500  m-1">ไถ่ถอนก่อนกำหนด</a>
+        <a href="?&function=WrongContract" class="btn btn-sm1 bg-gray-500  m-1">ผิดสัญญา</a>
+        
       </div>
   </div>
   

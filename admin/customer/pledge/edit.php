@@ -207,8 +207,8 @@
               </div>
               <div class=" mb-4 col-6 ">
                 <h6 style="display: inline;">อายุ</h6>
-                <h6 class="form-label text-danger" style="display: inline;">*</h6>
-                <input type="text" class="form-control1 " name="c_age" value="<?= $rs['c_age'] ?>" placeholder="กรอกอายุ (ปี)" autocomplete="off" required>
+                <!-- <h6 class="form-label text-danger" style="display: inline;">*</h6> -->
+                <input type="text" class="form-control1 " name="c_age" value="<?= $rs['c_age'] ?>" placeholder="กรอกอายุ (ปี)" autocomplete="off">
               </div>
               <div class=" mb-4 col-10 ">
                 <h6 style="display: inline;">ที่อยู่</h6>
