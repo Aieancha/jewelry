@@ -116,6 +116,8 @@
           } else {
             include('profile/allow.php');
           }
+        }elseif (isset($_GET['page']) && $_GET['page'] == 'myprofile') {
+          include('admin/home.php');
         }
 
 

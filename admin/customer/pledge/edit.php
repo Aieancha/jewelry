@@ -178,9 +178,8 @@
                   <option value="คิดดอกเบี้ยแบบโรงรับจำนำ">คิดดอกเบี้ยแบบโรงรับจำนำ</option>
                 </select>
               </div>
-              <div class="mb-4 col-3 ">
+              <div class="mb-4 col-6 ">
                 <h6>ภาพยืนยันตัวตน</h6>
-                <!-- <h5 class="form-label text-danger" style="display: inline;">*</h5> -->
 
                 <img src="../images/customer/<?= $rs['c_img'] ?>" alt="jewelry" width="300" height="200">
               </div>
@@ -225,11 +224,10 @@
                 <h6 class="form-label text-danger" style="display: inline;">*</h6>
                 <input type="email" class="form-control " name="c_email" value="<?= $rs['c_email'] ?>" placeholder="example@gmail.com" autocomplete="off" required>
               </div>
-              <div class=" mb-4 col-6 ">
+              <!-- <div class=" mb-4 col-6 ">
                 <h6 style="display: inline;">วันที่ชำระงวดแรก</h6>
-                <!-- <h6 class="form-label text-danger" style="display: inline;">*</h6> -->
-                <input type="date" class="form-control " name="c_date" value="<?= $rs['c_date'] ?>" placeholder="example@gmail.com" autocomplete="off">
-              </div>
+                <input type="date" class="form-control " name="c_date" value="<?= $rs['c_date'] ?>" autocomplete="off">
+              </div> -->
             </div>
           </div>
 

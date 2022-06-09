@@ -326,6 +326,7 @@
 							</div>
 
 		</form>
+	</div>
 
 		<!-- Javascript -->
 		<script src="assets/plugins/popper.min.js"></script>

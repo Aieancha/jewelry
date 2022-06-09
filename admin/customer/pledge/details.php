@@ -233,6 +233,10 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                     <h4 style="display: inline;">ข้อมูลการจำนำ</h4>
                                 </div>
                                 <div class=" mb-4 col-10 ">
+                                    <h6 style="display: inline;">ราคาลูกค้าต้องการจำนำ :</h6>
+                                    <td width="25%" style="display: inline;"><?= number_format($result['o_price']) ?> บาท</td>
+                                </div>
+                                <div class=" mb-4 col-10 ">
                                     <h6 style="display: inline;">ราคาประเมินข้างต้น :</h6>
                                     <td width="25%" style="display: inline;"><?= number_format($result['price_img']) ?> บาท</td>
                                 </div>

@@ -51,12 +51,6 @@ mysqli_close($connection);
 <body class="g-sidenav-show bg-gray-100">
     <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
         <div class="container-fluid">
-            <!-- title -->
-            <div class="row justify-content-between">
-
-
-            </div>
-            <!-- end title -->
 
             <div class="card-body">
                 <div class="card mb-3">

@@ -9,7 +9,8 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     $result = mysqli_fetch_assoc($query);
 }
 if (isset($_POST["submit"])) {
-    $date=date("Y-m-d");
+    $c_date = $_POST['c_date'];
+    $date = date("Y-m-d");
     if (isset($_FILES['bill_img']['name']) && !empty($_FILES['bill_img']['name'])) {
         $extension = array("jpeg", "jpg", "png");
         $target = '../images/bill/';
@@ -37,7 +38,8 @@ if (isset($_POST["submit"])) {
     } else {
         $filename = '';
     }
-    $sqlIns = "UPDATE tbl_bill SET bill_img ='$filename',create_date ='$date' WHERE tbl_bill.s_id ='$id'";
+    $sqlIns = "UPDATE tbl_bill SET bill_img ='$filename',c_date ='$c_date',create_date ='$date' WHERE tbl_bill.s_id ='$id'";
+    /* mysqli_query($connection, "UPDATE tbl_orders SET o_role = 2 WHERE o_id='$id'"); */
 
     if (mysqli_query($connection, $sqlIns)) {
         //echo "เพิ่มข้อมูลสำเร็จ";
@@ -111,6 +113,10 @@ if (isset($_POST["submit"])) {
                     </div>
                     <form action="" method="POST" enctype="multipart/form-data">
                         <h4 style="margin-left: 30px;">อัปโหลดหลักฐานสัญญาที่มีการลงนามเรียบร้อยแล้ว</h4>
+                        <div class="col-3 ">
+                            <h6 style="display: inline;">วันที่ชำระงวดแรก</h6>
+                            <input type="date" class="form-control " name="c_date" autocomplete="off">
+                        </div>
                         <div class="bg-gray1 mb-3 ">
                             <div class="d-flex flex-row m-3">
                                 <div class="justify-content-start flex-fill col-5" style="margin-left:3rem">

@@ -15,7 +15,7 @@
             <?php
             if (isset($_GET['id']) && !empty($_GET['id'])) {
                 $id = $_GET['id'];
-                $sql1 = "SELECT * FROM tbl_interest INNER JOIN tbl_social ON tbl_social.s_id = tbl_interest.ref_id WHERE tbl_social.s_id ='$id'";
+                $sql1 = "SELECT * FROM tbl_interest INNER JOIN tbl_social ON tbl_social.s_id = tbl_interest.ref_id INNER JOIN tbl_bill ON tbl_bill.s_id = tbl_interest.ref_id WHERE tbl_bill.s_id ='$id'";
                 $qry = mysqli_query($connection, $sql1);
                 $Num_Rows = mysqli_num_rows($qry);
             }
@@ -24,7 +24,7 @@
             <?php
             if (isset($_GET['id']) && !empty($_GET['id'])) {
                 $id = $_GET['id'];
-                $sql = "SELECT * FROM tbl_social INNER JOIN tbl_orders ON tbl_social.s_id=tbl_orders.s_id WHERE tbl_social.s_id = '$id'";
+                $sql = "SELECT * FROM tbl_social INNER JOIN tbl_orders ON tbl_social.s_id=tbl_orders.s_id INNER JOIN tbl_bill ON tbl_bill.s_id = tbl_orders.s_id WHERE tbl_bill.s_id = '$id'";
                 $query = mysqli_query($connection, $sql);
                 $result = mysqli_fetch_assoc($query);
                 $strStartDate = $result['c_date'];
@@ -37,9 +37,9 @@
                 $ref = $result['s_id'];
                 $in = $result['o_inter']; //ดอกเบี้ยทั้งหมด
             }
-            $sqli = "SELECT * FROM tbl_interest INNER JOIN tbl_social ON tbl_social.s_id=tbl_interest.ref_id WHERE tbl_social.s_id=tbl_interest.ref_id";
+           /*  $sqli = "SELECT * FROM tbl_interest INNER JOIN tbl_social ON tbl_social.s_id=tbl_interest.ref_id WHERE tbl_social.s_id=tbl_interest.ref_id";
             $qry = mysqli_query($connection, $sqli);
-            $rs = mysqli_fetch_assoc($qry);
+            $rs = mysqli_fetch_assoc($qry); */
 
             if (isset($_POST) && !empty($_POST)) {
                 $in_date = $_POST['in_date'];

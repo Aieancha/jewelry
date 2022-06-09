@@ -1,15 +1,15 @@
 <?php
 $sql = "SELECT *
-FROM tbl_social
+FROM tbl_bill
 INNER JOIN tbl_status
-ON tbl_social.s_role = tbl_status.id
+/* ON tbl_social.s_role = tbl_status.id */
 /* WHERE tbl_status.id=2 AND */
 WHERE DATEDIFF(c_date, Now())= 3 or DATEDIFF(c_date, Now())= 2";
 $query = mysqli_query($connection, $sql);
 ?>
 <?php
 //mysqli_select_db($connection,"");
-$sqldb = "SELECT count(s_id) as day3 FROM tbl_social WHERE DATEDIFF(c_date, Now())= 3 or DATEDIFF(c_date, Now())= 2";
+$sqldb = "SELECT count(bill_id) as day3 FROM tbl_bill WHERE DATEDIFF(c_date, Now())= 3 or DATEDIFF(c_date, Now())= 2";
 $rs = mysqli_query($connection, $sqldb);
 $day3=mysqli_fetch_assoc($rs);
 if($day3['day3']>0){
