@@ -32,7 +32,7 @@ if ($day3 == '') {
         </div>
         <div class="flex-fill d-flex justify-content-end gap-1">
             <div class="col">
-            <a href="?page=<?= $_GET['page'] ?> " class="btn btn-sm1 bg-gray-500  m-1">  การจำนำ </a>
+            <a href="?page=<?= $_GET['page'] ?> " class="btn btn-sm1 bg-gray-500  m-1">  สรุปข้อมูลการจำนำ </a>
             <a href="?page=<?= $_GET['page'] ?>&function=CustomerCreate " class="btn btn-sm1 bg-gray-500  m-1">เพิ่มข้อมูลโดยลูกค้า </a>
                 <a href="?page=<?= $_GET['page'] ?>&function=waitPledge " class="btn btn-sm1 bg-gray-600 text-white m-1"> (<?php echo  $day3; ?>) รอประเมิน </a>
                 <a href="?page=<?= $_GET['page'] ?>&function=wait" class="btn btn-sm1 bg-gray-500 m-1">รอร่างสัญญา </a>
