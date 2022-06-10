@@ -35,15 +35,6 @@ if (isset($_POST) && !empty($_POST)) {
 ?>
 
 <div class="row justify-content-between">
-    <div class="d-flex justify-content-end">
-
-        <div class="d-flex justify-content-end mb-2 ">
-            <form class="example " action="/action_page.php" style="margin: 7px;;max-width:200px">
-                <input type="text" placeholder="ชื่อผู้ใช้งาน.." name="search2 ">
-                <button type="submit"><i class="fa fa-search btn-dark"></i></button>
-            </form>
-        </div>
-    </div>
     <div class="row">
         <div class="card">
             <!-- title -->

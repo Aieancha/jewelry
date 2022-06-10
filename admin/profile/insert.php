@@ -92,15 +92,17 @@
                 <option value="admin">ผู้จัดการ</option>
                 <option value="staff">พนักงาน</option>
               </select>
+            
+            
+            </div>
             </div>
             <div class="text-center mb-5">
               <a href="?page=<?= $_GET['page'] ?>" class="btn btn-dark   mb-0 mt-3 ">ย้อนกลับ</a>
               <button type="submit" name="save" class="btn btn-green3 text-white mb-0 mt-3">บันทึกข้อมูล</button>
             </div>
-
           </form>
 
-        </div>
+        
       </div>
     </div>
   </div>

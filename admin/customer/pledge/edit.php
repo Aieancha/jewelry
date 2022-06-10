@@ -160,7 +160,7 @@
                 <h6>ราคาที่ตกลงจำนำ</h6>
                 <input type="number" min="0" name="principle" value="<?= $rs['principle'] ?>" class="form-control1 " placeholder="กรอกราคาประเมิน (หน่วยเป็นบาท)" autocomplete="off">
               </div>
-              <div class="mb-4 col-6">
+              <div class="mb-4 col-8">
                 <h6 class="" style="display: inline;">จำนวนงวดที่จำนำ</h6>
                 <h6 style="display: inline;">(หน่วยเป็นงวด)</h6>
                 <!-- <h5 class="form-label text-danger" style="display: inline;">*</h5> -->
@@ -189,8 +189,8 @@
 
             </div>
             <div class="justify-content-start flex-fill ">
-              <div class=" mb-4 col-6 ">
-                <h6 style="display: inline;">เลขสำคัญที่ราชการออกให้</h6>
+              <div class=" mb-4 col-10 ">
+                <h6 style="display: inline;">บัตรประจำตัวประชาชน/หนังสือเดินทาง</h6>
                 <h6 class="form-label text-danger" style="display: inline;">*</h6>
                 <input type="text" class="form-control " name="code_id" value="<?= $rs['code_id'] ?>" placeholder="กรอกเลขสำคัญที่ราชการออกให้ลูกค้า" autocomplete="off" required>
               </div>

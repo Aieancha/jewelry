@@ -72,6 +72,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                         <td width="25%" style="display: inline;"><?= $result['principle'] * 0.02 * $result['r_mount'] ?> บาท</td>
                                     </div>
 
+                                    
                                     <!-- status -->
                                     <form action="" method="POST">
                                         <h6 style="display: inline;" class="text-danger">สถานะสัญญา </h6>

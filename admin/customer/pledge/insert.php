@@ -231,7 +231,6 @@ VALUES ( '$type', '$price','$filename3', '$filename1', '$filename2','$detail','$
                   <div class="mb-3">
                     <div class="mb-3">
                       <h5 style="display: inline;">ช่องทางการติดต่อ</h5>
-                      <h5 class="form-label text-danger" style="display: inline;">*</h5>
                     </div>
                     <div class="mb-3 col-6 ">
                       <h6 style="display: inline;">ไอดีไลน์ลูกค้า </h6>
@@ -306,7 +305,7 @@ VALUES ( '$type', '$price','$filename3', '$filename1', '$filename2','$detail','$
                 </div>
                 <div class="flex-fill d-flex justify-content-end gap-1" style="margin-right:3rem;">
                   <button type="submit" class="btn btn-blue2 text-white pull-right">บันทึก</button>
-                  <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-color1 btn-green3 text-white theme-btn  pull-right">ดำเนินการต่อ</a>
+                  <!-- <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-color1 btn-green3 text-white theme-btn  pull-right">ดำเนินการต่อ</a> -->
                 </div>
             </form>
           </div>

@@ -14,7 +14,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     $status = $rs['lavel'];
     if($status == $rs["m_id"]){
 
-        $status = $rs['status'] .': '. $rs['m_name'];
+        $status = $rs['status'] .' : '. $rs['m_firstname'] .' '. $rs['m_lastname'];
     }else{
         $status = "ลูกค้า";
     }

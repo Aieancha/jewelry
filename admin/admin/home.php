@@ -89,7 +89,7 @@ if (isset($_POST) && !empty($_POST)) {
                         <div class="card-body">
                             <div class="col-auto mb-3">
                                 <div class="col-auto">
-                                    <h3 class="font-weight-bolder text-dark text-gradient ">ข้อมูลส่วนตัวของคุณ</h3>
+                                    <h3 class="font-weight-bolder text-dark text-gradient ">ข้อมูลส่วนตัว</h3>
                                 </div>
                             </div>
                             <div class="d-flex flex-row">

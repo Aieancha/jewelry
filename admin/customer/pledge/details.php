@@ -176,8 +176,16 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                     <h4 style="display: inline;">ข้อมูลลูกค้า</h4>
                                 </div>
                                 <div class=" mb-3 ">
-                                    <h6 style="display: inline;">เลขที่ราชการออกให้ :</h6>
+                                    <h6 style="display: inline;">บัตรประจำตัวประชาชน/หนังสือเดินทาง :</h6>
                                     <td width="25%" style="display: inline;"><?= $result['code_id'] ?></td>
+                                </div>
+                                <div class=" mb-3 ">
+                                    <h6 style="display: inline;">ไอดีไลน์ :</h6>
+                                    <td width="25%" style="display: inline;"><?= $result['c_line'] ?></td>
+                                </div>
+                                <div class=" mb-3 ">
+                                    <h6 style="display: inline;">เฟสบุ๊ก :</h6>
+                                    <td width="25%" style="display: inline;"><?= $result['c_facebook'] ?></td>
                                 </div>
                                 <div class=" mb-3 ">
                                     <h6 style="display: inline;">ชื่อผู้จำนำ :</h6>
@@ -232,19 +240,19 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                 <div class=" mb-4 ">
                                     <h4 style="display: inline;">ข้อมูลการจำนำ</h4>
                                 </div>
-                                <div class=" mb-4 col-10 ">
+                                <div class=" mb-4 col-12 ">
                                     <h6 style="display: inline;">ราคาลูกค้าต้องการจำนำ :</h6>
                                     <td width="25%" style="display: inline;"><?= number_format($result['o_price']) ?> บาท</td>
                                 </div>
-                                <div class=" mb-4 col-10 ">
+                                <div class=" mb-4 col-12 ">
                                     <h6 style="display: inline;">ราคาประเมินข้างต้น :</h6>
                                     <td width="25%" style="display: inline;"><?= number_format($result['price_img']) ?> บาท</td>
                                 </div>
-                                <div class=" mb-3 col-10 ">
+                                <div class=" mb-3 col-12 ">
                                     <h6 style="display: inline;">ราคาประเมินจากสินค้าจริง :</h6>
                                     <td width="25%" style="display: inline;"><?= number_format($result['price_item']) ?> บาท</td>
                                 </div>
-                                <div class=" mb-3 col-10 ">
+                                <div class=" mb-3 col-12 ">
                                     <h6 style="display: inline;">ราคาที่ตกลงจำนำ :</h6>
                                     <td width="25%" style="display: inline;"><?= number_format($result['principle']) ?> บาท</td>
                                 </div>
@@ -390,5 +398,4 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     .progressBar .active:after {
         background-color: dodgerblue;
     }
-
-    </style=>
+</style>

@@ -53,8 +53,9 @@ while ($data=mysqli_fetch_array($query_month)){
                     <th scope="col">เลขที่สัญญา</th>
                     <th scope="col">ชื่อ-นามสกุล</th>
                     <th scope="col">งวดที่ชำระ</th>
-                    <th scope="col">จำนวนดอกเบี้ยที่ชำระ</th>
-                    <th scope="col">จำนวนดอกเบี้ยคงเหลือ</th>
+                    <th scope="col">ดอกเบี้ยทั้งหมด</th>
+                    <th scope="col">ดอกเบี้ยที่ชำระต่อเดือน</th>
+                    <th scope="col">ดอกเบี้ยคงเหลือ</th>
                   </tr>
               </thead>
               <tbody>
@@ -78,6 +79,7 @@ while ($data=mysqli_fetch_array($query_month)){
                     <td><?php echo $data['bill_no']; ?></td>
                     <td><?= $data['s_name'] . ' ' . $data['s_lastname'] ?></td>
                     <td><?= $data['in_after'] .'/'.$data['r_mount'] ?></td>
+                    <td></td>
                     <td><?= number_format($data['in_befor']) ?></td>
                     <td><?php echo number_format($total) ?></td>
                   </tr>
