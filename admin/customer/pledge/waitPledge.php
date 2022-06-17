@@ -36,7 +36,8 @@ if ($day3 == '') {
             <a href="?page=<?= $_GET['page'] ?>&function=CustomerCreate " class="btn btn-sm1 bg-gray-500  m-1">เพิ่มข้อมูลโดยลูกค้า </a>
                 <a href="?page=<?= $_GET['page'] ?>&function=waitPledge " class="btn btn-sm1 bg-gray-600 text-white m-1"> (<?php echo  $day3; ?>) รอประเมิน </a>
                 <a href="?page=<?= $_GET['page'] ?>&function=wait" class="btn btn-sm1 bg-gray-500 m-1">รอร่างสัญญา </a>
-                <a href="?page=<?= $_GET['page'] ?>&function=contractSuccess" class="btn btn-sm1 bg-gray-500  m-1">ลงนามสัญญาเรียบร้อยแล้ว </a>
+                <a href="?page=<?= $_GET['page'] ?>&function=contractSuccess" class="btn btn-sm1 bg-gray-500  m-1"> รอลงนามสัญญา  </a>
+                <a href="?page=<?= $_GET['page'] ?>&function=WaitContract" class="btn btn-sm1 bg-gray-500  m-1">ลงนามสัญญาเรียบร้อยแล้ว </a>
             </div>
             <div class="d-flex justify-content-end mb-2 ">
                 <form class="example " action="/action_page.php" style="margin: 7px;;max-width:200px">

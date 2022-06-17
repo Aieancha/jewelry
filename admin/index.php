@@ -89,6 +89,8 @@
             include('customer/pledge/CustomerCreate.php');
           }elseif (isset($_GET['function']) && $_GET['function'] == 'SuccessContract') {
             include('customer/pledge/SuccessContract.php');
+          }elseif (isset($_GET['function']) && $_GET['function'] == 'WaitContract') {
+            include('customer/pledge/WaitContract.php');
           } else {
             include('customer/pledge/index.php');
           }

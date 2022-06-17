@@ -39,6 +39,7 @@ if (isset($_POST["submit"])) {
         $filename = '';
     }
     $sqlIns = "UPDATE tbl_bill SET bill_img ='$filename',c_date ='$c_date',create_date ='$date' WHERE tbl_bill.s_id ='$id'";
+    mysqli_query($connection, "UPDATE tbl_orders SET o_role = 3 WHERE o_id='$id'");
     /* mysqli_query($connection, "UPDATE tbl_orders SET o_role = 2 WHERE o_id='$id'"); */
 
     if (mysqli_query($connection, $sqlIns)) {

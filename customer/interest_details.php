@@ -14,7 +14,7 @@ if($status==0){
 	 $status = "ไถ่ถอนก่อนกำหนด";
 }
 $id=$_SESSION["s_id"];
-$sqldb = "SELECT count(s_id) as day3 FROM tbl_social WHERE DATEDIFF(c_date, Now())= 3 or DATEDIFF(c_date, Now())= 2 && s_id='$id'";
+$sqldb = "SELECT count(s_id) as day3 FROM tbl_bill WHERE DATEDIFF(c_date, Now())= 3 or DATEDIFF(c_date, Now())= 2 && bill_id='$id'";
 $rs = mysqli_query($connection, $sqldb);
 $day3=mysqli_fetch_assoc($rs);
 if($day3['day3']>0){
