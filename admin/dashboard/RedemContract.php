@@ -2,9 +2,8 @@
 <?php
 $sql = "SELECT * FROM tbl_social
 INNER JOIN tbl_orders ON tbl_social.s_id = tbl_orders.s_id
-INNER JOIN tbl_bill ON tbl_social.s_id = tbl_bill.s_id
-INNER JOIN tbl_interest ON tbl_interest.ref_id = tbl_social.s_id
-group by tbl_social.s_id ORDER BY start_date";
+INNER JOIN tbl_bill ON tbl_orders.s_id = tbl_bill.s_id
+INNER JOIN tbl_interest ON tbl_interest.ref_id = tbl_bill.s_id WHERE tbl_bill.bill_role=6 group by tbl_bill.bill_id ";
 $query = mysqli_query($connection, $sql);
 //$result=mysqli_fetch_assoc($query);
 ?>
@@ -40,7 +39,7 @@ while ($data=mysqli_fetch_array($query_month)){
   <div class="row">
         <div class="card">
           <div class="card-body overflow-auto p-1 " style="text-align: center">
-            <table class="table" id="pledge">
+            <table class="table" id="tableall">
               <thead>
                 <div class="card-body overflow-auto p-1  " style="text-align: center">
                   <tr class="">
@@ -50,6 +49,7 @@ while ($data=mysqli_fetch_array($query_month)){
                     <th scope="col">ชื่อ-นามสกุล</th>
                     <th scope="col">จำนวนเงินต้น(บาท)</th>
                     <th scope="col">จำนวนดอกเบี้ย</th>
+                    <th scope="col">หลักฐานการชำระเงินต้น</th>
                     <!-- <th scope="col">ยอดดอกเบี้ยคงเหลือ</th> -->
                   </tr>
               </thead>
@@ -69,14 +69,15 @@ while ($data=mysqli_fetch_array($query_month)){
                   $total_price = ($principle*$rate)*$month;
 
                 ?>
-                  <!-- <tr>
+                  <tr>
                     <td><?= ++$i ?></td>
-                    <td><?= $data['in_date'] ?></td>
+                    <td><?= $data['prin_date'] ?></td>
                     <td><?php echo $data['bill_no']; ?></td>
                     <td><?= $data['s_name'] . ' ' . $data['s_lastname'] ?></td>
                     <td><?= number_format($data['principle']) ?></td>
                     <td><?php echo number_format($total_price) ?></td>
-                  </tr> -->
+                    <td><a href="?page=interest&function=ViewPrin&id=<?= $data['bill_id'] ?>" class="btn btn-sm btn-blue2 text-white">หลักฐานการชำระเงินต้น</a></td>
+                  </tr>
 
                 <?php } ?>
                 <table class="table">
@@ -93,8 +94,48 @@ while ($data=mysqli_fetch_array($query_month)){
       </div>
 </div>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#tableall').DataTable({
+            language: {
+                "decimal": "",
+                "emptyTable": "ยังไม่มีข้อมูล",
+                "info": "เเสดง _START_ - _END_ จาก _TOTAL_ รายการ",
+                "infoEmpty": "เเสดง 0 - 0 จาก 0 รายการ",
+                "infoFiltered": "(filtered from _MAX_ total entries)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "เเสดง _MENU_ รายการ",
+                "loadingRecords": "Loading...",
+                "processing": "Processing...",
+                "search": "ค้นหา:",
+                "zeroRecords": "No matching records found",
+                "paginate": {
+                    "first": "First",
+                    "last": "Last",
+                    "next": "ถัดไป",
+                    "previous": "ก่อนหน้า"
+                },
+                "aria": {
+                    "sortAscending": ": activate to sort column ascending",
+                    "sortDescending": ": activate to sort column descending"
+                }
+            }
+        });
+    });
+</script>
+<?php
+mysqli_close($connection);
+?>
 <style>
-    .btn-gold{
+  .btn-gold{
         background-color: #DAA520;
+    }
+    table.dataTable thead th,
+    table.dataTable thead td,
+    table.dataTable tfoot th,
+    table.dataTable tfoot td {
+        text-align: center;
+
     }
 </style>

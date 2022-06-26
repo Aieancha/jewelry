@@ -2,9 +2,8 @@
 <?php
 $sql = "SELECT * FROM tbl_social
 INNER JOIN tbl_orders ON tbl_social.s_id = tbl_orders.s_id
-INNER JOIN tbl_bill ON tbl_social.s_id = tbl_bill.s_id
-INNER JOIN tbl_interest ON tbl_interest.ref_id = tbl_social.s_id
-group by tbl_social.s_id ORDER BY start_date";
+INNER JOIN tbl_bill ON tbl_orders.s_id = tbl_bill.s_id
+INNER JOIN tbl_interest ON tbl_interest.ref_id = tbl_bill.s_id WHERE tbl_bill.bill_role=5 group by tbl_bill.bill_id ";
 $query = mysqli_query($connection, $sql);
 //$result=mysqli_fetch_assoc($query);
 ?>
@@ -44,15 +43,15 @@ while ($data=mysqli_fetch_array($query_month)){
       <div class="row">
         <div class="card">
           <div class="card-body overflow-auto p-1 " style="text-align: center">
-            <table class="table" id="pledge">
+            <table class="table" id="tableall">
               <thead>
                 <div class="card-body overflow-auto p-1  " style="text-align: center">
                   <tr class="">
                     <th scope="col">ลำดับ</th>
-                    <th scope="col">วันที่ชำระดอกเบี้ย</th>
+                    <th scope="col">วันที่ชำระดอกเบี้ยล่าสุด</th>
                     <th scope="col">เลขที่สัญญา</th>
                     <th scope="col">ชื่อ-นามสกุล</th>
-                    <th scope="col">จำนวนงวดที่ค้างชำระ</th>
+                    <th scope="col">จำนวนงวดคงเหลือ</th>
                     <th scope="col">จำนวนดอกเบี้ยที่ค้างชำระ</th>
                   </tr>
               </thead>
@@ -71,15 +70,17 @@ while ($data=mysqli_fetch_array($query_month)){
                   $principle = $data['principle'];
                   $month = $data['r_mount'];
                   $rate = 2 / 100;
+                  $rated=$month*($data['principle'] * 0.02);
 
                 ?>
-                 <!--  <tr>
+                  <tr>
                     <td><?= ++$i ?></td>
                     <td><?= $data['in_date'] ?></td>
                     <td><?php echo $data['bill_no']; ?></td>
                     <td><?= $data['s_name'] . ' ' . $data['s_lastname'] ?></td>
-                    <td>2</td>
-                  </tr> -->
+                    <td><?php echo $data['r_mount']; ?></td>
+                    <td><?php echo $rated ?></td>
+                  </tr>
 
                 <?php } ?>
                 <table class="table">
@@ -98,8 +99,49 @@ while ($data=mysqli_fetch_array($query_month)){
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#tableall').DataTable({
+            language: {
+                "decimal": "",
+                "emptyTable": "ยังไม่มีข้อมูล",
+                "info": "เเสดง _START_ - _END_ จาก _TOTAL_ รายการ",
+                "infoEmpty": "เเสดง 0 - 0 จาก 0 รายการ",
+                "infoFiltered": "(filtered from _MAX_ total entries)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "เเสดง _MENU_ รายการ",
+                "loadingRecords": "Loading...",
+                "processing": "Processing...",
+                "search": "ค้นหา:",
+                "zeroRecords": "No matching records found",
+                "paginate": {
+                    "first": "First",
+                    "last": "Last",
+                    "next": "ถัดไป",
+                    "previous": "ก่อนหน้า"
+                },
+                "aria": {
+                    "sortAscending": ": activate to sort column ascending",
+                    "sortDescending": ": activate to sort column descending"
+                }
+            }
+        });
+    });
+</script>
+<?php
+mysqli_close($connection);
+?>
 <style>
-    .btn-red{
+  .btn-red{
         background-color: #B22222;
+    }
+    table.dataTable thead th,
+    table.dataTable thead td,
+    table.dataTable tfoot th,
+    table.dataTable tfoot td {
+        text-align: center;
+
     }
 </style>

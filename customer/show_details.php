@@ -2,7 +2,8 @@
 
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
-    $sql = "SELECT * FROM tbl_orders INNER JOIN tbl_social ON tbl_social.s_id=tbl_orders.s_id WHERE o_id = '$id'";
+    $sql = "SELECT * FROM tbl_orders INNER JOIN tbl_social ON tbl_social.s_id=tbl_orders.s_id
+	INNER JOIN tbl_bill ON tbl_bill.s_id=tbl_orders.s_id WHERE o_id = '$id'";
     $query = mysqli_query($connection, $sql);
     $result = mysqli_fetch_assoc($query);
 }
@@ -33,7 +34,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 	<div class="app-wrapper">
 		<div class="app-content pt-3 p-md-3 p-lg-4">
 			<div class="container-xl">
-				<label class="mb-3">ข้อมูลการจำนำเครื่องประดับของ คุณ <?= $_SESSION['user'] ?></label>
+				<label class="mb-3">ข้อมูลการจำนำเครื่องประดับของ คุณ <?= $_SESSION['username'] ?></label>
 				<div class="row gy-4">
 					<div class="col-12 col-lg-6">
 						<div class="app-card app-card-account shadow-sm d-flex flex-column align-items-start mb-2">
@@ -62,7 +63,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 								<div class="item py-3">
 									<div class="row justify-content-between align-items-center">
 										<div class="col-auto">
-											<div class="item-label"><strong>เลขที่สำคัญที่ราชกาลออกให้ : </strong>
+											<div class="item-label"><strong>บัตรประจำตัวประชาชน/หนังสือเดินทาง : </strong>
 												<td width="25%" style="display: inline;"><?= $result['code_id'] ?></td>
 											</div>
 										</div>
@@ -282,7 +283,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 								<div class="row justify-content-between align-items-center">
 									<div class="col-auto">
 										<div class="item-label"><strong>เลขสัญญาการจำนำ : </strong>
-											<td width="25%" style="display: inline;"></td>
+										<td width="25%" style="display: inline;"><?= $result['bill_no'] ?></td>
 										</div>
 									</div>
 									<!--//col-->
@@ -362,23 +363,12 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 								<!--//row-->
 							</div>
 							<!--//item-->
-							<div class="item py-3">
-								<div class="row justify-content-between align-items-center">
-									<div class="col-auto">
-										<div class="item-label"><strong>รอบกำหนดชำระ ทุกวันที่ : </strong>
-											<td width="25%" style="display: inline;"></td>
-										</div>
-									</div>
-									<!--//col-->
-								</div>
-								<!--//row-->
-							</div>
-							<!--//item-->
 						</div>
 						<!--//app-card-body-->
-						<!-- <div class="app-card-footer p-4 mt-auto">
-							<a class="btn app-btn-secondary" href="">ดูสัญญาการจำนำ</a>
-						</div> -->
+						<div class="app-card-footer p-4 mt-auto">
+							<a class="btn app-btn-secondary" href="?page=<?= $_GET['page'] ?>&function=ContractImg&id=<?= $result['o_id'] ?>">ดูสัญญาการจำนำ</a>
+							<!-- <img src="../images/bill/<?= $result['bill_img'] ?>" alt="contract" style="width:200px; height:auto;" > -->
+						</div>
 						<!--//app-card-footer-->
 
 					</div>

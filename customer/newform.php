@@ -152,7 +152,7 @@ if (isset($_POST) && !empty($_POST)) {
       echo 'ประเภทไฟล์ไม่ถูกต้อง';
       $alert = '<script type="text/javascript">';
       $alert .= 'alert("ประเภทไฟล์ไม่ถูกต้อง");';
-      $alert .= 'window.location.href = "?page";';
+      $alert .= 'window.location.href = "?page=newform";';
       $alert .= '</script>';
       echo $alert;
       exit();

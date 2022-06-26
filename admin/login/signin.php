@@ -1,7 +1,8 @@
 <?php
 if (isset($_REQUEST['m_name'])) {
   $name = $_REQUEST['m_name'];
-  $pass = $_REQUEST['m_pass'];
+  $pass = sha1(md5($_REQUEST['m_pass']));
+
   $sql = "SELECT * FROM tbl_member Where m_name='" . $name . "' and m_pass='" . $pass . "' ";
   $query = mysqli_query($connection, $sql);
   if (mysqli_num_rows($query) == 1) {
@@ -60,8 +61,10 @@ if (isset($_REQUEST['m_name'])) {
                       </div>
                       <h5>รหัสผ่าน*</h5>
                       <div class="mb-3">
-                        <input style="width: 80%; "  type="password" class="form-control pass-swap" name="m_pass" placeholder="กรอกรหัสผ่าน" require>
-                        <button style="width: 25%; margin-top:0.5cm;" type="button" class=" form-control btn-toggle-pass">Show</button>
+                        <input style="width: 80%; " type="password" class="form-control pass-swap" name="m_pass" id="password" placeholder="กรอกรหัสผ่าน" require>
+                        <div class="input-group-append">                   
+                            <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>                          
+                        </div>
                       </div>
                       <div class="nav-link active text-center" href="../pages/tables.html">
                         <button type="submit" name="btn-login" class=" btn bg-gradient-dark w-100 mt-4 mb-0">เข้าสู่ระบบ</button>
@@ -86,16 +89,26 @@ if (isset($_REQUEST['m_name'])) {
 </div>
 <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
 <script type="text/javascript">
-$(function(){
-    // ใช้วิธีการ สลับ type 
-     $(document.body).on("click",".btn-toggle-pass",function(){
-        let ele = $(this).prev(".pass-swap");
-        let condCheck = $(this).text();
-        $(this).text((condCheck=='Show')?'Hide':'Show');
-        let swap_attr = (ele.attr("type")=="password")?"text":"password";
-        console.log(ele.attr("type")); 
-        ele.attr("type",swap_attr);
-     });
-  
-});
+  $(document.body).on("click", "[class*='fa-eye']", function() {
+    $(this).toggleClass("fa-eye-slash fa-eye");
+    let ele = $(this).closest(".input-group-append").siblings(".pass-swap");
+    let swap_attr = (ele.attr("type") == "password") ? "text" : "password";
+    ele.attr("type", swap_attr);
+  });
 </script>
+
+<style>
+  .field-icon {
+  float: right;
+  margin-left: 0px;
+  margin-right: 70px;
+  margin-top: -25px;
+  position: relative;
+  z-index: 5;
+}
+
+.container{
+  padding-top:50px;
+  margin: auto;
+}
+</style>

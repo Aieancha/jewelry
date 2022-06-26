@@ -1,16 +1,15 @@
 <?php
 $sql = "SELECT * FROM tbl_social
-/* INNER JOIN tbl_status ON tbl_social.s_role = tbl_status.id */
 INNER JOIN tbl_bill ON tbl_social.s_id = tbl_bill.s_id
 INNER JOIN tbl_orders ON tbl_orders.s_id = tbl_bill.s_id
-/* WHERE tbl_status.id=2 AND */
-/* WHERE DATEDIFF(c_date, Now())= 3 or DATEDIFF(c_date, Now())= 2  */
-group by tbl_social.s_id ORDER BY c_date";
+WHERE tbl_bill.bill_role=0
+group by tbl_social.s_id ORDER BY c_date asc";
 $query = mysqli_query($connection, $sql);
 $result = mysqli_fetch_assoc($query);
-$strStartDate = $result['bill_date'];
-$strStartDate = date('Y-m-d');
-$strDate = date("Y-m-d", strtotime("+27 day", strtotime($strStartDate)));
+@$strStartDate = $result['c_date'];
+
+/* $strStartDate = date('Y-m-d'); */
+$strDate = date("Y-m-d", strtotime("-3 day", strtotime($strStartDate)));
 ?>
 
 <?php
@@ -38,18 +37,8 @@ $status = date('Y-m-d');
   <div class="row justify-content-between">
     <div class="d-flex justify-content-center mb-6">
       <a class="btn btn-sm1 bg-gray-600 text-white m-1">แจ้งเตือนการชำระดอกเบี้ย</a>
-      <a href="?page=<?= $_GET['page'] ?>&function=list" class="btn btn-sm1 bg-gray-500 m-1">ตรวจสอบการชำระดอกเบี้ยโดยลูกค้า</a>
-      <a href="?page=<?= $_GET['page'] ?>&function=wait" class="btn btn-sm1 bg-gray-500  m-1">รายการสรุปการชำระดอกเบี้ย</a>
-    </div>
-    <div class="d-flex justify-content-end">
-      <div class="d-flex justify-content-end mb-2 ">
-        <form class="example " action="" style="margin: 7px;;max-width:200px">
-          <input type="text" placeholder="" name="search2 ">
-          <button type="submit"><i class="fa fa-search btn-dark"></i></button>
-        </form>
-
-      </div>
-      
+      <a href="?page=<?= $_GET['page'] ?>&function=list" class="btn btn-sm1 bg-gray-500 m-1">รายการสรุปการชำระดอกเบี้ย</a>
+      <a href="?page=<?= $_GET['page'] ?>&function=wait" class="btn btn-sm1 bg-gray-500  m-1">ตรวจสอบการชำระดอกเบี้ยโดยลูกค้า</a>
     </div>
     <div class="row">
       <div class="card">
@@ -58,7 +47,7 @@ $status = date('Y-m-d');
 
         <!-- end title -->
         <div class="card-body overflow-auto p-3" style="text-align: center">
-          <table class="table">
+        <table class="table" id="tableall">
             <thead>
               <tr>
                 <th scope="col">ลำดับ</th>
@@ -89,13 +78,13 @@ $status = date('Y-m-d');
                   <td><?= number_format($data['principle'] * 0.02) ?></td>
                   <td><?= $data['phone'] ?></td>
                   <td class="text-danger"><?php
-                                          if (($data['start_date'] <= $status) && $status <= $data['c_date']) {
+                                          if (($strDate <= $status) && $status <= $data['c_date']) {
                                             echo "ถึงกำหนดชำระ";
                                           } else {
                                             echo "ค้างชำระ";
                                           } ?></td>
 
-                  <td> <a href="?page=<?= $_GET['page'] ?>&function=update&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-green3 text-white">อัพเดทสถานะ</a></td>
+                  <td> <a href="?page=<?= $_GET['page'] ?>&function=update&id=<?= $data['bill_id'] ?>" class="btn btn-sm btn-green3 text-white">อัพเดทสถานะ</a></td>
                   </td>
                   <!-- <td> <a href="?page=<?= $_GET['page'] ?>&function=qty" class="btn btn-sm btn-dark">ทดลองรุูป</a></td> -->
 
@@ -109,9 +98,48 @@ $status = date('Y-m-d');
       </div>
     </div>
   </div>
+  <script type="text/javascript">
+    $(document).ready(function() {
+        $('#tableall').DataTable({
+            language: {
+                "decimal": "",
+                "emptyTable": "ยังไม่มีข้อมูล",
+                "info": "เเสดง _START_ - _END_ จาก _TOTAL_ รายการ",
+                "infoEmpty": "เเสดง 0 - 0 จาก 0 รายการ",
+                "infoFiltered": "(filtered from _MAX_ total entries)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "เเสดง _MENU_ รายการ",
+                "loadingRecords": "Loading...",
+                "processing": "Processing...",
+                "search": "ค้นหา:",
+                "zeroRecords": "No matching records found",
+                "paginate": {
+                    "first": "First",
+                    "last": "Last",
+                    "next": "ถัดไป",
+                    "previous": "ก่อนหน้า"
+                },
+                "aria": {
+                    "sortAscending": ": activate to sort column ascending",
+                    "sortDescending": ": activate to sort column descending"
+                }
+            }
+        });
+    });
+</script>
   <?php
   mysqli_close($connection);
   ?>
+  <style>
+    table.dataTable thead th,
+    table.dataTable thead td,
+    table.dataTable tfoot th,
+    table.dataTable tfoot td {
+        text-align: center;
+
+    }
+</style>
   <!DOCTYPE html>
   <html>
 

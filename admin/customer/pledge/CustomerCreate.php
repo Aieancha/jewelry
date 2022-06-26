@@ -37,11 +37,6 @@ if ($user == '') {
                 <a href="?page=<?= $_GET['page'] ?>&function=contractSuccess" class="btn btn-sm1 bg-gray-500  m-1"> รอลงนามสัญญา  </a>
                 <a href="?page=<?= $_GET['page'] ?>&function=WaitContract" class="btn btn-sm1 bg-gray-500  m-1">ลงนามสัญญาเรียบร้อยแล้ว </a>
             </div>
-            <div class="d-flex justify-content-end mb-2 ">
-                <form class="example " action="/action_page.php" style="margin: 7px;;max-width:200px">
-                    <input type="text" placeholder="ชื่อผู้ใช้งาน.." name="search2 ">
-                    <button type="submit"><i class="fa fa-search btn-dark"></i></button>
-            </div>
         </div>
     </div>
 
@@ -49,7 +44,7 @@ if ($user == '') {
         <div class="card">
             <h5 class="m-3">ตารางแสดงรายชื่อลูกค้าทั้งหมด</h5>
             <div class="card-body overflow-auto p-1 " style="text-align: center">
-                <table class="table" id="pledge">
+                <table class="table" id="tableall">
                     <thead>
                         <div class="card-body overflow-auto p-1  " style="text-align: center">
                             <tr class="">
@@ -94,6 +89,45 @@ if ($user == '') {
     </div>
     </form>
 </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#tableall').DataTable({
+            language: {
+                "decimal": "",
+                "emptyTable": "ยังไม่มีข้อมูล",
+                "info": "เเสดง _START_ - _END_ จาก _TOTAL_ รายการ",
+                "infoEmpty": "เเสดง 0 - 0 จาก 0 รายการ",
+                "infoFiltered": "(filtered from _MAX_ total entries)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "เเสดง _MENU_ รายการ",
+                "loadingRecords": "Loading...",
+                "processing": "Processing...",
+                "search": "ค้นหา:",
+                "zeroRecords": "No matching records found",
+                "paginate": {
+                    "first": "First",
+                    "last": "Last",
+                    "next": "ถัดไป",
+                    "previous": "ก่อนหน้า"
+                },
+                "aria": {
+                    "sortAscending": ": activate to sort column ascending",
+                    "sortDescending": ": activate to sort column descending"
+                }
+            }
+        });
+    });
+</script>
 <?php
 mysqli_close($connection);
 ?>
+<style>
+    table.dataTable thead th,
+    table.dataTable thead td,
+    table.dataTable tfoot th,
+    table.dataTable tfoot td {
+        text-align: center;
+
+    }
+</style>

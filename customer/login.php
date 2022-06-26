@@ -73,22 +73,8 @@ if (isset($_REQUEST['c_email'])) {
                             <div class="password mb-3">
                                 <label class="sr-only" for="signin-password">Password</label>
                                 <input id="signin-password" name="c_pass" type="password" class="form-control pass-swap" placeholder="รหัสผ่าน" required="required">
-                                <button style="width: 20%;" type="button" class="form-control btn-toggle-pass">Show</button>
-                                <div class="extra mt-3 row justify-content-between">
-                                    <!--div class="col-6">
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox" value="" id="RememberPassword">
-											<label class="form-check-label" for="RememberPassword">
-											Remember me
-											</label>
-										</div>
-									</div ><//col-6>
-									<div class="col-6">
-										<div class="forgot-password text-end">
-											<a href="reset-password.html">Forgot password?</a>
-										</div>
-									</div-->
-                                    <!--//col-6-->
+                                <div class="input-group-append">
+                                    <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                                 </div>
                                 <!--//extra-->
                             </div>
@@ -119,24 +105,26 @@ if (isset($_REQUEST['c_email'])) {
 </body>
 <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
 <script type="text/javascript">
-$(function(){
-    // ใช้วิธีการ สลับ type 
-     $(document.body).on("click",".btn-toggle-pass",function(){
-        let ele = $(this).prev(".pass-swap");
-        let condCheck = $(this).text();
-        $(this).text((condCheck=='Show')?'Hide':'Show');
-        let swap_attr = (ele.attr("type")=="password")?"text":"password";
-        console.log(ele.attr("type")); 
-        ele.attr("type",swap_attr);
-     });
-  
-});
+  $(document.body).on("click", "[class*='fa-eye']", function() {
+    $(this).toggleClass("fa-eye-slash fa-eye");
+    let ele = $(this).closest(".input-group-append").siblings(".pass-swap");
+    let swap_attr = (ele.attr("type") == "password") ? "text" : "password";
+    ele.attr("type", swap_attr);
+  });
 </script>
-</html>
+
 <style>
-    .app-btn-primary {
-    background: #212529;
-    color: #fff;
-    border-color: #9b0e21;
+  .field-icon {
+  float: right;
+  margin-left: 0px;
+  margin-right: 10px;
+  margin-top: -25px;
+  position: relative;
+  z-index: 5;
+}
+
+.container{
+  padding-top:50px;
+  margin: auto;
 }
 </style>

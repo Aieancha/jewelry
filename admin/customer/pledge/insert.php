@@ -192,7 +192,7 @@ VALUES ( '$type', '$price','$filename3', '$filename1', '$filename2','$detail','$
                 //echo "เพิ่มข้อมูลสำเร็จ";
                 $alert = '<script type="text/javascript">';
                 $alert .= 'alert("เพิ่มข้อมูลสำเร็จ");';
-                $alert .= 'window.location.href = "?page=pledge";';
+                $alert .= 'window.location.href = "?page=pledge&function=waitPledge";';
                 $alert .= '</script>';
                 echo $alert;
                 exit();
@@ -235,13 +235,13 @@ VALUES ( '$type', '$price','$filename3', '$filename1', '$filename2','$detail','$
                     <div class="mb-3 col-6 ">
                       <h6 style="display: inline;">ไอดีไลน์ลูกค้า </h6>
                       <!-- <h6 class="form-label text-danger" style="display: inline;">*</h6> -->
-                      <input type="text" class="form-control " name="c_facebook" placeholder="กรอกไอดีไลน์ลูกค้า" autocomplete="off">
+                      <input type="text" class="form-control " name="c_line" placeholder="กรอกไอดีไลน์ลูกค้า" autocomplete="off">
                     </div>
                   </div>
                   <div class="mb-5 col-6 ">
                     <h6 style="display: inline;">ชื่อผู้ใช้เฟซบุ๊ก</h6>
                     <!-- <h6 class="form-label text-danger" style="display: inline;">*</h6> -->
-                    <input type="text" class="form-control " name="c_line" placeholder="กรอกชื่อผู้ใช้เฟสบุ้ค" autocomplete="off">
+                    <input type="text" class="form-control " name="c_facebook" placeholder="กรอกชื่อผู้ใช้เฟสบุ้ค" autocomplete="off">
                   </div>
                   <div class="mb-12">
                     <div class="mb-3">

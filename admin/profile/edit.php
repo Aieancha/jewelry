@@ -64,10 +64,6 @@
           <div class="mb-3">
             <input type="email" class="form-control" name="m_email" value="<?=$result['m_email'] ?>" autocomplete="off" require>
           </div>
-          <!-- <label class="form-label">รหัสผ่าน</label>
-          <div class="mb-3">
-            <input type="password" class="form-control" name="m_pass" value="<?=$result['m_pass'] ?>" autocomplete="off" require>
-          </div> -->
           
           <div class="text-center mb-5">
           <a href="?page=<?= $_GET['page'] ?>" class="btn bg-dark text-white mb-0 mt-3">ย้อนกลับ</a>

@@ -1,9 +1,11 @@
 <?php
+
 $user = $_SESSION['customer_login'];
 $sql = "SELECT * FROM tbl_orders INNER JOIN tbl_status ON tbl_orders.o_role=tbl_status.id
 INNER JOIN tbl_social ON tbl_social.s_id=tbl_orders.s_id WHERE c_email = '$user'";
 $query = mysqli_query($connection, $sql);
 $result = mysqli_fetch_assoc($query);
+
 
 ?>
 

@@ -165,7 +165,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         $mpdf->Output("contract.pdf");
         ob_end_flush();
         ?>
-        <a href="contract.pdf" class="btn btn-color1 bg-gradient-primary theme-btn  pull-right">พิมพ์เอกสาร (pdf)</a>
+        <a href="contract.pdf" class="btn btn-sm btn-blue2 text-white">พิมพ์เอกสาร (pdf)</a>
       </div>
     </div>
     <div class="d-flex flex-row">

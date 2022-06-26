@@ -4,34 +4,12 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     $sql = "SELECT * FROM tbl_interest INNER JOIN tbl_social ON tbl_social.s_id = tbl_interest.ref_id
     INNER JOIN tbl_orders ON tbl_social.s_id = tbl_orders.s_id
                             INNER JOIN tbl_bill ON tbl_interest.ref_id = tbl_bill.s_id 
-                            WHERE tbl_social.s_id ='$id'";
+                            WHERE tbl_bill.bill_id ='$id'";
     $query = mysqli_query($connection, $sql);
     $result = mysqli_fetch_assoc($query);
     $Num_Rows = mysqli_num_rows($query);
     //echo $Num_Rows;
 }
-?>
-<?php
-if (isset($_POST) && !empty($_POST)) {
-    $status = $_POST['s_role'];
-
-    $sql = "UPDATE tbl_social SET s_role ='$status' where s_id ='$id'";
-
-    if (mysqli_query($connection, $sql)) {
-        $alert = '<script type="text/javascript">';
-        $alert .= 'alert("เปลี่ยนสถานะสำเร็จ");';
-        $alert .= 'window.location.href = "?page=interest";';
-        $alert .= '</script>';
-        echo $alert;
-        exit();
-    } else {
-        echo "Error: " . $sql . "<br>"  . mysqli_error($connection);
-    }
-
-    mysqli_close($connection);
-}
-
-//print_r($_POST);
 ?>
 
 <div class="row justify-content-between">
@@ -59,18 +37,63 @@ if (isset($_POST) && !empty($_POST)) {
                         <div class="justify-content-start flex-fill ">
                             <label class="text-danger">สถานะสัญญา </label><label>ปกติ</label>
                         </div>
-                        <div type="">
-                            <select name="s_role" require class="btn btn-sm ">
-                                <option value="" selected="selected">เปลี่ยนสถานะ</option>
-                                <option value="4">ปิดสัญญา</option>
-                                <option value="4">ผิดสัญญา</option>
-                                <option value="5">ไถ่ถอนก่อนกำหนด</option>
-                            </select>
-                            <a class="btn btn-sm btn-green3 text-white">ยืนยันการเปลี่ยนสถานะ</a>
-                        </div>
+                        <?php
+                                if (isset($_GET['id']) && !empty($_GET['id'])) {
+                                    $id = $_GET['id'];
+                                    $sqls = "SELECT * FROM tbl_bill WHERE bill_id = '$id'";
+                                    $qry = mysqli_query($connection, $sqls);
+                                    $result_status = mysqli_fetch_assoc($qry);
+                                }
+
+                                if (isset($_POST) && !empty($_POST)) {
+                                    $role = $_POST['bill_role'];
+                                    mysqli_query($connection, "UPDATE tbl_bill SET bill_role ='$role' WHERE bill_id='$id'");
+                                    if (mysqli_query($connection, $sqls)) {
+                                        if ($role == 4) {
+                                            $alert = '<script type= "text/javascript">';
+                                            $alert .= 'alert("ยืนยันสถานะครบสัญญา");';
+                                            $alert .= 'window.location.href = "?page=interest&function=CreatePrin&id=' . $result['bill_id'] . '";';
+                                            $alert .= '</script>';
+                                            echo $alert;
+                                            exit();
+                                        } elseif ($role == 5) {
+                                            $alert = '<script type= "text/javascript">';
+                                            $alert .= 'alert("ยืนยันสถานะผิดสัญญา");';
+                                            $alert .= 'window.location.href = "?";';
+                                            $alert .= '</script>';
+                                            echo $alert;
+                                            exit();
+                                        }else{
+                                            $alert = '<script type= "text/javascript">';
+                                            $alert .= 'alert("ยืนยันสถานะไถ่ถอนก่อนกำหนด");';
+                                            $alert .= 'window.location.href = "?page=interest&function=CreatePrin&id=' . $result['bill_id'] . '";';
+                                            $alert .= '</script>';
+                                            echo $alert;
+                                            exit();
+                                        }
+                                        echo "เพิ่มข้อมูลสำเร็จ";
+                                    } else {
+                                        echo "Error: " . $sql . "<br>"  . mysqli_error($connection);
+                                    }
+                                    mysqli_close($connection);
+                                }
+                                ?>
+
+                                <!-- status -->
+                                <form action="" method="POST">
+                                    <div>
+                                        <select name="bill_role" require class="btn btn-sm ">
+                                            <option value="" selected="selected" disabled require>เปลี่ยนสถานะ</option>
+                                            <option value="4">ครบสัญญา</option>
+                                            <option value="5">ผิดสัญญา</option>
+                                            <option value="6">ไถ่ถอนก่อนกำหนด</option>
+                                        </select>
+                                        <button type="submit" class="btn btn-sm btn-green3 text-white">ยืนยันการเปลี่ยนสถานะ</button>
+                                    </div>
+                                </form>
                     </div>
                 </div>
-                <form action="">
+                
                     <table class="table">
                         <thead>
                             <tr>
@@ -98,7 +121,7 @@ if (isset($_POST) && !empty($_POST)) {
                             <?php endforeach; ?>
                         </tbody>
                     </table>
-                </form>
+               
             </div>
             <div class="d-flex flex-row">
                 <div class="justify-content-start flex-fill ">

@@ -117,15 +117,15 @@ if (isset($_POST) && !empty($_POST)) {
                                     <h4 class="font-weight-bolder text-dark text-gradient ">เปลี่ยนรหัสผ่าน</h4>
                                     <div class=" mb-4 col-10 ">
                                         <h6 style="display: inline;">กรุณากรอกรหัสผ่านเดิม</h6>
-                                        <input type="text" name="oldpass" class="form-control " placeholder="" autocomplete="off" required>
+                                        <input type="password" name="oldpass" class="form-control " placeholder="" autocomplete="off" required>
                                     </div>
                                     <div class=" mb-4 col-10">
                                         <h6 style="display: inline;">กรุณากรอกรหัสผ่านใหม่</h6>
-                                        <input type="text" name="newpass" class="form-control " placeholder="" autocomplete="off" required>
+                                        <input type="password" name="newpass" class="form-control " placeholder="" autocomplete="off" required>
                                     </div>
                                     <div class=" mb-4 col-10 ">
                                         <h6 style="display: inline;">ยืนยันรหัสผ่านใหม่</h6>
-                                        <input type="text" name="confirmpass" class="form-control " placeholder="" autocomplete="off" required>
+                                        <input type="password" name="confirmpass" class="form-control " placeholder="" autocomplete="off" required>
                                     </div>
 
                                 </div>

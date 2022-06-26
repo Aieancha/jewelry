@@ -1,9 +1,6 @@
 <?php
 $sql = "SELECT *
 FROM tbl_bill
-INNER JOIN tbl_status
-/* ON tbl_social.s_role = tbl_status.id */
-/* WHERE tbl_status.id=2 AND */
 WHERE DATEDIFF(c_date, Now())= 3 or DATEDIFF(c_date, Now())= 2";
 $query = mysqli_query($connection, $sql);
 ?>

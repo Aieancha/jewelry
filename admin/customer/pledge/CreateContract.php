@@ -3,6 +3,11 @@
 <?php
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
+    $sql1 = "SELECT * FROM tbl_orders INNER JOIN tbl_bill ON tbl_orders.s_id=tbl_bill.s_id WHERE o_id = '$id'";
+    $qry = mysqli_query($connection, $sql1);
+}
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    $id = $_GET['id'];
     $sql = "SELECT * FROM tbl_social INNER JOIN tbl_orders ON tbl_social.s_id=tbl_orders.s_id 
                 INNER JOIN tbl_bill ON tbl_orders.s_id =tbl_bill.s_id WHERE tbl_bill.s_id = '$id'";
     $query = mysqli_query($connection, $sql);
@@ -38,15 +43,19 @@ if (isset($_POST["submit"])) {
     } else {
         $filename = '';
     }
+
     $sqlIns = "UPDATE tbl_bill SET bill_img ='$filename',c_date ='$c_date',create_date ='$date' WHERE tbl_bill.s_id ='$id'";
-    mysqli_query($connection, "UPDATE tbl_orders SET o_role = 3 WHERE o_id='$id'");
-    /* mysqli_query($connection, "UPDATE tbl_orders SET o_role = 2 WHERE o_id='$id'"); */
+    mysqli_query($connection, "UPDATE tbl_orders SET o_role = 3 WHERE tbl_orders.o_id  ='$id'");
+    //mysqli_query($connection, "UPDATE tbl_orders SET o_role = 3 WHERE o_id='$id'");
+    //$sql1 = "UPDATE tbl_orders t1 SET t1.o_role = 3 WHERE t1.o_id = '$id'";
+    //$sql1 = "UPDATE tbl_orders SET o_role = 3 WHERE o_id ='$id'";
+    //(mysqli_query($connection, $sql1));
 
     if (mysqli_query($connection, $sqlIns)) {
         //echo "เพิ่มข้อมูลสำเร็จ";
         $alert = '<script type="text/javascript">';
         $alert .= 'alert("อัพเดตสัญญาที่มีการลงนามสำเร็จ");';
-        $alert .= 'window.location.href = "";';
+        $alert .= 'window.location.href = "?page=pledge&function=WaitContract";';
         $alert .= '</script>';
         echo $alert;
         exit();
@@ -78,7 +87,7 @@ if (isset($_POST["submit"])) {
                     <div class="d-flex flex-row mb-6">
                         <div class="justify-content-start flex-fill ">
                             <div class=" mb-3 col-10 ">
-                                <h6 style="display: inline;">เลขที่ราชการออกให้ผู้จำนำ :</h6>
+                                <h6 style="display: inline;">บัตรประจำตัวประชาชน/หนังสือเดินทาง :</h6>
                                 <td width="25%" style="display: inline;"><?= $result['code_id'] ?></td>
                             </div>
                             <div class=" mb-3 ">
@@ -137,7 +146,7 @@ if (isset($_POST["submit"])) {
             <?php
             echo "<a href='javascript:window.history.back()' class='btn btn-sm btn-dark text-white'>ย้อนกลับ</a>";
             ?>
-            <a href="?page=<?= $_GET['page'] ?>&function=SuccessContract&id=<?= $result['o_id'] ?>" class="btn btn-sm btn-blue2 text-white">รายละเอียดการอัปโหลด</a>
+            <!-- <a href="?page=<?= $_GET['page'] ?>&function=SuccessContract&id=<?= $result['bill_id'] ?>" class="btn btn-sm btn-blue2 text-white">รายละเอียดการอัปโหลด</a> -->
 
         </div>
     </div>
@@ -147,7 +156,7 @@ if (isset($_POST["submit"])) {
 
     </div>
 
-    </form>
+
     </div>
     </div>
     </div>

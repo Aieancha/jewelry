@@ -190,3 +190,9 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="assets/assets/js/soft-ui-dashboard.min.js?v=1.0.5"></script>
+
+  <!-- datatable -->
+ <!--  <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script> -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
+  

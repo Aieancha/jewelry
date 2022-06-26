@@ -15,20 +15,30 @@
             <?php
             if (isset($_GET['id']) && !empty($_GET['id'])) {
                 $id = $_GET['id'];
+                $sqlRow = "SELECT * FROM tbl_interest INNER JOIN tbl_bill ON tbl_interest.ref_id = tbl_bill.s_id 
+                                        WHERE tbl_interest.in_id ='$id'";
+                $query_row = mysqli_query($connection, $sqlRow);
+                $Num_Row = mysqli_num_rows($query_row);
+                //echo $Num_Rows;
+            }
+            
+            if (isset($_GET['id']) && !empty($_GET['id'])) {
+                $id = $_GET['id'];
                 $sql1 = "SELECT * FROM tbl_interest INNER JOIN tbl_social ON tbl_social.s_id = tbl_interest.ref_id INNER JOIN tbl_bill ON tbl_bill.s_id = tbl_interest.ref_id WHERE tbl_bill.s_id ='$id'";
                 $qry = mysqli_query($connection, $sql1);
                 $Num_Rows = mysqli_num_rows($qry);
+                //$Num_Row = mysqli_num_rows($qry);
             }
             ?>
 
             <?php
             if (isset($_GET['id']) && !empty($_GET['id'])) {
                 $id = $_GET['id'];
-                $sql = "SELECT * FROM tbl_social INNER JOIN tbl_orders ON tbl_social.s_id=tbl_orders.s_id INNER JOIN tbl_bill ON tbl_bill.s_id = tbl_orders.s_id WHERE tbl_bill.s_id = '$id'";
+                $sql = "SELECT * FROM tbl_bill INNER JOIN tbl_orders ON tbl_bill.s_id=tbl_orders.s_id INNER JOIN tbl_social ON tbl_social.s_id = tbl_orders.s_id WHERE tbl_bill.bill_id = '$id'";
                 $query = mysqli_query($connection, $sql);
                 $result = mysqli_fetch_assoc($query);
                 $strStartDate = $result['c_date'];
-                $strStartDate = date('Y-m-d');
+                /* $strStartDate = date('Y-m-d'); */
                 $strNewDate = date("Y-m-d", strtotime("+30 day", strtotime($strStartDate)));
                 $strDate = date("Y-m-d", strtotime("+27 day", strtotime($strStartDate)));
                 //echo ' + 10 วัน = ' . $strNewDate;
@@ -37,9 +47,14 @@
                 $ref = $result['s_id'];
                 $in = $result['o_inter']; //ดอกเบี้ยทั้งหมด
             }
-           /*  $sqli = "SELECT * FROM tbl_interest INNER JOIN tbl_social ON tbl_social.s_id=tbl_interest.ref_id WHERE tbl_social.s_id=tbl_interest.ref_id";
-            $qry = mysqli_query($connection, $sqli);
-            $rs = mysqli_fetch_assoc($qry); */
+            if (isset($_GET['id']) && !empty($_GET['id'])) {
+                $id = $_GET['id'];
+                $sql = "SELECT * FROM tbl_bill INNER JOIN tbl_orders ON tbl_bill.s_id=tbl_orders.s_id INNER JOIN tbl_social ON tbl_social.s_id = tbl_orders.s_id WHERE tbl_bill.bill_id = '$id'";
+                $query = mysqli_query($connection, $sql);
+                $row = mysqli_fetch_assoc($query);
+
+                
+            }
 
             if (isset($_POST) && !empty($_POST)) {
                 $in_date = $_POST['in_date'];
@@ -47,15 +62,18 @@
                 $ins = "";
 
                 $total_principle = $result['o_total']; //จำนวนเงินต้น+ดอกเบี้ย
-                for ($i = -1; $i < $Num_Rows; $i++) {
-
+                // for ($i = -1; $i < $Num_Rows; $i++) {
+                    
                     if ($ins == '') {
+                        //echo$total_principle;
                         $ins = ($total_principle) - $in_befor; //จำนวนเงินต้น+ดอกเบี้ยคงเหลือ
+                        //echo$ins;
                     } else {
                         $ins = ($ins - $in_befor);
                     }
-                }
+                // }
                 //echo $balance;
+                // echo$ins;
                      $balance =  $ins;
 
                 if ($Num_Rows == '') {
@@ -93,7 +111,7 @@
                     $filename = '';
                 }
                 $sql = "INSERT INTO tbl_interest (in_date, in_img, in_befor, in_role,ref_id,in_balance,in_after) VALUES ('$in_date', '$filename', '$in_befor', 1, '$ref','$balance','$Num_Rows')";
-                mysqli_query($connection, "UPDATE tbl_social SET c_date ='$strNewDate', start_date = '$strDate' WHERE s_id='$id'");
+                mysqli_query($connection, "UPDATE tbl_bill SET c_date ='$strNewDate' WHERE bill_id='$id'");
 
                 if (mysqli_query($connection, $sql)) {
                     echo "เพิ่มข้อมูลสำเร็จ";
@@ -118,7 +136,7 @@
                                 </select>
                             </div>
                             <div class=" mb-3 col-10 ">
-                                <h6 style="display: inline;">เลขที่ราชการออกให้ผู้จำนำ :</h6>
+                                <h6 style="display: inline;">บัตรประจำตัวประชาชน/หนังสือเดินทาง :</h6>
                                 <td width="25%" style="display: inline;"><?= $result['code_id'] ?></td>
                             </div>
                             <div class=" mb-3 ">
@@ -187,9 +205,7 @@
                 </div>
             </div>
             <a href="?page=<?= $_GET['page'] ?>&function=customr" class="btn btn-sm btn-dark text-white">ย้อนกลับ</a>
-            <a href="?page=<?= $_GET['page'] ?>&function=showDetails&id=<?= $result['o_id'] ?>" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a>
-            <!-- <a href="?page=<?= $_GET['page'] ?>&function=qty&id=<?= $result['s_id'] ?>" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a> -->
-
+            <a href="?page=<?= $_GET['page'] ?>&function=showDetails&id=<?= $result['bill_id'] ?>" class="btn btn-sm btn-blue2 text-white">รายละเอียดการโอน</a>
         </div>
     </div>
     <div>

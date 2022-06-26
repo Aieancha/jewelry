@@ -34,6 +34,10 @@
             include('dashboard/SuccessContract.php');
           }elseif (isset($_GET['function']) && $_GET['function'] == 'WrongContract') {
             include('dashboard/WrongContract.php');
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'ViewPrin') {
+            include('customer/interest/ViewPrin.php');
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'showDetails') {
+            include('customer/interest/show-details.php');
           } else {
             include('dashboard/index.php');
           }
@@ -54,6 +58,10 @@
             include('customer/interest/list_summary.php');
           } elseif (isset($_GET['function']) && $_GET['function'] == 'sum_list') {
             include('customer/interest/sum_list.php');
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'CreatePrin') {
+            include('customer/interest/CreatePrin.php');
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'ViewPrin') {
+            include('customer/interest/ViewPrin.php');
           } else {
             include('customer/interest/index.php');
           }
@@ -81,6 +89,8 @@
             include('customer/pledge/details.php');
           } elseif (isset($_GET['function']) && $_GET['function'] == 'wait') {
             include('customer/pledge/wait.php');
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'delete') {
+            include('customer/pledge/delete.php');
           } elseif (isset($_GET['function']) && $_GET['function'] == 'contractSuccess') {
             include('customer/pledge/contractSuccess.php');
           } elseif (isset($_GET['function']) && $_GET['function'] == 'CreateContract') {
@@ -101,6 +111,8 @@
             include('profile/edit.php');
           } elseif (isset($_GET['function']) && $_GET['function'] == 'delete') {
             include('profile/delete.php');
+          } elseif (isset($_GET['function']) && $_GET['function'] == 'resetpassword') {
+            include('profile/resetPass.php');
           } else {
             include('profile/profile.php');
           }
@@ -134,3 +146,9 @@
 <?php endif; ?>
 
 </html>
+<style>
+  .table> :not(caption)>*>* {
+        border: 0px;
+        border-radius: 0px;
+    }
+</style>

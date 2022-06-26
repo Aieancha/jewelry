@@ -3,7 +3,7 @@ $sql = "SELECT * FROM tbl_social
 INNER JOIN tbl_orders ON tbl_orders.s_id = tbl_social.s_id
 INNER JOIN tbl_interest ON tbl_interest.ref_id = tbl_social.s_id
 INNER JOIN tbl_bill ON tbl_social.s_id = tbl_bill.s_id
-group by tbl_social.s_id ORDER BY in_date";
+group by tbl_social.s_id ORDER BY in_date desc";
 $query = mysqli_query($connection, $sql);
 ?>
 <?php
@@ -30,17 +30,6 @@ if ($day3['day3'] > 0) {
 </div>
     </div>
     <div class="row justify-content-between">
-        <div class="d-flex justify-content-end">
-
-            <div class="d-flex justify-content-end mb-2 ">
-                <form class="example " action="/action_page.php" style="margin: 7px;;max-width:200px">
-                    <input type="text" placeholder="ชื่อผู้ใช้งาน.." name="search2 ">
-                    <button type="submit"><i class="fa fa-search btn-dark"></i></button>
-                </form>
-
-            </div>
-            
-        </div>
         <div class="row">
             <div class="card">
                 <!-- title -->
@@ -49,7 +38,7 @@ if ($day3['day3'] > 0) {
                 <!-- end title -->
                 <div class="card-body overflow-auto p-3" style="text-align: center">
                     <form action="">
-                        <table class="table">
+                    <table class="table" id="tableall">
                             <thead>
                                 <tr>
                                     <th scope="col">ลำดับ</th>
@@ -87,7 +76,7 @@ if ($day3['day3'] > 0) {
                                             } else {
                                                 echo "ค้างชำระ";
                                             } ?></td>
-                                        <td> <a href="?page=<?= $_GET['page'] ?>&function=showDetails&id=<?= $data['o_id'] ?>" class="btn btn-sm btn-blue2 text-white">ดูตาราง</a></td>
+                                        <td> <a href="?page=<?= $_GET['page'] ?>&function=showDetails&id=<?= $data['bill_id'] ?>" class="btn btn-sm btn-blue2 text-white">ดูตาราง</a></td>
                                         <td> <a href="?page=<?= $_GET['page'] ?>&function=sum_list&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-green3 text-white">แก้ไขสถานะ</a></td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -98,3 +87,42 @@ if ($day3['day3'] > 0) {
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#tableall').DataTable({
+            language: {
+                "decimal": "",
+                "emptyTable": "ยังไม่มีข้อมูล",
+                "info": "เเสดง _START_ - _END_ จาก _TOTAL_ รายการ",
+                "infoEmpty": "เเสดง 0 - 0 จาก 0 รายการ",
+                "infoFiltered": "(filtered from _MAX_ total entries)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "เเสดง _MENU_ รายการ",
+                "loadingRecords": "Loading...",
+                "processing": "Processing...",
+                "search": "ค้นหา:",
+                "zeroRecords": "No matching records found",
+                "paginate": {
+                    "first": "First",
+                    "last": "Last",
+                    "next": "ถัดไป",
+                    "previous": "ก่อนหน้า"
+                },
+                "aria": {
+                    "sortAscending": ": activate to sort column ascending",
+                    "sortDescending": ": activate to sort column descending"
+                }
+            }
+        });
+    });
+</script>
+<style>
+    table.dataTable thead th,
+    table.dataTable thead td,
+    table.dataTable tfoot th,
+    table.dataTable tfoot td {
+        text-align: center;
+
+    }
+</style>

@@ -1,15 +1,17 @@
 <?php
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
-    $sql = "SELECT * FROM tbl_orders INNER JOIN tbl_social ON tbl_social.s_id=tbl_orders.s_id  WHERE tbl_orders.s_id = '$id'";
+    $sql = "SELECT * FROM tbl_orders INNER JOIN tbl_social ON tbl_social.s_id=tbl_orders.s_id 
+    INNER JOIN tbl_bill ON tbl_bill.s_id=tbl_orders.s_id WHERE tbl_bill.bill_id = '$id'";
     $query = mysqli_query($connection, $sql);
     $result = mysqli_fetch_assoc($query);
-    $total=($result['principle']*0.02);
+    $total = ($result['principle'] * 0.02);
     $strStartDate = $result['c_date'];
-    $strStartDate = date('Y-m-d');
+    /* $strStartDate = date('Y-m-d'); */
     $strNewDate = date("Y-m-d", strtotime("+30 day", strtotime($strStartDate)));
     $strDate = date("Y-m-d", strtotime("+27 day", strtotime($strStartDate)));
     $ref = $result['s_id'];
+    $in = $result['o_inter'];
 }
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
@@ -17,10 +19,29 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     $qry = mysqli_query($connection, $sql1);
     $Num_Rows = mysqli_num_rows($qry);
 }
-    $Num_Rows = ($Num_Rows + 1);
+$Num_Rows = ($Num_Rows + 1);
 if (isset($_POST) && !empty($_POST)) {
     $in_date = $_POST['in_date'];
     $in_befor = $_POST['in_befor'];
+    $ins = "";
+
+    $total_principle = $result['o_total']; //จำนวนเงินต้น+ดอกเบี้ย
+    for ($i = -1; $i < $Num_Rows; $i++) {
+
+        if ($ins == '') {
+            $ins = ($total_principle) - $in_befor; //จำนวนเงินต้น+ดอกเบี้ยคงเหลือ
+        } else {
+            $ins = ($ins - $in_befor);
+        }
+    }
+    //echo $balance;
+    $balance =  $ins;
+
+    if ($Num_Rows == '') {
+        $Num_Rows = 1;
+    } else {
+        $Num_Rows = ($Num_Rows + 1);
+    }
 
     if (isset($_FILES['in_img']['name']) && !empty($_FILES['in_img']['name'])) {
         $extension = array("jpeg", "jpg", "png");
@@ -49,9 +70,9 @@ if (isset($_POST) && !empty($_POST)) {
     } else {
         $filename = '';
     }
-    $sql = "INSERT INTO tbl_interest (in_date, in_img, in_befor, in_role,ref_id) VALUES ('$in_date', '$filename', '$in_befor', 0, '$ref')";
+    $sql = "INSERT INTO tbl_interest (in_date, in_img, in_befor, in_role,ref_id,in_balance,in_after) VALUES ('$in_date', '$filename', '$in_befor', 0, '$ref','$balance','$Num_Rows')";
     //$sql = "UPDATE tbl_social SET c_date ='$strNewDate', start_date = '$strDate' where s_id ='$id'";
-    mysqli_query($connection, "UPDATE tbl_social SET c_date ='$strNewDate', start_date = '$strDate' WHERE s_id='$id'");
+    mysqli_query($connection, "UPDATE tbl_bill SET c_date ='$strNewDate' WHERE bill_id='$id'");
 
     if (mysqli_query($connection, $sql)) {
         echo "เพิ่มข้อมูลสำเร็จ";
@@ -118,7 +139,7 @@ if (isset($_POST) && !empty($_POST)) {
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <div class="item-label"><strong>ชื่อ-นามสกุล : </strong><?= $result['s_name'] .' '. $result['s_lastname'] ?></div>
+                                <div class="item-label"><strong>ชื่อ-นามสกุล : </strong><?= $result['s_name'] . ' ' . $result['s_lastname'] ?></div>
                             </div>
                             <div class="mb-3">
                                 <div class="item-label"><strong>ชื่อผู้ใช้เฟสบุ้ค : </strong><?= $result['c_facebook'] ?></div>
@@ -133,7 +154,7 @@ if (isset($_POST) && !empty($_POST)) {
                                 <div class="item-label"><strong>วันที่กำหนดชำระ : </strong><?= $result['c_date'] ?> </div>
                             </div>
                             <div class="mb-3">
-                                <div class="item-label"><strong>งวดที่ : </strong><?php echo $Num_Rows .' จาก '. $result['r_mount']  ?> งวด </div>
+                                <div class="item-label"><strong>งวดที่ : </strong><?php echo $Num_Rows . ' จาก ' . $result['r_mount']  ?> งวด </div>
                             </div>
                             <div class="mb-3">
                                 <div class="item-label"><strong>จำนวนเงินที่ต้องชำระ : </strong><?php echo $total ?> บาท</div>

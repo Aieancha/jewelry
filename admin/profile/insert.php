@@ -16,8 +16,16 @@
           $firstname = $_POST['m_firstname'];
           $lastname = $_POST['m_lastname'];
           $status = $_POST['status'];
-          $pass = $_POST['m_pass'];
+          /* $pass = $_POST['m_pass']; */
           //echo sha1(md5($m_pass));
+
+          // Generate Random Password
+          $chars = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
+          $password = substr(str_shuffle($chars), 0, 8);
+          // Encrypt password
+          $pass = sha1(md5($password));
+          // $pass = password_hash($password, PASSWORD_ARGON2I);
+
           if (!empty($name)) {
             $sql_check = "SELECT * FROM tbl_member WHERE m_name = '$name'";
             $query_check = mysqli_query($connection, $sql_check);
@@ -35,9 +43,9 @@
                       VALUES ('$name', '$email', '$pass', '$firstname', '$lastname', '$status')";
 
               if (mysqli_query($connection, $sql)) {
-                //echo "เพิ่มข้อมูลสำเร็จ";
+                //echo $password;
                 $alert = '<script type= "text/javascript">';
-                $alert .= 'alert("เพิ่มข้อมูลสำเร็จ");';
+                $alert .= 'alert("ชื่อผู้ใช้ : '.$name.' รหัสผ่าน : '.$password.'");';
                 $alert .= 'window.location.href = "?page=profile";';
                 $alert .= '</script>';
                 echo $alert;
@@ -76,13 +84,11 @@
                 <input type="email" class="form-control" name="m_email" placeholder="examp@gmail.com" autocomplete="off" value="<?= (isset($_POST['m_email']) && !empty($_POST['m_email']) ? $_POST['m_email'] : '') ?>" required>
               </div>
             </div>
-            <label class="form-label ">รหัสผ่าน</label>
+            <!-- <label class="form-label ">รหัสผ่าน</label>
             <labal class="form-label text-danger">*</labal>
             <div class="mb-3">
               <input type="password" class="form-control" name="m_pass" pattern="(?=.*\d).{8,}" placeholder="กรอกรหัสผ่านอย่างน้อย 8 ตัว" require>
-            </div>
-
-
+            </div> -->
 
             <label class="form-label ">สถานะ</label>
             <labal class="form-label text-danger">*</labal>
@@ -92,17 +98,17 @@
                 <option value="admin">ผู้จัดการ</option>
                 <option value="staff">พนักงาน</option>
               </select>
-            
-            
-            </div>
-            </div>
-            <div class="text-center mb-5">
-              <a href="?page=<?= $_GET['page'] ?>" class="btn btn-dark   mb-0 mt-3 ">ย้อนกลับ</a>
-              <button type="submit" name="save" class="btn btn-green3 text-white mb-0 mt-3">บันทึกข้อมูล</button>
-            </div>
-          </form>
 
-        
+
+            </div>
+        </div>
+        <div class="text-center mb-5">
+          <a href="?page=<?= $_GET['page'] ?>" class="btn btn-dark   mb-0 mt-3 ">ย้อนกลับ</a>
+          <button type="submit" name="save" class="btn btn-green3 text-white mb-0 mt-3">บันทึกข้อมูล</button>
+        </div>
+        </form>
+
+
       </div>
     </div>
   </div>

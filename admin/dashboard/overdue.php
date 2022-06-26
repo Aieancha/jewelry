@@ -7,8 +7,8 @@ INNER JOIN tbl_interest ON tbl_interest.ref_id = tbl_social.s_id
 WHERE tbl_interest.in_role = 1 group by tbl_bill.s_id";
 $query = mysqli_query($connection, $sql);
 $result=mysqli_fetch_assoc($query);
-$m=$result['r_mount'];
-$p=$result['principle'];
+@$m=$result['r_mount'];
+@$p=$result['principle'];
 ?>
 <!-- เดือน -->
 <div class="row justify-content-between">
@@ -25,7 +25,7 @@ $p=$result['principle'];
       <div class="row">
         <div class="card">
           <div class="card-body overflow-auto p-1 " style="text-align: center">
-            <table class="table" id="pledge">
+            <table class="table" id="tableall">
               <thead>
                 <div class="card-body overflow-auto p-1  " style="text-align: center">
                   <tr class="">
@@ -78,3 +78,42 @@ $p=$result['principle'];
     </div>
   </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#tableall').DataTable({
+            language: {
+                "decimal": "",
+                "emptyTable": "ยังไม่มีข้อมูล",
+                "info": "เเสดง _START_ - _END_ จาก _TOTAL_ รายการ",
+                "infoEmpty": "เเสดง 0 - 0 จาก 0 รายการ",
+                "infoFiltered": "(filtered from _MAX_ total entries)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "เเสดง _MENU_ รายการ",
+                "loadingRecords": "Loading...",
+                "processing": "Processing...",
+                "search": "ค้นหา:",
+                "zeroRecords": "No matching records found",
+                "paginate": {
+                    "first": "First",
+                    "last": "Last",
+                    "next": "ถัดไป",
+                    "previous": "ก่อนหน้า"
+                },
+                "aria": {
+                    "sortAscending": ": activate to sort column ascending",
+                    "sortDescending": ": activate to sort column descending"
+                }
+            }
+        });
+    });
+</script>
+<style>
+    table.dataTable thead th,
+    table.dataTable thead td,
+    table.dataTable tfoot th,
+    table.dataTable tfoot td {
+        text-align: center;
+
+    }
+</style>

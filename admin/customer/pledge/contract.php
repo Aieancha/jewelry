@@ -86,19 +86,19 @@ mysqli_close($connection);
                             <div class="justify-content-start flex-fill ">
                             <div class=" mb-4 col-10 ">
                                     <h6 style="display: inline;">ราคาที่ลูกค้าต้องการจำนำ :</h6>
-                                    <td width="25%" style="display: inline;"><?= $result['o_price'] ?> บาท</td>
+                                    <td width="25%" style="display: inline;"><?= number_format($result['o_price']) ?> บาท</td>
                                 </div>
                                 <div class=" mb-4 col-10 ">
                                     <h6 style="display: inline;">ราคาประเมินข้างต้น :</h6>
-                                    <td width="25%" style="display: inline;"><?= $result['price_img'] ?> บาท</td>
+                                    <td width="25%" style="display: inline;"><?= number_format($result['price_img']) ?> บาท</td>
                                 </div>
                                 <div class=" mb-4 col-10 ">
                                     <h6 style="display: inline;">ราคาประเมินจากสินค้าจริง:</h6>
-                                    <td width="25%" style="display: inline;"><?= $result['price_item'] ?> บาท</td>
+                                    <td width="25%" style="display: inline;"><?= number_format($result['price_item']) ?> บาท</td>
                                 </div>
                                 <div class=" mb-4 col-10 ">
                                     <h6 style="display: inline;">ราคาที่ตกลงจำนำ:</h6>
-                                    <td width="25%" style="display: inline;"><?= $result['principle'] ?> บาท</td>
+                                    <td width="25%" style="display: inline;"><?= number_format($result['principle']) ?> บาท</td>
                                 </div>
                                 <div class=" mb-4 ">
                                     <h6 style="display: inline;">จำนวนงวด :</h6>
@@ -106,17 +106,17 @@ mysqli_close($connection);
                                 </div>
                                 <div class=" mb-4 ">
                                     <h6 style="display: inline;">ดอกเบี้ย :</h6>
-                                    <td width="25%" style="display: inline;"><?= $result['principle'] * 0.02 * $result['r_mount'] ?> บาท</td>
+                                    <td width="25%" style="display: inline;"><?= number_format($result['principle'] * 0.02 * $result['r_mount']) ?> บาท</td>
                                 </div>
                                 <div class=" mb-4 ">
                                     <h6 style="display: inline;">เงินที่ต้องจ่ายต่องวด :</h6>
-                                    <td width="25%" style="display: inline;"><?= ($result['principle'] * 0.02) ?> บาท</td>
+                                    <td width="25%" style="display: inline;"><?= number_format($result['principle'] * 0.02) ?> บาท</td>
                                 </div>
 
                             </div>
                             <div class="justify-content-start flex-fill ">
                                 <div class=" mb-4 ">
-                                    <h6 style="display: inline;">เลขที่ราชการออกให้ :</h6>
+                                    <h6 style="display: inline;">บัตรประจำตัวประชาชน/หนังสือเดินทาง :</h6>
                                     <td width="25%" style="display: inline;"><?= $result['code_id'] ?></td>
                                 </div>
                                 <div class=" mb-4 ">

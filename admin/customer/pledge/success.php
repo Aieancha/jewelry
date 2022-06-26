@@ -36,7 +36,7 @@
             <div class="justify-content-start flex-fill ">
             </div>
             <div class="flex-fill d-flex justify-content-end gap-1" >
-              <a href="#" class="btn btn-color1 btn-green3 theme-btn  pull-right">พิมพ์เอกสาร</a>
+              <a href="#" class="btn btn-sm btn-blue2 text-white">พิมพ์เอกสาร</a>
             
           </div>
                 </form>
@@ -48,7 +48,7 @@
                     <a href="?page=<?= $_GET['page'] ?>" class="btn bg-gradient-dark">ย้อนกลับ</a>
                 </div>
                 <div class="flex-fill d-flex justify-content-end gap-1">
-                    <a href="pdf_contract.php" class="btn btn-color1 bg-gradient-primary theme-btn  pull-right">พิมพ์เอกสาร</a>
+                    <a href="pdf_contract.php" class="btn btn-sm btn-blue2 text-white">พิมพ์เอกสาร</a>
 
                 </div>
                 </form>

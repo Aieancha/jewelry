@@ -23,8 +23,8 @@ $query = mysqli_query($connection, $sql);
     <div class="row">
         <div class="card ">
         <h5 class="m-3">ตารางแสดงรายชื่อผู้มีสิทธิ์เข้าใช้งานระบบทั้งหมด</h5>
-            <div class="card-body p-3 overflow-auto">
-                <table class="table" style="text-align: center ">
+            <div class="card-body p-3 overflow-auto text-center">
+            <table class="table" id="tableall">
                     <thead >
                         <tr >
                             <th scope="col">ชื่อผู้ดูแลระบบ</th>
@@ -44,6 +44,7 @@ $query = mysqli_query($connection, $sql);
                                 <td>
                                     <a href="?page=<?=$_GET['page']?>&function=update&id=<?=$data['m_id']?>" class="btn btn-sm btn-dark">แก้ไข</a>
                                     <a href="?page=<?=$_GET['page']?>&function=delete&id=<?=$data['m_id']?>" onclick="return confirm('คุณต้องการลบชื่อผู้ดูแลระบบ : <?= $data['m_name'] ?> หรือไม่')" class="btn btn-sm btn-danger">ลบ</a>
+                                    <a href="?page=<?=$_GET['page']?>&function=resetpassword&id=<?=$data['m_id']?>" onclick="return confirm('คุณต้องการรีเซตรหัสผ่านหรือไม่ : <?= $data['m_name'] ?> หรือไม่')" class="btn btn-sm btn-blue2 text-white">รีเซตรหัสผ่าน</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -55,9 +56,48 @@ $query = mysqli_query($connection, $sql);
     </div>
 </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#tableall').DataTable({
+            language: {
+                "decimal": "",
+                "emptyTable": "ยังไม่มีข้อมูล",
+                "info": "เเสดง _START_ - _END_ จาก _TOTAL_ รายการ",
+                "infoEmpty": "เเสดง 0 - 0 จาก 0 รายการ",
+                "infoFiltered": "(filtered from _MAX_ total entries)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "เเสดง _MENU_ รายการ",
+                "loadingRecords": "Loading...",
+                "processing": "Processing...",
+                "search": "ค้นหา:",
+                "zeroRecords": "No matching records found",
+                "paginate": {
+                    "first": "First",
+                    "last": "Last",
+                    "next": "ถัดไป",
+                    "previous": "ก่อนหน้า"
+                },
+                "aria": {
+                    "sortAscending": ": activate to sort column ascending",
+                    "sortDescending": ": activate to sort column descending"
+                }
+            }
+        });
+    });
+</script>
 <?php
 mysqli_close($connection);
 ?>
 <style>
+    table.dataTable thead th,
+    table.dataTable thead td,
+    table.dataTable tfoot th,
+    table.dataTable tfoot td {
+        text-align: center;
+
+    }
+</style>
+
 
     

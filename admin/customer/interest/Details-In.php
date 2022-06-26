@@ -55,9 +55,22 @@
                                     <h6 style="display: inline;">วันที่ชำระค่างวด :</h6>
                                     <td width="25%" style="display: inline;"><?= $result['in_date'] ?> </td>
                                 </div>
+                                <div id="myModal" class="modal">
+                                    <span class="close cursor" onclick="closeModal()">&times;</span>
+                                    <div class="modal-content">
+
+                                        <div class="mySlides">
+                                            <div class="numbertext"></div>
+                                            <img src="../images/interest/<?= $result['in_img'] ?>" style="width:100%; height:auto">
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class=" mb-3 col-10 ">
                                     <h6 style="display: inline;">หลักฐานการชำระค่างวด :</h6>
-                                    <img src="../images/interest/<?= $result['in_img'] ?>" alt="IDcard" width="304" height="228">
+                                </div>
+                                <div class=" mb-3 col-10 ">
+
+                                            <img src="../images/interest/<?= $result['in_img'] ?>" alt="contract" style="width:200px; height:auto;" onclick="openModal();currentSlide(1)" class="hover-shadow cursor">
                                 </div>
                             </div>
                             <div class="justify-content-end flex-fill m-3">
@@ -93,67 +106,172 @@
 
     </div>
     </div>
-</body>
+    <script>
+        function openModal() {
+            document.getElementById("myModal").style.display = "block";
+        }
 
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("demo");
+            var captionText = document.getElementById("caption");
+            if (n > slides.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = slides.length
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            captionText.innerHTML = dots[slideIndex - 1].alt;
+        }
+    </script>
+</body>
 </html>
 <style>
-    .wrapper-progressBar {
-        width: 100%
+    body {
+
+        margin: 0;
     }
 
-    .progressBar {
-        font-size: 1em;
+    * {
+        box-sizing: border-box;
     }
 
-    .progressBar li {
-        list-style-type: none;
-        float: left;
-        width: 30%;
-        position: relative;
-        text-align: center;
-
-
+    .row>.column {
+        padding: 0 8px;
     }
 
-    .progressBar li:before {
-        content: " ";
-        line-height: 30px;
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-        border: 1px solid;
-        display: block;
-        text-align: center;
-        margin: 0 auto 10px;
-        background-color: white
-    }
-
-    .progressBar li:after {
+    .row:after {
         content: "";
-        position: absolute;
+        display: table;
+        clear: both;
+    }
+
+    .column {
+        float: left;
         width: 100%;
-        height: 4px;
-        background-color: #ddd;
-        top: 15px;
-        left: -50%;
-        z-index: -1;
     }
 
-    .progressBar li:first-child:after {
-        content: none;
+    /* The Modal (background) */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* height: 100%; */
+        overflow: auto;
+        background-color: black;
     }
 
-    .progressBar li.active {
-        color: hsl(0, 100%, 16%);
+    /* Modal Content */
+    .modal-content {
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        width: 50%;
+        max-width: 1200px;
+        display: block;
     }
 
-    .progressBar li.active:before {
-        border-color: hsl(0, 100%, 16%);
-        background-color: hsl(0, 100%, 16%);
-
+    /* The Close Button */
+    .close {
+        color: white;
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        font-size: 35px;
+        font-weight: bold;
     }
 
-    .progressBar .active:after {
-        background-color: dodgerblue;
+    .close:hover,
+    .close:focus {
+        color: #999;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .mySlides {
+        display: none;
+    }
+
+    .cursor {
+        cursor: pointer;
+    }
+
+
+    /* Position the "next button" to the right */
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover,
+    .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    /* Number text (1/3 etc) */
+    .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+    }
+
+    img {
+        margin-bottom: -4px;
+    }
+
+    .caption-container {
+        text-align: center;
+        background-color: black;
+        padding: 2px 16px;
+        color: white;
+    }
+
+    .demo {
+        opacity: 0.6;
+    }
+
+    .active,
+    .demo:hover {
+        opacity: 1;
+    }
+
+    img.hover-shadow {
+        transition: 0.3s;
+    }
+
+    .hover-shadow:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 </style>

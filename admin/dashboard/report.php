@@ -44,7 +44,7 @@ while ($data=mysqli_fetch_array($query_month)){
       <div class="row">
         <div class="card">
           <div class="card-body overflow-auto p-1 " style="text-align: center">
-            <table class="table" id="pledge">
+            <table class="table" id="tableall">
               <thead>
                 <div class="card-body overflow-auto p-1  " style="text-align: center">
                   <tr class="">
@@ -55,7 +55,7 @@ while ($data=mysqli_fetch_array($query_month)){
                     <th scope="col">งวดที่ชำระ</th>
                     <th scope="col">ดอกเบี้ยทั้งหมด</th>
                     <th scope="col">ดอกเบี้ยที่ชำระต่อเดือน</th>
-                    <th scope="col">ดอกเบี้ยคงเหลือ</th>
+                    <!-- <th scope="col">ดอกเบี้ยคงเหลือ</th> -->
                   </tr>
               </thead>
               <tbody>
@@ -79,9 +79,9 @@ while ($data=mysqli_fetch_array($query_month)){
                     <td><?php echo $data['bill_no']; ?></td>
                     <td><?= $data['s_name'] . ' ' . $data['s_lastname'] ?></td>
                     <td><?= $data['in_after'] .'/'.$data['r_mount'] ?></td>
-                    <td></td>
+                    <td><?= number_format($data['principle'] * 0.02 * $data['r_mount']) ?></td>
                     <td><?= number_format($data['in_befor']) ?></td>
-                    <td><?php echo number_format($total) ?></td>
+                    <!-- <td><?php echo number_format($total) ?></td> -->
                   </tr>
 
                 <?php } ?>
@@ -101,3 +101,42 @@ while ($data=mysqli_fetch_array($query_month)){
     </div>
   </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#tableall').DataTable({
+            language: {
+                "decimal": "",
+                "emptyTable": "ยังไม่มีข้อมูล",
+                "info": "เเสดง _START_ - _END_ จาก _TOTAL_ รายการ",
+                "infoEmpty": "เเสดง 0 - 0 จาก 0 รายการ",
+                "infoFiltered": "(filtered from _MAX_ total entries)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "เเสดง _MENU_ รายการ",
+                "loadingRecords": "Loading...",
+                "processing": "Processing...",
+                "search": "ค้นหา:",
+                "zeroRecords": "No matching records found",
+                "paginate": {
+                    "first": "First",
+                    "last": "Last",
+                    "next": "ถัดไป",
+                    "previous": "ก่อนหน้า"
+                },
+                "aria": {
+                    "sortAscending": ": activate to sort column ascending",
+                    "sortDescending": ": activate to sort column descending"
+                }
+            }
+        });
+    });
+</script>
+<style>
+    table.dataTable thead th,
+    table.dataTable thead td,
+    table.dataTable tfoot th,
+    table.dataTable tfoot td {
+        text-align: center;
+
+    }
+</style>
