@@ -15,19 +15,25 @@
             <?php
             if (isset($_GET['id']) && !empty($_GET['id'])) {
                 $id = $_GET['id'];
-                $sqlRow = "SELECT * FROM tbl_interest INNER JOIN tbl_bill ON tbl_interest.ref_id = tbl_bill.s_id 
-                                        WHERE tbl_interest.in_id ='$id'";
-                $query_row = mysqli_query($connection, $sqlRow);
-                $Num_Row = mysqli_num_rows($query_row);
+                $sqlRow = "SELECT * FROM tbl_interest INNER JOIN tbl_social ON tbl_social.s_id = tbl_interest.ref_id
+                INNER JOIN tbl_orders ON tbl_social.s_id = tbl_orders.s_id
+                                        INNER JOIN tbl_bill ON tbl_interest.ref_id = tbl_bill.s_id 
+                                        WHERE tbl_bill.bill_id ='$id'";
+                $row = mysqli_query($connection, $sqlRow);
+                $Num_Rows = mysqli_num_rows($row);
                 //echo $Num_Rows;
+                //$Num_Rows = ($Num_Row + 1);
             }
-            
             if (isset($_GET['id']) && !empty($_GET['id'])) {
                 $id = $_GET['id'];
-                $sql1 = "SELECT * FROM tbl_interest INNER JOIN tbl_social ON tbl_social.s_id = tbl_interest.ref_id INNER JOIN tbl_bill ON tbl_bill.s_id = tbl_interest.ref_id WHERE tbl_bill.s_id ='$id'";
-                $qry = mysqli_query($connection, $sql1);
-                $Num_Rows = mysqli_num_rows($qry);
-                //$Num_Row = mysqli_num_rows($qry);
+                $sqlSum = "SELECT SUM(in_befor) AS sum_price FROM tbl_interest INNER JOIN tbl_social ON tbl_social.s_id = tbl_interest.ref_id
+                INNER JOIN tbl_orders ON tbl_social.s_id = tbl_orders.s_id
+                                        INNER JOIN tbl_bill ON tbl_interest.ref_id = tbl_bill.s_id 
+                                        WHERE tbl_bill.bill_id ='$id'";
+                $sum = mysqli_query($connection, $sqlSum);
+                $Salary = mysqli_fetch_assoc($sum);
+                $Salary_Sum = $Salary['sum_price'];
+                //echo $Salary_Sum;
             }
             ?>
 
@@ -52,35 +58,33 @@
                 $sql = "SELECT * FROM tbl_bill INNER JOIN tbl_orders ON tbl_bill.s_id=tbl_orders.s_id INNER JOIN tbl_social ON tbl_social.s_id = tbl_orders.s_id WHERE tbl_bill.bill_id = '$id'";
                 $query = mysqli_query($connection, $sql);
                 $row = mysqli_fetch_assoc($query);
-
-                
             }
 
             if (isset($_POST) && !empty($_POST)) {
                 $in_date = $_POST['in_date'];
                 $in_befor = $_POST['in_befor'];
-                $ins = "";
+                $inst = $result['in_balance'];
+                $inter = $result['o_inter']; //จำนวนเงินต้น+ดอกเบี้ย
 
-                $total_principle = $result['o_total']; //จำนวนเงินต้น+ดอกเบี้ย
-                // for ($i = -1; $i < $Num_Rows; $i++) {
-                    
-                    if ($ins == '') {
-                        //echo$total_principle;
-                        $ins = ($total_principle) - $in_befor; //จำนวนเงินต้น+ดอกเบี้ยคงเหลือ
-                        //echo$ins;
-                    } else {
-                        $ins = ($ins - $in_befor);
-                    }
-                // }
-                //echo $balance;
-                // echo$ins;
-                     $balance =  $ins;
-
+                /* งวดที่ชำระ */
                 if ($Num_Rows == '') {
                     $Num_Rows = 1;
                 } else {
                     $Num_Rows = ($Num_Rows + 1);
                 }
+                
+                /* ยอดดอกเบี้ยคงเหลือ */
+                if ($Salary_Sum == '') {
+                    $Salary_Sum = $in_befor;
+                } else {
+                    $Salary_Sum = ($Salary_Sum + $in_befor);
+                }
+                $ins=$inter-$Salary_Sum;
+
+                //echo $sum;
+
+                
+                $balance =  $ins;
 
 
                 if (isset($_FILES['in_img']['name']) && !empty($_FILES['in_img']['name'])) {
@@ -114,7 +118,11 @@
                 mysqli_query($connection, "UPDATE tbl_bill SET c_date ='$strNewDate' WHERE bill_id='$id'");
 
                 if (mysqli_query($connection, $sql)) {
-                    echo "เพิ่มข้อมูลสำเร็จ";
+                    //echo "เพิ่มข้อมูลสำเร็จ";
+                    echo "<script>
+alert('เพิ่มหลักฐานการชำระค่างวดสำเร็จ');
+window.location.href='?page=interest';
+</script>";
                 } else {
                     echo "Error: " . $sql . "<br>"  . mysqli_error($connection);
                 }
@@ -122,7 +130,7 @@
                 mysqli_close($connection);
             }
 
-            //print_r($_POST);
+            //print_r($Salary);
             ?>
 
             <div class="card mb-4">
@@ -155,15 +163,16 @@
                                 <td width="25%" style="display: inline;"><?= number_format($result['principle']) ?> บาท</td>
                             </div>
                             <div class=" mb-3 ">
-                                <h6 style="display: inline;">จำนวนดอกเบี้ยทั้งหมด :</h6>
-                                <td width="25%" style="display: inline;"><?= number_format($result['o_inter']) ?> บาท</td>
+                                <h6 style="display: inline;">เงินที่ต้องจ่ายต่องวด :</h6>
+                                <td width="25%" style="display: inline;"><span style="color:red"><?= number_format($result['principle'] * 0.02) ?></span> บาท</td>
                             </div>
                         </div>
                         <div class="justify-content-start flex-fill ">
                             <div class=" mb-3 ">
-                                <h6 style="display: inline;">เงินที่ต้องจ่ายต่องวด :</h6>
-                                <td width="25%" style="display: inline;"><?= number_format($result['principle'] * 0.02) ?> บาท</td>
+                                <h6 style="display: inline;">จำนวนดอกเบี้ยทั้งหมด :</h6>
+                                <td width="25%" style="display: inline;"><?= number_format($result['o_inter']) ?> บาท</td>
                             </div>
+
                             <div class=" mb-3  ">
                                 <h6 style="display: inline;">จำนวนงวดที่ชำระแล้ว :</h6>
                                 <td width="25%" style="display: inline;"><?php echo $Num_Rows . ' จาก ' .  $result['r_mount'] ?> เดือน</td>
@@ -222,6 +231,10 @@
 
 </html>
 <style>
+    .red {
+        color: red;
+    }
+
     .wrapper-progressBar {
         width: 100%
     }

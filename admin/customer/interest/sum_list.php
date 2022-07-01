@@ -24,11 +24,11 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                     <div class="justify-content-start flex-fill ">
                         <div class=" mb-3 ">
                             <h6 style="display: inline;">เลขที่สัญญา :</h6>
-                            <td width="25%" style="display: inline;"><?php echo $result['bill_no']; ?></td>
+                            <td width="25%" style="display: inline;"><?php echo @$result['bill_no']; ?></td>
                         </div>
                         <div class=" mb-6 ">
-                            <h6 style="display: inline;">ท่านชำระไปแล้ว:</h6>
-                            <td>จำนวนงวดที่ชำระ <?php echo $Num_Rows; ?> งวด จาก <?php echo $result['r_mount'] ?> งวด</td>
+                            <h6 style="display: inline;">ชำระไปแล้ว:</h6>
+                            <td>จำนวนงวดที่ชำระ <?php echo @$Num_Rows; ?> งวด จาก <?php echo @$result['r_mount'] ?> งวด</td>
                         </div>
                         <h5>ตารางแสดงข้อมูลการชำระดอกเบี้ย</h5>
 

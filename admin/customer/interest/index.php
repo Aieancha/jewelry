@@ -2,26 +2,26 @@
 $sql = "SELECT * FROM tbl_social
 INNER JOIN tbl_bill ON tbl_social.s_id = tbl_bill.s_id
 INNER JOIN tbl_orders ON tbl_orders.s_id = tbl_bill.s_id
-WHERE tbl_bill.bill_role=0
+WHERE DATEDIFF(c_date, Now())= 3 or DATEDIFF(c_date, Now())= 2 or DATEDIFF(c_date, Now())< 30
 group by tbl_social.s_id ORDER BY c_date asc";
 $query = mysqli_query($connection, $sql);
 $result = mysqli_fetch_assoc($query);
 @$strStartDate = $result['c_date'];
 
-/* $strStartDate = date('Y-m-d'); */
+$strStartDate = date('Y-m-d');
 $strDate = date("Y-m-d", strtotime("-3 day", strtotime($strStartDate)));
 ?>
 
 <?php
 //mysqli_select_db($connection,"");
-$sqldb = "SELECT count(bill_id) as day3 FROM tbl_bill WHERE DATEDIFF(c_date, Now())= 3 or DATEDIFF(c_date, Now())= 2";
+/* $sqldb = "SELECT count(bill_id) as day3 FROM tbl_bill WHERE DATEDIFF(c_date, Now())= 3 or DATEDIFF(c_date, Now())= 2";
 $rs = mysqli_query($connection, $sqldb);
 $day3 = mysqli_fetch_assoc($rs);
 if ($day3['day3'] > 0) {
   $noti_day3 = '<span class="noti-alert">' . $day3['day3'] . '</span>';
 } else {
   $noti_day3 = "";
-}
+} */
 ?>
 <?php
 date_default_timezone_set('asia/bangkok');

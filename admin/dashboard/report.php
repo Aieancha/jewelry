@@ -55,7 +55,7 @@ while ($data=mysqli_fetch_array($query_month)){
                     <th scope="col">งวดที่ชำระ</th>
                     <th scope="col">ดอกเบี้ยทั้งหมด</th>
                     <th scope="col">ดอกเบี้ยที่ชำระต่อเดือน</th>
-                    <!-- <th scope="col">ดอกเบี้ยคงเหลือ</th> -->
+                    <th scope="col">ดอกเบี้ยคงเหลือ</th>
                   </tr>
               </thead>
               <tbody>
@@ -81,7 +81,7 @@ while ($data=mysqli_fetch_array($query_month)){
                     <td><?= $data['in_after'] .'/'.$data['r_mount'] ?></td>
                     <td><?= number_format($data['principle'] * 0.02 * $data['r_mount']) ?></td>
                     <td><?= number_format($data['in_befor']) ?></td>
-                    <!-- <td><?php echo number_format($total) ?></td> -->
+                    <td><?= number_format($data['in_balance']) ?></td>
                   </tr>
 
                 <?php } ?>

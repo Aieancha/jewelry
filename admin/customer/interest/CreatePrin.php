@@ -15,9 +15,12 @@
             <?php
             if (isset($_GET['id']) && !empty($_GET['id'])) {
                 $id = $_GET['id'];
-                $sql1 = "SELECT * FROM tbl_interest INNER JOIN tbl_social ON tbl_social.s_id = tbl_interest.ref_id INNER JOIN tbl_bill ON tbl_bill.s_id = tbl_interest.ref_id WHERE tbl_bill.s_id ='$id'";
-                $qry = mysqli_query($connection, $sql1);
-                $Num_Rows = mysqli_num_rows($qry);
+                $sqlRow = "SELECT * FROM tbl_interest INNER JOIN tbl_social ON tbl_social.s_id = tbl_interest.ref_id
+                INNER JOIN tbl_orders ON tbl_social.s_id = tbl_orders.s_id
+                                        INNER JOIN tbl_bill ON tbl_interest.ref_id = tbl_bill.s_id 
+                                        WHERE tbl_bill.bill_id ='$id'";
+                $row = mysqli_query($connection, $sqlRow);
+                $Num_Rows = mysqli_num_rows($row);
             }
             ?>
 
@@ -73,7 +76,7 @@
                 if (mysqli_query($connection, $sql)) {
                     //echo "เพิ่มข้อมูลสำเร็จ";
                     $alert = '<script type="text/javascript">';
-                    $alert .= 'alert("เพิ่มข้อมูลสำเร็จ");';
+                    $alert .= 'alert("เพิ่มหลักฐานการชำระเงินต้นสำเร็จ");';
                     $alert .= 'window.location.href = "?";';
                     $alert .= '</script>';
                     echo $alert;
@@ -129,7 +132,7 @@
                             </div>
                             <div class=" mb-3 ">
                                 <h6 style="display: inline;">จำนวนเงินต้น :</h6>
-                                <td width="25%" style="display: inline;"><?= number_format($result['principle']) ?> บาท</td>
+                                <td width="25%" style="display: inline;"><span style="color:red"><?= number_format($result['principle']) ?></span> บาท</td>
                             </div>
                         </div>
                     </div>

@@ -121,6 +121,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                     <div>
                                         <select name="bill_role" require class="btn btn-sm ">
                                             <option value="" selected="selected" disabled require>เปลี่ยนสถานะ</option>
+                                            <option value="1">ค้างชำระ</option>
                                             <option value="4">ครบสัญญา</option>
                                             <option value="5">ผิดสัญญา</option>
                                             <option value="6">ไถ่ถอนก่อนกำหนด</option>

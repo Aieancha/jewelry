@@ -77,7 +77,7 @@ if ($day3['day3'] > 0) {
                                                 echo "ค้างชำระ";
                                             } ?></td>
                                         <td> <a href="?page=<?= $_GET['page'] ?>&function=showDetails&id=<?= $data['bill_id'] ?>" class="btn btn-sm btn-blue2 text-white">ดูตาราง</a></td>
-                                        <td> <a href="?page=<?= $_GET['page'] ?>&function=sum_list&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-green3 text-white">แก้ไขสถานะ</a></td>
+                                        <td> <a href="?page=<?= $_GET['page'] ?>&function=sum_list&id=<?= $data['bill_id'] ?>" class="btn btn-sm btn-green3 text-white">แก้ไขสถานะ</a></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

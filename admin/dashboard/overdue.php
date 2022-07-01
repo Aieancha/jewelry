@@ -3,8 +3,8 @@
 $sql = "SELECT * FROM tbl_social
 INNER JOIN tbl_orders ON tbl_social.s_id = tbl_orders.s_id
 INNER JOIN tbl_bill ON tbl_social.s_id = tbl_bill.s_id
-INNER JOIN tbl_interest ON tbl_interest.ref_id = tbl_social.s_id
-WHERE tbl_interest.in_role = 1 group by tbl_bill.s_id";
+INNER JOIN tbl_interest ON tbl_interest.ref_id = tbl_bill.s_id
+WHERE MONTH(c_date) > 3 group by tbl_bill.s_id";
 $query = mysqli_query($connection, $sql);
 $result=mysqli_fetch_assoc($query);
 @$m=$result['r_mount'];

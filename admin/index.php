@@ -19,7 +19,7 @@
           if (isset($_GET['function']) && $_GET['function'] == 'ChangeStatus') {
             include('dashboard/ChangeStatus.php');
           } elseif (isset($_GET['function']) && $_GET['function'] == 'detailsIn') {
-            include('customer/interest/Details-In.php');
+            include('dashboard/DetailsIn.php');
           } elseif (isset($_GET['function']) && $_GET['function'] == 'details') {
             include('customer/pledge/details.php');
           } elseif (isset($_GET['function']) && $_GET['function'] == 'report') {

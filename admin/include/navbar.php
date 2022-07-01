@@ -9,7 +9,7 @@
             <li class="nav-item d-flex align-items-center">
               <a class="nav-link <?php echo isset($_GET['page']) && ($_GET['page']) ?: '' ?> " href="?page=myprofile">
                 <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none"><?= $_SESSION["userlevel"] ?></span>
+                <span class="d-sm-inline d-none"><?= $_SESSION["user"] ?></span>
               </a>
             </li>
 

@@ -69,12 +69,11 @@ while ($data=mysqli_fetch_array($query_month)){
               <tbody>
                 <?php
                 $i = 0;
-                $bill = " SELECT count(bill_no) AS bill, SUM(in_befor) AS sum_price FROM tbl_bill INNER JOIN tbl_interest ON tbl_interest.ref_id=tbl_bill.s_id";
+                $bill = " SELECT SUM(in_befor) AS inter FROM tbl_orders
+                INNER JOIN tbl_bill ON tbl_orders.s_id = tbl_bill.s_id
+                INNER JOIN tbl_interest ON tbl_interest.ref_id = tbl_bill.s_id WHERE tbl_bill.bill_role=4";
                 $q = mysqli_query($connection, $bill);
                 $f = mysqli_fetch_assoc($q);
-                /* $count = "SELECT COUNT(*) AS total FROM ( SELECT tbl_bill.s_id FROM tbl_bill UNION ALL SELECT tbl_interest.ref_id FROM tbl_interest ) AS a ";
-                $l = mysqli_query($connection, $count);
-                $t = mysqli_fetch_assoc($l);  */
                 while ($data = mysqli_fetch_array($query)) {
                   $principle = $data['principle'];
                   $month = $data['r_mount'];
@@ -87,17 +86,17 @@ while ($data=mysqli_fetch_array($query_month)){
                     <td><?= $data['prin_date'] ?></td>
                     <td><?php echo $data['bill_no']; ?></td>
                     <td><?= $data['s_name'] . ' ' . $data['s_lastname'] ?></td>
-                    <td><?= number_format($data['principle']) ?></td>
+                    <td><?= number_format($data['prin_total']) ?></td>
                     <td><?php echo number_format($total_price) ?></td>
                     <td><a href="?page=interest&function=ViewPrin&id=<?= $data['bill_id'] ?>" class="btn btn-sm btn-blue2 text-white">หลักฐานการชำระเงินต้น</a></td>
                   
                   </tr>
 
-                <?php } ?>
+                  <?php } ?>
                 <table class="table">
                   <tr>
-                    <!-- <td>เลขที่สัญญาจำนวน : <?php echo $f['bill']; ?> ฉบับ </td>
-                    <td>รวมยอดชำระดอกเบี้ย : <?php echo $f['sum_price']; ?> บาท </td> -->
+                    <!-- <td>เงินต้นทั้งหมด : <?php echo number_format($f['prin']); ?> บาท </td> -->
+                    <!-- <td>รวมยอดดอกเบี้ยทั้งหมด : <?php echo number_format($f['inter']); ?> บาท </td> -->
                   </tr>
                 </table>
               </tbody>
