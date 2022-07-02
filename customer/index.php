@@ -17,7 +17,8 @@
 
         <?php
         if (!isset($_GET['page']) && empty($_GET['page'])) {
-          if (isset($_GET['function']) && $_GET['function'] == 'interest2') {
+          if (isset($_GET['function']) && $_GET['function'] == 'interest') {
+            //include('interest_table.php');
             include('interest_details.php');
           } elseif (isset($_GET['function']) && $_GET['function'] == 'updatebill') {
             include('update_bill.php');
@@ -25,9 +26,9 @@
             include('detail_bill.php');
           } else {
             include('interest_table.php');
+            //include('interest_details.php');
           }
-        }
-        elseif (isset($_GET['page']) && $_GET['page'] == 'newform') {
+        }elseif (isset($_GET['page']) && $_GET['page'] == 'newform') {
           include('newform.php');
         } elseif (isset($_GET['page']) && $_GET['page'] == 'frompledge')
           if (isset($_GET['function']) && $_GET['function'] == 'fromdetails') {

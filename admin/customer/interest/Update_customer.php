@@ -27,12 +27,17 @@
                 $result = mysqli_fetch_assoc($query);
                 mysqli_query($connection, "UPDATE tbl_interest SET in_role=1 WHERE ref_id = '$id'"); 
                 
-                /* $alert = '<script type="text/javascript">';
-                $alert .= 'alert("เพิ่มข้อมูลสำเร็จ");';
-                $alert .= 'window.location.href = "?page=interest&function=list";';
-                $alert .= '</script>';
-                echo $alert;
-                exit(); */
+                /* if (mysqli_query($connection, $sql)) {
+                    //echo "เพิ่มข้อมูลสำเร็จ";
+                    echo "<script>
+alert('ยืนยันข้อมูลสำเร็จ');
+window.location.href='?page=interest&function=list';
+</script>";
+                } else {
+                    echo "Error: " . $sql . "<br>"  . mysqli_error($connection);
+                }
+
+                mysqli_close($connection); */
             }
 
             //print_r($_POST);
@@ -65,17 +70,18 @@
                             </div>
                             <div class=" mb-3 ">
                                 <h6 style="display: inline;">จำนวนเงินต้น :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['principle'] ?> บาท</td>
+                                <td width="25%" style="display: inline;"><?= number_format($result['principle']) ?> บาท</td>
                             </div>
+                            
                             <div class=" mb-3 ">
-                                <h6 style="display: inline;">จำนวนดอกเบี้ย :</h6>
-                                <td width="25%" style="display: inline;"><?= $result['principle'] * 0.02 * $result['r_mount'] ?> บาท</td>
+                                <h6 style="display: inline;">เงินที่ต้องจ่ายต่องวด :</h6>
+                                <td width="25%" style="display: inline;"><span style="color:red"><?= ($result['principle'] * 0.02) ?></span> บาท</td>
                             </div>
                         </div>
                         <div class="justify-content-start flex-fill ">
-                            <div class=" mb-3 ">
-                                <h6 style="display: inline;">เงินที่ต้องจ่ายต่องวด :</h6>
-                                <td width="25%" style="display: inline;"><?= ($result['principle'] * 0.02) ?> บาท</td>
+                        <div class=" mb-3 ">
+                                <h6 style="display: inline;">จำนวนดอกเบี้ย :</h6>
+                                <td width="25%" style="display: inline;"><?= number_format($result['principle'] * 0.02 * $result['r_mount']) ?> บาท</td>
                             </div>
                             <div class=" mb-3  ">
                                 <h6 style="display: inline;">จำนวนงวดที่ต้องชำระ :</h6>

@@ -76,7 +76,7 @@ while ($data=mysqli_fetch_array($query_month)){
                     <td><?= $data['s_name'] . ' ' . $data['s_lastname'] ?></td>
                     <td><?= number_format($data['principle']) ?></td>
                     <td><?php echo number_format($total_price) ?></td>
-                    <td><a href="?page=interest&function=ViewPrin&id=<?= $data['bill_id'] ?>" class="btn btn-sm btn-blue2 text-white">หลักฐานการชำระเงินต้น</a></td>
+                    <td><a href="?&function=ViewPrin&id=<?= $data['bill_id'] ?>" class="btn btn-sm btn-blue2 text-white">หลักฐานการชำระเงินต้น</a></td>
                   </tr>
 
                 <?php } ?>

@@ -1,32 +1,22 @@
 <?php
-$id = $_SESSION['customer_login'];
-$sql = "SELECT * FROM tbl_social
-INNER JOIN tbl_bill ON tbl_social.s_id = tbl_bill.s_id
-INNER JOIN tbl_orders ON tbl_orders.s_id = tbl_bill.s_id
-WHERE tbl_bill.bill_role=0 ";
-$query = mysqli_query($connection, $sql);
-$result = mysqli_fetch_assoc($query);
-@$strStartDate = $result['c_date'];
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+  $id = $_GET['id'];
+  $sqlRow = "SELECT * FROM tbl_interest INNER JOIN tbl_social ON tbl_social.s_id = tbl_interest.ref_id
+  INNER JOIN tbl_orders ON tbl_social.s_id = tbl_orders.s_id
+                          INNER JOIN tbl_bill ON tbl_interest.ref_id = tbl_bill.s_id 
+                          WHERE tbl_bill.bill_id ='$id' GROUP BY bill_id";
+  $query = mysqli_query($connection, $sqlRow);
+  $result = mysqli_fetch_assoc($query);
+  $Num_Rows = mysqli_num_rows($query);
+  @$status = $result['bill_role'];
+  @$strStartDate = $result['c_date'];
 /* $strStartDate = date('Y-m-d'); */
 $strDate = date("Y-m-d", strtotime("-3 day", strtotime($strStartDate)));
-@$status = $result['bill_role'];
-/* if($status==0){
-	 $status = "ค้างชำระ";
-}elseif($status==1){
-	 $status = "ครบสัญญา";
-}elseif($status==2){
-	 $status = "ผิดสัญญาสัญญา";
-}else{
-	 $status = "ไถ่ถอนก่อนกำหนด";
-} */
-$id = $_SESSION["s_id"];
-$sqldb = "SELECT count(s_id) as day3 FROM tbl_bill WHERE DATEDIFF(c_date, Now())= 3 or DATEDIFF(c_date, Now())= 2 && bill_id='$id'";
-$rs = mysqli_query($connection, $sqldb);
-$day3 = mysqli_fetch_assoc($rs);
-if ($day3['day3'] > 0) {
-  $noti_day3 = '<span class="noti-alert">' . $day3['day3'] . '</span>';
+if ($Num_Rows == '') {
+  $Num_Rows = 1;
 } else {
-  $noti_day3 = "";
+  $Num_Rows = ($Num_Rows + 1);
+}
 }
 ?>
 
@@ -47,7 +37,7 @@ if ($day3['day3'] > 0) {
         <h1 class="app-page-title">ข้อมูลรายการชำระดอกเบี้ย</h1>
         <div class="d-flex flex-row">
           <div class="flex-fill d-flex justify-content-end gap-1 ">
-            <a class="btn app-btn-secondary " href="?=<?= $_GET['page'] ?>">รายการที่ชำระเเล้ว</a>
+            <a class="btn app-btn-secondary " href="?=<?= $_GET['page']  ?>">รายการที่ชำระเเล้ว</a>
           </div>
           <div class="flex-fill d-flex justify-content-start gap-1">
             <div class="btn app-btn-secondary bg-NGG" href="#">
@@ -103,7 +93,7 @@ if ($day3['day3'] > 0) {
                   $i = 0;
                   foreach ($query as $result) : ?>
                     <tr>
-                      <td>3</td>
+                      <td><?php echo $Num_Rows; ?></td>
                       <td><?php echo $result['c_date']; ?></td>
                       <!-- <td><?= $result['bill_no'] ?></td> -->
                       <td><?= ($result['principle'] * 0.02) ?>฿</td>
@@ -113,7 +103,7 @@ if ($day3['day3'] > 0) {
                           } else {
                             echo "ค้างชำระ";
                           } ?></td>
-                      <td><a class="btn1 app-btn-secondary" href="?page=<?= $_GET['page'] ?>&function=updatebill&id=<?= $result['bill_id'] ?>"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right" viewBox="0 0 16 16">
+                      <td><a class="btn1 app-btn-secondary" href="?&function=updatebill&id=<?= $result['bill_id'] ?>"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z" />
                           </svg></a></td>
                     </tr>

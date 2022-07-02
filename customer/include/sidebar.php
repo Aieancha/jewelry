@@ -1,9 +1,22 @@
 <?php
+//$id= $_SESSION['s_id'];
 $sql = "SELECT * FROM tbl_social";
 $query = mysqli_query($connection,$sql);
 $result = mysqli_fetch_assoc($query);
 ?>
-<?= $_SESSION['s_id'] ?>
+<?php
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    $id = $_GET['id'];
+    $sqlRow = "SELECT * FROM tbl_interest INNER JOIN tbl_social ON tbl_social.s_id = tbl_interest.ref_id
+    INNER JOIN tbl_orders ON tbl_social.s_id = tbl_orders.s_id
+                            INNER JOIN tbl_bill ON tbl_interest.ref_id = tbl_bill.s_id 
+                            WHERE tbl_bill.bill_id ='$id'";
+    $query = mysqli_query($connection, $sqlRow);
+    $row = mysqli_fetch_assoc($query);
+    //$Num_Rows = mysqli_num_rows($query);
+}
+?>
+<!-- <?= $_SESSION['s_id'] ?> -->
 <div id="app-sidepanel" class="app-sidepanel">
 	<div id="sidepanel-drop" class="sidepanel-drop" style="z-index: index 0; "></div>
 	<div class="sidepanel-inner d-flex flex-column">
@@ -19,7 +32,7 @@ $result = mysqli_fetch_assoc($query);
 				<!--//nav-item-->
 				<li class="nav-item">
 					<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-					<a class="nav-link <?php echo !isset($_GET['page']) && empty($_GET['page']) ? 'active' : '' ?>" href="?&id=<?= $result['s_id'] ?>">
+					<a class="nav-link <?php echo !isset($_GET['page']) && empty($_GET['page']) ? 'active' : '' ?>" href="?&id=<?= $_SESSION['s_id'] ?>">
 					
 						<span class="nav-icon">
 							<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bell icon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -41,7 +54,7 @@ $result = mysqli_fetch_assoc($query);
 				<li class="nav-item">
 					<!-- เปลี่ยนสีปุ่ม active -->
 					<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-					<a class="nav-link <?php echo isset($_GET['page']) && ($_GET['page']) == 'newform' ? 'active' : '' ?> " href="?page=newform&id=<?= $result['s_id'] ?>">
+					<a class="nav-link <?php echo isset($_GET['page']) && ($_GET['page']) == 'newform' ? 'active' : '' ?> " href="?page=newform&id=<?= $_SESSION['s_id'] ?>">
 				
 						<span class="nav-icon">
 							<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-door" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -56,7 +69,7 @@ $result = mysqli_fetch_assoc($query);
 				<!--//nav-item-->
 				<li class="nav-item">
 					<!--//Bootstrap Icons: https://icons.getbootstrap.com/ -->
-					<a class="nav-link <?php echo isset($_GET['page']) && ($_GET['page']) == 'frompledge' ? 'active' : '' ?> " href="?page=frompledge&id=<?= $result['s_id'] ?>">
+					<a class="nav-link <?php echo isset($_GET['page']) && ($_GET['page']) == 'frompledge' ? 'active' : '' ?> " href="?page=frompledge&id=<?= $_SESSION['s_id'] ?>">
 						<span class="nav-icon">
 							<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-folder" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 								<path d="M9.828 4a3 3 0 0 1-2.12-.879l-.83-.828A1 1 0 0 0 6.173 2H2.5a1 1 0 0 0-1 .981L1.546 4h-1L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3v1z" />

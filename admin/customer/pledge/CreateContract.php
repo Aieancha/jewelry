@@ -13,7 +13,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     $query = mysqli_query($connection, $sql);
     $result = mysqli_fetch_assoc($query);
 }
-if (isset($_POST["submit"])) {
+if (isset($_POST) && !empty($_POST)) {
     $c_date = $_POST['c_date'];
     $date = date("Y-m-d");
     if (isset($_FILES['bill_img']['name']) && !empty($_FILES['bill_img']['name'])) {
@@ -27,24 +27,40 @@ if (isset($_POST["submit"])) {
                 if (move_uploaded_file($filetmp, $target . $filename)) {
                     $filename = $filename;
                 } else {
-                    echo 'เพิ่มข้อมูลลงโฟล์เดอร์ไม่สำเร็จ';
+                    $alert = '<script type="text/javascript">';
+                      $alert .= 'alert("เพิ่มไฟล์เข้าโฟลเดอร์ไม่สำเร็จ");';
+                      $alert .= 'window.location.href = "?page=pledge&function=contractSuccess";';
+                      $alert .= '</script>';
+                      echo $alert;
+                      exit();
                 }
             } else {
                 $newfilename = time() . $filename;
                 if (move_uploaded_file($filetmp, $target . $newfilename)) {
                     $filename = $newfilename;
                 } else {
-                    echo 'เพิ่มข้อมูลลงโฟล์เดอร์ไม่สำเร็จ';
+                    $alert = '<script type="text/javascript">';
+                      $alert .= 'alert("เพิ่มไฟล์เข้าโฟลเดอร์ไม่สำเร็จ");';
+                      $alert .= 'window.location.href = "?page=pledge&function=contractSuccess";';
+                      $alert .= '</script>';
+                      echo $alert;
+                      exit();
                 }
             }
         } else {
             echo 'ประเภทไฟล์ไม่ถูกต้อง';
+            $alert = '<script type="text/javascript">';
+            $alert .= 'alert("ประเภทไฟล์ไม่ถูกต้อง");';
+            $alert .= 'window.location.href = "?page=pledge&function=contractSuccess";';
+            $alert .= '</script>';
+            echo $alert;
+            exit();
         }
     } else {
         $filename = '';
     }
 
-    $sqlIns = "UPDATE tbl_bill SET bill_img ='$filename',c_date ='$c_date',create_date ='$date' WHERE tbl_bill.s_id ='$id'";
+    $sqlIns = "UPDATE tbl_bill SET bill_img ='$file_name',c_date ='$c_date',create_date ='$date' WHERE tbl_bill.s_id ='$id'";
     mysqli_query($connection, "UPDATE tbl_orders SET o_role = 3 WHERE tbl_orders.o_id  ='$id'");
     //mysqli_query($connection, "UPDATE tbl_orders SET o_role = 3 WHERE o_id='$id'");
     //$sql1 = "UPDATE tbl_orders t1 SET t1.o_role = 3 WHERE t1.o_id = '$id'";
@@ -150,16 +166,7 @@ if (isset($_POST["submit"])) {
 
         </div>
     </div>
-    <div>
 
-    </div>
-
-    </div>
-
-
-    </div>
-    </div>
-    </div>
 </body>
 
 </html>

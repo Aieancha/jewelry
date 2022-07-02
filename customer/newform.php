@@ -171,7 +171,7 @@ if (isset($_POST) && !empty($_POST)) {
     //echo "เพิ่มข้อมูลสำเร็จ";
     $alert = '<script type="text/javascript">';
     $alert .= 'alert("เพิ่มข้อมูลสำเร็จ");';
-    $alert .= 'window.location.href = "?function=check";';
+    $alert .= 'window.location.href = "?page=frompledge";';
     $alert .= '</script>';
     echo $alert;
     exit();

@@ -1,10 +1,13 @@
-<?php  
-	$user = $_SESSION['customer_login']; 
-	$sql = "SELECT * FROM tbl_social INNER JOIN tbl_bill ON tbl_social.s_id=tbl_bill.s_id 
-	INNER JOIN tbl_orders ON tbl_social.s_id=tbl_orders.s_id INNER JOIN tbl_interest ON tbl_social.s_id=tbl_interest.ref_id WHERE c_email = '$user'"; 
-	$query = mysqli_query($connection, $sql); 
-	$result = mysqli_fetch_assoc($query);   
-		?>
+<?php
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM tbl_social INNER JOIN tbl_bill ON tbl_bill.s_id=tbl_social.s_id
+INNER JOIN tbl_orders ON tbl_social.s_id=tbl_orders.s_id WHERE tbl_bill.bill_id = '$id' group by tbl_bill.bill_id";
+$query = mysqli_query($connection, $sql);
+$result = mysqli_fetch_assoc($query);
+$Num_Rows = mysqli_num_rows($query);
+}
+?>
 <body class="app">   	
 <div class="row g-0 app-wrapper app-auth-wrapper">
 		<div class="app-auth-body mx-auto ">
@@ -110,7 +113,7 @@
 								    <div class="row justify-content-between align-items-center">
 									    <div class="col-auto">
 										    <div class="item-label"><strong>ชำระงวดที่ : </strong>
-											<td width="25%" style="display: inline;">2 จาก 3</td>
+											<td width="25%" style="display: inline;"><?php echo @$Num_Rows; ?> งวด จาก <?php echo @$result['r_mount'] ?> งวด</td>
 										</div>
 									    </div><!--//col-->
 								    </div><!--//row-->   

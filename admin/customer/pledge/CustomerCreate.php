@@ -1,6 +1,6 @@
 <?php
 $sql = "SELECT * FROM tbl_social INNER JOIN tbl_orders ON tbl_social.s_id = tbl_orders.s_id
-INNER JOIN tbl_status ON tbl_orders.o_role = tbl_status.id WHERE tbl_orders.lavel='user' ";
+INNER JOIN tbl_status ON tbl_orders.o_role = tbl_status.id WHERE tbl_orders.lavel='user' order by o_date desc  ";
 $query = mysqli_query($connection, $sql);
 $rs = mysqli_fetch_assoc($query);
 $user = mysqli_num_rows($query);

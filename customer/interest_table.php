@@ -1,10 +1,12 @@
+
 <?php
-$id = $_SESSION['s_id'];
-$user = $_SESSION['customer_login'];
-$sql = "SELECT * FROM tbl_social INNER JOIN tbl_bill ON tbl_bill.s_id=tbl_social.s_id
-INNER JOIN tbl_orders ON tbl_social.s_id=tbl_orders.s_id WHERE tbl_bill.s_id = '$id' group by tbl_bill.bill_id";
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM tbl_social INNER JOIN tbl_bill ON tbl_bill.s_id=tbl_social.s_id
+INNER JOIN tbl_orders ON tbl_social.s_id=tbl_orders.s_id WHERE tbl_bill.bill_id = '$id' group by tbl_bill.bill_id";
 $query = mysqli_query($connection, $sql);
 $result = mysqli_fetch_assoc($query);
+}
 ?>
 <?php 
 @$status = $result['bill_role'];
@@ -38,7 +40,7 @@ if($status==0){
 					</div>
 					<div class="flex-fill d-flex justify-content-start gap-1">
 						<div class="btn app-btn-secondary">
-							<a>รายการที่<a href="?=<?= $_GET['page'] ?>&function=interest2" style="color:#5d6778; text-decoration: underline"></a>ครบกำหนด</a><a>ชำระ</a>
+							<a>รายการที่<a href="?=<?= $_GET['page'] ?>&function=interest&id=<?= $result['bill_id'] ?>" style="color:#5d6778; text-decoration: underline"></a>ครบกำหนด</a><a>ชำระ</a>
 						</div>
 					</div>
 
@@ -102,7 +104,7 @@ if($status==0){
 													</div>
 													<!--//dropdown-toggle-->
 													<ul class="dropdown-menu">
-														<li><a class="dropdown-item" href="?page=<?= $_GET['page'] ?>&function=detailbill&id=<?= $result['bill_id'] ?>"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye me-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+														<li><a class="dropdown-item" href="?&function=detailbill&id=<?= $result['bill_id'] ?>"> <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye me-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 																	<path fill-rule="evenodd" d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.134 13.134 0 0 0 1.66 2.043C4.12 11.332 5.88 12.5 8 12.5c2.12 0 3.879-1.168 5.168-2.457A13.134 13.134 0 0 0 14.828 8a13.133 13.133 0 0 0-1.66-2.043C11.879 4.668 10.119 3.5 8 3.5c-2.12 0-3.879 1.168-5.168 2.457A13.133 13.133 0 0 0 1.172 8z" />
 																	<path fill-rule="evenodd" d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
 																</svg>ดูรายละเอียด</a></li>

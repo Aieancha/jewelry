@@ -72,18 +72,18 @@
                 } else {
                     $Num_Rows = ($Num_Rows + 1);
                 }
-                
+
                 /* ยอดดอกเบี้ยคงเหลือ */
                 if ($Salary_Sum == '') {
                     $Salary_Sum = $in_befor;
                 } else {
                     $Salary_Sum = ($Salary_Sum + $in_befor);
                 }
-                $ins=$inter-$Salary_Sum;
+                $ins = $inter - $Salary_Sum;
 
                 //echo $sum;
 
-                
+
                 $balance =  $ins;
 
 
@@ -98,18 +98,34 @@
                             if (move_uploaded_file($filetmp, $target . $filename)) {
                                 $filename = $filename;
                             } else {
-                                echo 'เพิ่มข้อมูลลงโฟล์เดอร์ไม่สำเร็จ';
+                                $alert = '<script type="text/javascript">';
+                                $alert .= 'alert("เพิ่มไฟล์เข้าโฟลเดอร์ไม่สำเร็จ");';
+                                $alert .= 'window.location.href = "?page=interest";';
+                                $alert .= '</script>';
+                                echo $alert;
+                                exit();
                             }
                         } else {
                             $newfilename = time() . $filename;
                             if (move_uploaded_file($filetmp, $target . $newfilename)) {
                                 $filename = $newfilename;
                             } else {
-                                echo 'เพิ่มข้อมูลลงโฟล์เดอร์ไม่สำเร็จ';
+                                $alert = '<script type="text/javascript">';
+                                $alert .= 'alert("เพิ่มไฟล์เข้าโฟลเดอร์ไม่สำเร็จ");';
+                                $alert .= 'window.location.href = "?page=interest";';
+                                $alert .= '</script>';
+                                echo $alert;
+                                exit();
                             }
                         }
                     } else {
                         echo 'ประเภทไฟล์ไม่ถูกต้อง';
+                        $alert = '<script type="text/javascript">';
+                        $alert .= 'alert("ประเภทไฟล์ไม่ถูกต้อง");';
+                        $alert .= 'window.location.href = "?page=interest";';
+                        $alert .= '</script>';
+                        echo $alert;
+                        exit();
                     }
                 } else {
                     $filename = '';
@@ -121,7 +137,7 @@
                     //echo "เพิ่มข้อมูลสำเร็จ";
                     echo "<script>
 alert('เพิ่มหลักฐานการชำระค่างวดสำเร็จ');
-window.location.href='?page=interest';
+window.location.href='?page=interest&function=list';
 </script>";
                 } else {
                     echo "Error: " . $sql . "<br>"  . mysqli_error($connection);

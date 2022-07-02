@@ -103,7 +103,7 @@
 									<label>ไอดีไลน์</label>
 								</div>
 								<div class="flex-fill d-flex justify-content-start gap-1">
-									<label>เฟสบุ้ค</label>
+									<label>เฟสบุ๊ก</label>
 								</div>
 							</div>
 							<div class="d-flex flex-row mb-3">
@@ -112,7 +112,7 @@
 									<input class="form-control signup-password" name="c_line" type="line" placeholder="กรอกไอดีไลน์">
 								</div>
 								<div class="flex-fill d-flex justify-content-end gap-1">
-									<label class="sr-only" for="signup-password">เฟสบุ้ค</label>
+									<label class="sr-only" for="signup-password">เฟสบุ๊ก</label>
 									<input id="" name="c_facebook" type="face" class="form-control signup-password" placeholder="ชื่อผู้ใช้เฟสบุ้ค">
 
 								</div>
@@ -139,7 +139,7 @@
 							<div class="password mb-3">
 								<label style="display: inline;">เบอร์โทรศัพท์ </label><label style="display: inline;" class="text-danger"> *</label>
 								<label class="sr-only" for="signup-password">เบอร์โทร</label>
-								<input type="number" name="phone" pattern="^[0-9\s]+$" minlength="10" class="form-control signup-password" placeholder="กรอกเบอร์โทรศัพท์" required="required">
+								<input type="text" name="phone" pattern="^[0-9\s]+$" minlength="10" class="form-control signup-password" placeholder="กรอกเบอร์โทรศัพท์" required="required">
 							</div>
 							<div class="password mb-3">
 								<label>ที่อยู่</label>

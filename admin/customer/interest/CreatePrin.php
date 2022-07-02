@@ -52,18 +52,33 @@
                             if (move_uploaded_file($filetmp, $target . $filename)) {
                                 $filename = $filename;
                             } else {
-                                echo 'เพิ่มข้อมูลลงโฟล์เดอร์ไม่สำเร็จ';
+                                $alert = '<script type="text/javascript">';
+                                $alert .= 'alert("เพิ่มไฟล์เข้าโฟลเดอร์ไม่สำเร็จ");';
+                                $alert .= 'window.location.href = "?page=interest";';
+                                $alert .= '</script>';
+                                echo $alert;
+                                exit();
                             }
                         } else {
                             $newfilename = time() . $filename;
                             if (move_uploaded_file($filetmp, $target . $newfilename)) {
                                 $filename = $newfilename;
                             } else {
-                                echo 'เพิ่มข้อมูลลงโฟล์เดอร์ไม่สำเร็จ';
+                                $alert = '<script type="text/javascript">';
+                                $alert .= 'alert("เพิ่มไฟล์เข้าโฟลเดอร์ไม่สำเร็จ");';
+                                $alert .= 'window.location.href = "?page=interest";';
+                                $alert .= '</script>';
+                                echo $alert;
+                                exit();
                             }
                         }
                     } else {
-                        echo 'ประเภทไฟล์ไม่ถูกต้อง';
+                        $alert = '<script type="text/javascript">';
+                        $alert .= 'alert("ประเภทไฟล์ไม่ถูกต้อง");';
+                        $alert .= 'window.location.href = "?page=interest";';
+                        $alert .= '</script>';
+                        echo $alert;
+                        exit();
                     }
                 } else {
                     $filename = '';

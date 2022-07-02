@@ -35,7 +35,7 @@
           }elseif (isset($_GET['function']) && $_GET['function'] == 'WrongContract') {
             include('dashboard/WrongContract.php');
           } elseif (isset($_GET['function']) && $_GET['function'] == 'ViewPrin') {
-            include('customer/interest/ViewPrin.php');
+            include('dashboard/ViewPrin.php');
           } elseif (isset($_GET['function']) && $_GET['function'] == 'showDetails') {
             include('customer/interest/show-details.php');
           } else {

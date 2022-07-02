@@ -60,7 +60,7 @@ $nextId = $code . $yearMonth . $maxId;
                     } else {
                       $alert = '<script type="text/javascript">';
                       $alert .= 'alert("เพิ่มไฟล์เข้าโฟลเดอร์ไม่สำเร็จ");';
-                      $alert .= 'window.location.href = "?page=admin&function=insert";';
+                      $alert .= 'window.location.href = "?page=pledge&function=insert";';
                       $alert .= '</script>';
                       echo $alert;
                       exit();
@@ -72,7 +72,7 @@ $nextId = $code . $yearMonth . $maxId;
                     } else {
                       $alert = '<script type="text/javascript">';
                       $alert .= 'alert("เพิ่มไฟล์เข้าโฟลเดอร์ไม่สำเร็จ");';
-                      $alert .= 'window.location.href = "?page=admin&function=insert";';
+                      $alert .= 'window.location.href = "?page=pledge&function=insert";';
                       $alert .= '</script>';
                       echo $alert;
                       exit();
@@ -82,7 +82,7 @@ $nextId = $code . $yearMonth . $maxId;
                   echo 'ประเภทไฟล์ไม่ถูกต้อง';
                   $alert = '<script type="text/javascript">';
                   $alert .= 'alert("ประเภทไฟล์ไม่ถูกต้อง");';
-                  $alert .= 'window.location.href = "?page=admin&function=insert";';
+                  $alert .= 'window.location.href = "?page=pledge&function=insert";';
                   $alert .= '</script>';
                   echo $alert;
                   exit();
@@ -104,7 +104,7 @@ $nextId = $code . $yearMonth . $maxId;
                     } else {
                       $alert = '<script type="text/javascript">';
                       $alert .= 'alert("เพิ่มไฟล์เข้าโฟลเดอร์ไม่สำเร็จ");';
-                      $alert .= 'window.location.href = "?page=admin&function=insert";';
+                      $alert .= 'window.location.href = "?page=pledge&function=insert";';
                       $alert .= '</script>';
                       echo $alert;
                       exit();
@@ -116,7 +116,7 @@ $nextId = $code . $yearMonth . $maxId;
                     } else {
                       $alert = '<script type="text/javascript">';
                       $alert .= 'alert("เพิ่มไฟล์เข้าโฟลเดอร์ไม่สำเร็จ");';
-                      $alert .= 'window.location.href = "?page=admin&function=insert";';
+                      $alert .= 'window.location.href = "?page=pledge&function=insert";';
                       $alert .= '</script>';
                       echo $alert;
                       exit();
@@ -126,7 +126,7 @@ $nextId = $code . $yearMonth . $maxId;
                   echo 'ประเภทไฟล์ไม่ถูกต้อง';
                   $alert = '<script type="text/javascript">';
                   $alert .= 'alert("ประเภทไฟล์ไม่ถูกต้อง");';
-                  $alert .= 'window.location.href = "?page=admin&function=insert";';
+                  $alert .= 'window.location.href = "?page=pledge&function=insert";';
                   $alert .= '</script>';
                   echo $alert;
                   exit();
@@ -188,7 +188,7 @@ $nextId = $code . $yearMonth . $maxId;
                 $sqli = "INSERT INTO tbl_orders ( o_type, o_price, img3, img1, img2, o_detail,o_code,s_id,lavel, price_img)
 VALUES ( '$type', '$price','$filename3', '$filename1', '$filename2','$detail','$nextId','$s_id','$status','$img_price')";
               }
-              if ( mysqli_query($connection, $sqli)) {
+              if (mysqli_query($connection, $sqli)) {
                 //echo "เพิ่มข้อมูลสำเร็จ";
                 $alert = '<script type="text/javascript">';
                 $alert .= 'alert("เพิ่มข้อมูลสำเร็จ");';
@@ -266,7 +266,7 @@ VALUES ( '$type', '$price','$filename3', '$filename1', '$filename2','$detail','$
                     <div class="mb-4">
                       <h5 style="display: inline;">ภาพถ่ายสินค้าจริง</h5>
                       <h5 class="form-label text-danger" style="display: inline;">*</h5>
-                      <label class="form-label text-danger" >เพิ่มรูปภาพอย่างน้อย 1 ภาพ</label>
+                      <label class="form-label text-danger">เพิ่มรูปภาพอย่างน้อย 1 ภาพ</label>
                     </div>
                     <div class="mb-3">
                       <label>ภาพถ่ายสินค้าจริงด้านหน้า / ด้านบน</label>
@@ -282,8 +282,8 @@ VALUES ( '$type', '$price','$filename3', '$filename1', '$filename2','$detail','$
                     </div>
                   </div>
                   <div class="mb-3">
-                      <h5 style="display: inline;">การประเมินราคา</h5>
-                    </div>
+                    <h5 style="display: inline;">การประเมินราคา</h5>
+                  </div>
                   <div class="mb-3 col-12 ">
                     <h6 style="display: inline;">ราคาที่ลูกค้าต้องการจำนำ</h6><label style="display: inline;">(ถ้ามี)</label>
                     <div class="col-4">
