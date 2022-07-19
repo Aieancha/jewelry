@@ -61,7 +61,7 @@ $query = mysqli_query($connection, $sql);
                   <td><?= $data['phone'] ?></td>
                   <td><?= $data['principle'] * 0.02 ?></td>
                   <td class="text-danger">รอยืนยัน</td>
-                  <td><a href="?page=<?= $_GET['page'] ?>&function=updateCustomer&id=<?= $data['s_id'] ?>" class="btn btn-sm btn-green3 text-white">ตรวจสอบข้อมูล</a></td>
+                  <td><a href="?page=<?= $_GET['page'] ?>&function=updateCustomer&id=<?= $data['in_id'] ?>" class="btn btn-sm btn-green3 text-white">ตรวจสอบข้อมูล</a></td>
                 </tr>
               <?php endforeach; ?>
             </tbody>

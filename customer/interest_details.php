@@ -1,10 +1,10 @@
 <?php
 if (isset($_GET['id']) && !empty($_GET['id'])) {
   $id = $_GET['id'];
-  $sqlRow = "SELECT * FROM tbl_interest INNER JOIN tbl_social ON tbl_social.s_id = tbl_interest.ref_id
+  $sqlRow = "SELECT * FROM tbl_social 
   INNER JOIN tbl_orders ON tbl_social.s_id = tbl_orders.s_id
-                          INNER JOIN tbl_bill ON tbl_interest.ref_id = tbl_bill.s_id 
-                          WHERE tbl_bill.bill_id ='$id' GROUP BY bill_id";
+                          INNER JOIN tbl_bill ON tbl_orders.s_id = tbl_bill.s_id 
+                          WHERE DATEDIFF(c_date, Now())= 3 or DATEDIFF(c_date, Now())= 2 or DATEDIFF(c_date, Now())< 30 and bill_id='$id' GROUP BY bill_id";
   $query = mysqli_query($connection, $sqlRow);
   $result = mysqli_fetch_assoc($query);
   $Num_Rows = mysqli_num_rows($query);
@@ -37,7 +37,7 @@ if ($Num_Rows == '') {
         <h1 class="app-page-title">ข้อมูลรายการชำระดอกเบี้ย</h1>
         <div class="d-flex flex-row">
           <div class="flex-fill d-flex justify-content-end gap-1 ">
-            <a class="btn app-btn-secondary " href="?=<?= $_GET['page']  ?>">รายการที่ชำระเเล้ว</a>
+            <a class="btn app-btn-secondary " href="?&id=<?= $_SESSION['s_id'] ?>">รายการที่ชำระเเล้ว</a>
           </div>
           <div class="flex-fill d-flex justify-content-start gap-1">
             <div class="btn app-btn-secondary bg-NGG" href="#">

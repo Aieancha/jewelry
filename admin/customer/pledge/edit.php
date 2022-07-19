@@ -262,17 +262,17 @@
                   <div class="modal-content">
                     <div class="mySlides">
                       <div class="numbertext"></div>
+                      <img src="../images/social/<?= $rs['img1'] ?>" style="width:100%; height:auto">
+                    </div>
+
+                    <div class="mySlides">
+                      <div class="numbertext"></div>
+                      <img src="../images/social/<?= $rs['img2'] ?>" style="width:100%; height:auto">
+                    </div>
+
+                    <div class="mySlides">
+                      <div class="numbertext"></div>
                       <img src="../images/social/<?= $rs['img3'] ?>" style="width:100%; height:auto">
-                    </div>
-
-                    <div class="mySlides">
-                      <div class="numbertext"></div>
-                      <img src="../images/social/<?= $rs['img1'] ?>" style="width:100% height:auto">
-                    </div>
-
-                    <div class="mySlides">
-                      <div class="numbertext"></div>
-                      <img src="../images/social/<?= $rs['img2'] ?>" style="width:100% height:auto">
                     </div>
                   </div>
                 </div>
@@ -280,14 +280,14 @@
                 <div class=" mb-4 col-6 ">
                   <h6>ภาพถ่ายสินค้าจริง</h6>
                   <?php
-                  if ($rs['img3'] != '') {
-                    echo '<img src="../images/social/' . $rs['img3'] . '" alt="jewelry" style="width:50%; height:auto;" onclick="openModal();currentSlide(1)" class="hover-shadow cursor" />';
-                  }
                   if ($rs['img1'] != '') {
                     echo '<img src="../images/social/' . $rs['img1'] . '" alt="jewelry" style="width:50%; height:auto;" onclick="openModal();currentSlide(1)" class="hover-shadow cursor" />';
                   }
                   if ($rs['img2'] != '') {
-                    echo '<img src="../images/social/' . $rs['img2'] . '" alt="jewelry" style="width:50%; height:auto;" onclick="openModal();currentSlide(1)" class="hover-shadow cursor" />';
+                    echo '<img src="../images/social/' . $rs['img2'] . '" alt="jewelry" style="width:50%; height:auto;" onclick="openModal();currentSlide(2)" class="hover-shadow cursor" />';
+                  }
+                  if ($rs['img3'] != '') {
+                    echo '<img src="../images/social/' . $rs['img3'] . '" alt="jewelry" style="width:50%; height:auto;" onclick="openModal();currentSlide(3)" class="hover-shadow cursor" />';
                   } ?>
                 </div>
 

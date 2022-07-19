@@ -1,47 +1,76 @@
 <?php
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
-    $sql = "SELECT * FROM tbl_orders INNER JOIN tbl_social ON tbl_social.s_id=tbl_orders.s_id 
-    INNER JOIN tbl_bill ON tbl_bill.s_id=tbl_orders.s_id WHERE tbl_bill.bill_id = '$id'";
+    $sqlRow = "SELECT * FROM tbl_interest INNER JOIN tbl_social ON tbl_social.s_id = tbl_interest.ref_id
+    INNER JOIN tbl_orders ON tbl_social.s_id = tbl_orders.s_id
+                            INNER JOIN tbl_bill ON tbl_interest.ref_id = tbl_bill.s_id 
+                            WHERE tbl_bill.bill_id ='$id'";
+    $row = mysqli_query($connection, $sqlRow);
+    $Num_Rows = mysqli_num_rows($row);
+    //echo $Num_Rows;
+    //$Num_Rows = ($Num_Row + 1);
+}
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    $id = $_GET['id'];
+    $sqlSum = "SELECT SUM(in_befor) AS sum_price FROM tbl_interest INNER JOIN tbl_social ON tbl_social.s_id = tbl_interest.ref_id
+    INNER JOIN tbl_orders ON tbl_social.s_id = tbl_orders.s_id
+                            INNER JOIN tbl_bill ON tbl_interest.ref_id = tbl_bill.s_id 
+                            WHERE tbl_bill.bill_id ='$id'";
+    $sum = mysqli_query($connection, $sqlSum);
+    $Salary = mysqli_fetch_assoc($sum);
+    $Salary_Sum = $Salary['sum_price'];
+    //echo $Salary_Sum;
+}
+?>
+
+<?php
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM tbl_bill INNER JOIN tbl_orders ON tbl_bill.s_id=tbl_orders.s_id INNER JOIN tbl_social ON tbl_social.s_id = tbl_orders.s_id WHERE tbl_bill.bill_id = '$id'";
     $query = mysqli_query($connection, $sql);
     $result = mysqli_fetch_assoc($query);
-    $total = ($result['principle'] * 0.02);
     $strStartDate = $result['c_date'];
     /* $strStartDate = date('Y-m-d'); */
     $strNewDate = date("Y-m-d", strtotime("+30 day", strtotime($strStartDate)));
     $strDate = date("Y-m-d", strtotime("+27 day", strtotime($strStartDate)));
+    //echo ' + 10 วัน = ' . $strNewDate;
+    //$role = $result['s_role']== 3? 4:3;
+    //$role = 3;
     $ref = $result['s_id'];
-    $in = $result['o_inter'];
+    $in = $result['o_inter']; //ดอกเบี้ยทั้งหมด
 }
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
-    $sql1 = "SELECT * FROM tbl_interest INNER JOIN tbl_social ON tbl_social.s_id = tbl_interest.ref_id WHERE tbl_social.s_id ='$id'";
-    $qry = mysqli_query($connection, $sql1);
-    $Num_Rows = mysqli_num_rows($qry);
+    $sql = "SELECT * FROM tbl_bill INNER JOIN tbl_orders ON tbl_bill.s_id=tbl_orders.s_id INNER JOIN tbl_social ON tbl_social.s_id = tbl_orders.s_id WHERE tbl_bill.bill_id = '$id'";
+    $query = mysqli_query($connection, $sql);
+    $row = mysqli_fetch_assoc($query);
 }
-$Num_Rows = ($Num_Rows + 1);
+
 if (isset($_POST) && !empty($_POST)) {
     $in_date = $_POST['in_date'];
     $in_befor = $_POST['in_befor'];
-    $ins = "";
+    @$inst = $result['in_balance'];
+    $inter = $result['o_inter']; //จำนวนเงินต้น+ดอกเบี้ย
 
-    $total_principle = $result['o_total']; //จำนวนเงินต้น+ดอกเบี้ย
-    for ($i = -1; $i < $Num_Rows; $i++) {
-
-        if ($ins == '') {
-            $ins = ($total_principle) - $in_befor; //จำนวนเงินต้น+ดอกเบี้ยคงเหลือ
-        } else {
-            $ins = ($ins - $in_befor);
-        }
-    }
-    //echo $balance;
-    $balance =  $ins;
-
+    /* งวดที่ชำระ */
     if ($Num_Rows == '') {
         $Num_Rows = 1;
     } else {
         $Num_Rows = ($Num_Rows + 1);
     }
+
+    /* ยอดดอกเบี้ยคงเหลือ */
+    if ($Salary_Sum == '') {
+        $Salary_Sum = $in_befor;
+    } else {
+        $Salary_Sum = ($Salary_Sum + $in_befor);
+    }
+    $ins = $inter - $Salary_Sum;
+
+    //echo $sum;
+
+
+    $balance =  $ins;
 
     if (isset($_FILES['in_img']['name']) && !empty($_FILES['in_img']['name'])) {
         $extension = array("jpeg", "jpg", "png");
@@ -157,7 +186,7 @@ if (isset($_POST) && !empty($_POST)) {
                                 <div class="item-label"><strong>งวดที่ : </strong><?php echo $Num_Rows . ' จาก ' . $result['r_mount']  ?> งวด </div>
                             </div>
                             <div class="mb-3">
-                                <div class="item-label"><strong>จำนวนเงินที่ต้องชำระ : </strong><?php echo $total ?> บาท</div>
+                                <div class="item-label"><strong>จำนวนเงินที่ต้องชำระ : </strong><?= number_format($result['principle'] * 0.02) ?> บาท</div>
                             </div>
                             <div class="app-card-footer p-4 mt-auto">
                             </div>

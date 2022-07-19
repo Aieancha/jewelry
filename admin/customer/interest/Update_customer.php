@@ -17,27 +17,35 @@
             <?php
             if (isset($_GET['id']) && !empty($_GET['id'])) {
                 $id = $_GET['id'];
+                $sql2 = "SELECT * FROM tbl_interest INNER JOIN tbl_bill
+                ON tbl_bill.s_id = tbl_interest.ref_id WHERE ref_id = '$id'";
+                $qry = mysqli_query($connection, $sql2);
+            }
+            if (isset($_GET['id']) && !empty($_GET['id'])) {
+                $id = $_GET['id'];
                 $sql = "SELECT * FROM tbl_social INNER JOIN tbl_interest
                 ON tbl_social.s_id = tbl_interest.ref_id 
                 INNER JOIN tbl_orders
                 ON tbl_social.s_id = tbl_orders.s_id
                 INNER JOIN tbl_bill
-                ON tbl_bill.s_id = tbl_orders.s_id WHERE tbl_bill.bill_id = '$id'";
+                ON tbl_bill.s_id = tbl_orders.s_id WHERE tbl_interest.in_id = '$id'";
                 $query = mysqli_query($connection, $sql);
                 $result = mysqli_fetch_assoc($query);
-                mysqli_query($connection, "UPDATE tbl_interest SET in_role=1 WHERE ref_id = '$id'"); 
-                
-                /* if (mysqli_query($connection, $sql)) {
-                    //echo "เพิ่มข้อมูลสำเร็จ";
+            }
+            if (isset($_POST) && !empty($_POST)) {
+                $sql2 = "UPDATE tbl_interest SET in_role=1 WHERE in_id = '$id'";
+                //mysqli_query($connection, "UPDATE tbl_interest SET in_role=1 WHERE bill_id = '$id'"); 
+
+                if (mysqli_query($connection, $sql2)) {
                     echo "<script>
-alert('ยืนยันข้อมูลสำเร็จ');
+alert('เพิ่มหลักฐานการชำระค่างวดสำเร็จ');
 window.location.href='?page=interest&function=list';
 </script>";
                 } else {
                     echo "Error: " . $sql . "<br>"  . mysqli_error($connection);
                 }
 
-                mysqli_close($connection); */
+                mysqli_close($connection);
             }
 
             //print_r($_POST);

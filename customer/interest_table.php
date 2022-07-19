@@ -1,12 +1,9 @@
-
 <?php
-if (isset($_GET['id']) && !empty($_GET['id'])) {
-    $id = $_GET['id'];
-    $sql = "SELECT * FROM tbl_social INNER JOIN tbl_bill ON tbl_bill.s_id=tbl_social.s_id
-INNER JOIN tbl_orders ON tbl_social.s_id=tbl_orders.s_id WHERE tbl_bill.bill_id = '$id' group by tbl_bill.bill_id";
+$user = $_SESSION['customer_login'];
+$sql = "SELECT * FROM tbl_social INNER JOIN tbl_bill ON tbl_bill.s_id=tbl_social.s_id
+INNER JOIN tbl_orders ON tbl_social.s_id=tbl_orders.s_id WHERE c_email = '$user'";
 $query = mysqli_query($connection, $sql);
 $result = mysqli_fetch_assoc($query);
-}
 ?>
 <?php 
 @$status = $result['bill_role'];
@@ -40,7 +37,7 @@ if($status==0){
 					</div>
 					<div class="flex-fill d-flex justify-content-start gap-1">
 						<div class="btn app-btn-secondary">
-							<a>รายการที่<a href="?=<?= $_GET['page'] ?>&function=interest&id=<?= $result['bill_id'] ?>" style="color:#5d6778; text-decoration: underline"></a>ครบกำหนด</a><a>ชำระ</a>
+							<a>รายการที่<a href="?&function=interest2&id=<?= $result['bill_id'] ?>" style="color:#5d6778; text-decoration: underline">ครบกำหนด<a>ชำระ</a>
 						</div>
 					</div>
 

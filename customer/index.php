@@ -17,7 +17,7 @@
 
         <?php
         if (!isset($_GET['page']) && empty($_GET['page'])) {
-          if (isset($_GET['function']) && $_GET['function'] == 'interest') {
+          if (isset($_GET['function']) && $_GET['function'] == 'interest2') {
             //include('interest_table.php');
             include('interest_details.php');
           } elseif (isset($_GET['function']) && $_GET['function'] == 'updatebill') {

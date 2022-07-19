@@ -229,27 +229,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                     <td width="25%" style="display: inline;"><?= $result['o_type'] ?></td>
                                 </div>
 
-                                <div id="myModal" class="modal">
-                                    <span class="close cursor" onclick="closeModal()">&times;</span>
-                                    <div class="modal-content">
 
-                                        <div class="mySlides">
-                                            <div class="numbertext">1</div>
-                                            <img src="../images/social/<?= $result['img1'] ?>" style="width:100% height:auto">
-                                        </div>
-
-                                        <div class="mySlides">
-                                            <div class="numbertext">2</div>
-                                            <img src="../images/social/<?= $result['img2'] ?>" style="width:100% height:auto">
-                                        </div>
-
-                                        <div class="mySlides">
-                                            <div class="numbertext">3</div>
-                                            <img src="../images/social/<?= $result['img3'] ?>" style="width:100%; height:auto">
-                                        </div>
-
-                                    </div>
-                                </div>
                             </div>
                             <div class="justify-content-start flex-fill ">
                                 <div class=" mb-4 ">
@@ -259,7 +239,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                                     <h6 style="display: inline;">ราคาลูกค้าต้องการจำนำ :</h6>
                                     <td width="25%" style="display: inline;"><?= number_format($result['o_price']) ?> บาท</td>
                                 </div>
-                                
+
                                 <div class=" mb-4 col-12 ">
                                     <h6 style="display: inline;">เลขที่สัญญา :</h6>
                                     <td width="25%" style="display: inline;"><?= number_format($result['price_img']) ?> บาท</td>
@@ -291,14 +271,35 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
                             </div>
                         </div>
+                        <div id="myModal" class="modal">
+                            <span class="close cursor" onclick="closeModal()">&times;</span>
+                            <div class="modal-content">
+
+                                <div class="mySlides">
+                                    <div class="numbertext">1</div>
+                                    <img src="../images/social/<?= $result['img1'] ?>" style="width:100%; height:auto">
+                                </div>
+
+                                <div class="mySlides">
+                                    <div class="numbertext">2</div>
+                                    <img src="../images/social/<?= $result['img2'] ?>" style="width:100%; height:auto">
+                                </div>
+
+                                <div class="mySlides">
+                                    <div class="numbertext">3</div>
+                                    <img src="../images/social/<?= $result['img3'] ?>" style="width:100%; height:auto">
+                                </div>
+
+                            </div>
+                        </div>
                         <div class=" mb-4 col-10 ">
                             <h6>ภาพถ่ายสินค้าจริง</h6>
                             <?php
                             if ($result['img1'] != '') {
-                                echo '<img src="../images/social/' . $result['img1'] . '" alt="jewelry1" style="width:20%; height:auto;" onclick="openModal();currentSlide(3)" class="hover-shadow cursor" />';
+                                echo '<img src="../images/social/' . $result['img1'] . '" alt="jewelry1" style="width:20%; height:auto;" onclick="openModal();currentSlide(1)" class="hover-shadow cursor" />';
                             }
                             if ($result['img2'] != '') {
-                                echo '<img src="../images/social/' . $result['img2'] . '" alt="jewelry2" style="width:20%; height:auto;" onclick="openModal();currentSlide(3)" class="hover-shadow cursor" />';
+                                echo '<img src="../images/social/' . $result['img2'] . '" alt="jewelry2" style="width:20%; height:auto;" onclick="openModal();currentSlide(2)" class="hover-shadow cursor" />';
                             }
                             if ($result['img3'] != '') {
                                 echo '<img src="../images/social/' . $result['img3'] . '" alt="jewelry3" style="width:20%; height:auto;" onclick="openModal();currentSlide(3)" class="hover-shadow cursor" />';

@@ -51,7 +51,7 @@
                                     <h6 style="display: inline;">ชื่อผู้จำนำ :</h6>
                                     <td width="25%" style="display: inline;"><?= $result['s_name'] .' '. $result['s_lastname']?> </td>
                                 </div>
-                                <div class=" mb-3 col-6 ">
+                                <div class=" mb-3 col-10 ">
                                     <h6 style="display: inline;">วันที่ชำระเงินต้น :</h6>
                                     <td width="25%" style="display: inline;"><?= $result['in_date'] ?> </td>
                                 </div>
